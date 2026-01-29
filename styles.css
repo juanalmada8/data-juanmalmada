@@ -408,3 +408,27 @@ h1{
   background: rgba(169,199,255,.85);
   box-shadow: 0 0 0 6px rgba(169,199,255,.10);
 }
+
+.site-footer{
+  border-top: 1px solid rgba(255,255,255,.06);
+  padding: 26px 0;
+  background: rgba(11,14,18,.85);
+}
+
+.footer-inner{
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+  gap:12px;
+  font-size:13px;
+  color: rgba(234,240,255,.55);
+  flex-wrap:wrap;
+}
+
+.site-footer a{
+  color: rgba(234,240,255,.65);
+}
+
+.site-footer a:hover{
+  color: rgba(234,240,255,.95);
+}
