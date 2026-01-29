@@ -3,110 +3,113 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Juan Martín Almada | Data & Automation</title>
-  <meta name="description" content="Sistemas de datos y automatización para negocios. Orden, claridad y procesos que funcionan sin fricción." />
-  <link rel="stylesheet" href="styles.css?v=4" />
+  <title>Juan Martín Almada | Data & Automatización</title>
+  <meta name="description" content="Sistemas de datos y automatización para negocios. Orden, claridad y procesos que funcionan solos." />
+  <link rel="stylesheet" href="styles.css?v=12" />
 </head>
 
 <body>
   <header class="header">
     <div class="container header-inner">
       <a class="brand" href="#home">
-        <span class="brand-mark"></span>
+        <span class="brand-dot"></span>
         Juan Martín Almada
       </a>
 
       <nav class="nav">
-        <a href="#home" class="is-active">Home</a>
+        <a href="#home" class="active">Home</a>
         <a href="#que-hago">Qué hago</a>
         <a href="#sobre-mi">Sobre mí</a>
-        <a href="#contacto" class="nav-pill">Contacto</a>
+        <a class="pill" href="#contacto">Contacto</a>
       </nav>
     </div>
   </header>
 
   <main id="home">
-    <!-- HERO -->
+    <!-- hero -->
     <section class="hero">
+      <div class="bg-shapes" aria-hidden="true">
+        <span class="shape s1"></span>
+        <span class="shape s2"></span>
+        <span class="shape s3"></span>
+        <span class="shape s4"></span>
+      </div>
+
       <div class="container hero-inner">
         <p class="kicker">data · automatización · sistemas</p>
 
-        <h1>Orden y control<br>para tu negocio.</h1>
+        <h1>Orden y claridad<br>para tu operación.</h1>
 
         <p class="lead">
-          Construyo sistemas simples y mantenibles para organizar información y automatizar procesos.
-          Menos trabajo manual, más claridad para decidir.
+          Construyo soluciones simples y mantenibles para organizar información y automatizar procesos.
+          El objetivo: menos manualidad, más control.
         </p>
 
         <div class="cta">
-          <a class="btn btn-primary" href="#contacto">Coordinar una charla</a>
-          <a class="btn btn-secondary" href="#que-hago">Ver qué hago</a>
+          <a class="btn primary" href="#contacto">Coordinar una charla</a>
+          <a class="btn ghost" href="#que-hago">Ver qué hago</a>
         </div>
 
         <p class="cred">
-          Experiencia profesional en: Mercado Libre · Cencosud · Novartis · Naranja X
+          Experiencia profesional (como empleado) en: Mercado Libre · Cencosud · Novartis · Naranja X
         </p>
       </div>
-
-      <div class="hero-glow" aria-hidden="true"></div>
     </section>
 
-    <!-- QUÉ HAGO -->
+    <!-- qué hago -->
     <section id="que-hago" class="section">
-      <div class="container section-inner">
+      <div class="container narrow">
         <h2>Qué hago</h2>
-
         <p class="text">
-          Ayudo a empresas a pasar de información dispersa y procesos manuales
+          Ayudo a empresas a pasar de información dispersa y tareas repetidas
           a sistemas que funcionan de forma ordenada y predecible.
         </p>
 
         <ul class="bullets">
+          <li>Automatización de procesos y tareas repetidas</li>
           <li>Sistemas de datos y reporting claros</li>
-          <li>Automatización de tareas repetidas</li>
-          <li>Integraciones entre herramientas (sin fricción)</li>
+          <li>Integraciones entre herramientas</li>
           <li>Mejoras de performance y confiabilidad</li>
         </ul>
       </div>
     </section>
 
-    <!-- SOBRE MI -->
-    <section id="sobre-mi" class="section section-soft">
-      <div class="container section-inner">
+    <!-- sobre mí -->
+    <section id="sobre-mi" class="section soft">
+      <div class="container narrow">
         <h2>Sobre mí</h2>
-
         <p class="text">
-          Soy Data Engineer con 7+ años de experiencia. Trabajo construyendo plataformas y pipelines
-          en producción (cloud y on-prem), con foco en automatización, calidad y performance.
+          Soy Data Engineer con 7+ años construyendo pipelines y plataformas en producción (cloud y on-prem).
+          Mi foco es entregar soluciones sobrias, medibles y fáciles de mantener.
         </p>
 
-        <p class="note">
-          Mi enfoque: soluciones sobrias, medibles y fáciles de mantener. Nada de humo.
+        <p class="quote">
+          “Menos humo. Más claridad. Menos fricción.”
         </p>
       </div>
     </section>
 
-    <!-- CONTACTO -->
+    <!-- contacto -->
     <section id="contacto" class="section">
-      <div class="container contact">
-        <div class="contact-box">
+      <div class="container narrow">
+        <div class="contact">
           <h2>Contacto</h2>
           <p class="text">
             Si querés ordenar información o automatizar parte de tu operación,
             coordinemos una charla corta.
           </p>
 
-          <div class="contact-actions">
-            <a class="btn btn-primary" href="mailto:juanalmada1395@gmail.com">Enviar mail</a>
-            <a class="btn btn-secondary" target="_blank" rel="noopener noreferrer"
+          <div class="cta">
+            <a class="btn primary" href="mailto:juanalmada1395@gmail.com">Enviar mail</a>
+            <a class="btn ghost" target="_blank" rel="noopener noreferrer"
                href="https://www.linkedin.com/in/juan-martin-almada-ortiz/">
               LinkedIn
             </a>
           </div>
 
-          <div class="contact-meta">
+          <div class="meta">
             <span><strong>Email:</strong> juanalmada1395@gmail.com</span>
-            <span class="dot">•</span>
+            <span class="sep">•</span>
             <span><strong>Ubicación:</strong> Buenos Aires, Argentina</span>
           </div>
         </div>
@@ -117,5 +120,16 @@
       </div>
     </section>
   </main>
+
+  <script>
+    // micro: marcar activo según hash (simple, sin frameworks)
+    const links = [...document.querySelectorAll(".nav a")].filter(a => a.getAttribute("href").startsWith("#"));
+    function setActive() {
+      const hash = window.location.hash || "#home";
+      links.forEach(a => a.classList.toggle("active", a.getAttribute("href") === hash));
+    }
+    window.addEventListener("hashchange", setActive);
+    setActive();
+  </script>
 </body>
 </html>
