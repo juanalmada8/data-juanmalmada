@@ -3,22 +3,26 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Juan Martín Almada | Sistemas automáticos para negocios</title>
-  <meta name="description" content="Automatizo reportes y control para que sepas qué está pasando en tu negocio, sin Excel ni caos." />
+  <title>Juan Martín Almada | Automatización para negocios</title>
+
+  <meta name="description"
+        content="Sistemas automáticos que ordenan la información de tu negocio para tomar mejores decisiones, ahorrar tiempo y cuidar la rentabilidad." />
+
   <link rel="stylesheet" href="styles.css?v=12" />
 </head>
 
 <body>
+
+  <!-- header -->
   <header class="header">
     <div class="container header-inner">
       <a class="brand" href="#home">
-        <span class="brand-dot"></span>
         Juan Martín Almada
       </a>
 
       <nav class="nav">
-        <a href="#home" class="active">Home</a>
-        <a href="#que-hago">Qué hago</a>
+        <a href="#home">Home</a>
+        <a href="#que-hago">Servicios</a>
         <a href="#sobre-mi">Sobre mí</a>
         <a class="pill" href="#contacto">Contacto</a>
       </nav>
@@ -26,6 +30,7 @@
   </header>
 
   <main id="home">
+
     <!-- hero -->
     <section class="hero">
       <div class="bg-shapes" aria-hidden="true">
@@ -36,14 +41,12 @@
       </div>
 
       <div class="container hero-inner">
-        <p class="kicker">para pymes · datos claros · automatización</p>
-
         <h1>Más control,<br>menos caos.</h1>
 
         <p class="lead">
-          Armo sistemas automáticos que ordenan la información de tu negocio
-          y te muestran lo importante de forma simple.
-          Así dejás de perseguir planillas y empezás a decidir con claridad.
+          Diseño sistemas automáticos que ordenan la información de tu negocio
+          y muestran lo que importa, cuando importa.
+          Menos trabajo manual. Mejores decisiones.
         </p>
 
         <div class="cta">
@@ -52,7 +55,8 @@
         </div>
 
         <p class="cred">
-          Experiencia profesional como empleado (Data Engineer) en: Mercado Libre · Cencosud · Novartis · Naranja X
+          Más de 7 años de experiencia como Ingeniero de Datos en entornos reales:
+          Mercado Libre · Cencosud · Ualá · Naranja X
         </p>
       </div>
     </section>
@@ -60,18 +64,20 @@
     <!-- qué hago -->
     <section id="que-hago" class="section">
       <div class="container narrow">
-        <h2>Qué hago</h2>
+        <h2>Servicios</h2>
+
         <p class="text">
           Ayudo a negocios que crecieron y hoy tienen información dispersa y procesos manuales.
-          Mi trabajo es transformar eso en un sistema que funciona solo:
-          te llega la información clara y a tiempo, sin pedirla.
+          Transformo ese desorden en sistemas automáticos,
+          donde la información llega clara y a tiempo para tomar mejores decisiones
+          y cuidar la rentabilidad.
         </p>
 
         <ul class="bullets">
-          <li>resúmenes automáticos (diario / semanal / mensual)</li>
-          <li>alertas cuando algo requiere atención</li>
-          <li>unificación de datos en un solo lugar (sin versiones)</li>
-          <li>seguimiento simple para no depender de “estar encima”</li>
+          <li>Resúmenes automáticos (diarios, semanales y mensuales)</li>
+          <li>Alertas cuando algo requiere atención</li>
+          <li>Unificación de información en una sola fuente confiable</li>
+          <li>Seguimiento simple sin depender de estar encima</li>
         </ul>
       </div>
     </section>
@@ -80,13 +86,16 @@
     <section id="sobre-mi" class="section soft">
       <div class="container narrow">
         <h2>Sobre mí</h2>
+
         <p class="text">
-          Soy Data Engineer con más de 7 años construyendo sistemas de datos y automatización en entornos reales.
-          Me enfoco en soluciones simples, con alcance claro, pensadas para mantenerse en el tiempo.
+          Soy Ingeniero de Datos con más de 7 años construyendo sistemas de datos
+          y automatización en entornos productivos.
+          Trabajo con foco en soluciones simples, de alcance claro
+          y pensadas para sostenerse en el tiempo.
         </p>
 
         <p class="quote">
-          sistemas sobrios, automáticos y medibles. sin humo.
+          Sistemas simples, pensados para durar.
         </p>
       </div>
     </section>
@@ -96,16 +105,30 @@
       <div class="container narrow">
         <div class="contact">
           <h2>Contacto</h2>
+
           <p class="text">
-            Si sentís que tu negocio está creciendo pero te falta control,
-            lo vemos en 15 minutos y te digo qué se puede automatizar.
+            Si tu negocio está creciendo y el control empieza a diluirse,
+            una charla de 15 minutos alcanza para identificar qué automatizar.
           </p>
 
           <div class="cta">
-            <a class="btn primary" href="mailto:juanalmada1395@gmail.com?subject=Consulta%20-%20Automatizaci%C3%B3n%20y%20control">Enviar mail</a>
-            <a class="btn ghost" target="_blank" rel="noopener noreferrer"
+            <a class="btn primary"
+               href="mailto:juanalmada1395@gmail.com?subject=Consulta%20-%20Automatización%20y%20control">
+              Enviar mail
+            </a>
+
+            <a class="btn ghost"
+               target="_blank"
+               rel="noopener noreferrer"
                href="https://www.linkedin.com/in/juan-martin-almada-ortiz/">
               LinkedIn
+            </a>
+
+            <a class="btn ghost"
+               target="_blank"
+               rel="noopener noreferrer"
+               href="https://wa.me/5492241583314?text=Hola%20Juan,%20te%20escribo%20por%20la%20web%20para%20consultar%20sobre%20automatización%20y%20control%20del%20negocio.">
+              WhatsApp
             </a>
           </div>
 
@@ -121,17 +144,24 @@
         </footer>
       </div>
     </section>
+
   </main>
 
   <script>
-    // micro: marcar activo según hash (simple, sin frameworks)
-    const links = [...document.querySelectorAll(".nav a")].filter(a => a.getAttribute("href").startsWith("#"));
+    // marcar link activo según hash
+    const links = [...document.querySelectorAll(".nav a")]
+      .filter(a => a.getAttribute("href").startsWith("#"));
+
     function setActive() {
       const hash = window.location.hash || "#home";
-      links.forEach(a => a.classList.toggle("active", a.getAttribute("href") === hash));
+      links.forEach(a =>
+        a.classList.toggle("active", a.getAttribute("href") === hash)
+      );
     }
+
     window.addEventListener("hashchange", setActive);
     setActive();
   </script>
+
 </body>
 </html>
