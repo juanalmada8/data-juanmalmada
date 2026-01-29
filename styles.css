@@ -321,3 +321,90 @@ h1{
   .btn{ width:100%; }
   .hero{ padding:72px 0 36px; }
 }
+
+/* ====== secciones tipo "pantalla" ====== */
+.section-screen{
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  padding: 110px 0; /* aire para header sticky */
+}
+
+/* si alguna sección queda muy "vacía", bajá a 90px */
+@media (max-width: 520px){
+  .section-screen{ padding: 90px 0; }
+}
+
+/* ====== fondos por sección (misma paleta, distinto matiz) ====== */
+.section-hero{
+  /* ya tenés shapes: le sumamos un toque de profundidad */
+  background: transparent;
+}
+
+.section-services{
+  background:
+    radial-gradient(900px 600px at 10% 20%, rgba(168,239,255,.08), transparent 60%),
+    radial-gradient(900px 600px at 90% 80%, rgba(197,182,255,.06), transparent 60%);
+  border-top: 1px solid rgba(255,255,255,.06);
+}
+
+.section-about{
+  background:
+    radial-gradient(900px 600px at 85% 15%, rgba(255,214,231,.08), transparent 60%),
+    radial-gradient(900px 600px at 20% 85%, rgba(191,242,214,.06), transparent 60%);
+  border-top: 1px solid rgba(255,255,255,.06);
+}
+
+.section-contact{
+  background:
+    radial-gradient(900px 600px at 15% 15%, rgba(122,167,255,.10), transparent 60%),
+    radial-gradient(900px 600px at 90% 70%, rgba(191,242,214,.07), transparent 60%);
+  border-top: 1px solid rgba(255,255,255,.06);
+}
+
+/* ====== más aire dentro de secciones (títulos + texto) ====== */
+.section h2{ margin-bottom: 14px; }
+.text{ margin-top: 0; max-width: 70ch; }
+.bullets{ margin-top: 22px; }
+
+/* ====== separaciones visuales finas ====== */
+.section .container.narrow{
+  position: relative;
+}
+.section .container.narrow:before{
+  content:"";
+  position:absolute;
+  left:0; right:0;
+  top:-24px;
+  height:1px;
+  background: linear-gradient(90deg, transparent, rgba(255,255,255,.10), transparent);
+  opacity:.8;
+}
+
+/* ====== opcional: que el box de contacto se vea más "hero card" ====== */
+.contact{
+  padding: 28px;
+  border-radius: 22px;
+  background: rgba(255,255,255,.035);
+  box-shadow: 0 30px 120px rgba(0,0,0,.35);
+}
+
+/* ====== opcional: bullets más elegantes ====== */
+.bullets{
+  list-style: none;
+  padding-left: 0;
+}
+.bullets li{
+  position: relative;
+  padding-left: 18px;
+  margin: 12px 0;
+}
+.bullets li:before{
+  content:"";
+  position:absolute;
+  left:0; top: 10px;
+  width:6px; height:6px;
+  border-radius:999px;
+  background: rgba(169,199,255,.85);
+  box-shadow: 0 0 0 6px rgba(169,199,255,.10);
+}
