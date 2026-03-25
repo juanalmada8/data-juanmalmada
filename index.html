@@ -3,112 +3,171 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Juan Martín Almada | Automatización para negocios</title>
-
+  <title>Juan Martín Almada | Automatización y datos para gestión</title>
   <meta name="description"
-        content="Sistemas automáticos que ordenan la información de tu negocio para tomar mejores decisiones, ahorrar tiempo y cuidar la rentabilidad." />
+        content="Automatización de reportes, alertas y tableros para mejorar control operativo y calidad de decisión." />
 
-  <link rel="stylesheet" href="styles.css?v=15" />
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css?v=22" />
 </head>
-
 <body>
+  <div class="page-glow" aria-hidden="true"></div>
 
-  <!-- header -->
   <header class="header">
     <div class="container header-inner">
-      <a class="brand" href="#home">
-        Juan Martín Almada
-      </a>
+      <a class="brand" href="#inicio">Juan Martín Almada</a>
 
       <nav class="nav" aria-label="Navegación principal">
-        <a href="#home">Home</a>
-        <a href="#que-hago">Servicios</a>
-        <a href="#sobre-mi">Sobre mí</a>
+        <a href="#inicio">Inicio</a>
+        <a href="#soluciones">Soluciones</a>
+        <a href="#metodo">Método</a>
+        <a href="#resultados">Resultados</a>
         <a class="pill" href="#contacto">Contacto</a>
       </nav>
     </div>
   </header>
 
-  <main id="home">
-
-    <!-- hero -->
-    <section class="hero section-screen section-hero">
-      <div class="bg-shapes" aria-hidden="true">
-        <span class="shape s1"></span>
-        <span class="shape s2"></span>
-        <span class="shape s3"></span>
-        <span class="shape s4"></span>
-      </div>
+  <main id="inicio">
+    <section class="hero section-screen">
+      <div class="hero-noise" aria-hidden="true"></div>
 
       <div class="container hero-inner">
-        <h1>Más control,<br>menos caos.</h1>
+        <p class="eyebrow" data-reveal>Automatización y analítica aplicada</p>
+        <h1 data-reveal>Sistemas de datos para operar con control y previsibilidad.</h1>
 
-        <p class="lead">
-          Diseño sistemas automáticos que ordenan la información de tu negocio
-          y muestran lo que importa, cuando importa.
-          Menos trabajo manual. Mejores decisiones.
+        <p class="lead" data-reveal>
+          Implemento reportes automáticos, alertas operativas y tableros de seguimiento
+          para que tengas información confiable y decisiones basadas en datos.
         </p>
 
-        <div class="cta">
-          <a class="btn primary" href="#contacto">Hablar 15 min</a>
-          <a class="btn ghost" href="#que-hago">Qué puedo resolver</a>
+        <div class="cta" data-reveal>
+          <a class="btn primary" href="#contacto">Coordinar reunión</a>
+          <a class="btn ghost" href="#metodo">Revisar metodología</a>
         </div>
 
-        <p class="cred">
-          Más de 7 años de experiencia como Ingeniero de Datos en entornos reales:
-          Mercado Libre · Cencosud · Ualá · Naranja X
+        <p class="cred" data-reveal>
+          Experiencia en equipos de datos: Mercado Libre · Cencosud · Ualá · Naranja X
         </p>
       </div>
     </section>
 
-    <!-- servicios -->
-    <section id="que-hago" class="section section-screen section-services">
-      <div class="container narrow">
-        <h2>Servicios</h2>
+    <section id="resultados" class="section section-results">
+      <div class="container">
+        <div class="section-head" data-reveal>
+          <p class="kicker">Impacto operativo</p>
+          <h2>Mejor control de gestión con menor carga manual</h2>
+        </div>
 
-        <p class="text">
-          Ayudo a negocios que crecieron y hoy tienen información dispersa y procesos manuales.
-          Transformo ese desorden en sistemas automáticos,
-          donde la información llega clara y a tiempo para tomar mejores decisiones
-          y cuidar la rentabilidad.
-        </p>
+        <div class="results-grid">
+          <article class="result-card" data-reveal>
+            <h3>Seguimiento diario</h3>
+            <p>Visibilidad continua de indicadores clave para detectar desvíos con anticipación.</p>
+          </article>
 
-        <ul class="bullets">
-          <li>Resúmenes automáticos (diarios, semanales y mensuales)</li>
-          <li>Alertas cuando algo requiere atención</li>
-          <li>Unificación de información en una sola fuente confiable</li>
-          <li>Seguimiento simple sin depender de estar encima</li>
-        </ul>
+          <article class="result-card" data-reveal>
+            <h3>Proceso estandarizado</h3>
+            <p>Flujos de datos consistentes para reducir dependencia de tareas manuales y urgencias.</p>
+          </article>
+
+          <article class="result-card" data-reveal>
+            <h3>Decisión informada</h3>
+            <p>Reportes accionables para priorizar iniciativas con impacto en rentabilidad y eficiencia.</p>
+          </article>
+        </div>
       </div>
     </section>
 
-    <!-- sobre mí -->
-    <section id="sobre-mi" class="section section-screen soft section-about">
-      <div class="container narrow">
+    <section id="soluciones" class="section section-solutions">
+      <div class="container">
+        <div class="section-head" data-reveal>
+          <p class="kicker">Servicios</p>
+          <h2>Soluciones de automatización y gobierno de datos</h2>
+        </div>
+
+        <div class="solutions-grid">
+          <article class="solution" data-reveal>
+            <h3>Reportería automatizada</h3>
+            <p class="solution-text">Generación periódica de indicadores operativos y de negocio con criterios unificados.</p>
+            <p class="solution-tag">Aplicable cuando el seguimiento depende de múltiples planillas manuales.</p>
+          </article>
+
+          <article class="solution" data-reveal>
+            <h3>Integración de fuentes</h3>
+            <p class="solution-text">Consolidación de datos en una base confiable para evitar inconsistencias entre áreas.</p>
+            <p class="solution-tag">Aplicable cuando existen discrepancias entre reportes internos.</p>
+          </article>
+
+          <article class="solution" data-reveal>
+            <h3>Alertas operativas</h3>
+            <p class="solution-text">Notificaciones automáticas ante desvíos en variables críticas de operación.</p>
+            <p class="solution-tag">Aplicable cuando los problemas se detectan con retraso.</p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section id="metodo" class="section section-method">
+      <div class="container">
+        <div class="section-head" data-reveal>
+          <p class="kicker">Metodología</p>
+          <h2>Implementación por etapas, con validación en producción</h2>
+        </div>
+
+        <ol class="steps">
+          <li class="step" data-reveal>
+            <span class="step-n">01</span>
+            <div>
+              <h3>Diagnóstico inicial</h3>
+              <p>Relevamiento de procesos, fuentes de datos y decisiones críticas para priorizar alcance.</p>
+            </div>
+          </li>
+
+          <li class="step" data-reveal>
+            <span class="step-n">02</span>
+            <div>
+              <h3>Diseño de solución</h3>
+              <p>Definición de arquitectura, métricas, reglas de calidad y esquema de alertas.</p>
+            </div>
+          </li>
+
+          <li class="step" data-reveal>
+            <span class="step-n">03</span>
+            <div>
+              <h3>Implementación y pruebas</h3>
+              <p>Desarrollo y despliegue progresivo con controles de validación en entorno productivo.</p>
+            </div>
+          </li>
+
+          <li class="step" data-reveal>
+            <span class="step-n">04</span>
+            <div>
+              <h3>Documentación y evolución</h3>
+              <p>Transferencia de conocimiento, documentación operativa y plan de mejoras futuras.</p>
+            </div>
+          </li>
+        </ol>
+      </div>
+    </section>
+
+    <section class="section section-about">
+      <div class="container about-box" data-reveal>
         <h2>Sobre mí</h2>
-
-        <p class="text">
-          Soy Ingeniero de Datos con más de 7 años construyendo sistemas de datos
-          y automatización en entornos productivos.
-          Trabajo con foco en soluciones simples, de alcance claro
-          y pensadas para sostenerse en el tiempo.
+        <p>
+          Soy Ingeniero de Datos con más de 7 años construyendo soluciones en ambientes productivos exigentes.
+          Trabajo con enfoque práctico: soluciones mantenibles, trazabilidad de datos y orientación a resultados medibles.
         </p>
-
-        <p class="quote">
-          Sistemas simples, pensados para durar.
-        </p>
+        <p class="quote">Objetivo: convertir datos dispersos en un sistema de gestión confiable.</p>
       </div>
     </section>
 
-    <!-- contacto -->
-    <section id="contacto" class="section section-screen section-contact">
-      <div class="container narrow">
-
-        <h2>Hablemos</h2>
-
-        <p class="text contact-lead">
-          En una charla corta vemos si hay algo que hoy te esté costando tiempo,
-          control o dinero, y si vale la pena automatizarlo.
+    <section id="contacto" class="section section-contact">
+      <div class="container contact-card" data-reveal>
+        <p class="kicker">Contacto</p>
+        <h2>Evaluemos el alcance y la factibilidad para tu operación.</h2>
+        <p class="contact-lead">
+          En una reunión breve revisamos situación actual, prioridades y próximos pasos de implementación.
         </p>
 
         <div class="cta contact-cta">
@@ -132,17 +191,16 @@
           </a>
         </div>
 
+        <p class="contact-note">Respuesta habitual en menos de 24h hábiles.</p>
       </div>
     </section>
-
   </main>
 
-  <!-- footer -->
   <footer class="site-footer">
     <div class="container footer-inner">
       <div>© 2026 Juan Martín Almada</div>
 
-      <div class="footer-right">
+      <div>
         <a href="mailto:juanalmada1395@gmail.com">Email</a>
         <span> • </span>
         <a target="_blank" rel="noopener noreferrer"
@@ -156,20 +214,34 @@
   </footer>
 
   <script>
-    // marcar link activo según hash
     const links = [...document.querySelectorAll(".nav a")]
-      .filter(a => a.getAttribute("href").startsWith("#"));
+      .filter((a) => a.getAttribute("href").startsWith("#"));
 
     function setActive() {
-      const hash = window.location.hash || "#home";
-      links.forEach(a =>
+      const hash = window.location.hash || "#inicio";
+      links.forEach((a) =>
         a.classList.toggle("active", a.getAttribute("href") === hash)
       );
     }
 
     window.addEventListener("hashchange", setActive);
     setActive();
-  </script>
 
+    const revealEls = [...document.querySelectorAll("[data-reveal]")];
+    const io = new IntersectionObserver((entries) => {
+      entries.forEach((entry) => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add("is-visible");
+          io.unobserve(entry.target);
+        }
+      });
+    }, { threshold: 0.2 });
+
+    revealEls.forEach((el, idx) => {
+      el.style.setProperty("--delay", `${Math.min(idx * 55, 340)}ms`);
+      el.classList.add("reveal-up");
+      io.observe(el);
+    });
+  </script>
 </body>
 </html>
