@@ -1,0 +1,49 @@
+---
+const perfiles = [
+  { nombre: "Consultorios y clínicas", ejemplo: "Tus pacientes sacan turno solos y les llega el recordatorio.", experiencia: true },
+  { nombre: "Comercios, estudios y emprendimientos", ejemplo: "Ventas, stock y caja en un tablero que mirás desde el celular." },
+  { nombre: "Empresas medianas y grandes", ejemplo: "El reporte del lunes se arma solo y llega a las 8." },
+  { nombre: "Empresas de RRHH", ejemplo: "Las novedades del mes se cargan en un lugar y el reporte sale solo.", experiencia: true },
+  { nombre: "Gobierno y organismos", ejemplo: "Un sistema que ordena los pedidos y muestra en qué estado está cada uno." },
+];
+---
+<section id="para-quien" class="seccion tema-salvia" aria-labelledby="para-quien-titulo">
+  <div class="contenedor">
+    <header class="cabecera" data-aparece>
+      <p class="rotulo">03 — Para quién</p>
+      <h2 id="para-quien-titulo">Del consultorio de la esquina al organismo público.</h2>
+    </header>
+    <ul class="perfiles">
+      {perfiles.map((p) => (
+        <li data-aparece>
+          <h3>{p.nombre}</h3>
+          <p>{p.ejemplo}</p>
+          {p.experiencia && <span class="ya mono">ya trabajé en esto</span>}
+        </li>
+      ))}
+    </ul>
+  </div>
+</section>
+
+<style>
+  .perfiles { list-style: none; padding: 0; display: grid; border-top: 2px solid var(--pino); }
+  .perfiles li {
+    display: grid;
+    gap: var(--space-2);
+    align-content: start;
+    padding: var(--space-6) 0;
+    border-bottom: 1px solid var(--pino);
+  }
+  .ya {
+    justify-self: start;
+    margin-top: var(--space-1);
+    padding: var(--space-1) var(--space-3);
+    border-radius: var(--radius-pill);
+    background: var(--pino);
+    color: var(--lima);
+    font-size: var(--fs-micro);
+  }
+  @media (min-width: 56rem) {
+    .perfiles { grid-template-columns: repeat(3, 1fr); column-gap: var(--space-8); }
+  }
+</style>

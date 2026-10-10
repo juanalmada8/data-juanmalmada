@@ -13,24 +13,22 @@ const { p } = Astro.props;
 const { Content } = await render(p);
 ---
 <Base titulo={`${p.data.titulo} · Juanma`} descripcion={p.data.resultado}>
-  <main id="contenido" class="caso">
-    <p class="etiqueta"><a href="/#hola">~/juanma</a> › casos › {p.id}.md</p>
+  <article class="caso contenedor">
+    <p class="rotulo"><a href="/#proyectos">Proyectos</a> · {p.data.rubro}</p>
     <h1>{p.data.titulo}</h1>
     <p class="lead">{p.data.resultado}</p>
     {p.data.portada && <Image src={p.data.portada} alt={`Captura de ${p.data.titulo}`} widths={[480, 960, 1440]} sizes="(min-width: 60rem) 60rem, 100vw" />}
     <div class="texto"><Content /></div>
     <p><a class="boton" href="/#contacto">¿Algo así para vos? Escribime</a></p>
-  </main>
+  </article>
 </Base>
 
 <style>
   .caso {
-    max-width: 60rem;
-    margin-inline: auto;
-    padding: var(--space-12) var(--space-4);
+    padding-block: var(--space-12);
     display: grid;
     gap: var(--space-6);
   }
-  .caso :global(img) { border-radius: var(--radius-card); border: 1px solid var(--ide-borde); }
+  .caso :global(img) { border-radius: var(--radius-card); border: var(--borde-suave); }
   .texto :global(h2) { font-size: var(--fs-h2); margin-top: var(--space-8); }
 </style>

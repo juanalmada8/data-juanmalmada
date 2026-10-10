@@ -60,42 +60,36 @@ texto pino («detrás de escena») está permitida, como mucho una por pantalla.
 ## Tipografía
 
 > **Cambio 2026-10-10 (decisión de Juanma):** se reemplazan las tipografías del manual (DM Serif Display, Manrope,
-> JetBrains Mono). Quedan los colores, el logo y la firma. La web es un editor de código (ver `02-contenido.md`).
+> JetBrains Mono). Quedan los colores, el logo y la firma.
 
 | Rol | Familia | Uso |
 |---|---|---|
-| Interfaz y títulos | **Martian Mono** (variable: peso 100–800, ancho 75–112.5 %) | Títulos (bold, ancho 112.5 %), explorador, pestañas, terminal, código, botones. |
+| Títulos y detalles | **Martian Mono** (variable: peso 100–800, ancho 75–112.5 %) | Títulos (bold), rótulos `01 — QUÉ HAGO`, guiños de terminal. |
 | Lectura | **Atkinson Hyperlegible Next** (variable + itálica) | Párrafos y explicaciones «en criollo». Es la que lee el cliente no técnico. |
 
 Self-hosted en `web/public/fonts/` (woff2 latin, OFL). Tamaños en `tokens.css`: `--fs-ui` (13 px, interfaz),
 `--fs-code`, `--fs-body`, `--fs-lead`, `--fs-h2`, `--fs-h1`.
 
 Detalles tipográficos que **sí** importan:
-- Títulos en *sentence case*. El acento de un título va en lima (`.acento`), una idea por título.
+- Títulos en *sentence case*. El acento de un título (`.acento`) va en musgo sobre crema y en lima sobre pino; una idea por título.
 - `text-wrap: balance` en títulos, `text-wrap: pretty` en párrafos.
 - Comillas latinas «así». Signos de apertura ¿¡ siempre. Puntos suspensivos con `…`.
 - `&nbsp;` entre número y unidad (`8&nbsp;años`, `24&nbsp;h`).
-- Etiquetas como comentarios o encabezados de markdown: `# contacto`, `// servicio`, `-- …`.
+- Rótulos del manual: `01 — QUÉ HAGO` (mono, mayúscula, `.12em`), `hola_mundo()`.
 
-## Espaciado, forma y superficies
+## Espaciado y forma
 
-Valores en `web/src/styles/tokens.css` (fuente de verdad):
+Valores en `web/src/styles/tokens.css` (fuente de verdad): espacios `--space-1` a `--space-24`; radios `--radius-card`
+20 px, `--radius-box` 10 px, `--radius-pill`; `--borde-suave` 1 px salvia; tamaños `--fs-micro` (11 px, nunca menos)
+a `--fs-h1`; `--tap-min` 44 px.
 
-- Espacios `--space-1` a `--space-24` (4 px a 96 px).
-- Radios: `--radius-card` 12 px, `--radius-box` 6 px (botones, cajas de código), `--radius-pill`.
-- Superficies del editor, **derivadas de la paleta con `color-mix`** (no son colores nuevos):
-  `--ide-fondo` (pino), `--ide-panel` (pino oscurecido: explorador, terminal, barra de título),
-  `--ide-borde` (musgo sobre pino), `--ide-linea` (musgo translúcido: hover y línea activa).
-- Tamaños de letra: `--fs-micro` (11 px, nunca menos), `--fs-ui` (13 px), `--fs-code`, `--fs-body`, `--fs-lead`, `--fs-h2`, `--fs-h1`.
-- `--tap-min` 44 px para todo lo tocable en el celular.
-
-**Proporción de color en el rediseño:** el sitio es casi todo pino (es un editor oscuro). La lima queda para el
-acento de los títulos, el botón principal y la línea activa; un solo bloque lima por pantalla.
-Plano: sin sombras, bordes de 1 px.
+- **Proporción del manual, también en la web:** crema 40 · pino 30 · musgo 15 · salvia 11 · lima 4. Crema es el fondo
+  que más se ve; pino en bandas y tarjetas; salvia en una banda y placas; lima solo en acentos, el botón de WhatsApp
+  sobre pino y una placa chica.
+- Plano: bloques sólidos, tarjetas blancas con borde salvia sobre crema, sin sombras.
+- Botón principal: pino sobre crema (lima sobre pino), pill, Atkinson 700.
 
 ## Recursos gráficos
-
-> Con el rediseño tipo editor, patrón de `m`, stickers y placas no se usan en la home (se pueden volver a usar en redes u OG).
 
 - **Patrón de `m`**: repetición de la `m` en tono sobre tono (pino sobre pino más claro, o salvia sobre crema) con
   2–3 `m` sueltas en lima. Para fondos de bandas y separadores. Tile en `web/public/brand/patron-m.svg`.
@@ -113,4 +107,4 @@ Plano: sin sombras, bordes de 1 px.
 | **Hiperactivo** | El cursor que titila, stickers torcidos, ritmo entre bloques oscuro/claro/color. |
 | **Extrovertido** | Su firma, la voz en primera persona, lo técnico explicado en criollo. |
 
-En redes, el ritmo copia el feed del manual (oscuro · claro · color). La web es un editor oscuro de punta a punta.
+El ritmo de la página copia el feed del manual: **alternar claro · oscuro · color**, con crema como base.

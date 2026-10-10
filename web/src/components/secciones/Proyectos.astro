@@ -1,0 +1,53 @@
+---
+import { getCollection } from "astro:content";
+import Falta from "../Falta.astro";
+const proyectos = (await getCollection("proyectos", ({ data }) => data.publicado)).sort((a, b) => b.data.anio - a.data.anio);
+---
+<section id="proyectos" class="seccion tema-crema" aria-labelledby="proyectos-titulo">
+  <div class="contenedor">
+    <header class="cabecera" data-aparece>
+      <p class="rotulo">05 — Proyectos</p>
+      <h2 id="proyectos-titulo">Lo que estoy <span class="acento">armando</span>.</h2>
+    </header>
+    {proyectos.length ? (
+      <ul class="casos">
+        {proyectos.map((p, i) => (
+          <li data-aparece>
+            <a class="caso" href={`/proyectos/${p.id}/`}>
+              <span class="mono num">{String(i + 1).padStart(2, "0")}</span>
+              <span class="tit">{p.data.titulo}</span>
+              <span class="mono rubro">{p.data.rubro}</span>
+              <span class="res">{p.data.resultado}</span>
+            </a>
+          </li>
+        ))}
+      </ul>
+    ) : (
+      <div class="caso en-camino" data-aparece>
+        <span class="mono num">01</span>
+        <span class="tit">Turnos online para un consultorio odontológico</span>
+        <span class="mono rubro">Salud · en preparación</span>
+        <span class="res">Los pacientes sacan turno solos, a cualquier hora. <Falta que="capturas y datos del caso" /></span>
+      </div>
+    )}
+  </div>
+</section>
+
+<style>
+  .casos { list-style: none; padding: 0; border-top: 2px solid var(--pino); }
+  .caso {
+    display: grid;
+    gap: var(--space-2);
+    padding: var(--space-6) 0;
+    border-bottom: 1px solid var(--pino);
+    text-decoration: none;
+  }
+  .en-camino { border-top: 2px solid var(--pino); }
+  .num { font-size: var(--fs-small); font-weight: 600; }
+  .tit { font-family: var(--font-mono); font-weight: 700; font-size: var(--fs-h3); letter-spacing: -.02em; }
+  .rubro { font-size: var(--fs-micro); letter-spacing: .12em; text-transform: uppercase; }
+  a.caso:hover .tit { text-decoration: underline; text-underline-offset: var(--space-1); }
+  @media (min-width: 56rem) {
+    .caso { grid-template-columns: 4rem 1.4fr 10rem 1fr; align-items: baseline; gap: var(--space-6); }
+  }
+</style>

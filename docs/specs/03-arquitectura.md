@@ -77,9 +77,8 @@ web/
   src/
     styles/      tokens.css  base.css
     layouts/     Base.astro
-    components/  Logo Icono Firma Falta
-      ide/       Editor (armazón) Panel Codigo editor.ts
-      archivos/  Hola Servicios Servicio Resto
+    components/  Header Footer Logo Icono Firma Falta PatronDatos
+      secciones/ Hero QueHago Sistema ParaQuien ComoTrabajo Proyectos SobreMi Contacto
     content/     config.ts  proyectos/
     pages/       index.astro  proyectos/[slug].astro  gracias.astro  404.astro  apps/
 api/
@@ -116,6 +115,7 @@ Una línea por decisión no trivial (más reciente arriba).
 
 | Fecha | Decisión | Por qué |
 |---|---|---|
+| 2026-10-10 | Se descarta el editor de código: home editorial simple con el manual como guía de color (crema domina) y un guiño de terminal en el hero. Se mantienen Martian Mono + Atkinson. | Juanma: el editor era «complicado para el usuario» y «todo verde»; pidió hacerle caso al manual. |
 | 2026-10-10 | **Rediseño: la home es un editor de código** (explorador, pestañas, terminal). Tipografías nuevas: Martian Mono + Atkinson Hyperlegible Next. Se mantienen colores, logo y firma. | Juanma: «todo muy AI, dale un giro 180°»; eligió la dirección «Terminal / IDE». |
 | 2026-10-10 | Navegación por `#hash` con mejora progresiva (`components/ide/editor.ts`, ~2,4 KB gzip); sin JS se lee todo apilado. Trade-off: con JS los archivos cerrados están en `display: none`, así que Ctrl+F y el lector de pantalla solo ven el archivo abierto. | SEO, accesibilidad y que funcione sin JS. |
 | 2026-10-10 | Corrección: el sitio lo sirve Cloudflare Pages desde la raíz de `main`, no DonWeb. | Verificado con el check de Pages en los PRs y `curl` a archivos del repo. |

@@ -1,0 +1,84 @@
+---
+import Logo from "../Logo.astro";
+import { contacto } from "../../data/sitio";
+---
+<section class="hero tema-crema" aria-labelledby="hero-titulo">
+  <div class="contenedor">
+    <p class="meta mono" aria-hidden="true">
+      <span>Juan Martín Almada Ortiz</span><span>General Belgrano · 100% remoto</span>
+    </p>
+    <div class="grilla">
+      <div class="texto">
+        <h1 id="hero-titulo">Un solo proveedor, <span class="acento">todo el&nbsp;sistema.</span></h1>
+        <p class="lead">Webs, apps y datos que trabajan por vos. Lo que hoy hacés a mano, que lo haga el sistema.</p>
+        <div class="acciones">
+          <a class="boton" href={contacto.whatsapp} target="_blank" rel="noopener noreferrer">Escribime por WhatsApp</a>
+          <a class="link" href="#que-hago">Ver qué armo ↓</a>
+        </div>
+      </div>
+
+      <div class="tarjeta tema-pino" aria-hidden="true">
+        <span class="tag mono">hola_mundo()</span>
+        <Logo variante="cursor" ancho="100%" decorativo class="logo" />
+        <p class="term mono">
+          <span><b>$</b> whoami</span>
+          <span>datos · web · nube</span>
+          <span><b>$</b> uptime</span>
+          <span>8 años trabajando con datos</span>
+        </p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<style>
+  .hero { padding-block: var(--space-8) clamp(var(--space-16), 8vw, var(--space-24)); border-bottom: 1px solid var(--pino); }
+  .meta {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    gap: var(--space-2) var(--space-6);
+    padding-bottom: var(--space-4);
+    margin-bottom: clamp(var(--space-8), 6vw, var(--space-16));
+    border-bottom: 1px solid var(--salvia);
+    font-size: var(--fs-micro);
+    letter-spacing: .12em;
+    text-transform: uppercase;
+  }
+  .grilla { display: grid; gap: var(--space-12); align-items: center; }
+  .texto { display: grid; gap: var(--space-6); justify-items: start; }
+  .acciones { display: flex; flex-wrap: wrap; align-items: center; gap: var(--space-4) var(--space-8); }
+
+  .tarjeta {
+    position: relative;
+    display: grid;
+    gap: var(--space-8);
+    padding: var(--space-12) var(--space-8) var(--space-8);
+    border-radius: var(--radius-card);
+    transform: rotate(-2deg);
+    max-width: 26rem;
+  }
+  .tarjeta :global(.logo) { width: min(100%, 18rem); }
+  .tag {
+    position: absolute;
+    top: calc(-1 * var(--space-3));
+    right: var(--space-6);
+    padding: var(--space-1) var(--space-4);
+    border-radius: var(--radius-pill);
+    background: var(--lima);
+    color: var(--pino);
+    font-size: var(--fs-small);
+    transform: rotate(3deg);
+  }
+  .term { display: grid; gap: var(--space-1); font-size: var(--fs-small); color: var(--salvia); }
+  .term b { color: var(--lima); font-weight: 500; }
+  .term span:nth-child(odd) { color: var(--crema); }
+
+  @media (max-width: 40rem) {
+    .tarjeta { display: none; }
+  }
+  @media (min-width: 60rem) {
+    .grilla { grid-template-columns: 1.5fr 1fr; gap: var(--space-16); }
+    .tarjeta { justify-self: end; }
+  }
+</style>

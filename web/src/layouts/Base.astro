@@ -1,7 +1,8 @@
 ---
 import "../styles/tokens.css";
 import "../styles/base.css";
-import "../styles/ide.css";
+import Header from "../components/Header.astro";
+import Footer from "../components/Footer.astro";
 import { sitio } from "../data/sitio";
 
 interface Props {
@@ -47,6 +48,20 @@ const og = new URL(imagen, sitio.url).href;
   </head>
   <body>
     <a class="saltar" href="#contenido">Saltar al contenido</a>
-    <slot />
+    <Header />
+    <main id="contenido">
+      <slot />
+    </main>
+    <Footer />
+
+    <script>
+      const els = document.querySelectorAll<HTMLElement>("[data-aparece]");
+      if ("IntersectionObserver" in window) {
+        const io = new IntersectionObserver((entradas) => {
+          for (const e of entradas) if (e.isIntersecting) { e.target.classList.add("visible"); io.unobserve(e.target); }
+        }, { threshold: 0.15 });
+        els.forEach((el) => io.observe(el));
+      } else els.forEach((el) => el.classList.add("visible"));
+    </script>
   </body>
 </html>

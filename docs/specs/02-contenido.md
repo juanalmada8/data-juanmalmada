@@ -87,38 +87,31 @@ Excepción: **«de punta a punta»** y **«todo el sistema»** son frases de la 
 ## Mapa del sitio (inicial)
 
 ```
-/                    Home: el editor (cada archivo es un #ancla: /#turnos, /#contacto…)
+/                    Home (una página, con anclas por sección)
 /proyectos/<slug>    Un caso por proyecto real
 /gracias             Confirmación del formulario (funciona sin JS)
 /404
 /apps/<nombre>       Más adelante
 ```
 
-## Home: la web es un editor de código
+## Home: editorial, siguiendo el manual
 
-> **Cambio 2026-10-10 (decisión de Juanma: «todo muy AI, dale un giro 180°»).** La home ya no es una landing con
-> secciones: es un editor (explorador de archivos, pestañas, terminal, barra de estado). El contenido es el mismo.
+> **Historial 2026-10-10.** Landing con secciones → editor de código («todo muy AI») → editor descartado («complicado
+> para el usuario»). Queda una página editorial simple que se scrollea, con el manual como guía de color
+> (crema domina) y un guiño de terminal en la tarjeta del hero.
 
-Cada sección es un «archivo» (`web/src/data/archivos.ts`, en orden de lectura):
+Orden y fondo (ritmo claro · oscuro · color del manual):
 
-| Archivo | Contenido |
-|---|---|
-| `hola.md` | «Un solo proveedor, *todo el sistema*.», bajada, WhatsApp, `<jm▌>`, cómo se usa la web. |
-| `servicios/webs-y-apps.tsx`, `turnos.ts`, `tableros.sql`, `nube.yml` | Cada servicio: el problema como comentario de código (palabras del cliente), un snippet corto como guiño, y **en criollo** «qué armo» / «qué te ahorra». |
-| `todo-conectado.md` | Por qué conviene un solo proveedor + pipeline. |
-| `para-quien.md` | 5 perfiles; «✓ ya trabajé en esto» solo en clínicas y RRHH. |
-| `como-trabajo.md` | Los 4 pasos del método viejo + nota de inversión y presupuesto. |
-| `casos/turnos-consultorio.md` | Borrador hasta tener datos reales (`[[FALTA]]`). |
-| `sobre-mi.md` | Texto base, firma, rasgos, fuera del código. |
-| `contacto.sh` | WhatsApp (principal), mail, LinkedIn; respuesta en < 24 h hábiles. |
-
-Reglas de UX:
-- **Para el no técnico:** el código es un guiño; todo lo importante está en castellano llano al lado.
-- Cada archivo termina con «← anterior · siguiente →» para leer la web de corrido.
-- **Terminal:** `ayuda`, `ls`, `abrir <archivo>`, `whatsapp`, `mail`, `linkedin`, `limpiar` (+ algún chiste: `sudo`, `rock`).
-- **Barra de estado:** «● disponible · respondo en menos de 24 h hábiles · General Belgrano · 100% remoto».
-- **Celular:** explorador como cajón («☰ archivos»), terminal plegada, pestañas con scroll.
-- **Sin JS:** todos los archivos apilados y el explorador como índice de anclas. Se lee entero.
+| # | Sección | Fondo | Qué tiene |
+|---|---|---|---|
+| — | Hero | crema | Meta (nombre · General Belgrano · 100% remoto), «Un solo proveedor, *todo el sistema*.», bajada, WhatsApp. Tarjeta pino girada con `hola_mundo()`, `<jm▌>` y 2 líneas de terminal. |
+| 01 | Qué hago | crema + tarjetas blancas | 4 servicios: problema (palabras del cliente) → qué armo → qué te ahorra. Cierre «¿Lo tuyo no está en la lista? Contame igual.» |
+| 02 | Todo conectado | pino + placa salvia | Patrón pipeline del manual. |
+| 03 | Para quién | salvia | 5 perfiles; «ya trabajé en esto» solo en clínicas y RRHH. |
+| 04 | Cómo trabajo | crema + placa lima | 4 pasos del método viejo; inversión y presupuesto. |
+| 05 | Proyectos | crema | Lista de casos; hoy el del consultorio «en preparación» con `[[FALTA]]`. |
+| 06 | Sobre mí | crema | Tarjeta pino con firma lima (como la lámina «Quién es»), rasgos en pino/lima/musgo, fuera del código. Sin foto. |
+| 07 | Contacto | pino | WhatsApp (lima), mail, LinkedIn, patrón de datos. |
 
 ## Migración del contenido actual
 

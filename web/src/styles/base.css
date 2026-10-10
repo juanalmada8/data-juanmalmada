@@ -1,4 +1,4 @@
-/* Base: reset corto y tipografía. Todo valor sale de tokens.css. */
+/* Base: reset corto, temas de sección, tipografía y piezas compartidas. Todo valor sale de tokens.css. */
 
 *, *::before, *::after { box-sizing: border-box; }
 * { margin: 0; }
@@ -6,56 +6,118 @@
 html {
   -webkit-text-size-adjust: 100%;
   text-size-adjust: 100%;
-  color-scheme: dark;
+  scroll-behavior: smooth;
+  scroll-padding-top: var(--space-24);
 }
 
 body {
   font-family: var(--font-sans);
   font-size: var(--fs-body);
   line-height: 1.55;
-  color: var(--ide-texto);
-  background: var(--ide-fondo);
+  color: var(--pino);
+  background: var(--crema);
   -webkit-font-smoothing: antialiased;
+  overflow-x: clip;
+  /* tema por defecto: crema */
+  --fondo: var(--crema);
+  --texto: var(--pino);
+  --texto-2: var(--musgo);
+  --acento: var(--musgo);
+  --linea: var(--pino);
 }
 
 img, svg { display: block; max-width: 100%; height: auto; }
 a { color: inherit; }
-button, input, textarea, select { font: inherit; color: inherit; }
-button { cursor: pointer; }
+button, input { font: inherit; color: inherit; }
+
+/* ---------- Temas de sección (ritmo del manual: claro · oscuro · color) ---------- */
+
+.tema-crema  { --fondo: var(--crema);  --texto: var(--pino);  --texto-2: var(--pino);   --acento: var(--musgo); --linea: var(--pino); }
+.tema-blanco { --fondo: var(--blanco); --texto: var(--pino);  --texto-2: var(--musgo);  --acento: var(--musgo); --linea: var(--salvia); }
+.tema-pino   { --fondo: var(--pino);   --texto: var(--crema); --texto-2: var(--salvia); --acento: var(--lima);  --linea: var(--musgo); }
+.tema-salvia { --fondo: var(--salvia); --texto: var(--pino);  --texto-2: var(--pino);   --acento: var(--pino);  --linea: var(--pino); }
+[class*="tema-"] { background: var(--fondo); color: var(--texto); }
+
+/* ---------- Tipografía ---------- */
 
 h1, h2, h3 {
   font-family: var(--font-mono);
   font-weight: 700;
-  font-stretch: 112.5%;
-  letter-spacing: -.02em;
+  letter-spacing: -.035em;
   text-wrap: balance;
 }
-h1 { font-size: var(--fs-h1); line-height: 1.05; }
-h2 { font-size: var(--fs-h2); line-height: 1.15; }
-h3 { font-size: var(--fs-body); line-height: 1.3; font-stretch: 100%; letter-spacing: 0; }
+h1 { font-size: var(--fs-h1); line-height: 1.02; font-stretch: 100%; }
+h2 { font-size: var(--fs-h2); line-height: 1.1; font-stretch: 100%; }
+h3 { font-size: var(--fs-h3); line-height: 1.3; font-weight: 600; letter-spacing: -.02em; }
+.acento { color: var(--acento); }
 
 p { text-wrap: pretty; }
-strong { font-weight: 700; }
 
-.mono, code, kbd {
+.lead { font-size: var(--fs-lead); line-height: 1.45; max-width: 34ch; }
+.texto-2 { color: var(--texto-2); }
+
+/* Rótulo del manual: «01 — QUÉ HAGO» */
+.rotulo {
   font-family: var(--font-mono);
-  font-size: var(--fs-code);
-  font-stretch: 100%;
-  font-variant-numeric: tabular-nums;
+  font-size: var(--fs-label);
+  font-weight: 500;
+  letter-spacing: .12em;
+  text-transform: uppercase;
+  color: var(--texto-2);
 }
-kbd {
-  padding: 0 var(--space-1);
-  border: 1px solid var(--ide-borde);
-  border-radius: var(--radius-box);
-  font-size: .75em;
+.tema-pino .rotulo { color: var(--lima); }
+
+.mono { font-family: var(--font-mono); font-variant-numeric: tabular-nums; }
+
+/* ---------- Layout ---------- */
+
+.contenedor {
+  width: 100%;
+  max-width: calc(var(--max-w) + 2 * var(--gutter));
+  margin-inline: auto;
+  padding-inline: var(--gutter);
 }
+.seccion { padding-block: clamp(var(--space-16), 9vw, var(--space-24)); }
+.cabecera { display: grid; gap: var(--space-4); margin-bottom: clamp(var(--space-8), 5vw, var(--space-16)); }
+
+/* ---------- Botones ---------- */
+
+.boton {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: var(--space-2);
+  min-height: 3.25rem;
+  padding: 0 var(--space-6);
+  border-radius: var(--radius-pill);
+  border: 2px solid var(--pino);
+  background: var(--pino);
+  color: var(--crema);
+  font-family: var(--font-sans);
+  font-weight: 700;
+  font-size: var(--fs-body);
+  text-decoration: none;
+  transition: background-color .15s ease, color .15s ease;
+}
+.boton:hover { background: transparent; color: var(--pino); }
+.boton.lima { background: var(--lima); border-color: var(--lima); color: var(--pino); }
+.boton.lima:hover { background: transparent; color: var(--lima); }
+.boton.sec { background: transparent; color: var(--texto); border-color: var(--texto); }
+.boton.sec:hover { background: var(--texto); color: var(--fondo); }
+
+.link {
+  font-weight: 700;
+  text-decoration: underline;
+  text-decoration-thickness: 2px;
+  text-underline-offset: var(--space-1);
+}
+.link:hover { color: var(--musgo); }
+.tema-pino .link:hover { color: var(--lima); }
 
 /* ---------- Accesibilidad ---------- */
 
-:focus-visible {
-  outline: 2px solid var(--lima);
-  outline-offset: 2px;
-}
+:focus-visible { outline: 3px solid var(--musgo); outline-offset: 3px; border-radius: var(--space-1); }
+.tema-pino :focus-visible { outline-color: var(--lima); }
 
 .saltar {
   position: absolute;
@@ -81,7 +143,14 @@ kbd {
   border: 0;
 }
 
+/* ---------- Movimiento: aparición sobria ---------- */
+
+@media (prefers-reduced-motion: no-preference) {
+  .js [data-aparece] { opacity: 0; transform: translateY(var(--space-3)); transition: opacity .5s ease, transform .5s ease; }
+  .js [data-aparece].visible { opacity: 1; transform: none; }
+}
 @media (prefers-reduced-motion: reduce) {
+  html { scroll-behavior: auto; }
   *, *::before, *::after {
     animation-duration: .01ms !important;
     animation-iteration-count: 1 !important;

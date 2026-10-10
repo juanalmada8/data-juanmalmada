@@ -1,0 +1,47 @@
+---
+const pasos = [
+  { titulo: "Me contás", texto: "Cómo trabajás hoy y qué te cuesta tiempo. Con una charla alcanza." },
+  { titulo: "Te propongo", texto: "Qué armar, cuánto sale y qué te ahorra." },
+  { titulo: "Lo construyo", texto: "Y lo vas viendo mientras avanza. Nada de desaparecer y volver con algo que no pediste." },
+  { titulo: "Te lo dejo andando", texto: "Documentado, y te explico cómo usarlo. Si algo no se entiende, se ajusta." },
+];
+---
+<section id="como-trabajo" class="seccion tema-crema" aria-labelledby="como-trabajo-titulo">
+  <div class="contenedor">
+    <header class="cabecera" data-aparece>
+      <p class="rotulo">04 — Cómo trabajo</p>
+      <h2 id="como-trabajo-titulo">Cuatro pasos, <span class="acento">sin sorpresas</span>.</h2>
+    </header>
+    <ol class="pasos">
+      {pasos.map((p, i) => (
+        <li data-aparece>
+          <span class="num mono" aria-hidden="true">{String(i + 1).padStart(2, "0")}</span>
+          <h3>{p.titulo}</h3>
+          <p>{p.texto}</p>
+        </li>
+      ))}
+    </ol>
+    <aside class="nota" data-aparece>
+      <p class="nota-tit">Lo que invertís hoy te ahorra tiempo y plata mañana.</p>
+      <p>Cada proyecto se presupuesta: antes de arrancar sabés cuánto sale.</p>
+    </aside>
+  </div>
+</section>
+
+<style>
+  .pasos { list-style: none; padding: 0; display: grid; gap: var(--space-8); }
+  .pasos li { display: grid; gap: var(--space-2); align-content: start; padding-top: var(--space-4); border-top: 2px solid var(--pino); }
+  .num { font-size: var(--fs-small); font-weight: 600; }
+  .nota {
+    display: grid;
+    gap: var(--space-2);
+    max-width: 30rem;
+    margin-top: var(--space-12);
+    padding: var(--space-6) var(--space-8);
+    border-radius: var(--radius-card);
+    background: var(--lima);
+    transform: rotate(-1.5deg);
+  }
+  .nota-tit { font-family: var(--font-mono); font-weight: 700; font-size: var(--fs-h3); line-height: 1.25; letter-spacing: -.02em; }
+  @media (min-width: 56rem) { .pasos { grid-template-columns: repeat(4, 1fr); gap: var(--space-6); } }
+</style>

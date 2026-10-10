@@ -1,0 +1,76 @@
+---
+// Patrón pipeline del manual (05 — patrones): cajitas mono unidas por líneas.
+---
+<section id="sistema" class="seccion tema-pino" aria-labelledby="sistema-titulo">
+  <div class="contenedor grilla">
+    <header class="cabecera" data-aparece>
+      <p class="rotulo">02 — Todo conectado</p>
+      <h2 id="sistema-titulo">Un solo proveedor, <span class="acento">menos vueltas</span>.</h2>
+      <p class="lead texto-2">Si todo lo armo yo, las piezas se hablan entre sí y no pagás a nadie por coordinar.</p>
+    </header>
+
+    <div class="placa tema-salvia" data-aparece>
+      <ol class="pipeline mono" aria-label="Cómo se arma el sistema">
+        <li>tus datos</li>
+        <li>se ordenan</li>
+        <li>se conectan</li>
+        <li class="oscuro">tablero</li>
+        <li class="oscuro">web y turnos</li>
+        <li class="fin">tu negocio</li>
+      </ol>
+      <span class="etq mono">cómo se arma el sistema</span>
+    </div>
+  </div>
+</section>
+
+<style>
+  .grilla { display: grid; gap: var(--space-8); align-items: center; }
+  .cabecera { margin-bottom: 0; }
+  .placa {
+    position: relative;
+    padding: var(--space-8) var(--space-6) var(--space-16);
+    border-radius: var(--radius-card);
+  }
+  .pipeline {
+    list-style: none;
+    padding: 0;
+    display: grid;
+    grid-template-columns: repeat(3, auto);
+    justify-content: start;
+    gap: var(--space-6) var(--space-4);
+    font-size: var(--fs-small);
+  }
+  .pipeline li {
+    position: relative;
+    padding: var(--space-2) var(--space-4);
+    border: 2px solid var(--pino);
+    border-radius: var(--radius-box);
+    background: var(--crema);
+    color: var(--pino);
+    text-align: center;
+  }
+  .pipeline li:not(:nth-child(3n))::after {
+    content: "" / "";
+    position: absolute;
+    left: 100%;
+    top: 50%;
+    width: var(--space-4);
+    border-top: 2px solid var(--pino);
+  }
+  .pipeline .oscuro { background: var(--pino); color: var(--crema); }
+  .pipeline .fin { background: var(--lima); font-weight: 600; }
+  .etq {
+    position: absolute;
+    left: var(--space-6);
+    bottom: var(--space-4);
+    padding: var(--space-1) var(--space-3);
+    border-radius: var(--radius-pill);
+    background: var(--crema);
+    font-size: var(--fs-micro);
+  }
+  @media (max-width: 30rem) {
+    .pipeline { grid-template-columns: 1fr; }
+    .pipeline li::after { display: none; }
+  }
+  @media (min-width: 60rem) { .grilla { grid-template-columns: 1fr 1fr; gap: var(--space-16); } }
+</style>

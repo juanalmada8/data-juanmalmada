@@ -1,0 +1,54 @@
+---
+import Icono from "./Icono.astro";
+import { contacto, sitio } from "../data/sitio";
+const enlaces = [
+  { href: "/#que-hago", texto: "Qué hago" },
+  { href: "/#como-trabajo", texto: "Cómo trabajo" },
+  { href: "/#sobre-mi", texto: "Sobre mí" },
+];
+---
+<header class="header">
+  <div class="contenedor fila">
+    <a class="marca" href="/" aria-label={`${sitio.nombre}, inicio`}>
+      <Icono variante="circulo" ancho="36px" />
+      <span class="nombre mono">juanma</span>
+    </a>
+    <nav aria-label="Principal">
+      <ul>
+        {enlaces.map((e) => <li class="ocultable"><a href={e.href}>{e.texto}</a></li>)}
+        <li><a class="escribime" href={contacto.whatsapp} target="_blank" rel="noopener noreferrer">Escribime</a></li>
+      </ul>
+    </nav>
+  </div>
+</header>
+
+<style>
+  .header {
+    position: sticky;
+    top: 0;
+    z-index: 50;
+    background: var(--crema);
+    border-bottom: 1px solid var(--pino);
+  }
+  .fila { display: flex; align-items: center; justify-content: space-between; gap: var(--space-4); min-height: 4rem; }
+  .marca { display: inline-flex; align-items: center; gap: var(--space-3); text-decoration: none; }
+  .nombre { font-size: var(--fs-small); font-weight: 600; }
+  ul { list-style: none; padding: 0; display: flex; align-items: center; gap: var(--space-6); }
+  nav a {
+    display: inline-flex;
+    align-items: center;
+    min-height: var(--tap-min);
+    font-size: var(--fs-small);
+    font-weight: 700;
+    text-decoration: none;
+  }
+  nav a:not(.escribime):hover { text-decoration: underline; text-underline-offset: var(--space-1); }
+  .escribime {
+    padding: 0 var(--space-4);
+    border-radius: var(--radius-pill);
+    background: var(--pino);
+    color: var(--crema);
+  }
+  .escribime:hover { background: var(--musgo); }
+  @media (max-width: 40rem) { .ocultable { display: none; } }
+</style>

@@ -1,0 +1,31 @@
+---
+import Firma from "../Firma.astro";
+import PatronDatos from "../PatronDatos.astro";
+import { contacto, sitio } from "../../data/sitio";
+---
+<section id="contacto" class="seccion tema-pino" aria-labelledby="contacto-titulo">
+  <div class="contenedor grilla">
+    <div class="texto" data-aparece>
+      <p class="rotulo">07 — Contacto</p>
+      <h2 id="contacto-titulo">¿Tenés una idea? <span class="acento">Armemos el sistema</span>.</h2>
+      <p class="lead texto-2">Contame qué hacés y qué te está comiendo el tiempo. Te respondo en {sitio.respuesta}.</p>
+      <a class="boton lima" href={contacto.whatsapp} target="_blank" rel="noopener noreferrer">Escribime por WhatsApp</a>
+      <p class="otros">
+        O por <a class="link" href={`mailto:${contacto.mail}`}>mail</a> o <a class="link" href={contacto.linkedin} target="_blank" rel="noopener noreferrer">LinkedIn</a>.
+        Cada proyecto se presupuesta.
+      </p>
+      <Firma color="crema" ancho="9rem" decorativa />
+    </div>
+    <PatronDatos class="puntos" />
+  </div>
+</section>
+
+<style>
+  .grilla { display: grid; gap: var(--space-12); align-items: center; }
+  .texto { display: grid; gap: var(--space-6); justify-items: start; }
+  .otros { color: var(--salvia); }
+  .otros .link { color: var(--crema); }
+  .grilla :global(.puntos) { width: 100%; max-width: 28rem; }
+  @media (max-width: 40rem) { .grilla :global(.puntos) { display: none; } }
+  @media (min-width: 60rem) { .grilla { grid-template-columns: 1.3fr 1fr; gap: var(--space-16); } }
+</style>
