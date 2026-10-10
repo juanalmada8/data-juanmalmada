@@ -1,0 +1,18 @@
+---
+// Marcador visible para datos o assets que faltan. Ver docs/pendientes-juanma.md.
+interface Props { que: string }
+const { que } = Astro.props;
+---
+<span class="falta">[[FALTA: {que}]]</span>
+
+<style>
+  .falta {
+    display: inline-block;
+    font-family: var(--font-mono);
+    font-size: var(--fs-label);
+    padding: var(--space-1) var(--space-2);
+    background: var(--lima);
+    color: var(--pino);
+    border: 1px dashed var(--pino);
+  }
+</style>

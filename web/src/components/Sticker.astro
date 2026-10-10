@@ -1,0 +1,30 @@
+---
+// Sticker circular del manual (levemente rotado, −4° a 4°). Decorativo salvo que tenga texto.
+interface Props { fondo?: "pino" | "lima" | "salvia"; giro?: number; tam?: string; class?: string }
+const { fondo = "pino", giro = -3, tam = "8rem", class: clase } = Astro.props;
+const g = Math.max(-4, Math.min(4, giro));
+---
+<div class:list={["sticker", `sticker-${fondo}`, clase]} style={`--giro:${g}deg;--tam:${tam}`}>
+  <slot />
+</div>
+
+<style>
+  .sticker {
+    width: var(--tam);
+    aspect-ratio: 1;
+    border-radius: 50%;
+    display: grid;
+    place-items: center;
+    padding: calc(var(--tam) * .18);
+    flex: none;
+    transform: rotate(var(--giro));
+    text-align: center;
+    font-family: var(--font-mono);
+    font-size: var(--fs-label);
+    line-height: 1.25;
+  }
+  .sticker :global(img) { width: 100%; }
+  .sticker-pino { background: var(--pino); color: var(--crema); }
+  .sticker-lima { background: var(--lima); color: var(--pino); }
+  .sticker-salvia { background: var(--salvia); color: var(--pino); }
+</style>

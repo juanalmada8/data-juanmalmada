@@ -1,0 +1,23 @@
+---
+// </j> desde web/public/brand/. Para todo lo que mida menos de 100px.
+import { leerSvg } from "../lib/marca";
+import Falta from "./Falta.astro";
+
+type Variante = "circulo" | "sin-fondo" | "pino" | "1tinta-crema";
+interface Props { variante?: Variante; ancho?: string; alt?: string; class?: string }
+const { variante = "circulo", ancho = "40px", alt = "", class: clase } = Astro.props;
+const archivo = variante === "circulo" ? "icono-j.svg" : `icono-j-${variante}.svg`;
+const svg = leerSvg(archivo);
+---
+{svg.existe ? (
+  <img
+    class:list={["icono", clase]}
+    src={`/brand/${archivo}`}
+    width={Math.round(svg.ancho)}
+    height={Math.round(svg.alto)}
+    alt={alt}
+    style={`width:${ancho}`}
+  />
+) : (
+  <Falta que={archivo} />
+)}

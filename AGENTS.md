@@ -69,6 +69,7 @@ npm install
 npm run dev       # servidor local
 npm run build     # build de producción a dist/
 npm run check     # astro check (tipos + contenido)
+# /_tokens (solo en dev): hoja de tokens y componentes de marca
 
 # api/
 cd api
@@ -76,6 +77,7 @@ uv sync
 uv run fastapi dev app/main.py   # servidor local con recarga
 uv run pytest
 uv run ruff check . && uv run ruff format --check .
+uv run mypy app tests
 ```
 
 ## Estructura (inicial)

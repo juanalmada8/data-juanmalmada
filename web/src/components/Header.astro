@@ -1,0 +1,135 @@
+---
+import Logo from "./Logo.astro";
+import Icono from "./Icono.astro";
+import { contacto, sitio } from "../data/sitio";
+
+const enlaces = [
+  { href: "/#que-hago", texto: "Qué hago" },
+  { href: "/#proyectos", texto: "Proyectos" },
+  { href: "/#como-trabajo", texto: "Cómo trabajo" },
+  { href: "/#sobre-mi", texto: "Sobre mí" },
+];
+---
+<header class="header tema-pino">
+  <div class="contenedor fila">
+    <a class="marca" href="/" aria-label={`${sitio.nombre}, inicio`}>
+      <Logo variante="crema" ancho="104px" class="marca-grande" decorativo />
+      <Icono variante="sin-fondo" ancho="40px" class="marca-chica" />
+    </a>
+
+    <button class="abrir" type="button" aria-expanded="false" aria-controls="menu">
+      <span class="abrir-txt">Menú</span>
+    </button>
+
+    <nav id="menu" class="menu" aria-label="Principal">
+      <ul>
+        {enlaces.map((e) => <li><a href={e.href}>{e.texto}</a></li>)}
+      </ul>
+      <a class="escribime" href={contacto.whatsapp} target="_blank" rel="noopener noreferrer">Escribime</a>
+    </nav>
+  </div>
+</header>
+
+<script>
+  const boton = document.querySelector<HTMLButtonElement>(".header .abrir");
+  const menu = document.getElementById("menu");
+  if (boton && menu) {
+    const cerrar = () => {
+      boton.setAttribute("aria-expanded", "false");
+      menu.classList.remove("abierto");
+    };
+    boton.addEventListener("click", () => {
+      const abierto = boton.getAttribute("aria-expanded") === "true";
+      boton.setAttribute("aria-expanded", String(!abierto));
+      menu.classList.toggle("abierto", !abierto);
+    });
+    menu.querySelectorAll("a").forEach((a) => a.addEventListener("click", cerrar));
+    document.addEventListener("keydown", (e) => { if (e.key === "Escape") cerrar(); });
+  }
+</script>
+
+<style>
+  .header {
+    position: sticky;
+    top: 0;
+    z-index: 50;
+    border-bottom: 1px solid var(--musgo);
+  }
+  .fila {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: var(--space-4);
+    min-height: 4rem;
+  }
+  .marca { display: inline-flex; align-items: center; padding-block: var(--space-2); }
+  .marca :global(.marca-chica) { display: none; }
+  @media (max-width: 30rem) {
+    .marca :global(.marca-grande) { display: none; }
+    .marca :global(.marca-chica) { display: block; }
+  }
+
+  .menu { display: flex; align-items: center; gap: var(--space-6); }
+  .menu ul {
+    list-style: none;
+    padding: 0;
+    display: flex;
+    gap: var(--space-6);
+  }
+  .menu a {
+    text-decoration: none;
+    font-weight: 500;
+    font-size: var(--fs-small);
+  }
+  .menu ul a {
+    display: inline-flex;
+    align-items: center;
+    min-height: 44px;
+    color: var(--crema);
+  }
+  .menu ul a:hover { color: var(--lima); }
+  .escribime {
+    display: inline-flex;
+    align-items: center;
+    min-height: 44px;
+    padding-inline: var(--space-4);
+    border-radius: var(--radius-pill);
+    background: var(--lima);
+    color: var(--pino);
+    font-weight: 700;
+  }
+
+  .abrir {
+    display: none;
+    min-height: 44px;
+    min-width: 44px;
+    padding-inline: var(--space-4);
+    background: none;
+    border: 1px solid var(--salvia);
+    border-radius: var(--radius-pill);
+    color: var(--crema);
+    font-family: var(--font-mono);
+    font-size: var(--fs-small);
+    cursor: pointer;
+  }
+
+  @media (max-width: 52rem) {
+    :global(.js) .abrir { display: inline-flex; align-items: center; }
+    :global(.js) .menu {
+      display: none;
+      position: absolute;
+      inset: 100% 0 auto 0;
+      flex-direction: column;
+      align-items: stretch;
+      gap: var(--space-4);
+      padding: var(--space-4) var(--gutter) var(--space-6);
+      background: var(--pino);
+      border-bottom: 1px solid var(--musgo);
+    }
+    :global(.js) .menu.abierto { display: flex; }
+    .menu ul { flex-direction: column; gap: 0; }
+    .menu ul a { font-size: var(--fs-body); }
+    .escribime { justify-content: center; }
+    :global(html:not(.js)) .menu { flex-wrap: wrap; }
+  }
+</style>

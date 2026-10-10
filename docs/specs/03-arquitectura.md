@@ -112,6 +112,10 @@ Una línea por decisión no trivial (más reciente arriba).
 
 | Fecha | Decisión | Por qué |
 |---|---|---|
+| 2026-10-10 | Fuentes copiadas como woff2 a `web/public/fonts/` (subset latin) en vez de depender de paquetes `@fontsource`. | Cero dependencias en runtime, `preload` directo y control del subset. |
+| 2026-10-10 | Los componentes de marca leen los SVG de `public/brand/` en build (`src/lib/marca.ts`); el `<jm▌>` va inline para animar el cursor. | Una sola fuente de verdad para el logo y nada dibujado a mano. |
+| 2026-10-10 | `PatronM` arma la grilla de `m` en SVG en vez de repetir `patron-m.svg` como fondo. | El tile repetido dejaba costuras visibles. |
+| 2026-10-10 | Tests de la API con `httpx2` (no `httpx`). | Starlette marca `httpx` como deprecado para `TestClient`. |
 | 2026-10-10 | Stack confirmado. Web en Cloudflare Pages, API en Cloud Run, mail con Resend + Email Routing de Cloudflare. | Mejor calidad/precio: todo en planes gratis, y el DNS ya está en Cloudflare. Juanma delegó la elección. |
 | 2026-10-10 | No se nombran empresas donde trabajó Juanma; todo a presupuesto; WhatsApp como canal principal. | Respuestas de Juanma a pendientes. |
 | 2026-10-10 | Sin foto de Juanma en el sitio. Láminas del manual y plantillas de IG a `docs/marca/`, fuera de `web/public/`. | Decisión de Juanma; lo de `public/` se publica y eso era solo referencia. |

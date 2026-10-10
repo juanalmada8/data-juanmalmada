@@ -1,0 +1,56 @@
+---
+import Icono from "./Icono.astro";
+import { contacto, sitio } from "../data/sitio";
+const anio = new Date().getFullYear();
+---
+<footer class="footer tema-pino">
+  <div class="contenedor fila">
+    <div class="firma-pie">
+      <Icono variante="sin-fondo" ancho="44px" />
+      <p class="lema">{sitio.lema}</p>
+    </div>
+    <ul class="links">
+      <li><a href={contacto.whatsapp} target="_blank" rel="noopener noreferrer">WhatsApp</a></li>
+      <li><a href={`mailto:${contacto.mail}`}>Mail</a></li>
+      <li><a href={contacto.linkedin} target="_blank" rel="noopener noreferrer">LinkedIn</a></li>
+    </ul>
+    <p class="datos mono">General Belgrano · 100% remoto · © {anio}</p>
+  </div>
+</footer>
+
+<style>
+  .footer {
+    padding-block: var(--space-12);
+    border-top: 1px solid var(--musgo);
+  }
+  .fila {
+    display: grid;
+    gap: var(--space-6);
+  }
+  .firma-pie { display: flex; align-items: center; gap: var(--space-4); }
+  .lema { font-family: var(--font-serif); font-size: var(--fs-h3); line-height: 1.15; }
+  .links {
+    list-style: none;
+    padding: 0;
+    display: flex;
+    flex-wrap: wrap;
+    gap: var(--space-2) var(--space-6);
+  }
+  .links a {
+    display: inline-flex;
+    align-items: center;
+    min-height: 44px;
+    color: var(--crema);
+    text-underline-offset: 4px;
+  }
+  .links a:hover { color: var(--lima); }
+  .datos { font-size: var(--fs-label); color: var(--salvia); letter-spacing: .04em; }
+
+  @media (min-width: 52rem) {
+    .fila {
+      grid-template-columns: 1fr auto;
+      align-items: center;
+    }
+    .datos { grid-column: 1 / -1; }
+  }
+</style>
