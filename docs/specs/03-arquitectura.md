@@ -93,7 +93,8 @@ Convenciones:
 
 Se migra **casi todo** el contenido del sitio actual, reescrito en la voz y la marca nuevas (mapeo en `02-contenido.md`).
 
-1. `index.html` + `styles.css` pasan a `legacy/` como referencia hasta cerrar la Fase 2.
+1. `index.html` + `styles.css` se quedan en la raíz, publicados, mientras se arma `web/`. Pasan a `legacy/` recién en el
+   corte a producción (tarea 2.10), cuando el hosting ya sirve el sitio nuevo. Así la web nunca queda caída.
 2. Se rescata: contenido de las secciones, links de contacto (mail, WhatsApp con texto precargado, LinkedIn),
    la lógica de reveal con `IntersectionObserver` (reescrita y respetando `prefers-reduced-motion`).
 3. Se descarta: IBM Plex Sans, `page-glow`, `hero-noise`, el tono corporativo.
@@ -104,5 +105,6 @@ Una línea por decisión no trivial (más reciente arriba).
 
 | Fecha | Decisión | Por qué |
 |---|---|---|
+| 2026-10-10 | El sitio viejo sigue en la raíz hasta el corte a producción (2.10); recién ahí va a `legacy/`. | Moverlo en la 1.1 rompía la web publicada. |
 | 2026-10-10 | Monorepo `web/` (Astro) + `api/` (Python/FastAPI). Pendiente de confirmar hosting. | Vienen formulario de contacto, apps web y Python. |
 | 2026-10-10 | Se migra casi todo el contenido del sitio actual, reescrito en la voz nueva. | Pedido de Juanma. |

@@ -59,7 +59,7 @@ por alguien detallista. **No tiene que parecer hecho por IA.**
 
 ## Comandos
 
-> Orientativos: cuando cambien, actualizá esta sección. Válidos desde la Fase 1. Antes de eso el sitio es `index.html` + `styles.css` y se abre directo en el navegador.
+> Orientativos: cuando cambien, actualizá esta sección. Válidos desde la Fase 1. Hasta el corte a producción (tarea 2.10), el sitio publicado sigue siendo `index.html` + `styles.css` en la raíz: no los muevas antes.
 
 ```bash
 # web/
