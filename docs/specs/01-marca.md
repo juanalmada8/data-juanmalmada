@@ -1,17 +1,17 @@
 # 01 — Marca
 
-Fuente de verdad: Manual de marca 2026 (Figma). Esta spec lo traduce a reglas para código.
+Fuente de verdad: Manual de marca 2026 (Figma; láminas exportadas en `docs/marca/`). Esta spec lo traduce a reglas para código.
 Si algo del manual no está acá, preguntá antes de interpretarlo.
 
 ## Logo
 
-| Pieza | Uso | Archivo esperado |
+| Pieza | Uso | Archivos (en `web/public/brand/`; estado en su README) |
 |---|---|---|
-| `<jm>` principal | Header grande, hero, footer, tarjeta | `web/public/brand/logo-jm-crema.svg` (sobre pino), `logo-jm-pino.svg` (sobre crema) |
-| `<jm>` una tinta | Sobre fotos, sellos; todo crema o todo verde, **sin lima** | `logo-jm-1tinta-crema.svg`, `logo-jm-1tinta-pino.svg` |
-| `</j>` ícono | Favicon, avatar, header compacto en mobile, todo lo que mida < 100 px | `icono-j.svg` (+ `favicon.svg`, `apple-touch-icon.png`) |
-| `<jm▌>` con cursor | Momentos con onda (hero, 404). El cursor puede titilar | `logo-jm-cursor.svg` con el cursor en un `<g id="cursor">` aparte |
-| Firma | Cierre de secciones largas, «Hola, soy Juanma», footer | `firma-crema.svg`, `firma-pino.svg`, `firma-lima.svg` |
+| `<jm>` principal | Header grande, hero, footer, tarjeta | `1_Logos/logo_color.svg` (sobre pino). Para fondo claro: falta |
+| `<jm>` una tinta | Sobre imágenes, sellos; todo crema o todo verde, **sin lima** | `1_Logos/logo_una_tinta_{crema,verde}_transparente.png` (falta SVG) |
+| `</j>` ícono | Favicon, avatar, header compacto en mobile, todo lo que mida < 100 px | `2_Icono/icono_color.svg` (sobre pino), `2_Icono/icono_favicon_512.png` |
+| `<jm▌>` con cursor | Momentos con onda (hero, 404). El cursor puede titilar | Falta: SVG con el cursor en un `<g id="cursor">` aparte |
+| Firma | Cierre de secciones largas, «Hola, soy Juanma», footer | `3_Firma/firma_verde.svg`, `3_Firma/firma_{crema,lima}_transparente.png` |
 
 Anatomía: la `j` es un trazo suelto con el punto en lima; la `m` es una letra con peso; los `< >` son cintas
 en dos tonos (musgo + salvia).
@@ -114,7 +114,7 @@ Detalles tipográficos que **sí** importan:
 ## Recursos gráficos
 
 - **Patrón de `m`**: repetición de la `m` en tono sobre tono (pino sobre pino más claro, o salvia sobre crema) con
-  2–3 `m` sueltas en lima. Para fondos de bandas y separadores. Tile en `web/public/brand/patron-m.svg`.
+  2–3 `m` sueltas en lima. Para fondos de bandas y separadores. Tile pendiente de exportar (ver pendientes).
 - **Patrón pipeline**: cajitas mono unidas por líneas (`extraer → limpiar → modelar → dashboard/web → tu negocio`).
   Este sí se puede construir en HTML/SVG porque es diagramático, siguiendo el del manual.
 - **Patrón de datos**: grilla de puntos pino/musgo/salvia con algunos en lima.
@@ -127,6 +127,6 @@ Detalles tipográficos que **sí** importan:
 |---|---|
 | **Detallista** | Alineaciones exactas, números reales, nada librado al azar. |
 | **Hiperactivo** | El cursor que titila, stickers torcidos, ritmo entre bloques oscuro/claro/color. |
-| **Extrovertido** | Su foto, su firma, lo técnico explicado en criollo. |
+| **Extrovertido** | Su firma, la voz en primera persona, lo técnico explicado en criollo. |
 
 El ritmo de la página copia el feed de Instagram del manual: **alternar oscuro · claro · color**.
