@@ -35,7 +35,7 @@ en dos tonos (musgo + salvia).
 }
 ```
 
-**Proporción de uso** (a ojo, en la página entera): crema 40 · pino 30 · musgo 15 · salvia 11 · lima 4.
+**Proporción de uso** del manual (redes y piezas): crema 40 · pino 30 · musgo 15 · salvia 11 · lima 4. En la web manda pino (ver «Espaciado, forma y superficies»).
 
 **Lima es un acento:** una palabra en itálica, un dato, un botón, el punto de la `j`, un sticker.
 Nunca fondo de una sección entera de texto largo. Excepción del manual: una placa/tarjeta chica en lima con
@@ -59,62 +59,43 @@ texto pino («detrás de escena») está permitida, como mucho una por pantalla.
 
 ## Tipografía
 
-| Rol | Familia | Pesos | Uso |
-|---|---|---|---|
-| Títulos | **DM Serif Display** | 400 + itálica | Títulos, frases, destacados. La itálica subraya **una** idea por título. |
-| Textos | **Manrope** | 300 / 400 / 500 / 700 | Párrafos, UI, botones, descripciones. |
-| Detalles | **JetBrains Mono** | 400 / 500 | Etiquetas, numeraciones (`01 — LOGOTIPO`), datos, guiños de código. **Dosis chicas.** |
+> **Cambio 2026-10-10 (decisión de Juanma):** se reemplazan las tipografías del manual (DM Serif Display, Manrope,
+> JetBrains Mono). Quedan los colores, el logo y la firma. La web es un editor de código (ver `02-contenido.md`).
 
-Self-hosted en `web/public/fonts/` (woff2, `font-display: swap`, subset latin). Nada de Google Fonts en runtime.
+| Rol | Familia | Uso |
+|---|---|---|
+| Interfaz y títulos | **Martian Mono** (variable: peso 100–800, ancho 75–112.5 %) | Títulos (bold, ancho 112.5 %), explorador, pestañas, terminal, código, botones. |
+| Lectura | **Atkinson Hyperlegible Next** (variable + itálica) | Párrafos y explicaciones «en criollo». Es la que lee el cliente no técnico. |
 
-```css
-:root {
-  --font-serif: "DM Serif Display", Georgia, serif;
-  --font-sans:  "Manrope", system-ui, sans-serif;
-  --font-mono:  "JetBrains Mono", ui-monospace, monospace;
-
-  --fs-h1:    clamp(2.75rem, 1.6rem + 5vw, 4.5rem);   /* 44 → 72 px, lh 1.0 */
-  --fs-h2:    clamp(2rem, 1.4rem + 2.6vw, 3.25rem);   /* lh 1.05 */
-  --fs-h3:    clamp(1.375rem, 1.2rem + .8vw, 1.75rem);/* serif, lh 1.15 */
-  --fs-body:  clamp(1rem, .95rem + .25vw, 1.125rem);  /* 16 → 18 px, lh 1.5 */
-  --fs-small: .875rem;
-  --fs-label: .8125rem;  /* mono, uppercase, letter-spacing .12em */
-  --fs-lead:  clamp(1.125rem, 1rem + .5vw, 1.375rem); /* bajadas */
-}
-```
+Self-hosted en `web/public/fonts/` (woff2 latin, OFL). Tamaños en `tokens.css`: `--fs-ui` (13 px, interfaz),
+`--fs-code`, `--fs-body`, `--fs-lead`, `--fs-h2`, `--fs-h1`.
 
 Detalles tipográficos que **sí** importan:
-- Títulos en *sentence case* (en castellano no se capitaliza cada palabra).
+- Títulos en *sentence case*. El acento de un título va en lima (`.acento`), una idea por título.
 - `text-wrap: balance` en títulos, `text-wrap: pretty` en párrafos.
 - Comillas latinas «así». Signos de apertura ¿¡ siempre. Puntos suspensivos con `…`.
-- `&nbsp;` entre número y unidad (`8&nbsp;años`, `24/7`), y para no dejar viudas en títulos cortos.
-- Números en datos con `font-variant-numeric: tabular-nums`.
-- Las etiquetas mono siguen el patrón del manual: `01 — PROYECTOS`, `// tip de la semana`, `hola_mundo()`.
+- `&nbsp;` entre número y unidad (`8&nbsp;años`, `24&nbsp;h`).
+- Etiquetas como comentarios o encabezados de markdown: `# contacto`, `// servicio`, `-- …`.
 
-## Espaciado, forma y profundidad
+## Espaciado, forma y superficies
 
-```css
-:root {
-  --space-1: .25rem; --space-2: .5rem; --space-3: .75rem; --space-4: 1rem;
-  --space-6: 1.5rem; --space-8: 2rem; --space-12: 3rem; --space-16: 4rem; --space-24: 6rem;
+Valores en `web/src/styles/tokens.css` (fuente de verdad):
 
-  --radius-card: 20px;   /* placas y tarjetas */
-  --radius-pill: 999px;  /* chips y botones */
-  --radius-box:  10px;   /* cajitas del pipeline */
-  --border-soft: 1px solid var(--salvia);
+- Espacios `--space-1` a `--space-24` (4 px a 96 px).
+- Radios: `--radius-card` 12 px, `--radius-box` 6 px (botones, cajas de código), `--radius-pill`.
+- Superficies del editor, **derivadas de la paleta con `color-mix`** (no son colores nuevos):
+  `--ide-fondo` (pino), `--ide-panel` (pino oscurecido: explorador, terminal, barra de título),
+  `--ide-borde` (musgo sobre pino), `--ide-linea` (musgo translúcido: hover y línea activa).
+- Tamaños de letra: `--fs-micro` (11 px, nunca menos), `--fs-ui` (13 px), `--fs-code`, `--fs-body`, `--fs-lead`, `--fs-h2`, `--fs-h1`.
+- `--tap-min` 44 px para todo lo tocable en el celular.
 
-  --max-w: 72rem;        /* contenido */
-  --gutter: clamp(1rem, 4vw, 3rem);
-  --tap-min: 44px;       /* área táctil mínima */
-}
-```
-
-- **Plano.** Bloques de color sólidos, bordes de 1 px salvia sobre crema/blanco. Sombras: casi nunca; si hace falta
-  separar, que sea una sombra dura y corta, no difusa.
-- Chips/etiquetas: pill con borde de 1 px, texto mono (como los de la portada del manual).
-- Botón principal: fondo lima, texto pino, Manrope 700, pill. Secundario: borde crema o pino, sin relleno.
+**Proporción de color en el rediseño:** el sitio es casi todo pino (es un editor oscuro). La lima queda para el
+acento de los títulos, el botón principal y la línea activa; un solo bloque lima por pantalla.
+Plano: sin sombras, bordes de 1 px.
 
 ## Recursos gráficos
+
+> Con el rediseño tipo editor, patrón de `m`, stickers y placas no se usan en la home (se pueden volver a usar en redes u OG).
 
 - **Patrón de `m`**: repetición de la `m` en tono sobre tono (pino sobre pino más claro, o salvia sobre crema) con
   2–3 `m` sueltas en lima. Para fondos de bandas y separadores. Tile en `web/public/brand/patron-m.svg`.
@@ -132,4 +113,4 @@ Detalles tipográficos que **sí** importan:
 | **Hiperactivo** | El cursor que titila, stickers torcidos, ritmo entre bloques oscuro/claro/color. |
 | **Extrovertido** | Su firma, la voz en primera persona, lo técnico explicado en criollo. |
 
-El ritmo de la página copia el feed de Instagram del manual: **alternar oscuro · claro · color**.
+En redes, el ritmo copia el feed del manual (oscuro · claro · color). La web es un editor oscuro de punta a punta.

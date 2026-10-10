@@ -22,6 +22,7 @@ del contenido real o de una necesidad del usuario. Si la respuesta es «porque l
 - [ ] Sin sombras difusas grandes. Sin `rounded-2xl + shadow-lg` en todo.
 - [ ] Sin íconos en cada tarjeta por reflejo. Ningún ícono de cohete, rayo, cerebro o chispitas ✨.
 - [ ] Sin mockups falsos (ventanas de navegador con UI inventada, gráficos de mentira). Solo capturas reales.
+      (El editor de la home no es un mockup: es la interfaz real del sitio y todo funciona.)
 - [ ] Sin fotos de stock ni imágenes generadas por IA. El sitio no lleva foto de Juanma.
 - [ ] Sin emojis en la interfaz.
 

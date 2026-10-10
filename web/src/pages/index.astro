@@ -1,10 +1,16 @@
 ---
 import Base from "../layouts/Base.astro";
+import Editor from "../components/ide/Editor.astro";
+import Panel from "../components/ide/Panel.astro";
+import Hola from "../components/archivos/Hola.astro";
+import Servicios from "../components/archivos/Servicios.astro";
+import Resto from "../components/archivos/Resto.astro";
+import { archivos } from "../data/archivos";
 ---
 <Base>
-  <section class="seccion tema-pino">
-    <div class="contenedor">
-      <h1>Un solo proveedor, <em>todo el sistema</em>.</h1>
-    </div>
-  </section>
+  <Editor>
+    <Panel archivo={archivos[0]}><Hola /></Panel>
+    <Servicios />
+    <Resto />
+  </Editor>
 </Base>
