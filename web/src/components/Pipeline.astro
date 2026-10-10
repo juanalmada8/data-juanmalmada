@@ -27,13 +27,13 @@ const { pasos, class: clase } = Astro.props;
     align-items: baseline;
     gap: var(--space-3);
     padding: var(--space-3) var(--space-4);
-    border: 1px solid var(--salvia);
-    border-radius: 10px;
+    border: 1px solid var(--linea);
+    border-radius: var(--radius-box);
     font-family: var(--font-mono);
     font-size: var(--fs-small);
-    color: var(--crema);
+    color: var(--texto);
   }
-  .num { color: var(--salvia); font-size: var(--fs-label); }
+  .num { color: var(--texto-2); font-size: var(--fs-label); }
   .final {
     background: var(--lima);
     border-color: var(--lima);
@@ -49,7 +49,7 @@ const { pasos, class: clase } = Astro.props;
     top: 100%;
     width: 1px;
     height: var(--space-6);
-    background: var(--salvia);
+    background: var(--linea);
   }
 
   @media (min-width: 60rem) {

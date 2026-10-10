@@ -6,7 +6,7 @@ import { leerSvg } from "../lib/marca";
 interface Props {
   tono?: "pino" | "crema";
   filas?: number;
-  /** Posiciones [fila, columna] de las `m` en lima (solo con tono pino). */
+  /** Posiciones [fila, columna] de las `m` en lima. */
   lima?: [number, number][];
   alto?: string;
   class?: string;
@@ -18,8 +18,8 @@ const d = /\sd="([^"]+)"/.exec(m.interior)?.[1] ?? "";
 const PASO_X = 140, PASO_Y = 118, COLUMNAS = 15;
 const ancho = PASO_X * COLUMNAS;
 const altoVb = PASO_Y * filas - (PASO_Y - m.alto);
-const id = `m-${Math.random().toString(36).slice(2, 8)}`;
-const esLima = (f: number, c: number) => tono === "pino" && lima.some(([lf, lc]) => lf === f && lc === c);
+const id = `m-${tono}-${filas}-${lima.map((p) => p.join("x")).join("-") || "0"}`;
+const esLima = (f: number, c: number) => lima.some(([lf, lc]) => lf === f && lc === c);
 
 const celdas: { x: number; y: number; lima: boolean }[] = [];
 for (let f = 0; f < filas; f++) {
@@ -52,4 +52,5 @@ for (let f = 0; f < filas; f++) {
   .patron-pino .lima { fill: var(--lima); }
   .patron-crema { background: var(--crema); }
   .patron-crema .base { fill: var(--salvia); fill-opacity: .6; }
+  .patron-crema .lima { fill: var(--lima); }
 </style>

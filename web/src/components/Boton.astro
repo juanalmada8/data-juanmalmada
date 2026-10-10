@@ -28,14 +28,14 @@ const { href, variante = "primario", externo = false, class: clase } = Astro.pro
     font-size: var(--fs-body);
     line-height: 1.1;
     text-decoration: none;
-    transition: transform .15s ease, background-color .15s ease, color .15s ease;
+    transition: background-color .15s ease, color .15s ease;
   }
   .primario {
     background: var(--lima);
     color: var(--pino);
     border: 2px solid var(--lima);
   }
-  .primario:hover { transform: translateY(-2px); }
+  .primario:hover { background: transparent; color: var(--texto); }
   .secundario {
     background: transparent;
     color: var(--texto);
@@ -50,4 +50,5 @@ const { href, variante = "primario", externo = false, class: clase } = Astro.pro
     color: var(--lima);
     border-color: var(--pino);
   }
+  .tema-lima .primario:hover { background: transparent; color: var(--pino); }
 </style>

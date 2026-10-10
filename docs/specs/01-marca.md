@@ -79,6 +79,7 @@ Self-hosted en `web/public/fonts/` (woff2, `font-display: swap`, subset latin). 
   --fs-body:  clamp(1rem, .95rem + .25vw, 1.125rem);  /* 16 → 18 px, lh 1.5 */
   --fs-small: .875rem;
   --fs-label: .8125rem;  /* mono, uppercase, letter-spacing .12em */
+  --fs-lead:  clamp(1.125rem, 1rem + .5vw, 1.375rem); /* bajadas */
 }
 ```
 
@@ -99,10 +100,12 @@ Detalles tipográficos que **sí** importan:
 
   --radius-card: 20px;   /* placas y tarjetas */
   --radius-pill: 999px;  /* chips y botones */
+  --radius-box:  10px;   /* cajitas del pipeline */
   --border-soft: 1px solid var(--salvia);
 
   --max-w: 72rem;        /* contenido */
   --gutter: clamp(1rem, 4vw, 3rem);
+  --tap-min: 44px;       /* área táctil mínima */
 }
 ```
 

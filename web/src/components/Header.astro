@@ -35,8 +35,10 @@ const enlaces = [
   const menu = document.getElementById("menu");
   if (boton && menu) {
     const cerrar = () => {
+      const foco = menu.contains(document.activeElement);
       boton.setAttribute("aria-expanded", "false");
       menu.classList.remove("abierto");
+      if (foco && getComputedStyle(boton).display !== "none") boton.focus();
     };
     boton.addEventListener("click", () => {
       const abierto = boton.getAttribute("aria-expanded") === "true";
@@ -60,9 +62,9 @@ const enlaces = [
     align-items: center;
     justify-content: space-between;
     gap: var(--space-4);
-    min-height: 4rem;
+    min-height: 4.5rem;
   }
-  .marca { display: inline-flex; align-items: center; padding-block: var(--space-2); }
+  .marca { display: inline-flex; align-items: center; padding-block: var(--space-3); }
   .marca :global(.marca-chica) { display: none; }
   @media (max-width: 30rem) {
     .marca :global(.marca-grande) { display: none; }
@@ -84,14 +86,14 @@ const enlaces = [
   .menu ul a {
     display: inline-flex;
     align-items: center;
-    min-height: 44px;
+    min-height: var(--tap-min);
     color: var(--crema);
   }
   .menu ul a:hover { color: var(--lima); }
   .escribime {
     display: inline-flex;
     align-items: center;
-    min-height: 44px;
+    min-height: var(--tap-min);
     padding-inline: var(--space-4);
     border-radius: var(--radius-pill);
     background: var(--lima);
@@ -101,8 +103,8 @@ const enlaces = [
 
   .abrir {
     display: none;
-    min-height: 44px;
-    min-width: 44px;
+    min-height: var(--tap-min);
+    min-width: var(--tap-min);
     padding-inline: var(--space-4);
     background: none;
     border: 1px solid var(--salvia);
