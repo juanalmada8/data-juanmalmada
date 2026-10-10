@@ -37,7 +37,10 @@ navegador ──► web/ (Astro, estático)  ──fetch──►  api/ (Python,
 
 ### Hosting y dominio
 - **Dominio:** `juanmalmada.com`, registrado en DonWeb, con DNS en **Cloudflare** (verificado: NS de Cloudflare, sin MX todavía).
-- **`web/`: Cloudflare Pages.** Gratis, el DNS ya está ahí, deploy por push. El sitio viejo sigue donde está hasta el corte (2.10).
+- **`web/`: Cloudflare Pages.** Ya existe el proyecto `data-juanmalmada` conectado a este repo: hoy publica **la raíz de `main`** tal cual
+  (por eso el sitio viejo es `index.html` + `styles.css`) y arma un preview por PR. Efecto colateral: hoy también se sirven
+  `docs/`, `AGENTS.md`, etc. (nada secreto; el repo es público). El corte (2.10) es cambiar en Pages: directorio raíz `web`,
+  build `npm run build`, salida `dist`.
 - **`api/`: Google Cloud Run** en `api.juanmalmada.com`, contenedor que escala a cero. El tier gratis cubre de sobra el tráfico de un formulario.
   Trade-off: primer request en frío de ~1–3&nbsp;s, aceptable para un envío de formulario. Alternativa si molesta: `min-instances=1` (con costo).
 - CORS de la API cerrado a `https://juanmalmada.com`.
@@ -112,6 +115,8 @@ Una línea por decisión no trivial (más reciente arriba).
 
 | Fecha | Decisión | Por qué |
 |---|---|---|
+| 2026-10-10 | Corrección: el sitio lo sirve Cloudflare Pages desde la raíz de `main`, no DonWeb. | Verificado con el check de Pages en los PRs y `curl` a archivos del repo. |
+| 2026-10-10 | Sin casos publicados, «Proyectos» muestra el caso del consultorio como «en preparación» con `[[FALTA]]`; la página `/proyectos/<slug>` solo se genera con `publicado: true`. | No se inventa un caso y la sección no queda vacía. |
 | 2026-10-10 | Fuentes copiadas como woff2 a `web/public/fonts/` (subset latin) en vez de depender de paquetes `@fontsource`. | Cero dependencias en runtime, `preload` directo y control del subset. |
 | 2026-10-10 | Los componentes de marca leen los SVG de `public/brand/` en build (`src/lib/marca.ts`); el `<jm▌>` va inline para animar el cursor. | Una sola fuente de verdad para el logo y nada dibujado a mano. |
 | 2026-10-10 | `PatronM` arma la grilla de `m` en SVG en vez de repetir `patron-m.svg` como fondo. | El tile repetido dejaba costuras visibles. |

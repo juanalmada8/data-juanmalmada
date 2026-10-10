@@ -20,24 +20,25 @@ Una tarea por rama y por PR; tildá `[x]` al mergear.
       *Acepta:* teclado y lector de pantalla OK; header compacto con `</j>` en < 480 px.
 - [x] **1.5 Componentes de marca.** `Logo`, `Firma`, `Etiqueta`, `Chip`, `Boton`, `Sticker`, `PatronM`, `Pipeline`.
       *Acepta:* usan los SVG reales o marcadores `[[FALTA]]`; ninguno dibuja el logo a mano.
-- [ ] **1.6 Deploy de preview:** `web/` en Cloudflare Pages, `api/` en Cloud Run.
+- [ ] **1.6 Deploy de preview:** `web/` ya tiene preview por PR en Cloudflare Pages (falta apuntarlo a `web/`, ver 2.10); `api/` en Cloud Run.
 - [ ] **1.7 Correo con dominio:** Email Routing `hola@juanmalmada.com` → Gmail, dominio verificado en Resend, «Enviar como» en Gmail.
 
 ## Fase 2 — Home (migrando el contenido actual)
 
 Seguir el mapeo de `02-contenido.md`: todo lo del sitio viejo tiene que tener su lugar o una razón anotada para no estar.
 
-- [ ] **2.1 Hero.** *Acepta:* en 360 px se ve título, bajada y CTA sin scrollear; cursor titila y se detiene con reduced-motion.
-- [ ] **2.2 Qué hago.** *Acepta:* 4 servicios con problema → qué armo → qué te ahorra; reportería, integración y alertas del sitio viejo absorbidos en «Dashboards y análisis»; cierre «¿Lo tuyo no está en la lista?».
-- [ ] **2.3 Para quién.** *Acepta:* un ejemplo concreto por perfil (consultorios, comercios, empresas, gobierno); sin clientes inventados.
-- [ ] **2.4 Cómo se arma el sistema** (pipeline). *Acepta:* legible en 360 px (se reacomoda en vertical).
-- [ ] **2.5 Proyectos destacados.** *Acepta:* lee de la colección; con 1 solo caso se ve bien; `publicado: false` no sale.
-- [ ] **2.6 Cómo trabajo** (los 4 pasos del método viejo, en criollo, con la inversión y el ahorro explícitos).
-- [ ] **2.7 Hola, soy Juanma** (sobre mí; sin nombrar empresas). Sin foto: la presencia la dan la firma, el `</j>` y los stickers.
-- [ ] **2.8 Contacto con links** (WhatsApp, mail, LinkedIn) + footer. El formulario llega en la Fase 3.
-- [ ] **2.9 Chequeo de migración.** *Acepta:* tabla de mapeo de `02-contenido.md` cumplida punto por punto.
-- [ ] **2.10 Corte a producción.** Apuntar el hosting al build de `web/` y, recién cuando el sitio nuevo responde en el dominio,
-      mover `index.html`/`styles.css` a `legacy/`.
+- [x] **2.1 Hero.** *Acepta:* en 360 px se ve título, bajada y CTA sin scrollear; cursor titila y se detiene con reduced-motion.
+- [x] **2.2 Qué hago.** *Acepta:* 4 servicios con problema → qué armo → qué te ahorra; reportería, integración y alertas del sitio viejo absorbidos en «Dashboards y análisis»; cierre «¿Lo tuyo no está en la lista?».
+- [x] **2.3 Para quién.** *Acepta:* un ejemplo concreto por perfil (consultorios, comercios, empresas, gobierno); sin clientes inventados.
+- [x] **2.4 Cómo se arma el sistema** (pipeline). *Acepta:* legible en 360 px (se reacomoda en vertical).
+- [x] **2.5 Proyectos destacados.** *Acepta:* lee de la colección; con 1 solo caso se ve bien; `publicado: false` no sale.
+- [x] **2.6 Cómo trabajo** (los 4 pasos del método viejo, en criollo, con la inversión y el ahorro explícitos).
+- [x] **2.7 Hola, soy Juanma** (sobre mí; sin nombrar empresas). Sin foto: la presencia la dan la firma, el `</j>` y los stickers.
+- [x] **2.8 Contacto con links** (WhatsApp, mail, LinkedIn) + footer. El formulario llega en la Fase 3.
+- [x] **2.9 Chequeo de migración.** *Acepta:* tabla de mapeo de `02-contenido.md` cumplida punto por punto.
+- [ ] **2.10 Corte a producción.** En Cloudflare Pages (proyecto `data-juanmalmada`): directorio raíz `web`, build `npm run build`,
+      salida `dist`, Node 22. Probar en el preview de un PR; recién con el sitio nuevo en el dominio, mover `index.html`/`styles.css` a `legacy/`.
+      **Bloqueada hasta la 4.2** (primer caso real) o hasta sacar el «en preparación» de Proyectos: no se publica con `[[FALTA]]` a la vista.
       *Acepta:* en ningún momento la web publicada queda caída; `legacy/` se borra en un PR aparte cuando Juanma lo confirme.
 
 ## Fase 3 — Contacto con backend

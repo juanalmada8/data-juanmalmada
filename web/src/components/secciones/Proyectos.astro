@@ -1,0 +1,87 @@
+---
+import { getCollection } from "astro:content";
+import { Image } from "astro:assets";
+import Etiqueta from "../Etiqueta.astro";
+import Chip from "../Chip.astro";
+import Falta from "../Falta.astro";
+
+const proyectos = (await getCollection("proyectos", ({ data }) => data.publicado)).sort(
+  (a, b) => b.data.anio - a.data.anio,
+);
+const [principal, ...resto] = proyectos;
+---
+<section id="proyectos" class="seccion tema-crema" aria-labelledby="proyectos-titulo">
+  <div class="contenedor">
+    <header class="cabecera" data-aparece>
+      <Etiqueta numero="02">Proyectos</Etiqueta>
+      <h2 id="proyectos-titulo">Lo que estoy <em>armando</em>.</h2>
+    </header>
+
+    {principal ? (
+      <>
+        <a class="caso principal" href={`/proyectos/${principal.id}/`} data-aparece>
+          {principal.data.portada && (
+            <Image src={principal.data.portada} alt="" widths={[480, 960, 1440]} sizes="(min-width: 72rem) 72rem, 100vw" loading="lazy" />
+          )}
+          <div class="info">
+            <p class="mono rubro">{principal.data.rubro} · {principal.data.anio}</p>
+            <h3>{principal.data.titulo}</h3>
+            <p class="resultado">{principal.data.resultado}</p>
+            <ul class="chips">{principal.data.servicios.map((s) => <Chip as="li">{s}</Chip>)}</ul>
+          </div>
+        </a>
+        {resto.length > 0 && (
+          <ul class="resto">
+            {resto.map((p) => (
+              <li data-aparece>
+                <a class="caso" href={`/proyectos/${p.id}/`}>
+                  <p class="mono rubro">{p.data.rubro} · {p.data.anio}</p>
+                  <h3>{p.data.titulo}</h3>
+                  <p class="resultado">{p.data.resultado}</p>
+                </a>
+              </li>
+            ))}
+          </ul>
+        )}
+      </>
+    ) : (
+      <div class="caso principal en-camino" data-aparece>
+        <div class="info">
+          <p class="mono rubro">Salud · en preparación</p>
+          <h3>Turnos online para un consultorio odontológico</h3>
+          <p class="resultado">Los pacientes sacan turno solos, a cualquier hora.</p>
+          <p><Falta que="capturas y datos del caso (ver pendientes)" /></p>
+        </div>
+      </div>
+    )}
+  </div>
+</section>
+
+<style>
+  .cabecera { display: grid; gap: var(--space-4); margin-bottom: var(--space-12); }
+  .caso {
+    display: grid;
+    gap: var(--space-6);
+    padding: var(--space-6);
+    background: var(--blanco);
+    border: var(--border-soft);
+    border-radius: var(--radius-card);
+    text-decoration: none;
+    color: var(--pino);
+  }
+  a.caso:hover h3 { text-decoration: underline; text-underline-offset: var(--space-2); }
+  .caso :global(img) { border-radius: calc(var(--radius-card) - var(--space-2)); width: 100%; height: auto; }
+  .info { display: grid; gap: var(--space-3); align-content: center; }
+  .rubro { font-size: var(--fs-label); letter-spacing: .12em; text-transform: uppercase; color: var(--musgo); }
+  .principal h3 { font-size: var(--fs-h2); line-height: 1.05; }
+  .resultado { font-size: var(--fs-lead); }
+  .chips { list-style: none; padding: 0; display: flex; flex-wrap: wrap; gap: var(--space-2); --texto: var(--pino); --texto-2: var(--salvia); }
+  .resto { list-style: none; padding: 0; display: grid; gap: var(--space-6); margin-top: var(--space-6); }
+  .en-camino { border-style: dashed; }
+
+  @media (min-width: 52rem) {
+    .principal:has(:global(img)) { grid-template-columns: 1.4fr 1fr; padding: var(--space-8); }
+    .resto { grid-template-columns: repeat(2, 1fr); }
+    .principal { padding: var(--space-12); }
+  }
+</style>

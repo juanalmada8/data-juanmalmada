@@ -6,11 +6,14 @@ y sacala de esta lista.
 
 ## Decisiones abiertas
 
-1. **Origen del sitio actual.** El DNS está en Cloudflare, pero ¿el `index.html` de hoy lo sirve el hosting de DonWeb,
-   GitHub Pages u otro? Hace falta saberlo para el corte (2.10).
-2. **Dirección de correo.** Propuesta: `hola@juanmalmada.com`. ¿Va esa u otra?
-3. **Tiempos por etapa** de «Cómo trabajo» (ej. «una web simple: 2–3 semanas»). A definir.
-4. **Apps.** ¿Qué apps o herramientas en Python van primero? Cada una necesita su spec en `docs/specs/apps/`.
+1. **Dirección de correo.** Propuesta: `hola@juanmalmada.com`. Lo vemos más adelante (tarea 1.7).
+2. **Cuentas para el deploy.** Cloudflare Pages ya está conectado al repo: para el corte (2.10) alcanza con cambiar la config
+   en el dashboard. Para la API (Cloud Run) hace falta una cuenta de Google Cloud con facturación activada (tier gratis, pero pide tarjeta).
+
+## Para más adelante (no bloquean)
+
+- **Tiempos de entrega** («una web simple: 2–3 semanas»). Mientras no estén, «Cómo trabajo» no muestra tiempos.
+- **Demos vivas** (un turnero o un tablero de ejemplo que se pueda probar en la web). Ideas sueltas, sin apuro.
 
 ## Contenido (más adelante)
 
@@ -22,6 +25,6 @@ y sacala de esta lista.
 
 ## Resuelto (2026-10-10)
 
-Stack, hosting y mail (ver `03-arquitectura.md`) · 8 años · no se nombran empresas · perfiles con experiencia:
+Stack, hosting y mail (ver `03-arquitectura.md`) · el sitio actual lo sirve Cloudflare Pages desde la raíz de `main` · 8 años · no se nombran empresas · perfiles con experiencia:
 clínicas y RRHH · todo a presupuesto · canales: WhatsApp, Instagram, mail · respuesta en menos de 24 h hábiles ·
 sin foto · assets de marca completos.

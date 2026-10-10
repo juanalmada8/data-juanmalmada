@@ -1,0 +1,67 @@
+---
+import Etiqueta from "../Etiqueta.astro";
+
+// Los 4 pasos del método del sitio viejo, en criollo y con la inversión explícita. Sin tiempos hasta que Juanma los defina.
+const pasos = [
+  { titulo: "Me contás", texto: "Cómo trabajás hoy y qué te cuesta tiempo. Con una charla alcanza." },
+  { titulo: "Te propongo", texto: "Qué armar, cuánto sale y qué te ahorra." },
+  { titulo: "Lo construyo", texto: "Y lo vas viendo mientras avanza. Nada de desaparecer y volver con algo que no pediste." },
+  { titulo: "Te lo dejo andando", texto: "Documentado, y te explico cómo usarlo. Si algo no se entiende, se ajusta." },
+];
+---
+<section id="como-trabajo" class="seccion tema-pino" aria-labelledby="como-trabajo-titulo">
+  <div class="contenedor grilla">
+    <header class="cabecera" data-aparece>
+      <Etiqueta numero="03">Cómo trabajo</Etiqueta>
+      <h2 id="como-trabajo-titulo">Cuatro pasos, <em>sin sorpresas</em>.</h2>
+      <div class="placa tema-lima">
+        <p class="placa-tit">Lo que invertís hoy te ahorra tiempo y plata mañana.</p>
+        <p>Cada proyecto se presupuesta: antes de arrancar sabés cuánto sale.</p>
+      </div>
+    </header>
+
+    <ol class="pasos">
+      {pasos.map((p, i) => (
+        <li class="paso" data-aparece>
+          <span class="num mono">{String(i + 1).padStart(2, "0")}</span>
+          <div>
+            <h3>{p.titulo}</h3>
+            <p>{p.texto}</p>
+          </div>
+        </li>
+      ))}
+    </ol>
+  </div>
+</section>
+
+<style>
+  .grilla { display: grid; gap: var(--space-12); }
+  .cabecera { display: grid; gap: var(--space-6); align-content: start; }
+  .placa {
+    display: grid;
+    gap: var(--space-2);
+    padding: var(--space-6);
+    border-radius: var(--radius-card);
+    transform: rotate(-1deg);
+    max-width: 26rem;
+  }
+  .placa-tit { font-family: var(--font-serif); font-size: var(--fs-h3); line-height: 1.15; }
+
+  .pasos { list-style: none; padding: 0; display: grid; }
+  .paso {
+    display: grid;
+    grid-template-columns: 3rem 1fr;
+    gap: var(--space-4);
+    padding-block: var(--space-6);
+    border-top: 1px solid var(--musgo);
+  }
+  .paso:last-child { border-bottom: 1px solid var(--musgo); }
+  .num { color: var(--lima); font-size: var(--fs-label); font-weight: 500; padding-top: var(--space-2); }
+  .paso h3 { margin-bottom: var(--space-2); }
+  .paso p { color: var(--salvia); max-width: 34rem; }
+
+  @media (min-width: 60rem) {
+    .grilla { grid-template-columns: 1fr 1.2fr; gap: var(--space-16); }
+    .cabecera { position: sticky; top: var(--space-24); }
+  }
+</style>
