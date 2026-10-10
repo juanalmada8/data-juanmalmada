@@ -7,8 +7,8 @@ y sacala de esta lista.
 ## Decisiones abiertas
 
 1. **Dirección de correo.** Propuesta: `hola@juanmalmada.com`. Lo vemos más adelante (tarea 1.7).
-2. **Cuentas para el deploy (1.6).** Hace falta acceso a Cloudflare (Pages) y una cuenta de Google Cloud con facturación
-   activada (Cloud Run tiene tier gratis, pero pide tarjeta).
+2. **Cuentas para el deploy.** Cloudflare Pages ya está conectado al repo: para el corte (2.10) alcanza con cambiar la config
+   en el dashboard. Para la API (Cloud Run) hace falta una cuenta de Google Cloud con facturación activada (tier gratis, pero pide tarjeta).
 
 ## Para más adelante (no bloquean)
 
@@ -25,6 +25,6 @@ y sacala de esta lista.
 
 ## Resuelto (2026-10-10)
 
-Stack, hosting y mail (ver `03-arquitectura.md`) · el sitio actual lo sirve DonWeb detrás de Cloudflare (no hay GitHub Pages) · 8 años · no se nombran empresas · perfiles con experiencia:
+Stack, hosting y mail (ver `03-arquitectura.md`) · el sitio actual lo sirve Cloudflare Pages desde la raíz de `main` · 8 años · no se nombran empresas · perfiles con experiencia:
 clínicas y RRHH · todo a presupuesto · canales: WhatsApp, Instagram, mail · respuesta en menos de 24 h hábiles ·
 sin foto · assets de marca completos.

@@ -20,7 +20,7 @@ Una tarea por rama y por PR; tildá `[x]` al mergear.
       *Acepta:* teclado y lector de pantalla OK; header compacto con `</j>` en < 480 px.
 - [x] **1.5 Componentes de marca.** `Logo`, `Firma`, `Etiqueta`, `Chip`, `Boton`, `Sticker`, `PatronM`, `Pipeline`.
       *Acepta:* usan los SVG reales o marcadores `[[FALTA]]`; ninguno dibuja el logo a mano.
-- [ ] **1.6 Deploy de preview:** `web/` en Cloudflare Pages, `api/` en Cloud Run.
+- [ ] **1.6 Deploy de preview:** `web/` ya tiene preview por PR en Cloudflare Pages (falta apuntarlo a `web/`, ver 2.10); `api/` en Cloud Run.
 - [ ] **1.7 Correo con dominio:** Email Routing `hola@juanmalmada.com` → Gmail, dominio verificado en Resend, «Enviar como» en Gmail.
 
 ## Fase 2 — Home (migrando el contenido actual)
@@ -36,8 +36,8 @@ Seguir el mapeo de `02-contenido.md`: todo lo del sitio viejo tiene que tener su
 - [x] **2.7 Hola, soy Juanma** (sobre mí; sin nombrar empresas). Sin foto: la presencia la dan la firma, el `</j>` y los stickers.
 - [x] **2.8 Contacto con links** (WhatsApp, mail, LinkedIn) + footer. El formulario llega en la Fase 3.
 - [x] **2.9 Chequeo de migración.** *Acepta:* tabla de mapeo de `02-contenido.md` cumplida punto por punto.
-- [ ] **2.10 Corte a producción.** Apuntar el hosting al build de `web/` y, recién cuando el sitio nuevo responde en el dominio,
-      mover `index.html`/`styles.css` a `legacy/`.
+- [ ] **2.10 Corte a producción.** En Cloudflare Pages (proyecto `data-juanmalmada`): directorio raíz `web`, build `npm run build`,
+      salida `dist`, Node 22. Probar en el preview de un PR; recién con el sitio nuevo en el dominio, mover `index.html`/`styles.css` a `legacy/`.
       **Bloqueada hasta la 4.2** (primer caso real) o hasta sacar el «en preparación» de Proyectos: no se publica con `[[FALTA]]` a la vista.
       *Acepta:* en ningún momento la web publicada queda caída; `legacy/` se borra en un PR aparte cuando Juanma lo confirme.
 
