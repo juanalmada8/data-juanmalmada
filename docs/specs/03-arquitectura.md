@@ -105,6 +105,7 @@ Una línea por decisión no trivial (más reciente arriba).
 
 | Fecha | Decisión | Por qué |
 |---|---|---|
+| 2026-10-10 | Sin foto de Juanma en el sitio. Láminas del manual y plantillas de IG a `docs/marca/`, fuera de `web/public/`. | Decisión de Juanma; lo de `public/` se publica y eso era solo referencia. |
 | 2026-10-10 | El sitio viejo sigue en la raíz hasta el corte a producción (2.10); recién ahí va a `legacy/`. | Moverlo en la 1.1 rompía la web publicada. |
 | 2026-10-10 | Monorepo `web/` (Astro) + `api/` (Python/FastAPI). Pendiente de confirmar hosting. | Vienen formulario de contacto, apps web y Python. |
 | 2026-10-10 | Se migra casi todo el contenido del sitio actual, reescrito en la voz nueva. | Pedido de Juanma. |

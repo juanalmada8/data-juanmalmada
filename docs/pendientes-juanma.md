@@ -25,12 +25,19 @@ y tachá la pregunta.
 ## Contenido
 
 - [ ] Usuario de Instagram (en el manual figura como `@usuario`).
-- [ ] Foto tuya (horizontal y vertical, buena luz; si es con fondo verde o crema, mejor).
 - [ ] Casos reales: para cada uno, qué era antes, qué armaste, capturas, y si el cliente acepta aparecer con nombre.
   - [ ] Turnos online — consultorio odontológico.
   - [ ] Otros: [[FALTA]]
 - [ ] Frase propia para «detrás de escena» si querés cambiar la del manual.
 
-## Assets de marca (exportar desde Figma a `web/public/brand/`)
+## Assets de marca que faltan (exportar desde Figma a `web/public/brand/`)
 
-Ver lista exacta en `web/public/brand/README.md`.
+Detalle y estado en `web/public/brand/README.md`. Por prioridad:
+
+- [ ] `<jm>` en color para fondo claro (letras pino). Hoy solo está la versión para fondo oscuro.
+- [ ] `<jm▌>` con cursor, con el cursor en un `<g id="cursor">` aparte (hero y 404).
+- [ ] Favicon en SVG (`</j>` sobre círculo pino).
+- [ ] `<jm>` una tinta crema y pino en SVG (hoy solo PNG).
+- [ ] `</j>` en SVG para fondo claro (hoy la `j` es crema).
+- [ ] Firma crema y lima en SVG (hoy solo PNG; sirven, pero pesan más).
+- [ ] Tile del patrón de `m`.

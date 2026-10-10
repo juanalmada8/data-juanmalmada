@@ -6,8 +6,8 @@ Una tarea por rama y por PR; tildá `[x]` al mergear.
 ## Fase 0 — Preparación (Juanma)
 
 - [ ] Responder las preguntas de `docs/pendientes-juanma.md` (mínimo: stack, hosting/dominio, años, empresas, proveedor de mail).
-- [ ] Exportar desde Figma los SVG de `web/public/brand/` (lista en `web/public/brand/README.md`).
-- [ ] Foto propia para «Hola, soy Juanma».
+- [x] Exportar desde Figma los assets de marca a `web/public/brand/`.
+- [ ] Exportar los SVG que faltan (marcados ❌/⚠️ en `web/public/brand/README.md`).
 
 ## Fase 1 — Base técnica
 
@@ -32,7 +32,7 @@ Seguir el mapeo de `02-contenido.md`: todo lo del sitio viejo tiene que tener su
 - [ ] **2.4 Cómo se arma el sistema** (pipeline). *Acepta:* legible en 360 px (se reacomoda en vertical).
 - [ ] **2.5 Proyectos destacados.** *Acepta:* lee de la colección; con 1 solo caso se ve bien; `publicado: false` no sale.
 - [ ] **2.6 Cómo trabajo** (los 4 pasos del método viejo, en criollo, con la inversión y el ahorro explícitos).
-- [ ] **2.7 Hola, soy Juanma** (sobre mí + trayectoria según pendientes).
+- [ ] **2.7 Hola, soy Juanma** (sobre mí + trayectoria según pendientes). Sin foto: la presencia la dan la firma, el `</j>` y los stickers.
 - [ ] **2.8 Contacto con links** (WhatsApp, mail, LinkedIn) + footer. El formulario llega en la Fase 3.
 - [ ] **2.9 Chequeo de migración.** *Acepta:* tabla de mapeo de `02-contenido.md` cumplida punto por punto.
 - [ ] **2.10 Corte a producción.** Apuntar el hosting al build de `web/` y, recién cuando el sitio nuevo responde en el dominio,

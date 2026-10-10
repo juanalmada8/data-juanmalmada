@@ -134,7 +134,7 @@ Ritmo de fondo alternado (oscuro · claro · color).
 - Tiempos reales solo cuando Juanma los confirme.
 
 ### 7. Hola, soy Juanma — fondo crema
-- Foto real + firma.
+- **Sin foto** (decisión de Juanma). La presencia personal la dan la firma, el `</j>` y algún sticker.
 - Texto base: «Hace 8 años que trabajo con datos y armo webs y apps a medida. Estudié Sistemas en la UNLP.
   Trabajo remoto desde General Belgrano para quien lo necesite, esté donde esté.»
 - Trayectoria (empresas), en una línea sobria, si Juanma la confirma.

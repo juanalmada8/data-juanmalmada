@@ -27,6 +27,7 @@ por alguien detallista. **No tiene que parecer hecho por IA.**
 | `docs/specs/03-arquitectura.md` | Cualquier cambio de estructura, dependencias o deploy. |
 | `docs/specs/04-calidad.md` | Antes de dar algo por terminado. Checklist anti-IA y definición de hecho. |
 | `docs/ROADMAP.md` | Para saber qué tarea sigue. |
+| `docs/marca/` | Láminas del manual de marca y plantillas de Instagram. Referencia visual; no se publican. |
 | `docs/pendientes-juanma.md` | Dudas abiertas y assets que faltan. **No las resuelvas inventando.** |
 
 ## Reglas firmes (estas sí, siempre)
@@ -35,7 +36,7 @@ por alguien detallista. **No tiene que parecer hecho por IA.**
    ni años de experiencia distintos a los de la spec. Si falta un dato, dejá un marcador visible
    `[[FALTA: descripción]]` y anotalo en `docs/pendientes-juanma.md`.
 2. **No recrees el logo ni la firma a mano** (ni en SVG dibujado por vos, ni en CSS, ni con una fuente parecida).
-   Son trazos dibujados. Usá los SVG de `web/public/brand/`. Si no están, marcador + pendiente.
+   Son trazos dibujados. Usá los archivos de `web/public/brand/`. Si no están, marcador + pendiente.
 3. **Solo colores, fuentes y espaciados de los tokens** (`docs/specs/01-marca.md`). Nada de hex sueltos.
 4. **Español rioplatense con voseo** en todo el contenido visible. `lang="es-AR"`.
 5. **Dependencias nuevas, con una línea de justificación** en el commit (qué resuelve).
