@@ -1,27 +1,37 @@
 # Assets de marca
 
-Exportados desde el manual de marca en Figma. **No se editan a mano ni se redibujan en código.**
-Todo lo que está en `web/public/` se publica: acá van solo los archivos que usa el sitio.
-Las láminas del manual y las plantillas de Instagram están en `docs/marca/` (referencia, no se publican).
+Salen de los **vectores reales del PDF exportado del manual en Figma** con `scripts/brand/extraer.py`.
+No hay nada redibujado: para las variantes de color solo se cambiaron los rellenos, y siempre dentro de la paleta.
+**No se editan a mano.** Si cambia el manual, se vuelve a correr el script.
 
-Al exportar: SVG con «Outline text», sin fondo, `viewBox` ajustado al dibujo. Se mantiene la estructura de carpetas actual.
+Todo lo que está en `web/public/` se publica. Las láminas, las plantillas de Instagram y los exports originales
+de Figma (PNG y SVG con los nombres de Figma) están en `docs/marca/` como referencia.
 
-| Pieza | Archivo | Estado |
-|---|---|---|
-| `<jm>` color, fondo oscuro (letras crema) | `1_Logos/logo_color.svg` | ✅ |
-| `<jm>` color, fondo claro (letras pino) | — | ❌ falta SVG |
-| `<jm>` una tinta crema | `1_Logos/logo_una_tinta_crema_transparente.png` | ⚠️ falta SVG |
-| `<jm>` una tinta verde | `1_Logos/logo_una_tinta_verde_transparente.png` | ⚠️ falta SVG |
-| `<jm>` en placa (redes, OG) | `1_Logos/logo_color_fondo_verde_{1080,horizontal}.png`, `logo_una_tinta_verde_fondo_crema_1080.png` | ✅ |
-| `<jm▌>` con cursor en `<g id="cursor">` | — | ❌ falta SVG |
-| `</j>` color, sin círculo (fondo oscuro) | `2_Icono/icono_color.svg` | ✅ |
-| `</j>` para fondo claro | `2_Icono/icono_una_tinta_verde_transparente.png` | ⚠️ falta SVG |
-| `</j>` una tinta crema | `2_Icono/icono_una_tinta_crema_transparente.png` | ⚠️ falta SVG |
-| Favicon / apple-touch-icon | `2_Icono/icono_favicon_512.png` (se escala a 180 y 32) | ⚠️ falta `favicon.svg` |
-| Avatar Instagram | `2_Icono/icono_perfil_instagram_1080.png` | ✅ |
-| Firma pino | `3_Firma/firma_verde.svg` | ✅ |
-| Firma crema / lima | `3_Firma/firma_{crema,lima}_transparente.png` | ⚠️ falta SVG |
-| Patrón de `m` (tile) | — | ❌ falta |
-| OG por defecto 1200×630 | Se recorta de `logo_color_fondo_verde_horizontal.png` (sin redibujar) | ⚠️ por generar |
+| Archivo | Qué es |
+|---|---|
+| `logo-jm-crema.svg` | `<jm>` principal para fondo oscuro (letras crema, `< >` musgo/salvia, punto lima) |
+| `logo-jm-pino.svg` | `<jm>` principal para fondo claro (letras pino) |
+| `logo-jm-1tinta-crema.svg` / `logo-jm-1tinta-pino.svg` | `<jm>` una tinta, sin lima |
+| `logo-jm-cursor.svg` | `<jm▌>` para fondo oscuro, con el cursor en `<g id="cursor">` para animarlo |
+| `icono-j.svg` | `</j>` sobre círculo pino |
+| `icono-j-sin-fondo.svg` | `</j>` sin círculo, para fondo oscuro (j crema) |
+| `icono-j-pino.svg` | `</j>` sin círculo, para fondo claro (j pino, chevrones musgo, punto lima) |
+| `icono-j-1tinta-crema.svg` | `</j>` una tinta crema |
+| `favicon.svg` | Igual a `icono-j.svg`. Va también a `web/public/favicon.svg` (tarea 1.4) |
+| `apple-touch-icon.png` | 180×180, `</j>` sobre pino |
+| `firma-crema.svg` / `firma-pino.svg` / `firma-lima.svg` | La firma en cada color |
+| `m.svg` | La `m` sola, en `currentColor` |
+| `patron-m.svg` | Tile de 140×236 con el espaciado de la portada (m musgo al 45 %). Las `m` lima se ponen aparte |
+| `og-default.png` | 1200×630, la portada del manual recortada |
 
-Si un archivo falta, el componente muestra `[[FALTA: nombre]]` en vez de inventar.
+Notas:
+- El cursor de `logo-jm-cursor.svg` es un agregado: no está en el Figma. Va entre la `m` y el `>`.
+- `patron-m.svg` muestra una costura finita entre repeticiones cuando se usa como `background-image`.
+  Revisarlo al armar `PatronM` (tarea 1.5).
+- Si un archivo falta, el componente muestra `[[FALTA: nombre-del-archivo]]` en vez de inventar.
+
+Para regenerar (requiere el PDF del manual, que no está en el repo):
+
+```bash
+uv run --with pymupdf scripts/brand/extraer.py <manual.pdf> web/public/brand
+```

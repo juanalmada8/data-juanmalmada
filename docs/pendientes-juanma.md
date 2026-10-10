@@ -2,42 +2,26 @@
 
 Cosas que **solo Juanma puede decidir o proveer**. Los agentes no las resuelven inventando: dejan un marcador
 `[[FALTA: …]]` en el sitio y suman la pregunta acá. Al responder, mové la respuesta a la spec que corresponda
-y tachá la pregunta.
+y sacala de esta lista.
 
-## Decisiones
+## Decisiones abiertas
 
-1. **Stack.** ¿Confirmás monorepo `web/` (Astro + CSS propio) + `api/` (Python, FastAPI, uv)? Ver `03-arquitectura.md`.
-2. **Hosting y dominio.** ¿Dónde está publicado hoy el sitio? ¿Dónde querés correr la API (Cloud Run, Fly, Render, Railway…)?
-   ¿Tenés o vas a comprar dominio (`.com`, `.com.ar`)?
-2b. **Mail del formulario.** ¿Qué proveedor (Resend, Postmark, SES…) y a qué casilla llegan los mensajes?
-2c. **Apps.** ¿Qué apps o herramientas en Python tenés en mente primero? Cada una necesita su spec en `docs/specs/apps/`.
-3. **Años de experiencia.** El manual dice 8; el sitio actual, «más de 7». ¿Cuál va?
-4. **Empresas.** ¿Podés nombrar Mercado Libre, Cencosud, Ualá y Naranja X? ¿Cómo lo querés decir
-   (ej.: «Trabajé en equipos de datos de…», «como consultor para…»)? ¿Logos sí o no? (Recomendado: texto, sin logos.)
-5. **Experiencia por perfil.** ¿Tenés trabajos o casos con clínicas, comercios, empresas medianas o gobierno que se puedan
-   contar (aunque sea sin nombre)? Le dan peso a la sección «Para quién».
-6. **Precios.** ¿Mostrás precios o paquetes («desde $…»), o todo es a presupuesto? Con públicos tan distintos,
-   lo más probable es «a presupuesto», pero decidilo vos.
-7. **Canal principal.** ¿WhatsApp, MD de Instagram o mail? (El manual dice «escribime por MD».)
-8. **Tiempo de respuesta.** El sitio viejo promete «menos de 24 h hábiles». ¿Lo sostenés?
-9. **Cómo trabajo.** ¿Tiempos típicos de cada etapa (ej. «una web simple: 2–3 semanas»)?
+1. **Origen del sitio actual.** El DNS está en Cloudflare, pero ¿el `index.html` de hoy lo sirve el hosting de DonWeb,
+   GitHub Pages u otro? Hace falta saberlo para el corte (2.10).
+2. **Dirección de correo.** Propuesta: `hola@juanmalmada.com`. ¿Va esa u otra?
+3. **Tiempos por etapa** de «Cómo trabajo» (ej. «una web simple: 2–3 semanas»). A definir.
+4. **Apps.** ¿Qué apps o herramientas en Python van primero? Cada una necesita su spec en `docs/specs/apps/`.
 
-## Contenido
+## Contenido (más adelante)
 
-- [ ] Usuario de Instagram (en el manual figura como `@usuario`).
+- [ ] Usuario de Instagram (todavía no existe; hasta entonces, el contacto es WhatsApp y mail).
 - [ ] Casos reales: para cada uno, qué era antes, qué armaste, capturas, y si el cliente acepta aparecer con nombre.
   - [ ] Turnos online — consultorio odontológico.
-  - [ ] Otros: [[FALTA]]
+  - [ ] Salud (clínicas) y empresas de RRHH: hay experiencia real, falta elegir qué contar.
 - [ ] Frase propia para «detrás de escena» si querés cambiar la del manual.
 
-## Assets de marca que faltan (exportar desde Figma a `web/public/brand/`)
+## Resuelto (2026-10-10)
 
-Detalle y estado en `web/public/brand/README.md`. Por prioridad:
-
-- [ ] `<jm>` en color para fondo claro (letras pino). Hoy solo está la versión para fondo oscuro.
-- [ ] `<jm▌>` con cursor, con el cursor en un `<g id="cursor">` aparte (hero y 404).
-- [ ] Favicon en SVG (`</j>` sobre círculo pino).
-- [ ] `<jm>` una tinta crema y pino en SVG (hoy solo PNG).
-- [ ] `</j>` en SVG para fondo claro (hoy la `j` es crema).
-- [ ] Firma crema y lima en SVG (hoy solo PNG; sirven, pero pesan más).
-- [ ] Tile del patrón de `m`.
+Stack, hosting y mail (ver `03-arquitectura.md`) · 8 años · no se nombran empresas · perfiles con experiencia:
+clínicas y RRHH · todo a presupuesto · canales: WhatsApp, Instagram, mail · respuesta en menos de 24 h hábiles ·
+sin foto · assets de marca completos.
