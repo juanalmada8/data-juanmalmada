@@ -59,37 +59,23 @@ texto pino («detrás de escena») está permitida, como mucho una por pantalla.
 
 ## Tipografía
 
-| Rol | Familia | Pesos | Uso |
-|---|---|---|---|
-| Títulos | **DM Serif Display** | 400 + itálica | Títulos, frases, destacados. La itálica subraya **una** idea por título. |
-| Textos | **Manrope** | 300 / 400 / 500 / 700 | Párrafos, UI, botones, descripciones. |
-| Detalles | **JetBrains Mono** | 400 / 500 | Etiquetas, numeraciones (`01 — LOGOTIPO`), datos, guiños de código. **Dosis chicas.** |
+> **Cambio 2026-10-10 (decisión de Juanma):** se dejan las tipografías del manual (DM Serif Display, Manrope,
+> JetBrains Mono). Quedan los colores, el logo y la firma. La web es un editor de código (ver `02-contenido.md`).
 
-Self-hosted en `web/public/fonts/` (woff2, `font-display: swap`, subset latin). Nada de Google Fonts en runtime.
+| Rol | Familia | Uso |
+|---|---|---|
+| Interfaz y títulos | **Martian Mono** (variable: peso 100–800, ancho 75–112.5 %) | Títulos (bold, ancho 112.5 %), explorador, pestañas, terminal, código, botones. |
+| Lectura | **Atkinson Hyperlegible Next** (variable + itálica) | Párrafos y explicaciones «en criollo». Es la que lee el cliente no técnico. |
 
-```css
-:root {
-  --font-serif: "DM Serif Display", Georgia, serif;
-  --font-sans:  "Manrope", system-ui, sans-serif;
-  --font-mono:  "JetBrains Mono", ui-monospace, monospace;
-
-  --fs-h1:    clamp(2.75rem, 1.6rem + 5vw, 4.5rem);   /* 44 → 72 px, lh 1.0 */
-  --fs-h2:    clamp(2rem, 1.4rem + 2.6vw, 3.25rem);   /* lh 1.05 */
-  --fs-h3:    clamp(1.375rem, 1.2rem + .8vw, 1.75rem);/* serif, lh 1.15 */
-  --fs-body:  clamp(1rem, .95rem + .25vw, 1.125rem);  /* 16 → 18 px, lh 1.5 */
-  --fs-small: .875rem;
-  --fs-label: .8125rem;  /* mono, uppercase, letter-spacing .12em */
-  --fs-lead:  clamp(1.125rem, 1rem + .5vw, 1.375rem); /* bajadas */
-}
-```
+Self-hosted en `web/public/fonts/` (woff2 latin, OFL). Tamaños en `tokens.css`: `--fs-ui` (13 px, interfaz),
+`--fs-code`, `--fs-body`, `--fs-lead`, `--fs-h2`, `--fs-h1`.
 
 Detalles tipográficos que **sí** importan:
-- Títulos en *sentence case* (en castellano no se capitaliza cada palabra).
+- Títulos en *sentence case*. El acento de un título va en lima (`.acento`), una idea por título.
 - `text-wrap: balance` en títulos, `text-wrap: pretty` en párrafos.
 - Comillas latinas «así». Signos de apertura ¿¡ siempre. Puntos suspensivos con `…`.
-- `&nbsp;` entre número y unidad (`8&nbsp;años`, `24/7`), y para no dejar viudas en títulos cortos.
-- Números en datos con `font-variant-numeric: tabular-nums`.
-- Las etiquetas mono siguen el patrón del manual: `01 — PROYECTOS`, `// tip de la semana`, `hola_mundo()`.
+- `&nbsp;` entre número y unidad (`8&nbsp;años`, `24&nbsp;h`).
+- Etiquetas como comentarios o encabezados de markdown: `# contacto`, `// servicio`, `-- …`.
 
 ## Espaciado, forma y profundidad
 
@@ -112,9 +98,11 @@ Detalles tipográficos que **sí** importan:
 - **Plano.** Bloques de color sólidos, bordes de 1 px salvia sobre crema/blanco. Sombras: casi nunca; si hace falta
   separar, que sea una sombra dura y corta, no difusa.
 - Chips/etiquetas: pill con borde de 1 px, texto mono (como los de la portada del manual).
-- Botón principal: fondo lima, texto pino, Manrope 700, pill. Secundario: borde crema o pino, sin relleno.
+- Botón principal: fondo lima, texto pino, Martian Mono 600, esquinas `--radius-box`. Secundario: borde, sin relleno.
 
 ## Recursos gráficos
+
+> Con el rediseño tipo editor, patrón de `m`, stickers y placas no se usan en la home (se pueden volver a usar en redes u OG).
 
 - **Patrón de `m`**: repetición de la `m` en tono sobre tono (pino sobre pino más claro, o salvia sobre crema) con
   2–3 `m` sueltas en lima. Para fondos de bandas y separadores. Tile en `web/public/brand/patron-m.svg`.

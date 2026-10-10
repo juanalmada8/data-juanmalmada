@@ -87,74 +87,38 @@ Excepción: **«de punta a punta»** y **«todo el sistema»** son frases de la 
 ## Mapa del sitio (inicial)
 
 ```
-/                    Home (una página larga, con anclas)
+/                    Home: el editor (cada archivo es un #ancla: /#turnos, /#contacto…)
 /proyectos/<slug>    Un caso por proyecto real
 /gracias             Confirmación del formulario (funciona sin JS)
 /404
 /apps/<nombre>       Más adelante
 ```
 
-## Home, sección por sección
+## Home: la web es un editor de código
 
-Ritmo de fondo alternado (oscuro · claro · color).
+> **Cambio 2026-10-10 (decisión de Juanma: «todo muy AI, dale un giro 180°»).** La home ya no es una landing con
+> secciones: es un editor (explorador de archivos, pestañas, terminal, barra de estado). El contenido es el mismo.
 
-### 1. Hero — fondo pino
-- Etiqueta mono: `hola_mundo()`
-- Título: «Un solo proveedor, *todo el sistema*.» (itálica en lima)
-- Bajada (dirección): la web, los turnos, los datos y la nube, armados por una persona, para que trabajes menos a mano
-  y sepas dónde está la plata. Ej.: «Webs, apps y datos que trabajan por vos. Lo que hoy hacés a mano, que lo haga el sistema.»
-- CTA principal (lima): «Escribime» → WhatsApp. Secundario: «Ver proyectos» → `#proyectos`.
-- Chips mono: `web y apps` `turnos y gestión` `datos` `nube`.
-- Logo `<jm▌>` grande con el cursor titilando.
+Cada sección es un «archivo» (`web/src/data/archivos.ts`, en orden de lectura):
 
-### 2. Qué hago — fondo crema
-- Etiqueta: `01 — QUÉ HAGO`. Título: «¿Qué hago?»
-- Los 4 servicios. Cada uno con: **el problema** (en palabras del cliente), **qué armo** y **qué te ahorra**.
-  - *Webs y apps a medida* — tu negocio se ve y se usa bien desde el celular, sin depender de nadie para cambiar un precio.
-  - *Turnos y sistemas de gestión* — menos llamadas y menos ausencias; la agenda, los pedidos o los trámites en un solo lugar.
-  - *Dashboards y análisis de datos* — los números que importan, actualizados solos. Absorbe del sitio viejo: reportes
-    automáticos, integración de fuentes y alertas cuando algo se desvía.
-  - *Nube, infraestructura y arquitectura* — que todo ande, esté respaldado y no se caiga cuando más lo necesitás.
-- Cierre del bloque: **«¿Lo tuyo no está en la lista? Contame igual.»** (no se cierra a nada).
-- Composición con jerarquía, no 4 tarjetas clonadas (ver `04-calidad.md`).
+| Archivo | Contenido |
+|---|---|
+| `hola.md` | «Un solo proveedor, *todo el sistema*.», bajada, WhatsApp, `<jm▌>`, cómo se usa la web. |
+| `servicios/webs-y-apps.tsx`, `turnos.ts`, `tableros.sql`, `nube.yml` | Cada servicio: el problema como comentario de código (palabras del cliente), un snippet corto como guiño, y **en criollo** «qué armo» / «qué te ahorra». |
+| `todo-conectado.md` | Por qué conviene un solo proveedor + pipeline. |
+| `para-quien.md` | 5 perfiles; «✓ ya trabajé en esto» solo en clínicas y RRHH. |
+| `como-trabajo.md` | Los 4 pasos del método viejo + nota de inversión y presupuesto. |
+| `casos/turnos-consultorio.md` | Borrador hasta tener datos reales (`[[FALTA]]`). |
+| `sobre-mi.md` | Texto base, firma, rasgos, fuera del código. |
+| `contacto.sh` | WhatsApp (principal), mail, LinkedIn; respuesta en < 24 h hábiles. |
 
-### 3. Para quién — fondo salvia
-- Los perfiles de la tabla de arriba (consultorios y clínicas, comercios y estudios, empresas, gobierno), cada uno con
-  su ejemplo de una línea. Muestra que va de chico a grande sin cambiar de proveedor.
-- Nada de logos de clientes ni nombres que no estén confirmados.
-
-### 4. Cómo se arma el sistema — fondo pino
-- **Patrón pipeline**: `tus datos y tareas → se ordenan → se conectan → web / dashboard / alertas → tu negocio`.
-- Mensaje: todo conectado, por eso conviene un solo proveedor; menos intermediarios, menos plata en coordinar. Una o dos frases.
-
-### 5. Proyectos — fondo crema
-- Etiqueta: `02 — PROYECTOS`
-- Tarjetas a casos reales (`web/src/content/proyectos`): captura real, título serif, **una línea de qué cambió**.
-- Primer caso esperado: turnos online para un consultorio odontológico («Los pacientes sacan turno solos, 24/7»).
-- Con un solo caso, uno grande. No se inventa un segundo.
-
-### 6. Cómo trabajo — fondo lima (placa) o pino
-- Los 4 pasos del método viejo, en criollo y con la inversión explícita:
-  «Me contás cómo trabajás y qué te cuesta tiempo» → «Te propongo qué armar, cuánto sale y qué te ahorra» →
-  «Lo construyo y lo vas viendo» → «Te lo dejo andando, documentado y te explico».
-- Tiempos reales solo cuando Juanma los confirme.
-
-### 7. Hola, soy Juanma — fondo crema
-- **Sin foto** (decisión de Juanma). La presencia personal la dan la firma, el `</j>` y algún sticker.
-- Texto base: «Hace 8 años que trabajo con datos y armo webs y apps a medida. Estudié Sistemas en la UNLP.
-  Trabajo remoto desde General Belgrano para quien lo necesite, esté donde esté.»
-- Rasgos (Detallista, Hiperactivo, Extrovertido) y «Fuera del código» (hockey, cocina, rock, viajes).
-
-### 8. Contacto — fondo pino
-- Título: «¿Tenés una idea? *Armemos el sistema*.»
-- **Formulario corto** (nombre, cómo te contacto, qué necesitás, mensaje) contra `POST /contacto`.
-  En «qué necesitás», opciones de los 4 servicios + «Otra cosa». Estados en voz de marca, nada de «Submit».
-- Al lado, atajos directos en orden: WhatsApp, Instagram (cuando exista el usuario), mail, LinkedIn.
-- «Te respondo en menos de 24&nbsp;h hábiles.» Cada proyecto se presupuesta: no hay precios publicados.
-- Firma de cierre.
-
-### Footer
-`</j>` o `<jm>` chico · «Un solo proveedor, todo el sistema.» · General Belgrano · 100% remoto · © año.
+Reglas de UX:
+- **Para el no técnico:** el código es un guiño; todo lo importante está en castellano llano al lado.
+- Cada archivo termina con «← anterior · siguiente →» para leer la web de corrido.
+- **Terminal:** `ayuda`, `ls`, `abrir <archivo>`, `whatsapp`, `mail`, `linkedin`, `limpiar` (+ algún chiste: `sudo`, `rock`).
+- **Barra de estado:** «● disponible · respondo en menos de 24 h hábiles · General Belgrano · 100% remoto».
+- **Celular:** explorador como cajón («☰ archivos»), terminal plegada, pestañas con scroll.
+- **Sin JS:** todos los archivos apilados y el explorador como índice de anclas. Se lee entero.
 
 ## Migración del contenido actual
 

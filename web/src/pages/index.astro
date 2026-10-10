@@ -1,21 +1,16 @@
 ---
 import Base from "../layouts/Base.astro";
-import Hero from "../components/secciones/Hero.astro";
-import QueHago from "../components/secciones/QueHago.astro";
-import ParaQuien from "../components/secciones/ParaQuien.astro";
-import ComoSeArma from "../components/secciones/ComoSeArma.astro";
-import Proyectos from "../components/secciones/Proyectos.astro";
-import ComoTrabajo from "../components/secciones/ComoTrabajo.astro";
-import SobreMi from "../components/secciones/SobreMi.astro";
-import Contacto from "../components/secciones/Contacto.astro";
+import Editor from "../components/ide/Editor.astro";
+import Panel from "../components/ide/Panel.astro";
+import Hola from "../components/archivos/Hola.astro";
+import Servicios from "../components/archivos/Servicios.astro";
+import Resto from "../components/archivos/Resto.astro";
+import { archivos } from "../data/archivos";
 ---
 <Base>
-  <Hero />
-  <QueHago />
-  <ParaQuien />
-  <ComoSeArma />
-  <Proyectos />
-  <ComoTrabajo />
-  <SobreMi />
-  <Contacto />
+  <Editor>
+    <Panel archivo={archivos[0]}><Hola /></Panel>
+    <Servicios />
+    <Resto />
+  </Editor>
 </Base>

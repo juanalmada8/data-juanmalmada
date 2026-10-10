@@ -1,0 +1,54 @@
+---
+import Logo from "../Logo.astro";
+import { contacto } from "../../data/sitio";
+---
+<div class="hola">
+  <div class="texto-hola">
+    <p class="etiqueta"># hola_mundo</p>
+    <h1 id="hola-titulo">Un solo proveedor, <span class="acento">todo el&nbsp;sistema.</span></h1>
+    <p class="lead">Webs, apps y datos que trabajan por vos. Lo que hoy hacés a mano, que lo haga el sistema.</p>
+    <div class="acciones">
+      <a class="boton" href={contacto.whatsapp} target="_blank" rel="noopener noreferrer">Escribime por WhatsApp</a>
+      <a class="boton sec" href="#turnos" data-abrir="turnos">Ver qué armo →</a>
+    </div>
+  </div>
+  <Logo variante="cursor" ancho="100%" class="logo-hola" decorativo />
+</div>
+
+<div class="guia">
+  <p class="etiqueta">## cómo se usa esta web</p>
+  <ul class="pasos-guia">
+    <li><span class="mono acento">01</span> Abrí los archivos de <span class="solo-ancho">la izquierda</span><span class="solo-angosto">«archivos», arriba</span>. Cada uno cuenta una parte.</li>
+    <li><span class="mono acento">02</span> O escribí <code>ayuda</code> en la terminal de abajo.</li>
+    <li><span class="mono acento">03</span> Si no sos de código, tranqui: todo está explicado en criollo.</li>
+  </ul>
+</div>
+
+<style>
+  .hola {
+    display: grid;
+    gap: var(--space-8);
+    align-items: center;
+  }
+  .texto-hola { display: grid; gap: var(--space-6); justify-items: start; }
+  .hola :global(.logo-hola) { width: min(60%, 16rem); }
+  .guia {
+    display: grid;
+    gap: var(--space-3);
+    margin-top: var(--space-8);
+    padding-top: var(--space-6);
+    border-top: 1px solid var(--ide-borde);
+  }
+  .pasos-guia { list-style: none; padding: 0; display: grid; gap: var(--space-2); color: var(--ide-texto-2); }
+  .pasos-guia .mono { margin-right: var(--space-2); }
+  .pasos-guia code { color: var(--crema); }
+  .solo-angosto { display: none; }
+  @media (max-width: 52rem) {
+    .solo-ancho { display: none; }
+    .solo-angosto { display: inline; }
+  }
+  @media (min-width: 70rem) {
+    .hola { grid-template-columns: 1.5fr 1fr; }
+    .hola :global(.logo-hola) { width: 100%; }
+  }
+</style>

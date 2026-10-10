@@ -25,6 +25,8 @@ Una tarea por rama y por PR; tildá `[x]` al mergear.
 
 ## Fase 2 — Home (migrando el contenido actual)
 
+> Rehecha el 2026-10-10 como editor de código (ver `02-contenido.md`). Los ítems tildados siguen valiendo con la estructura nueva.
+
 Seguir el mapeo de `02-contenido.md`: todo lo del sitio viejo tiene que tener su lugar o una razón anotada para no estar.
 
 - [x] **2.1 Hero.** *Acepta:* en 360 px se ve título, bajada y CTA sin scrollear; cursor titila y se detiene con reduced-motion.

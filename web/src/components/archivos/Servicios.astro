@@ -1,0 +1,65 @@
+---
+// Los 4 servicios. El problema va en palabras del cliente; el código es un guiño, lo que importa está en «criollo».
+import Panel from "../ide/Panel.astro";
+import Servicio from "./Servicio.astro";
+import { archivos } from "../../data/archivos";
+
+const a = (id: string) => archivos.find((x) => x.id === id)!;
+
+const servicios = [
+  {
+    id: "webs",
+    titulo: "Webs y apps a medida",
+    problema: "// «Mi web no la actualiza nadie y desde el celular ni se ve.»",
+    lang: "tsx",
+    codigo: `// el precio lo cambiás vos, sin llamar a nadie
+export function Producto() {
+  return <Precio editable desde="tu celular" />;
+}`,
+    armo: "Una web o una app rápida, que se usa bien desde el celular y que podés cambiar vos.",
+    ahorra: "Depender de alguien para cambiar un precio o un horario.",
+  },
+  {
+    id: "turnos",
+    titulo: "Turnos y sistemas de gestión",
+    problema: "// «Me paso la mañana atendiendo el teléfono para dar turnos.»",
+    lang: "ts",
+    codigo: `// mientras vos atendés, el sistema hace esto
+const turno = await reservar(paciente, dia, hora);
+await recordar(turno, "un día antes");
+agenda.guardar(turno); // sin llamadas ni papel`,
+    armo: "Turnos online con recordatorio, o un sistema que ordena tus pedidos o tus trámites en un solo lugar.",
+    ahorra: "Las llamadas para dar turnos y los pacientes que se olvidan de venir.",
+  },
+  {
+    id: "tableros",
+    titulo: "Dashboards y análisis de datos",
+    problema: "-- «Todos los lunes pierdo la mañana armando el reporte a mano.»",
+    lang: "sql",
+    codigo: `-- el reporte del lunes, armado solo
+SELECT semana,
+       SUM(ventas) AS total
+FROM   tu_negocio
+GROUP  BY semana;`,
+    armo: "Junto lo que tenés repartido entre planillas y sistemas en un tablero que se actualiza solo, con alertas cuando algo se desvía.",
+    ahorra: "Las horas de copiar y pegar, y enterarte tarde de los problemas.",
+  },
+  {
+    id: "nube",
+    titulo: "Nube, infraestructura y arquitectura",
+    problema: "# «Si se cae el servidor, no sé ni a quién llamar.»",
+    lang: "yml",
+    codigo: `servicio: tu-sistema
+respaldo: todos los días
+avisos: si algo falla, me entero antes que vos
+costo: pagás lo que usás`,
+    armo: "Dejo todo andando en la nube, con respaldos y avisos si algo falla.",
+    ahorra: "Que se caiga todo justo cuando más lo necesitás.",
+  },
+];
+---
+{servicios.map((s) => (
+  <Panel archivo={a(s.id)}>
+    <Servicio {...s} archivo={a(s.id).ruta} />
+  </Panel>
+))}

@@ -1,0 +1,28 @@
+---
+import Codigo from "../ide/Codigo.astro";
+interface Props {
+  id: string;
+  titulo: string;
+  problema: string;
+  codigo: string;
+  lang: string;
+  archivo: string;
+  armo: string;
+  ahorra: string;
+}
+const p = Astro.props;
+---
+<p class="etiqueta">// servicio</p>
+<h2 id={`${p.id}-titulo`}>{p.titulo}</h2>
+<p class="cita">{p.problema}</p>
+<Codigo codigo={p.codigo} lang={p.lang} etiqueta={p.archivo} />
+<dl class="criollo">
+  <div>
+    <dt>qué armo</dt>
+    <dd>{p.armo}</dd>
+  </div>
+  <div>
+    <dt>qué te ahorra</dt>
+    <dd>{p.ahorra}</dd>
+  </div>
+</dl>

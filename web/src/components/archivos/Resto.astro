@@ -1,0 +1,187 @@
+---
+// Los archivos que no son servicios, en orden de lectura después de los servicios.
+import Panel from "../ide/Panel.astro";
+import Firma from "../Firma.astro";
+import Falta from "../Falta.astro";
+import { archivos } from "../../data/archivos";
+import { contacto, sitio } from "../../data/sitio";
+
+const a = (id: string) => archivos.find((x) => x.id === id)!;
+
+const pipeline = ["tus datos y tareas", "se ordenan", "se conectan", "web, tablero y alertas", "tu negocio"];
+
+const perfiles = [
+  { nombre: "Consultorios y clínicas", ejemplo: "Tus pacientes sacan turno solos y les llega el recordatorio.", experiencia: true },
+  { nombre: "Comercios, estudios y emprendimientos", ejemplo: "Ventas, stock y caja en un tablero que mirás desde el celular." },
+  { nombre: "Empresas medianas y grandes", ejemplo: "El reporte del lunes se arma solo y llega a las 8." },
+  { nombre: "Empresas de RRHH", ejemplo: "Las novedades del mes se cargan en un lugar y el reporte sale solo.", experiencia: true },
+  { nombre: "Gobierno y organismos", ejemplo: "Un sistema que ordena los pedidos y muestra en qué estado está cada uno." },
+];
+
+const pasos = [
+  { titulo: "Me contás", texto: "Cómo trabajás hoy y qué te cuesta tiempo. Con una charla alcanza." },
+  { titulo: "Te propongo", texto: "Qué armar, cuánto sale y qué te ahorra." },
+  { titulo: "Lo construyo", texto: "Y lo vas viendo mientras avanza. Nada de desaparecer y volver con algo que no pediste." },
+  { titulo: "Te lo dejo andando", texto: "Documentado, y te explico cómo usarlo. Si algo no se entiende, se ajusta." },
+];
+---
+<Panel archivo={a("sistema")}>
+  <p class="etiqueta"># todo conectado</p>
+  <h2 id="sistema-titulo">Por qué conviene <span class="acento">un solo proveedor</span>.</h2>
+  <p class="lead">Si todo lo armo yo, las piezas se hablan entre sí y no pagás a nadie por coordinar.</p>
+  <ol class="tubo mono" aria-label="Cómo fluye la información">
+    {pipeline.map((p, i) => <li class:list={{ fin: i === pipeline.length - 1 }}>{p}</li>)}
+  </ol>
+</Panel>
+
+<Panel archivo={a("para-quien")}>
+  <p class="etiqueta"># para quién</p>
+  <h2 id="para-quien-titulo">Del consultorio de la esquina al <span class="acento">organismo público</span>.</h2>
+  <p class="atenuado">Mismo proveedor, de chico a grande.</p>
+  <ul class="lista">
+    {perfiles.map((p) => (
+      <li>
+        <h3>{p.nombre}</h3>
+        <p class="atenuado">{p.ejemplo}</p>
+        {p.experiencia && <span class="marca-exp">✓ ya trabajé en esto</span>}
+      </li>
+    ))}
+  </ul>
+</Panel>
+
+<Panel archivo={a("como-trabajo")}>
+  <p class="etiqueta"># cómo trabajo</p>
+  <h2 id="como-trabajo-titulo">Cuatro pasos, <span class="acento">sin sorpresas</span>.</h2>
+  <ul class="lista checklist">
+    {pasos.map((p, i) => (
+      <li>
+        <span class="mono caja" aria-hidden="true">[{i === 3 ? "✓" : " "}]</span>
+        <div>
+          <h3>{p.titulo}</h3>
+          <p class="atenuado">{p.texto}</p>
+        </div>
+      </li>
+    ))}
+  </ul>
+  <aside class="nota">
+    <p class="mono nota-tit">nota.md</p>
+    <p><strong>Lo que invertís hoy te ahorra tiempo y plata mañana.</strong> Cada proyecto se presupuesta: antes de arrancar sabés cuánto sale.</p>
+  </aside>
+</Panel>
+
+<Panel archivo={a("caso-consultorio")}>
+  <p class="etiqueta"># caso · en preparación</p>
+  <h2 id="caso-consultorio-titulo">Turnos online para un consultorio odontológico</h2>
+  <p class="lead">Los pacientes sacan turno solos, a cualquier hora.</p>
+  <p><Falta que="capturas y datos del caso (ver pendientes)" /></p>
+</Panel>
+
+<Panel archivo={a("sobre-mi")}>
+  <p class="etiqueta"># sobre mí</p>
+  <div class="titulo-firma">
+    <h2 id="sobre-mi-titulo">Hola, soy <span class="acento">Juanma</span>.</h2>
+    <Firma color="crema" ancho="clamp(8rem, 18vw, 12rem)" decorativa />
+  </div>
+  <div class="texto">
+    <p class="lead">Hace 8&nbsp;años que trabajo con datos y armo webs y apps a medida.</p>
+    <p>Estudié Sistemas en la UNLP. Trabajo remoto desde General Belgrano para quien lo necesite, esté donde esté.</p>
+  </div>
+  <dl class="criollo rasgos">
+    <div><dt>detallista</dt><dd>Reviso cada número antes de que lo veas vos.</dd></div>
+    <div><dt>hiperactivo</dt><dd>Te respondo en {sitio.respuesta}.</dd></div>
+    <div><dt>extrovertido</dt><dd>Lo técnico, explicado en criollo.</dd></div>
+    <div><dt>fuera del código</dt><dd>Hockey, cocina, rock nacional y viajes.</dd></div>
+  </dl>
+</Panel>
+
+<Panel archivo={a("contacto")}>
+  <p class="etiqueta"># contacto</p>
+  <h2 id="contacto-titulo">¿Tenés una idea? <span class="acento">Armemos el sistema</span>.</h2>
+  <p class="lead">Contame qué hacés y qué te está comiendo el tiempo. Te respondo en {sitio.respuesta}.</p>
+  <ul class="canales">
+    <li>
+      <a class="canal principal" href={contacto.whatsapp} target="_blank" rel="noopener noreferrer">
+        <span class="mono prompt">$ whatsapp</span><span>Escribime por WhatsApp</span><span class="mono nota-canal">lo más rápido</span>
+      </a>
+    </li>
+    <li>
+      <a class="canal" href={`mailto:${contacto.mail}`}>
+        <span class="mono prompt">$ mail</span><span>{contacto.mail}</span>
+      </a>
+    </li>
+    <li>
+      <a class="canal" href={contacto.linkedin} target="_blank" rel="noopener noreferrer">
+        <span class="mono prompt">$ linkedin</span><span>Juan Martín Almada Ortiz</span>
+      </a>
+    </li>
+  </ul>
+  <p class="atenuado">Cada proyecto se presupuesta.</p>
+  <Firma color="lima" ancho="10rem" decorativa />
+</Panel>
+
+<style>
+  .tubo {
+    list-style: none;
+    padding: 0;
+    display: grid;
+    gap: var(--space-6);
+    font-size: var(--fs-code);
+  }
+  .tubo li {
+    position: relative;
+    padding: var(--space-3) var(--space-4);
+    border: 1px solid var(--ide-borde);
+    border-radius: var(--radius-box);
+    background: var(--ide-panel);
+  }
+  .tubo li:not(:last-child)::after {
+    content: "↓";
+    position: absolute;
+    left: var(--space-4);
+    top: 100%;
+    line-height: var(--space-6);
+    color: var(--musgo);
+  }
+  .tubo .fin { background: var(--lima); border-color: var(--lima); color: var(--pino); font-weight: 600; }
+  @media (min-width: 64rem) {
+    .tubo { grid-template-columns: repeat(5, 1fr); gap: var(--space-6); align-items: stretch; }
+    .tubo li:not(:last-child)::after { content: "→"; left: 100%; top: 50%; width: var(--space-6); text-align: center; transform: translateY(-50%); }
+  }
+
+  .checklist li { display: grid; grid-template-columns: auto 1fr; gap: var(--space-4); }
+  .caja { color: var(--lima); padding-top: .15em; }
+  .nota {
+    padding: var(--space-4) var(--space-6);
+    border-left: 3px solid var(--lima);
+    background: var(--ide-panel);
+    border-radius: 0 var(--radius-box) var(--radius-box) 0;
+    max-width: var(--ancho-texto);
+  }
+  .nota-tit { color: var(--ide-texto-2); font-size: var(--fs-ui); margin-bottom: var(--space-2); }
+
+  .titulo-firma { display: flex; flex-wrap: wrap; align-items: center; gap: var(--space-4) var(--space-8); }
+  .rasgos { grid-template-columns: 1fr; }
+  @media (min-width: 48rem) { .rasgos { grid-template-columns: 1fr 1fr; } }
+
+  .canales { list-style: none; padding: 0; display: grid; gap: var(--space-3); max-width: var(--ancho-texto); }
+  .canal {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: baseline;
+    gap: var(--space-2) var(--space-4);
+    min-height: var(--tap-min);
+    padding: var(--space-4);
+    border: 1px solid var(--ide-borde);
+    border-radius: var(--radius-box);
+    text-decoration: none;
+    overflow-wrap: anywhere;
+    transition: border-color .15s ease;
+  }
+  .canal:hover { border-color: var(--lima); }
+  .prompt { color: var(--lima); }
+  .principal { background: var(--lima); border-color: var(--lima); color: var(--pino); font-weight: 700; }
+  .principal .prompt { color: var(--pino); }
+  .principal:hover { background: transparent; color: var(--lima); }
+  .principal:hover .prompt { color: var(--lima); }
+  .nota-canal { margin-left: auto; font-size: var(--fs-ui); font-weight: 400; }
+</style>

@@ -1,0 +1,78 @@
+---
+// Un «archivo» abierto en el editor. Sin JS se ven todos apilados; con JS, uno por vez.
+import { archivos, type Archivo } from "../../data/archivos";
+interface Props { archivo: Archivo }
+const { archivo } = Astro.props;
+const i = archivos.findIndex((a) => a.id === archivo.id);
+const anterior = archivos[i - 1];
+const siguiente = archivos[i + 1];
+const partes = archivo.ruta.split("/");
+---
+<section
+  id={archivo.id}
+  class="panel"
+  data-panel={archivo.id}
+  data-ruta={archivo.ruta}
+  data-ext={archivo.ext}
+  aria-labelledby={`${archivo.id}-titulo`}
+  tabindex="-1"
+>
+  <p class="migas mono" aria-hidden="true">
+    <span>juanma</span>{partes.map((p) => <><span class="sep">›</span><span>{p}</span></>)}
+    {archivo.borrador && <span class="borrador">borrador</span>}
+  </p>
+  <div class="cuerpo">
+    <slot />
+  </div>
+  <nav class="pie mono" aria-label="Recorrido">
+    {anterior ? <a href={`#${anterior.id}`} data-abrir={anterior.id}>← {anterior.ruta}</a> : <span />}
+    {siguiente && <a class="sig" href={`#${siguiente.id}`} data-abrir={siguiente.id}>{siguiente.ruta} →</a>}
+  </nav>
+</section>
+
+<style>
+  .panel {
+    border-bottom: 1px solid var(--ide-borde);
+    outline: none;
+  }
+  .migas {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: var(--space-2);
+    padding: var(--space-2) var(--space-6);
+    color: var(--ide-texto-2);
+    font-size: var(--fs-ui);
+    border-bottom: 1px solid var(--ide-borde);
+  }
+  .sep { color: var(--musgo); }
+  .borrador {
+    margin-left: var(--space-2);
+    padding: 0 var(--space-2);
+    border: 1px dashed var(--salvia);
+    border-radius: var(--radius-pill);
+  }
+  .cuerpo {
+    max-width: calc(var(--ancho-texto) + 2 * var(--space-12));
+    padding: clamp(var(--space-8), 5vw, var(--space-16)) clamp(var(--space-4), 4vw, var(--space-12));
+    display: grid;
+    gap: var(--space-6);
+  }
+  .pie {
+    display: flex;
+    justify-content: space-between;
+    gap: var(--space-4);
+    flex-wrap: wrap;
+    padding: var(--space-4) clamp(var(--space-4), 4vw, var(--space-12)) var(--space-12);
+    font-size: var(--fs-ui);
+  }
+  .pie a {
+    display: inline-flex;
+    align-items: center;
+    min-height: var(--tap-min);
+    color: var(--ide-texto-2);
+    text-decoration: none;
+  }
+  .pie a:hover { color: var(--lima); }
+  .sig { margin-left: auto; color: var(--crema) !important; }
+</style>
