@@ -35,7 +35,7 @@ en dos tonos (musgo + salvia).
 }
 ```
 
-**Proporción de uso** (a ojo, en la página entera): crema 40 · pino 30 · musgo 15 · salvia 11 · lima 4.
+**Proporción de uso** del manual (redes y piezas): crema 40 · pino 30 · musgo 15 · salvia 11 · lima 4. En la web manda pino (ver «Espaciado, forma y superficies»).
 
 **Lima es un acento:** una palabra en itálica, un dato, un botón, el punto de la `j`, un sticker.
 Nunca fondo de una sección entera de texto largo. Excepción del manual: una placa/tarjeta chica en lima con
@@ -59,7 +59,7 @@ texto pino («detrás de escena») está permitida, como mucho una por pantalla.
 
 ## Tipografía
 
-> **Cambio 2026-10-10 (decisión de Juanma):** se dejan las tipografías del manual (DM Serif Display, Manrope,
+> **Cambio 2026-10-10 (decisión de Juanma):** se reemplazan las tipografías del manual (DM Serif Display, Manrope,
 > JetBrains Mono). Quedan los colores, el logo y la firma. La web es un editor de código (ver `02-contenido.md`).
 
 | Rol | Familia | Uso |
@@ -77,28 +77,21 @@ Detalles tipográficos que **sí** importan:
 - `&nbsp;` entre número y unidad (`8&nbsp;años`, `24&nbsp;h`).
 - Etiquetas como comentarios o encabezados de markdown: `# contacto`, `// servicio`, `-- …`.
 
-## Espaciado, forma y profundidad
+## Espaciado, forma y superficies
 
-```css
-:root {
-  --space-1: .25rem; --space-2: .5rem; --space-3: .75rem; --space-4: 1rem;
-  --space-6: 1.5rem; --space-8: 2rem; --space-12: 3rem; --space-16: 4rem; --space-24: 6rem;
+Valores en `web/src/styles/tokens.css` (fuente de verdad):
 
-  --radius-card: 20px;   /* placas y tarjetas */
-  --radius-pill: 999px;  /* chips y botones */
-  --radius-box:  10px;   /* cajitas del pipeline */
-  --border-soft: 1px solid var(--salvia);
+- Espacios `--space-1` a `--space-24` (4 px a 96 px).
+- Radios: `--radius-card` 12 px, `--radius-box` 6 px (botones, cajas de código), `--radius-pill`.
+- Superficies del editor, **derivadas de la paleta con `color-mix`** (no son colores nuevos):
+  `--ide-fondo` (pino), `--ide-panel` (pino oscurecido: explorador, terminal, barra de título),
+  `--ide-borde` (musgo sobre pino), `--ide-linea` (musgo translúcido: hover y línea activa).
+- Tamaños de letra: `--fs-micro` (11 px, nunca menos), `--fs-ui` (13 px), `--fs-code`, `--fs-body`, `--fs-lead`, `--fs-h2`, `--fs-h1`.
+- `--tap-min` 44 px para todo lo tocable en el celular.
 
-  --max-w: 72rem;        /* contenido */
-  --gutter: clamp(1rem, 4vw, 3rem);
-  --tap-min: 44px;       /* área táctil mínima */
-}
-```
-
-- **Plano.** Bloques de color sólidos, bordes de 1 px salvia sobre crema/blanco. Sombras: casi nunca; si hace falta
-  separar, que sea una sombra dura y corta, no difusa.
-- Chips/etiquetas: pill con borde de 1 px, texto mono (como los de la portada del manual).
-- Botón principal: fondo lima, texto pino, Martian Mono 600, esquinas `--radius-box`. Secundario: borde, sin relleno.
+**Proporción de color en el rediseño:** el sitio es casi todo pino (es un editor oscuro). La lima queda para el
+acento de los títulos, el botón principal y la línea activa; un solo bloque lima por pantalla.
+Plano: sin sombras, bordes de 1 px.
 
 ## Recursos gráficos
 
@@ -120,4 +113,4 @@ Detalles tipográficos que **sí** importan:
 | **Hiperactivo** | El cursor que titila, stickers torcidos, ritmo entre bloques oscuro/claro/color. |
 | **Extrovertido** | Su firma, la voz en primera persona, lo técnico explicado en criollo. |
 
-El ritmo de la página copia el feed de Instagram del manual: **alternar oscuro · claro · color**.
+En redes, el ritmo copia el feed del manual (oscuro · claro · color). La web es un editor oscuro de punta a punta.

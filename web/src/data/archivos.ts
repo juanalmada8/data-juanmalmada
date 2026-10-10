@@ -11,6 +11,7 @@ export interface Archivo {
 
 export const archivos: Archivo[] = [
   { id: "hola", ruta: "hola.md", ext: "md", titulo: "Hola" },
+  { id: "servicios", ruta: "servicios/README.md", carpeta: "servicios", ext: "md", titulo: "Qué hago" },
   { id: "webs", ruta: "servicios/webs-y-apps.tsx", carpeta: "servicios", ext: "tsx", titulo: "Webs y apps a medida" },
   { id: "turnos", ruta: "servicios/turnos.ts", carpeta: "servicios", ext: "ts", titulo: "Turnos y sistemas de gestión" },
   { id: "tableros", ruta: "servicios/tableros.sql", carpeta: "servicios", ext: "sql", titulo: "Dashboards y análisis de datos" },

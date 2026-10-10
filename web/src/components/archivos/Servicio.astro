@@ -12,10 +12,9 @@ interface Props {
 }
 const p = Astro.props;
 ---
-<p class="etiqueta">// servicio</p>
 <h2 id={`${p.id}-titulo`}>{p.titulo}</h2>
 <p class="cita">{p.problema}</p>
-<Codigo codigo={p.codigo} lang={p.lang} etiqueta={p.archivo} />
+<Codigo codigo={p.codigo} lang={p.lang} />
 <dl class="criollo">
   <div>
     <dt>qué armo</dt>

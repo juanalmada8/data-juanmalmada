@@ -10,6 +10,7 @@ const servicios = [
   {
     id: "webs",
     titulo: "Webs y apps a medida",
+    ahorraCorto: "Tu web, al día y bien desde el celular.",
     problema: "// «Mi web no la actualiza nadie y desde el celular ni se ve.»",
     lang: "tsx",
     codigo: `// el precio lo cambiás vos, sin llamar a nadie
@@ -22,6 +23,7 @@ export function Producto() {
   {
     id: "turnos",
     titulo: "Turnos y sistemas de gestión",
+    ahorraCorto: "Menos llamadas y menos ausencias.",
     problema: "// «Me paso la mañana atendiendo el teléfono para dar turnos.»",
     lang: "ts",
     codigo: `// mientras vos atendés, el sistema hace esto
@@ -34,6 +36,7 @@ agenda.guardar(turno); // sin llamadas ni papel`,
   {
     id: "tableros",
     titulo: "Dashboards y análisis de datos",
+    ahorraCorto: "Los números que importan, actualizados solos.",
     problema: "-- «Todos los lunes pierdo la mañana armando el reporte a mano.»",
     lang: "sql",
     codigo: `-- el reporte del lunes, armado solo
@@ -47,6 +50,7 @@ GROUP  BY semana;`,
   {
     id: "nube",
     titulo: "Nube, infraestructura y arquitectura",
+    ahorraCorto: "Que todo ande y esté respaldado.",
     problema: "# «Si se cae el servidor, no sé ni a quién llamar.»",
     lang: "yml",
     codigo: `servicio: tu-sistema
@@ -58,8 +62,35 @@ costo: pagás lo que usás`,
   },
 ];
 ---
-{servicios.map((s) => (
+<Panel archivo={a("servicios")}>
+  <h2 id="servicios-titulo">Qué <span class="acento">hago</span>.</h2>
+  <p class="lead">Lo que suele pedir un equipo entero, lo resuelvo yo, de punta a punta.</p>
+  <ul class="lista">
+    {servicios.map((s) => (
+      <li>
+        <a class="item-servicio" href={`#${s.id}`} data-abrir={s.id}>
+          <span class="mono ruta-serv">{a(s.id).ruta.split("/").pop()}</span>
+          <h3>{s.titulo}</h3>
+          <p class="atenuado">{s.ahorraCorto}</p>
+        </a>
+      </li>
+    ))}
+  </ul>
+  <p>¿Lo tuyo no está en la lista? <a href="#contacto" data-abrir="contacto">Contame igual.</a></p>
+</Panel>
+
+{servicios.map(({ ahorraCorto: _, ...s }) => (
   <Panel archivo={a(s.id)}>
     <Servicio {...s} archivo={a(s.id).ruta} />
   </Panel>
 ))}
+
+<style>
+  .item-servicio {
+    display: grid;
+    gap: var(--space-1);
+    text-decoration: none;
+  }
+  .item-servicio:hover h3 { color: var(--lima); }
+  .ruta-serv { font-size: var(--fs-ui); color: var(--ide-texto-2); }
+</style>

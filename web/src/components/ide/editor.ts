@@ -32,8 +32,8 @@ export function iniciarEditor() {
         const nombre = ruta.split("/").pop()!;
         const li = document.createElement("div");
         li.className = "pestana";
-        if (id === actual) li.setAttribute("aria-current", "page");
         const abrir = document.createElement("button");
+        if (id === actual) abrir.setAttribute("aria-current", "true");
         abrir.type = "button";
         abrir.className = "p-abrir";
         abrir.textContent = nombre;
@@ -52,7 +52,7 @@ export function iniciarEditor() {
         return li;
       }),
     );
-    tira.querySelector('[aria-current="page"]')?.scrollIntoView({ block: "nearest", inline: "nearest" });
+    tira.querySelector("[aria-current]")?.scrollIntoView({ block: "nearest", inline: "nearest" });
   }
 
   function cerrarPestana(id: string) {
@@ -116,6 +116,10 @@ export function iniciarEditor() {
       cerrarCajon();
       btnArchivos.focus();
     }
+  });
+  explorador.addEventListener("focusout", (e) => {
+    const destino = e.relatedTarget as Node | null;
+    if (mq.matches && destino && !explorador.contains(destino)) cerrarCajon();
   });
   document.addEventListener("click", (e) => {
     const t = e.target as Node;

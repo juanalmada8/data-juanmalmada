@@ -117,7 +117,7 @@ Una línea por decisión no trivial (más reciente arriba).
 | Fecha | Decisión | Por qué |
 |---|---|---|
 | 2026-10-10 | **Rediseño: la home es un editor de código** (explorador, pestañas, terminal). Tipografías nuevas: Martian Mono + Atkinson Hyperlegible Next. Se mantienen colores, logo y firma. | Juanma: «todo muy AI, dale un giro 180°»; eligió la dirección «Terminal / IDE». |
-| 2026-10-10 | Navegación por `#hash` con mejora progresiva (`components/ide/editor.ts`, ~2,4 KB gzip); sin JS se lee todo apilado. | SEO, accesibilidad y que funcione sin JS. |
+| 2026-10-10 | Navegación por `#hash` con mejora progresiva (`components/ide/editor.ts`, ~2,4 KB gzip); sin JS se lee todo apilado. Trade-off: con JS los archivos cerrados están en `display: none`, así que Ctrl+F y el lector de pantalla solo ven el archivo abierto. | SEO, accesibilidad y que funcione sin JS. |
 | 2026-10-10 | Corrección: el sitio lo sirve Cloudflare Pages desde la raíz de `main`, no DonWeb. | Verificado con el check de Pages en los PRs y `curl` a archivos del repo. |
 | 2026-10-10 | Sin casos publicados, «Proyectos» muestra el caso del consultorio como «en preparación» con `[[FALTA]]`; la página `/proyectos/<slug>` solo se genera con `publicado: true`. | No se inventa un caso y la sección no queda vacía. |
 | 2026-10-10 | Fuentes copiadas como woff2 a `web/public/fonts/` (subset latin) en vez de depender de paquetes `@fontsource`. | Cero dependencias en runtime, `preload` directo y control del subset. |

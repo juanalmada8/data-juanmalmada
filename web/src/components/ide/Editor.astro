@@ -22,35 +22,36 @@ const [hola, ...restoSueltos] = sueltos;
     <a class="escribime mono" href={contacto.whatsapp} target="_blank" rel="noopener noreferrer">Escribime</a>
   </header>
 
+
+  <div class="editor">
+    <nav class="pestanas mono" data-pestanas aria-label="Archivos abiertos" hidden></nav>
+    <main id="contenido" class="paneles" data-paneles>
+      <slot />
+    </main>
+  </div>
+
   <nav id="explorador" class="explorador" aria-label="Archivos del sitio">
     <p class="exp-tit mono">explorador</p>
     <ul class="arbol mono">
-      <li><a href={`#${hola.id}`} data-abrir={hola.id} data-ext={hola.ext}><span class="ext">{hola.ext}</span>{nombre(hola)}</a></li>
+      <li><a href={`#${hola.id}`} data-abrir={hola.id} data-ext={hola.ext}><span class="ext" aria-hidden="true">{hola.ext}</span>{nombre(hola)}</a></li>
       {carpetas.map((c) => (
         <li>
           <details open>
             <summary><span class="flecha" aria-hidden="true">▸</span>{c}/</summary>
             <ul>
               {archivos.filter((a) => a.carpeta === c).map((a) => (
-                <li><a href={`#${a.id}`} data-abrir={a.id} data-ext={a.ext}><span class="ext">{a.ext}</span><span class="nom" title={a.ruta}>{nombre(a)}</span>{a.borrador && <span class="punto" title="borrador">●</span>}</a></li>
+                <li><a href={`#${a.id}`} data-abrir={a.id} data-ext={a.ext}><span class="ext" aria-hidden="true">{a.ext}</span><span class="nom" title={a.ruta}>{nombre(a)}</span>{a.borrador && <><span class="punto" aria-hidden="true">●</span><span class="sr-only"> (borrador)</span></>}</a></li>
               ))}
             </ul>
           </details>
         </li>
       ))}
       {restoSueltos.map((a) => (
-        <li><a href={`#${a.id}`} data-abrir={a.id} data-ext={a.ext}><span class="ext">{a.ext}</span>{nombre(a)}</a></li>
+        <li><a href={`#${a.id}`} data-abrir={a.id} data-ext={a.ext}><span class="ext" aria-hidden="true">{a.ext}</span>{nombre(a)}</a></li>
       ))}
     </ul>
     <p class="exp-pie mono">{sitio.base}<br />100% remoto</p>
   </nav>
-
-  <div class="editor">
-    <div class="pestanas mono" data-pestanas aria-label="Archivos abiertos" hidden></div>
-    <main id="contenido" class="paneles" data-paneles>
-      <slot />
-    </main>
-  </div>
 
   <section class="terminal" data-terminal aria-label="Terminal">
     <div class="term-barra mono">
@@ -119,13 +120,13 @@ const [hola, ...restoSueltos] = sueltos;
     height: 2rem;
     padding: 0 var(--space-4);
     border-radius: var(--radius-box);
-    background: var(--lima);
-    color: var(--pino);
+    border: 1px solid var(--lima);
+    color: var(--lima);
     font-size: var(--fs-ui);
     font-weight: 600;
     text-decoration: none;
   }
-  .escribime:hover { background: var(--crema); }
+  .escribime:hover { background: var(--lima); color: var(--pino); }
 
   .btn-archivos {
     height: 2rem;
@@ -146,7 +147,7 @@ const [hola, ...restoSueltos] = sueltos;
     padding: 0 var(--space-4) var(--space-2);
     text-transform: uppercase;
     letter-spacing: .12em;
-    font-size: .6875rem;
+    font-size: var(--fs-micro);
     color: var(--ide-texto-2);
   }
   .arbol, .arbol ul { list-style: none; padding: 0; }
@@ -176,7 +177,7 @@ const [hola, ...restoSueltos] = sueltos;
   }
   .ext {
     min-width: 3ch;
-    font-size: .625rem;
+    font-size: var(--fs-micro);
     font-weight: 600;
     text-transform: uppercase;
     color: var(--salvia);
@@ -184,18 +185,20 @@ const [hola, ...restoSueltos] = sueltos;
   a[data-ext="ts"] .ext, a[data-ext="tsx"] .ext { color: var(--lima); }
   a[data-ext="sh"] .ext { color: var(--crema); }
   .nom { overflow: hidden; text-overflow: ellipsis; }
-  .punto { margin-left: auto; color: var(--salvia); font-size: .5rem; }
+  .punto { margin-left: auto; color: var(--salvia); font-size: var(--fs-micro); }
   .exp-pie {
     margin-top: var(--space-6);
     padding: var(--space-4) var(--space-4) 0;
     border-top: 1px solid var(--ide-borde);
     color: var(--ide-texto-2);
-    font-size: .6875rem;
+    font-size: var(--fs-micro);
     line-height: 1.6;
   }
 
   .editor { flex: 1; min-width: 0; display: flex; flex-direction: column; }
 
+  .terminal { display: none; }
+  :global(.js) .terminal { display: block; }
   .terminal {
     background: var(--ide-panel);
     border-top: 1px solid var(--ide-borde);
@@ -210,7 +213,7 @@ const [hola, ...restoSueltos] = sueltos;
     border-bottom: 1px solid var(--ide-borde);
     text-transform: uppercase;
     letter-spacing: .1em;
-    font-size: .6875rem;
+    font-size: var(--fs-micro);
     color: var(--ide-texto-2);
   }
   .term-barra > span:first-child { color: var(--crema); box-shadow: inset 0 -1px 0 var(--lima); line-height: 2rem; }
@@ -238,7 +241,7 @@ const [hola, ...restoSueltos] = sueltos;
   .term-salida :global(.cmd) { color: var(--crema); }
   .term-salida :global(.eco) { color: var(--crema); }
   .term-salida :global(a) { color: var(--lima); }
-  .term-linea { display: flex; align-items: center; gap: var(--space-2); margin-top: var(--space-1); }
+  .term-linea { align-items: center; gap: var(--space-2); margin-top: var(--space-1); }
   .prompt { color: var(--lima); white-space: nowrap; font-size: var(--fs-ui); }
   .term-linea input {
     flex: 1;
@@ -251,7 +254,7 @@ const [hola, ...restoSueltos] = sueltos;
     font-size: max(16px, var(--fs-ui)); /* 16px evita el zoom de iOS al enfocar */
     caret-color: var(--lima);
   }
-  .term-linea:focus-within { box-shadow: inset 0 -1px 0 var(--musgo); }
+  .term-linea:focus-within { box-shadow: inset 0 -2px 0 var(--lima); }
 
   .estado {
     display: flex;
@@ -261,7 +264,7 @@ const [hola, ...restoSueltos] = sueltos;
     padding: 0 var(--space-4);
     background: var(--musgo);
     color: var(--blanco);
-    font-size: .6875rem;
+    font-size: var(--fs-micro);
     white-space: nowrap;
     overflow: hidden;
   }
@@ -292,7 +295,7 @@ const [hola, ...restoSueltos] = sueltos;
     border-right: 1px solid var(--ide-borde);
     color: var(--ide-texto-2);
   }
-  .pestanas :global(.pestana[aria-current="page"]) {
+  .pestanas :global(.pestana:has([aria-current])) {
     background: var(--ide-fondo);
     color: var(--crema);
     box-shadow: inset 0 2px 0 var(--lima);
@@ -361,5 +364,12 @@ const [hola, ...restoSueltos] = sueltos;
     :global(.js) .term-toggle { display: inline-block; }
     :global(.js) .terminal { position: sticky; bottom: 0; z-index: 20; }
     .term-salida { max-height: 7rem; }
+    /* Áreas táctiles */
+    .escribime, .btn-archivos, .term-toggle { height: var(--tap-min); min-width: var(--tap-min); }
+    .arbol a, .arbol summary { min-height: var(--tap-min); }
+    .pestanas :global(.pestana button) { height: var(--tap-min); }
+    .pestanas :global(.p-cerrar) { width: var(--tap-min); }
+    .barra-titulo { height: calc(var(--tap-min) + var(--space-2)); }
+    :global(.js) .explorador { inset: calc(var(--tap-min) + var(--space-2)) auto 0 0; }
   }
 </style>

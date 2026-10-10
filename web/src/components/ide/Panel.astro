@@ -24,7 +24,7 @@ const partes = archivo.ruta.split("/");
   <div class="cuerpo">
     <slot />
   </div>
-  <nav class="pie mono" aria-label="Recorrido">
+  <nav class="pie mono" aria-label={`Seguir leyendo desde ${archivo.ruta}`}>
     {anterior ? <a href={`#${anterior.id}`} data-abrir={anterior.id}>← {anterior.ruta}</a> : <span />}
     {siguiente && <a class="sig" href={`#${siguiente.id}`} data-abrir={siguiente.id}>{siguiente.ruta} →</a>}
   </nav>

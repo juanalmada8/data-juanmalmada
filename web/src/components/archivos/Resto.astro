@@ -26,7 +26,6 @@ const pasos = [
 ];
 ---
 <Panel archivo={a("sistema")}>
-  <p class="etiqueta"># todo conectado</p>
   <h2 id="sistema-titulo">Por qué conviene <span class="acento">un solo proveedor</span>.</h2>
   <p class="lead">Si todo lo armo yo, las piezas se hablan entre sí y no pagás a nadie por coordinar.</p>
   <ol class="tubo mono" aria-label="Cómo fluye la información">
@@ -35,27 +34,24 @@ const pasos = [
 </Panel>
 
 <Panel archivo={a("para-quien")}>
-  <p class="etiqueta"># para quién</p>
   <h2 id="para-quien-titulo">Del consultorio de la esquina al <span class="acento">organismo público</span>.</h2>
-  <p class="atenuado">Mismo proveedor, de chico a grande.</p>
   <ul class="lista">
     {perfiles.map((p) => (
       <li>
         <h3>{p.nombre}</h3>
         <p class="atenuado">{p.ejemplo}</p>
-        {p.experiencia && <span class="marca-exp">✓ ya trabajé en esto</span>}
+        {p.experiencia && <span class="marca-exp">ya trabajé en esto</span>}
       </li>
     ))}
   </ul>
 </Panel>
 
 <Panel archivo={a("como-trabajo")}>
-  <p class="etiqueta"># cómo trabajo</p>
   <h2 id="como-trabajo-titulo">Cuatro pasos, <span class="acento">sin sorpresas</span>.</h2>
   <ul class="lista checklist">
     {pasos.map((p, i) => (
       <li>
-        <span class="mono caja" aria-hidden="true">[{i === 3 ? "✓" : " "}]</span>
+        <span class="mono caja" aria-hidden="true">[{i === 3 ? "x" : " "}]</span>
         <div>
           <h3>{p.titulo}</h3>
           <p class="atenuado">{p.texto}</p>
@@ -70,14 +66,13 @@ const pasos = [
 </Panel>
 
 <Panel archivo={a("caso-consultorio")}>
-  <p class="etiqueta"># caso · en preparación</p>
+  <p class="etiqueta">en preparación</p>
   <h2 id="caso-consultorio-titulo">Turnos online para un consultorio odontológico</h2>
   <p class="lead">Los pacientes sacan turno solos, a cualquier hora.</p>
   <p><Falta que="capturas y datos del caso (ver pendientes)" /></p>
 </Panel>
 
 <Panel archivo={a("sobre-mi")}>
-  <p class="etiqueta"># sobre mí</p>
   <div class="titulo-firma">
     <h2 id="sobre-mi-titulo">Hola, soy <span class="acento">Juanma</span>.</h2>
     <Firma color="crema" ancho="clamp(8rem, 18vw, 12rem)" decorativa />
@@ -95,7 +90,6 @@ const pasos = [
 </Panel>
 
 <Panel archivo={a("contacto")}>
-  <p class="etiqueta"># contacto</p>
   <h2 id="contacto-titulo">¿Tenés una idea? <span class="acento">Armemos el sistema</span>.</h2>
   <p class="lead">Contame qué hacés y qué te está comiendo el tiempo. Te respondo en {sitio.respuesta}.</p>
   <ul class="canales">
@@ -135,17 +129,17 @@ const pasos = [
     background: var(--ide-panel);
   }
   .tubo li:not(:last-child)::after {
-    content: "↓";
+    content: "↓" / "";
     position: absolute;
     left: var(--space-4);
     top: 100%;
     line-height: var(--space-6);
-    color: var(--musgo);
+    color: var(--salvia);
   }
   .tubo .fin { background: var(--lima); border-color: var(--lima); color: var(--pino); font-weight: 600; }
   @media (min-width: 64rem) {
     .tubo { grid-template-columns: repeat(5, 1fr); gap: var(--space-6); align-items: stretch; }
-    .tubo li:not(:last-child)::after { content: "→"; left: 100%; top: 50%; width: var(--space-6); text-align: center; transform: translateY(-50%); }
+    .tubo li:not(:last-child)::after { content: "→" / ""; left: 100%; top: 50%; width: var(--space-6); text-align: center; transform: translateY(-50%); }
   }
 
   .checklist li { display: grid; grid-template-columns: auto 1fr; gap: var(--space-4); }
@@ -178,10 +172,11 @@ const pasos = [
     transition: border-color .15s ease;
   }
   .canal:hover { border-color: var(--lima); }
-  .prompt { color: var(--lima); }
+  .prompt { color: var(--salvia); }
   .principal { background: var(--lima); border-color: var(--lima); color: var(--pino); font-weight: 700; }
   .principal .prompt { color: var(--pino); }
   .principal:hover { background: transparent; color: var(--lima); }
   .principal:hover .prompt { color: var(--lima); }
+  .canal:not(.principal):hover .prompt { color: var(--lima); }
   .nota-canal { margin-left: auto; font-size: var(--fs-ui); font-weight: 400; }
 </style>

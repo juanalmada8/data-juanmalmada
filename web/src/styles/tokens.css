@@ -50,6 +50,7 @@
   --font-mono: "Martian Mono", ui-monospace, "SF Mono", Menlo, monospace;
   --font-sans: "Atkinson Hyperlegible Next", system-ui, sans-serif;
 
+  --fs-micro: .6875rem;                               /* 11 px: rótulos chicos, nunca menos */
   --fs-ui:    .8125rem;                               /* 13 px: explorador, pestañas, barra de estado */
   --fs-code:  clamp(.8125rem, .78rem + .15vw, .875rem);
   --fs-body:  clamp(1.0625rem, 1rem + .25vw, 1.1875rem);

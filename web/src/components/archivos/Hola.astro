@@ -9,18 +9,19 @@ import { contacto } from "../../data/sitio";
     <p class="lead">Webs, apps y datos que trabajan por vos. Lo que hoy hacés a mano, que lo haga el sistema.</p>
     <div class="acciones">
       <a class="boton" href={contacto.whatsapp} target="_blank" rel="noopener noreferrer">Escribime por WhatsApp</a>
-      <a class="boton sec" href="#turnos" data-abrir="turnos">Ver qué armo →</a>
+      <a class="boton sec" href="#servicios" data-abrir="servicios">Ver qué armo →</a>
     </div>
   </div>
   <Logo variante="cursor" ancho="100%" class="logo-hola" decorativo />
 </div>
 
 <div class="guia">
-  <p class="etiqueta">## cómo se usa esta web</p>
+  <p class="etiqueta">cómo se usa esta web</p>
   <ul class="pasos-guia">
-    <li><span class="mono acento">01</span> Abrí los archivos de <span class="solo-ancho">la izquierda</span><span class="solo-angosto">«archivos», arriba</span>. Cada uno cuenta una parte.</li>
-    <li><span class="mono acento">02</span> O escribí <code>ayuda</code> en la terminal de abajo.</li>
-    <li><span class="mono acento">03</span> Si no sos de código, tranqui: todo está explicado en criollo.</li>
+    <li class="sin-js">Seguí bajando: está todo en esta página, y al final tenés el índice de archivos.</li>
+    <li class="js-solo"><span class="solo-ancho">Abrí los archivos de la izquierda</span><span class="solo-angosto">Tocá «☰ archivos», arriba, y abrí el que quieras</span>. Cada uno cuenta una parte.</li>
+    <li class="js-solo">O escribí <code>ayuda</code> en la terminal de abajo.</li>
+    <li>Si no sos de código, tranqui: todo está explicado en criollo.</li>
   </ul>
 </div>
 
@@ -40,7 +41,9 @@ import { contacto } from "../../data/sitio";
     border-top: 1px solid var(--ide-borde);
   }
   .pasos-guia { list-style: none; padding: 0; display: grid; gap: var(--space-2); color: var(--ide-texto-2); }
-  .pasos-guia .mono { margin-right: var(--space-2); }
+  .pasos-guia li::before { content: "- "; color: var(--musgo); font-family: var(--font-mono); }
+  :global(html:not(.js)) .js-solo { display: none; }
+  :global(html.js) .sin-js { display: none; }
   .pasos-guia code { color: var(--crema); }
   .solo-angosto { display: none; }
   @media (max-width: 52rem) {
