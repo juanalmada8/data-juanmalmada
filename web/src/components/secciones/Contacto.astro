@@ -1,0 +1,70 @@
+---
+import Etiqueta from "../Etiqueta.astro";
+import Boton from "../Boton.astro";
+import Firma from "../Firma.astro";
+import PatronM from "../PatronM.astro";
+import { contacto, sitio } from "../../data/sitio";
+---
+<section id="contacto" class="tema-pino" aria-labelledby="contacto-titulo">
+  <PatronM filas={1} lima={[[0, 9]]} alto="clamp(70px, 10vw, 91px)" />
+  <div class="seccion">
+    <div class="contenedor grilla">
+      <div class="texto" data-aparece>
+        <Etiqueta numero="05">Contacto</Etiqueta>
+        <h2 id="contacto-titulo">¿Tenés una idea? <em>Armemos el sistema</em>.</h2>
+        <p class="bajada">
+          Contame qué hacés y qué te está comiendo el tiempo. Te respondo en {sitio.respuesta}.
+        </p>
+        <Boton href={contacto.whatsapp} externo class="wa">Escribime por WhatsApp</Boton>
+      </div>
+
+      <div class="otros" data-aparece>
+        <p class="mono otros-tit">// o si preferís</p>
+        <ul>
+          <li>
+            <a href={`mailto:${contacto.mail}`}>
+              <span class="mono canal">mail</span>
+              <span class="dato">{contacto.mail}</span>
+            </a>
+          </li>
+          <li>
+            <a href={contacto.linkedin} target="_blank" rel="noopener noreferrer">
+              <span class="mono canal">linkedin</span>
+              <span class="dato">Juan Martín Almada Ortiz</span>
+            </a>
+          </li>
+        </ul>
+        <p class="presupuesto">Todo a presupuesto, sin compromiso.</p>
+        <Firma color="lima" ancho="180px" class="firma" />
+      </div>
+    </div>
+  </div>
+</section>
+
+<style>
+  .grilla { display: grid; gap: var(--space-12); }
+  .texto { display: grid; gap: var(--space-6); justify-items: start; }
+  .bajada { font-size: var(--fs-lead); max-width: 34rem; }
+
+  .otros { display: grid; gap: var(--space-4); align-content: start; }
+  .otros-tit { color: var(--salvia); font-size: var(--fs-small); }
+  .otros ul { list-style: none; padding: 0; border-top: 1px solid var(--musgo); }
+  .otros li { border-bottom: 1px solid var(--musgo); }
+  .otros a {
+    display: grid;
+    gap: var(--space-1);
+    padding-block: var(--space-4);
+    min-height: var(--tap-min);
+    text-decoration: none;
+    overflow-wrap: anywhere;
+  }
+  .canal { font-size: var(--fs-label); color: var(--salvia); letter-spacing: .08em; text-transform: uppercase; }
+  .dato { font-weight: 500; }
+  .otros a:hover .dato { color: var(--lima); }
+  .presupuesto { color: var(--salvia); }
+  .otros :global(.firma) { margin-top: var(--space-4); transform: rotate(-4deg); }
+
+  @media (min-width: 60rem) {
+    .grilla { grid-template-columns: 1.4fr 1fr; gap: var(--space-16); align-items: end; }
+  }
+</style>

@@ -1,0 +1,74 @@
+---
+import Etiqueta from "../Etiqueta.astro";
+import Sticker from "../Sticker.astro";
+import Icono from "../Icono.astro";
+
+// Ejemplos ilustrativos de tipos de problema (02-contenido). «ya lo hice» solo donde Juanma tiene experiencia real.
+const perfiles = [
+  { nombre: "Consultorios y clínicas", ejemplo: "Tus pacientes sacan turno solos y les llega el recordatorio.", experiencia: true },
+  { nombre: "Comercios, estudios y emprendimientos", ejemplo: "Ventas, stock y caja en un tablero que mirás desde el celular." },
+  { nombre: "Empresas y equipos de RRHH", ejemplo: "Las novedades del mes se cargan en un lugar y el reporte sale solo.", experiencia: true },
+  { nombre: "Gobierno y organismos", ejemplo: "Un sistema que ordena los pedidos y muestra en qué estado está cada uno." },
+];
+---
+<section id="para-quien" class="seccion tema-salvia" aria-labelledby="para-quien-titulo">
+  <div class="contenedor">
+    <header class="cabecera" data-aparece>
+      <Etiqueta>Para quién</Etiqueta>
+      <h2 id="para-quien-titulo">Del consultorio de la esquina al <em>organismo público</em>.</h2>
+      <p>Mismo proveedor, de chico a grande. Cambia el problema, no la forma de trabajar.</p>
+    </header>
+
+    <ul class="perfiles">
+      {perfiles.map((p) => (
+        <li class="perfil" data-aparece>
+          <h3>{p.nombre}</h3>
+          <p class="ejemplo">{p.ejemplo}</p>
+          {p.experiencia && <p class="ya mono">// ya trabajé en esto</p>}
+        </li>
+      ))}
+    </ul>
+  </div>
+  <Sticker fondo="pino" giro={-4} tam="6.5rem" class="sticker">
+    <Icono variante="sin-fondo" ancho="100%" />
+  </Sticker>
+</section>
+
+<style>
+  .seccion { overflow: hidden; }
+  .cabecera { display: grid; gap: var(--space-4); max-width: 44rem; margin-bottom: var(--space-12); }
+  .perfiles {
+    list-style: none;
+    padding: 0;
+    display: grid;
+    gap: var(--space-4);
+  }
+  .perfil {
+    display: grid;
+    gap: var(--space-3);
+    align-content: start;
+    padding: var(--space-6);
+    border: 1px solid var(--pino);
+    border-radius: var(--radius-card);
+  }
+  .perfil h3 { font-size: var(--fs-h3); }
+  .ejemplo { font-size: var(--fs-body); }
+  .ya {
+    justify-self: start;
+    font-size: var(--fs-label);
+    padding: var(--space-1) var(--space-3);
+    background: var(--pino);
+    color: var(--lima);
+    border-radius: var(--radius-pill);
+  }
+  .seccion > :global(.sticker) { position: absolute; right: var(--gutter); top: var(--space-16); }
+  @media (max-width: 40rem) { .seccion > :global(.sticker) { display: none; } }
+
+  @media (min-width: 52rem) {
+    .perfiles { grid-template-columns: repeat(12, 1fr); gap: var(--space-6); }
+    .perfil:nth-child(1) { grid-column: 1 / span 7; }
+    .perfil:nth-child(2) { grid-column: 8 / span 5; }
+    .perfil:nth-child(3) { grid-column: 1 / span 5; }
+    .perfil:nth-child(4) { grid-column: 6 / span 7; }
+  }
+</style>

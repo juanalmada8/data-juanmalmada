@@ -1,0 +1,144 @@
+---
+import Etiqueta from "../Etiqueta.astro";
+import Sticker from "../Sticker.astro";
+import { contacto } from "../../data/sitio";
+
+// El problema en palabras del cliente → qué armo → qué te ahorra. Sin números inventados.
+const servicios = [
+  {
+    titulo: "Webs y apps a medida",
+    problema: "«Mi web no la actualiza nadie y desde el celular ni se ve.»",
+    armo: "Una web o una app rápida, que se usa bien desde el celular y que podés cambiar vos.",
+    ahorra: "Depender de alguien para cambiar un precio o un horario.",
+  },
+  {
+    titulo: "Turnos y sistemas de gestión",
+    problema: "«Me paso la mañana atendiendo el teléfono para dar turnos.»",
+    armo: "Turnos online con recordatorio, o el sistema que ordena tus pedidos, tu stock o tus trámites en un solo lugar.",
+    ahorra: "Llamadas, ausencias y la agenda en papel.",
+  },
+  {
+    titulo: "Dashboards y análisis de datos",
+    problema: "«¿Armás el reporte a mano todos los lunes?»",
+    armo: "Junto lo que tenés repartido entre planillas y sistemas en un tablero que se actualiza solo, con alertas cuando algo se desvía.",
+    ahorra: "Las horas de copiar y pegar, y enterarte tarde de los problemas.",
+    destacado: true,
+  },
+  {
+    titulo: "Nube, infraestructura y arquitectura",
+    problema: "«Si se cae el servidor, no sé ni a quién llamar.»",
+    armo: "Dejo todo andando en la nube, con respaldos y avisos si algo falla.",
+    ahorra: "Sustos, caídas en el peor momento y pagar por servidores que no usás.",
+  },
+];
+---
+<section id="que-hago" class="seccion tema-crema" aria-labelledby="que-hago-titulo">
+  <div class="contenedor">
+    <header class="cabecera" data-aparece>
+      <Etiqueta numero="01">Qué hago</Etiqueta>
+      <h2 id="que-hago-titulo">¿Qué <em>hago</em>?</h2>
+      <p class="intro">
+        Lo que normalmente necesita un diseñador, un programador y un analista de datos, acá lo resuelve una
+        persona que entiende el sistema de punta a punta.
+      </p>
+    </header>
+
+    <ol class="lista">
+      {servicios.map((s, i) => (
+        <li class:list={["servicio", { destacado: s.destacado }]} data-aparece>
+          <span class="num mono">{String(i + 1).padStart(2, "0")}</span>
+          <h3>{s.titulo}</h3>
+          <p class="problema">{s.problema}</p>
+          <dl class="detalle">
+            <div>
+              <dt class="mono">qué armo</dt>
+              <dd>{s.armo}</dd>
+            </div>
+            <div>
+              <dt class="mono">qué te ahorra</dt>
+              <dd>{s.ahorra}</dd>
+            </div>
+          </dl>
+        </li>
+      ))}
+    </ol>
+
+    <div class="otra" data-aparece>
+      <p class="otra-txt">¿Lo tuyo no está en la lista? <a href={contacto.whatsapp} target="_blank" rel="noopener noreferrer">Contame igual.</a></p>
+      <Sticker fondo="lima" giro={4} tam="7.5rem" class="sticker">no me cierro a nada</Sticker>
+    </div>
+  </div>
+</section>
+
+<style>
+  .cabecera { display: grid; gap: var(--space-4); max-width: 44rem; margin-bottom: var(--space-12); }
+  .intro { font-size: var(--fs-lead); }
+
+  .lista { list-style: none; padding: 0; border-top: 1px solid var(--pino); }
+  .servicio {
+    display: grid;
+    gap: var(--space-3);
+    padding-block: var(--space-8);
+    border-bottom: 1px solid var(--salvia);
+  }
+  .num { font-size: var(--fs-label); color: var(--musgo); font-weight: 500; }
+  .servicio h3 { font-size: var(--fs-h3); }
+  .problema {
+    font-family: var(--font-serif);
+    font-style: italic;
+    font-size: var(--fs-h3);
+    line-height: 1.25;
+    color: var(--pino); /* musgo/crema no llega a texto grande en mobile */
+  }
+  .detalle { display: grid; gap: var(--space-4); margin-top: var(--space-2); }
+  dt {
+    font-size: var(--fs-label);
+    letter-spacing: .08em;
+    text-transform: uppercase;
+    margin-bottom: var(--space-1);
+  }
+  dd { margin: 0; max-width: 34rem; }
+
+  .destacado {
+    background: var(--pino);
+    color: var(--crema);
+    border-radius: var(--radius-card);
+    border-bottom: 0;
+    padding: var(--space-8) var(--space-6);
+    margin-block: var(--space-6);
+  }
+  .destacado .num { color: var(--lima); }
+  .destacado .problema { color: var(--lima); }
+  .destacado dt { color: var(--salvia); }
+
+  .otra {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: var(--space-6);
+    margin-top: var(--space-12);
+  }
+  .otra-txt {
+    font-family: var(--font-serif);
+    font-size: var(--fs-h3);
+    line-height: 1.2;
+  }
+  .otra-txt a { text-underline-offset: var(--space-2); text-decoration-thickness: 2px; }
+  .otra-txt a:hover { color: var(--musgo); }
+
+  @media (min-width: 52rem) {
+    .servicio {
+      grid-template-columns: 4rem 1fr 1.4fr;
+      grid-template-areas:
+        "num titulo detalle"
+        "num problema detalle";
+      column-gap: var(--space-8);
+      align-items: start;
+    }
+    .num { grid-area: num; padding-top: .5rem; }
+    .servicio h3 { grid-area: titulo; }
+    .problema { grid-area: problema; }
+    .detalle { grid-area: detalle; grid-template-columns: 1fr 1fr; gap: var(--space-6); margin: 0; }
+    .destacado { padding: var(--space-12) var(--space-8); margin-inline: calc(-1 * var(--space-8)); }
+  }
+</style>
