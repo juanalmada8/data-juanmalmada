@@ -1,0 +1,54 @@
+---
+interface Props {
+  href: string;
+  variante?: "primario" | "secundario";
+  externo?: boolean;
+  class?: string;
+}
+const { href, variante = "primario", externo = false, class: clase } = Astro.props;
+---
+<a
+  class:list={["boton", variante, clase]}
+  href={href}
+  target={externo ? "_blank" : undefined}
+  rel={externo ? "noopener noreferrer" : undefined}
+><slot /></a>
+
+<style>
+  .boton {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: var(--space-2);
+    min-height: 3rem;
+    padding: var(--space-3) var(--space-6);
+    border-radius: var(--radius-pill);
+    font-family: var(--font-sans);
+    font-weight: 700;
+    font-size: var(--fs-body);
+    line-height: 1.1;
+    text-decoration: none;
+    transition: background-color .15s ease, color .15s ease;
+  }
+  .primario {
+    background: var(--lima);
+    color: var(--pino);
+    border: 2px solid var(--lima);
+  }
+  .primario:hover { background: transparent; color: var(--texto); }
+  .secundario {
+    background: transparent;
+    color: var(--texto);
+    border: 2px solid var(--texto);
+  }
+  .secundario:hover {
+    background: var(--texto);
+    color: var(--fondo);
+  }
+  .tema-lima .primario {
+    background: var(--pino);
+    color: var(--lima);
+    border-color: var(--pino);
+  }
+  .tema-lima .primario:hover { background: transparent; color: var(--pino); }
+</style>

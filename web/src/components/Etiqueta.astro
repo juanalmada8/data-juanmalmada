@@ -1,0 +1,21 @@
+---
+// Etiqueta mono del manual: «01 — PROYECTOS», «hola_mundo()», «// tip».
+interface Props { numero?: string; class?: string }
+const { numero, class: clase } = Astro.props;
+---
+<p class:list={["etiqueta", clase]}>
+  {numero && <span class="num">{numero} — </span>}<slot />
+</p>
+
+<style>
+  .etiqueta {
+    font-family: var(--font-mono);
+    font-size: var(--fs-label);
+    font-weight: 500;
+    letter-spacing: .12em;
+    text-transform: uppercase;
+    color: var(--texto-2, currentColor);
+  }
+  .tema-pino .etiqueta { color: var(--lima); }
+  .etiqueta.minus { text-transform: none; letter-spacing: .04em; }
+</style>

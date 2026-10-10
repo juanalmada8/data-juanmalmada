@@ -11,14 +11,14 @@ Una tarea por rama y por PR; tildá `[x]` al mergear.
 
 ## Fase 1 — Base técnica
 
-- [ ] **1.1 Monorepo.** Crear `web/` (Astro estático) y `api/` (FastAPI + uv) vacíos y andando. `index.html` y `styles.css` **no se mueven**: siguen en la raíz, publicados como hoy.
+- [x] **1.1 Monorepo.** Crear `web/` (Astro estático) y `api/` (FastAPI + uv) vacíos y andando. `index.html` y `styles.css` **no se mueven**: siguen en la raíz, publicados como hoy.
       *Acepta:* `npm run build` en `web/` y `uv run pytest` en `api/` pasan; `GET /health` responde; `.env.example` y `.gitignore` listos.
-- [ ] **1.2 CI.** GitHub Actions: lint + tests de `api/`, `check` + build de `web/`, en cada PR.
-- [ ] **1.3 Tokens y base.** `tokens.css` y `base.css` según `01-marca.md`; fuentes self-hosted.
+- [x] **1.2 CI.** GitHub Actions: lint + tests de `api/`, `check` + build de `web/`, en cada PR.
+- [x] **1.3 Tokens y base.** `tokens.css` y `base.css` según `01-marca.md`; fuentes self-hosted.
       *Acepta:* página `/_tokens` (solo dev) con paleta, escala tipográfica y espaciados, coincidiendo con el manual.
-- [ ] **1.4 Layout, header y footer.** `Base.astro` con meta, OG por defecto, favicon `</j>`; menú mobile accesible.
+- [x] **1.4 Layout, header y footer.** `Base.astro` con meta, OG por defecto, favicon `</j>`; menú mobile accesible.
       *Acepta:* teclado y lector de pantalla OK; header compacto con `</j>` en < 480 px.
-- [ ] **1.5 Componentes de marca.** `Logo`, `Firma`, `Etiqueta`, `Chip`, `Boton`, `Sticker`, `PatronM`, `Pipeline`.
+- [x] **1.5 Componentes de marca.** `Logo`, `Firma`, `Etiqueta`, `Chip`, `Boton`, `Sticker`, `PatronM`, `Pipeline`.
       *Acepta:* usan los SVG reales o marcadores `[[FALTA]]`; ninguno dibuja el logo a mano.
 - [ ] **1.6 Deploy de preview:** `web/` en Cloudflare Pages, `api/` en Cloud Run.
 - [ ] **1.7 Correo con dominio:** Email Routing `hola@juanmalmada.com` → Gmail, dominio verificado en Resend, «Enviar como» en Gmail.

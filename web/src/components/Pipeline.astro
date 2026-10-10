@@ -1,0 +1,69 @@
+---
+// Patrón pipeline del manual: cajitas mono unidas por líneas. Diagramático, se puede construir en HTML.
+// Horizontal en pantallas anchas, vertical en el celular.
+interface Props { pasos: string[]; class?: string }
+const { pasos, class: clase } = Astro.props;
+---
+<ol class:list={["pipeline", clase]} style={`--n:${pasos.length}`}>
+  {pasos.map((paso, i) => (
+    <li class:list={["paso", { final: i === pasos.length - 1 }]}>
+      <span class="num">{String(i + 1).padStart(2, "0")}</span>
+      <span class="txt">{paso}</span>
+    </li>
+  ))}
+</ol>
+
+<style>
+  .pipeline {
+    list-style: none;
+    padding: 0;
+    display: grid;
+    gap: var(--space-6);
+    counter-reset: paso;
+  }
+  .paso {
+    position: relative;
+    display: flex;
+    align-items: baseline;
+    gap: var(--space-3);
+    padding: var(--space-3) var(--space-4);
+    border: 1px solid var(--linea);
+    border-radius: var(--radius-box);
+    font-family: var(--font-mono);
+    font-size: var(--fs-small);
+    color: var(--texto);
+  }
+  .num { color: var(--texto-2); font-size: var(--fs-label); }
+  .final {
+    background: var(--lima);
+    border-color: var(--lima);
+    color: var(--pino);
+    font-weight: 500;
+  }
+  .final .num { color: var(--pino); }
+  /* Conector vertical */
+  .paso:not(:last-child)::after {
+    content: "";
+    position: absolute;
+    left: calc(var(--space-4) + .6em);
+    top: 100%;
+    width: 1px;
+    height: var(--space-6);
+    background: var(--linea);
+  }
+
+  @media (min-width: 60rem) {
+    .pipeline {
+      grid-template-columns: repeat(var(--n, 5), minmax(0, 1fr));
+      gap: var(--space-8);
+      align-items: stretch;
+    }
+    .paso { flex-direction: column; gap: var(--space-2); }
+    .paso:not(:last-child)::after {
+      left: 100%;
+      top: 50%;
+      width: var(--space-8);
+      height: 1px;
+    }
+  }
+</style>
