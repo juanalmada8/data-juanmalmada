@@ -3,7 +3,7 @@ titulo: "Turnos online para un consultorio"
 cliente: "Consultorio odontológico"
 rubro: "Salud"
 tamanio: "chico"
-anio: 2026
+anio: 2026 # [[FALTA: año real del proyecto]]
 servicios: ["web", "turnos"]
 resultado: "Los pacientes sacan turno solos, 24/7."
 ahorro: ""

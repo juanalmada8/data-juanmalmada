@@ -38,6 +38,7 @@ Seguir el mapeo de `02-contenido.md`: todo lo del sitio viejo tiene que tener su
 - [x] **2.9 Chequeo de migración.** *Acepta:* tabla de mapeo de `02-contenido.md` cumplida punto por punto.
 - [ ] **2.10 Corte a producción.** Apuntar el hosting al build de `web/` y, recién cuando el sitio nuevo responde en el dominio,
       mover `index.html`/`styles.css` a `legacy/`.
+      **Bloqueada hasta la 4.2** (primer caso real) o hasta sacar el «en preparación» de Proyectos: no se publica con `[[FALTA]]` a la vista.
       *Acepta:* en ningún momento la web publicada queda caída; `legacy/` se borra en un PR aparte cuando Juanma lo confirme.
 
 ## Fase 3 — Contacto con backend

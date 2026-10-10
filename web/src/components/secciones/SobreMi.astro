@@ -6,8 +6,8 @@ import Sticker from "../Sticker.astro";
 import Icono from "../Icono.astro";
 
 const rasgos = [
-  { nombre: "Detallista", texto: "Cada pixel y cada dato en su lugar.", clase: "blanco" },
-  { nombre: "Hiperactivo", texto: "Respuestas rápidas, proyectos que avanzan.", clase: "lima" },
+  { nombre: "Detallista", texto: "Reviso cada número antes de que lo veas vos.", clase: "blanco" },
+  { nombre: "Hiperactivo", texto: "Te respondo en menos de 24\u00a0h hábiles.", clase: "lima" },
   { nombre: "Extrovertido", texto: "Lo técnico, explicado en criollo.", clase: "musgo" },
 ];
 ---
@@ -17,7 +17,7 @@ const rasgos = [
       <Etiqueta numero="04">Sobre mí</Etiqueta>
       <div class="titulo-firma">
         <h2 id="sobre-mi-titulo">Hola, soy <em>Juanma</em>.</h2>
-        <Firma color="pino" ancho="clamp(140px, 22vw, 220px)" />
+        <Firma color="pino" ancho="clamp(140px, 22vw, 220px)" decorativa />
       </div>
       <p class="lead">
         Hace 8&nbsp;años que trabajo con datos y armo webs y apps a medida. Estudié Sistemas en la UNLP.
@@ -73,7 +73,7 @@ const rasgos = [
     gap: var(--space-4);
     margin-top: var(--space-12);
   }
-  .fuera-tit { font-size: var(--fs-small); color: var(--musgo); font-weight: 500; }
+  .fuera-tit { font-size: var(--fs-small); color: var(--pino); font-weight: 500; }
   .chips { list-style: none; padding: 0; display: flex; flex-wrap: wrap; gap: var(--space-2); --texto-2: var(--musgo); }
   .fuera :global(.sticker) { margin-left: auto; }
 

@@ -14,7 +14,7 @@ const [principal, ...resto] = proyectos;
   <div class="contenedor">
     <header class="cabecera" data-aparece>
       <Etiqueta numero="02">Proyectos</Etiqueta>
-      <h2 id="proyectos-titulo">Cosas que ya <em>andan</em>.</h2>
+      <h2 id="proyectos-titulo">Lo que estoy <em>armando</em>.</h2>
     </header>
 
     {principal ? (
@@ -70,9 +70,9 @@ const [principal, ...resto] = proyectos;
     color: var(--pino);
   }
   a.caso:hover h3 { text-decoration: underline; text-underline-offset: var(--space-2); }
-  .caso :global(img) { border-radius: calc(var(--radius-card) - 8px); width: 100%; height: auto; }
+  .caso :global(img) { border-radius: calc(var(--radius-card) - var(--space-2)); width: 100%; height: auto; }
   .info { display: grid; gap: var(--space-3); align-content: center; }
-  .rubro { font-size: var(--fs-label); letter-spacing: .08em; text-transform: uppercase; color: var(--musgo); }
+  .rubro { font-size: var(--fs-label); letter-spacing: .12em; text-transform: uppercase; color: var(--musgo); }
   .principal h3 { font-size: var(--fs-h2); line-height: 1.05; }
   .resultado { font-size: var(--fs-lead); }
   .chips { list-style: none; padding: 0; display: flex; flex-wrap: wrap; gap: var(--space-2); --texto: var(--pino); --texto-2: var(--salvia); }

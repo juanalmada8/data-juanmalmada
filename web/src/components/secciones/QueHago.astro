@@ -14,12 +14,12 @@ const servicios = [
   {
     titulo: "Turnos y sistemas de gestión",
     problema: "«Me paso la mañana atendiendo el teléfono para dar turnos.»",
-    armo: "Turnos online con recordatorio, o el sistema que ordena tus pedidos, tu stock o tus trámites en un solo lugar.",
-    ahorra: "Llamadas, ausencias y la agenda en papel.",
+    armo: "Turnos online con recordatorio, o un sistema que ordena tus pedidos o tus trámites en un solo lugar.",
+    ahorra: "Las llamadas para dar turnos y los pacientes que se olvidan de venir.",
   },
   {
     titulo: "Dashboards y análisis de datos",
-    problema: "«¿Armás el reporte a mano todos los lunes?»",
+    problema: "«Todos los lunes pierdo la mañana armando el reporte a mano.»",
     armo: "Junto lo que tenés repartido entre planillas y sistemas en un tablero que se actualiza solo, con alertas cuando algo se desvía.",
     ahorra: "Las horas de copiar y pegar, y enterarte tarde de los problemas.",
     destacado: true,
@@ -28,7 +28,7 @@ const servicios = [
     titulo: "Nube, infraestructura y arquitectura",
     problema: "«Si se cae el servidor, no sé ni a quién llamar.»",
     armo: "Dejo todo andando en la nube, con respaldos y avisos si algo falla.",
-    ahorra: "Sustos, caídas en el peor momento y pagar por servidores que no usás.",
+    ahorra: "Que se caiga todo justo cuando más lo necesitás.",
   },
 ];
 ---
@@ -38,8 +38,7 @@ const servicios = [
       <Etiqueta numero="01">Qué hago</Etiqueta>
       <h2 id="que-hago-titulo">¿Qué <em>hago</em>?</h2>
       <p class="intro">
-        Lo que normalmente necesita un diseñador, un programador y un analista de datos, acá lo resuelve una
-        persona que entiende el sistema de punta a punta.
+        Lo que suele pedir un equipo entero, lo resuelvo yo, de punta a punta.
       </p>
     </header>
 
@@ -81,7 +80,7 @@ const servicios = [
     padding-block: var(--space-8);
     border-bottom: 1px solid var(--salvia);
   }
-  .num { font-size: var(--fs-label); color: var(--musgo); font-weight: 500; }
+  .num { font-size: var(--fs-label); color: var(--pino); font-weight: 500; }
   .servicio h3 { font-size: var(--fs-h3); }
   .problema {
     font-family: var(--font-serif);
@@ -93,7 +92,7 @@ const servicios = [
   .detalle { display: grid; gap: var(--space-4); margin-top: var(--space-2); }
   dt {
     font-size: var(--fs-label);
-    letter-spacing: .08em;
+    letter-spacing: .12em;
     text-transform: uppercase;
     margin-bottom: var(--space-1);
   }
@@ -135,7 +134,7 @@ const servicios = [
       column-gap: var(--space-8);
       align-items: start;
     }
-    .num { grid-area: num; padding-top: .5rem; }
+    .num { grid-area: num; padding-top: var(--space-2); }
     .servicio h3 { grid-area: titulo; }
     .problema { grid-area: problema; }
     .detalle { grid-area: detalle; grid-template-columns: 1fr 1fr; gap: var(--space-6); margin: 0; }
