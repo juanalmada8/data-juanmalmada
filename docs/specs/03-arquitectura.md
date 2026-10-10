@@ -10,7 +10,7 @@ y para las apps/demos que vengan. Se arma como **monorepo** con dos piezas desac
 navegador ──► web/ (Astro, estático)  ──fetch──►  api/ (Python, FastAPI)  ──► mail / base / servicios
 ```
 
-## Stack (propuesta de arranque)
+## Stack
 
 ### `web/` — front
 | Pieza | Elección | Por qué |
@@ -32,14 +32,21 @@ navegador ──► web/ (Astro, estático)  ──fetch──►  api/ (Python,
 | Calidad | **ruff** (lint + format), **mypy** o **pyright**, **pytest** | |
 | Config | Variables de entorno vía `pydantic-settings`; `.env.example` versionado, `.env` nunca | |
 | Persistencia | Ninguna en v1. Si hace falta: **SQLite** primero, Postgres gestionado cuando duela. | No sumar infraestructura antes de necesitarla. |
-| Mail | Proveedor transaccional por API (Resend, Postmark, SES… a definir) | No SMTP de Gmail. |
+| Mail | **Resend** por API, enviando desde `juanmalmada.com` | Plan gratis (3000 mails/mes, 100/día) sobra para un formulario. Dominio verificado con SPF/DKIM en Cloudflare. |
 | Contenedor | `Dockerfile` chico (python-slim, usuario no root) | Portable entre hosts. |
 
-### Hosting
-**A definir** (ver pendientes). Opciones razonables:
-- `web/`: Cloudflare Pages, Netlify, Vercel o GitHub Pages.
-- `api/`: Google Cloud Run, Fly.io, Render o Railway (contenedor, escala a cero).
-- Mismo dominio: `juanma.xxx` para la web y `api.juanma.xxx` para la API, CORS limitado a ese origen.
+### Hosting y dominio
+- **Dominio:** `juanmalmada.com`, registrado en DonWeb, con DNS en **Cloudflare** (verificado: NS de Cloudflare, sin MX todavía).
+- **`web/`: Cloudflare Pages.** Gratis, el DNS ya está ahí, deploy por push. El sitio viejo sigue donde está hasta el corte (2.10).
+- **`api/`: Google Cloud Run** en `api.juanmalmada.com`, contenedor que escala a cero. El tier gratis cubre de sobra el tráfico de un formulario.
+  Trade-off: primer request en frío de ~1–3&nbsp;s, aceptable para un envío de formulario. Alternativa si molesta: `min-instances=1` (con costo).
+- CORS de la API cerrado a `https://juanmalmada.com`.
+
+### Correo con dominio
+- **Recibir:** Cloudflare Email Routing (gratis) reenvía `hola@juanmalmada.com` a la casilla personal de Juanma.
+- **Enviar como `hola@`:** Gmail «Enviar como» usando el SMTP de Resend. Costo cero, todo desde el Gmail de siempre.
+  Alternativa paga si algún día hace falta casilla aparte: Google Workspace (~US$&nbsp;7/mes).
+- La casilla destino del formulario va en una variable de entorno (`CONTACTO_DESTINO`), no en el repo (que es público).
 
 ## Formulario de contacto (primer endpoint)
 
@@ -105,7 +112,9 @@ Una línea por decisión no trivial (más reciente arriba).
 
 | Fecha | Decisión | Por qué |
 |---|---|---|
+| 2026-10-10 | Stack confirmado. Web en Cloudflare Pages, API en Cloud Run, mail con Resend + Email Routing de Cloudflare. | Mejor calidad/precio: todo en planes gratis, y el DNS ya está en Cloudflare. Juanma delegó la elección. |
+| 2026-10-10 | No se nombran empresas donde trabajó Juanma; todo a presupuesto; WhatsApp como canal principal. | Respuestas de Juanma a pendientes. |
 | 2026-10-10 | Sin foto de Juanma en el sitio. Láminas del manual y plantillas de IG a `docs/marca/`, fuera de `web/public/`. | Decisión de Juanma; lo de `public/` se publica y eso era solo referencia. |
 | 2026-10-10 | El sitio viejo sigue en la raíz hasta el corte a producción (2.10); recién ahí va a `legacy/`. | Moverlo en la 1.1 rompía la web publicada. |
-| 2026-10-10 | Monorepo `web/` (Astro) + `api/` (Python/FastAPI). Pendiente de confirmar hosting. | Vienen formulario de contacto, apps web y Python. |
+| 2026-10-10 | Monorepo `web/` (Astro) + `api/` (Python/FastAPI). | Vienen formulario de contacto, apps web y Python. |
 | 2026-10-10 | Se migra casi todo el contenido del sitio actual, reescrito en la voz nueva. | Pedido de Juanma. |

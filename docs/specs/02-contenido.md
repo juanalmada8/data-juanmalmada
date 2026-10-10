@@ -21,13 +21,16 @@ lo que cambia son los **ejemplos**. Cuando un texto es genérico, bajalo a un ca
 
 | Perfil | Le duele | Ejemplo que entiende |
 |---|---|---|
-| Consultorios y clínicas | Turnos por teléfono, ausencias, agenda en papel | «Tus pacientes sacan turno solos y les llega el recordatorio.» |
+| Consultorios y clínicas (**con experiencia real**) | Turnos por teléfono, ausencias, agenda en papel | «Tus pacientes sacan turno solos y les llega el recordatorio.» |
 | Comercios, estudios, emprendimientos | Planillas sueltas, no saber qué vende o qué deja plata | «Ventas, stock y caja en un tablero que mirás desde el celular.» |
 | Empresas medianas y grandes | Datos repartidos entre sistemas, reportes que se arman a mano | «El reporte del lunes se arma solo y llega a las 8.» |
+| Empresas de RRHH (**con experiencia real**) | Legajos, ausencias y novedades en planillas sueltas; reportes de dotación a mano | «Las novedades del mes se cargan en un lugar y el reporte sale solo.» |
 | Gobierno y organismos | Trámites manuales, información dispersa, transparencia | «Un sistema que ordena los pedidos y muestra en qué estado está cada uno.» |
 | Equipos técnicos (secundario) | Falta alguien que cruce datos, nube, back y front | Detalle técnico en los casos (stack, arquitectura). |
 
 Los ejemplos de la tabla son ilustrativos de **tipos de problema**; no se presentan como clientes ni casos hechos.
+Juanma tiene trabajos reales en **salud (clínicas)** y **empresas de RRHH**: esos perfiles pueden decir «ya lo hice»,
+pero sin nombres ni detalles hasta que haya un caso confirmado.
 
 ## Voz: «Habla como es: de frente.»
 
@@ -71,12 +74,15 @@ Excepción: **«de punta a punta»** y **«todo el sistema»** son frases de la 
 
 - Nombre: **Juan Martín Almada Ortiz**. Corto: **Juanma**.
 - Base: **General Belgrano, Buenos Aires** · **100% remoto**.
-- Experiencia: **8 años** trabajando con datos (ver pendientes: el sitio viejo decía «más de 7»).
+- Experiencia: **8 años** trabajando con datos.
 - Formación: **Sistemas en la UNLP**.
 - Fuera del código: **hockey**, **cocina**, **rock nacional** (y alternativo), **viajes**.
-- Contacto (de `index.html` actual, mantener): mail, WhatsApp con mensaje precargado, LinkedIn.
-- Trayectoria en equipos de datos: Mercado Libre · Cencosud · Ualá · Naranja X. **Ver pendientes antes de usarla.**
-  Con el público ampliado a empresas y gobierno, esta línea gana peso: es la prueba de que maneja datos a escala.
+- Contacto (de `index.html` actual, mantener), en este orden: **WhatsApp** con mensaje precargado (principal),
+  **MD de Instagram** (cuando exista la cuenta), **mail**. LinkedIn como link aparte.
+- Respuesta en **menos de 24&nbsp;h hábiles**.
+- Precios: **todo a presupuesto.** No se muestran precios ni paquetes.
+- **No se nombran las empresas** donde trabajó (Mercado Libre, Cencosud, Ualá, Naranja X): fue como consultor y empleado.
+  Ni nombres ni logos.
 
 ## Mapa del sitio (inicial)
 
@@ -97,7 +103,7 @@ Ritmo de fondo alternado (oscuro · claro · color).
 - Título: «Un solo proveedor, *todo el sistema*.» (itálica en lima)
 - Bajada (dirección): la web, los turnos, los datos y la nube, armados por una persona, para que trabajes menos a mano
   y sepas dónde está la plata. Ej.: «Webs, apps y datos que trabajan por vos. Lo que hoy hacés a mano, que lo haga el sistema.»
-- CTA principal (lima): «Escribime» → canal principal. Secundario: «Ver proyectos» → `#proyectos`.
+- CTA principal (lima): «Escribime» → WhatsApp. Secundario: «Ver proyectos» → `#proyectos`.
 - Chips mono: `web y apps` `turnos y gestión` `datos` `nube`.
 - Logo `<jm▌>` grande con el cursor titilando.
 
@@ -137,14 +143,14 @@ Ritmo de fondo alternado (oscuro · claro · color).
 - **Sin foto** (decisión de Juanma). La presencia personal la dan la firma, el `</j>` y algún sticker.
 - Texto base: «Hace 8 años que trabajo con datos y armo webs y apps a medida. Estudié Sistemas en la UNLP.
   Trabajo remoto desde General Belgrano para quien lo necesite, esté donde esté.»
-- Trayectoria (empresas), en una línea sobria, si Juanma la confirma.
 - Rasgos (Detallista, Hiperactivo, Extrovertido) y «Fuera del código» (hockey, cocina, rock, viajes).
 
 ### 8. Contacto — fondo pino
 - Título: «¿Tenés una idea? *Armemos el sistema*.»
 - **Formulario corto** (nombre, cómo te contacto, qué necesitás, mensaje) contra `POST /contacto`.
   En «qué necesitás», opciones de los 4 servicios + «Otra cosa». Estados en voz de marca, nada de «Submit».
-- Al lado, atajos directos: WhatsApp, mail, LinkedIn. Instagram cuando exista el usuario.
+- Al lado, atajos directos en orden: WhatsApp, Instagram (cuando exista el usuario), mail, LinkedIn.
+- «Te respondo en menos de 24&nbsp;h hábiles.» Cada proyecto se presupuesta: no hay precios publicados.
 - Firma de cierre.
 
 ### Footer
@@ -160,10 +166,10 @@ Se lleva **casi todo** lo del `index.html` actual. Cambia la voz, no la sustanci
 | Resultados: seguimiento diario, proceso estandarizado, decisión informada | 2. Qué hago → «Dashboards y análisis» |
 | Soluciones: reportería, integración de fuentes, alertas | 2. Qué hago → «Dashboards y análisis». Cada «Aplicable cuando…» se vuelve pregunta: «¿Armás el reporte a mano todos los lunes?» |
 | Método de 4 pasos | 6. Cómo trabajo |
-| Experiencia: Mercado Libre · Cencosud · Ualá · Naranja X | 7. Hola, soy Juanma (según pendientes) |
+| Experiencia: Mercado Libre · Cencosud · Ualá · Naranja X | **No va.** Decisión de Juanma: no se nombran. |
 | Sobre mí + «convertir datos dispersos en un sistema de gestión confiable» | 7. Hola, soy Juanma, reescrito |
 | Contacto: mail, WhatsApp, LinkedIn | 8. Contacto + formulario |
-| «Respuesta en menos de 24h hábiles» | 8. Contacto, solo si Juanma lo confirma |
+| «Respuesta en menos de 24h hábiles» | 8. Contacto (confirmado) |
 | Footer «Buenos Aires, Argentina» | «General Belgrano · 100% remoto» |
 
 ## Plantilla de caso (`/proyectos/<slug>`)
