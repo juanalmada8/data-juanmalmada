@@ -23,6 +23,18 @@ y sacala de esta lista.
   - [ ] Salud (clínicas) y empresas de RRHH: hay experiencia real, falta elegir qué contar.
 - [ ] Frase propia para «detrás de escena» si querés cambiar la del manual.
 
+## Para las propuestas de OpenSpec (`openspec/changes/`)
+
+Detalle en el `proposal.md` de cada una. Resumen de lo que solo Juanma puede dar:
+
+- **casos-portfolio:** por cada caso, cómo trabajaban antes, qué se armó y con qué tecnologías, capturas reales,
+  qué cambió (solo lo que el cliente confirme), año real, y si el cliente acepta aparecer con nombre.
+- **formulario-contacto:** cuenta de Resend y verificación del dominio, cuenta de Google Cloud con facturación activada,
+  casilla destino de los mensajes, y el OK a Cloudflare Turnstile como antispam.
+- **demo-turnos:** qué flujo del turnero real conviene reflejar en la demo.
+- **seo-y-redes:** aprobar título y descripción de la home, zonas a nombrar, usuario de Instagram y otras redes.
+- **publicar-sitio:** acceso al panel de Cloudflare Pages y decidir si se publica con el caso «en preparación».
+
 ## Resuelto (2026-10-10)
 
 Stack, hosting y mail (ver `03-arquitectura.md`) · el sitio actual lo sirve Cloudflare Pages desde la raíz de `main` · 8 años · no se nombran empresas · perfiles con experiencia:
