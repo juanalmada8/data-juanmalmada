@@ -1,5 +1,8 @@
 # Roadmap
 
+> **Desde el 2026-10-24 el trabajo se organiza con OpenSpec** (`openspec/changes/`). Las tareas pendientes de acá se
+> convierten en propuestas a medida que se encaran; este archivo queda como mapa general.
+
 Orden tentativo para arrancar. Se reordena, se recorta o se agregan tareas cuando Juanma quiera.
 Una tarea por rama y por PR; tildá `[x]` al mergear.
 
