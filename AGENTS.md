@@ -44,22 +44,7 @@ por alguien detallista. **No tiene que parecer hecho por IA.**
    en `02-contenido.md`). No borres nada con datos reales (contacto, LinkedIn, mail, WhatsApp) sin moverlo antes.
 7. **Secretos nunca en el repo.** Variables de entorno, `.env.example` sin valores, `.env` en `.gitignore`.
 
-## Cómo trabajar: con OpenSpec
-
-Todo cambio de comportamiento (una sección nueva, una página, un endpoint, un cambio de diseño) pasa por OpenSpec:
-
-1. **Proponer:** `/opsx:propose "<idea>"` (Claude Code) o `$openspec-propose` (Codex). Crea `openspec/changes/<nombre>/`
-   con `proposal.md`, `design.md`, `tasks.md` y el delta de specs. **Juanma aprueba la propuesta antes de implementar.**
-2. **Implementar:** `/opsx:apply <nombre>`, tildando `tasks.md` a medida que avanza.
-3. **Archivar:** `/opsx:archive <nombre>` cuando está mergeado: el delta pasa a `openspec/specs/`.
-
-- `openspec/specs/` describe lo que la web **hace hoy** (requisitos y escenarios). `docs/specs/` sigue siendo la fuente
-  de visión, marca, voz y calidad: las propuestas la leen, no la duplican.
-- Contexto y reglas para todas las propuestas: `openspec/config.yaml`.
-- Comandos útiles: `openspec list`, `openspec show <cambio>`, `openspec validate --all`, `openspec view`.
-- Correcciones chicas (un typo, un color mal puesto) no necesitan propuesta.
-
-### Además
+## Cómo trabajar
 
 - **Una tarea del roadmap por vez.** Antes de escribir código, decí en 3–6 líneas qué vas a tocar y cómo vas a verificarlo.
 - **Rama por tarea:** `feat/<tema>`, `fix/<tema>`, `chore/<tema>`, `docs/<tema>`. Nunca directo a `main`.

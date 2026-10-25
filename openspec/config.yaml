@@ -2,40 +2,27 @@ schema: spec-driven
 
 context: |
   Language: es
-  All artifacts must be written in es (español rioplatense, voseo).
+  All artifacts must be written in es.
   Keep OpenSpec structural headings and SHALL/MUST keywords in English.
 
-  Proyecto: la web personal de Juan Martín Almada Ortiz (Juanma), juanmalmada.com.
-  Portfolio + vidriera de servicios + base de una plataforma propia.
-  Lema: «Un solo proveedor, todo el sistema.» Mensaje: lo que el cliente invierte hoy le ahorra tiempo y plata mañana.
-  Público: de un consultorio o un comercio hasta empresas grandes y organismos públicos.
+# Per-artifact rules (optional)
+# Add custom rules for specific artifacts.
+# Example:
+#   rules:
+#     proposal:
+#       - Keep proposals under 500 words
+#       - Always state what is out of scope
+#     tasks:
+#       - Break tasks into chunks of max 2 hours
 
-  Stack: monorepo. web/ = Astro 7 estático, CSS propio con tokens (web/src/styles/tokens.css).
-  api/ = Python 3.12 + FastAPI + uv. Hosting: web en Cloudflare Pages (proyecto data-juanmalmada,
-  hoy publica la raíz de main), API en Google Cloud Run, mail con Resend.
-
-  Fuentes de verdad narrativas (leerlas antes de proponer):
-  - docs/specs/00-vision.md (público, éxito), 01-marca.md (color, tipografía, logo, contraste),
-    02-contenido.md (voz, copy, datos fijos), 03-arquitectura.md (stack, registro de decisiones),
-    04-calidad.md (checklist anti-IA y definición de hecho).
-  - docs/marca/ (láminas del manual), docs/pendientes-juanma.md (datos que faltan).
-
-  Reglas firmes:
-  - No inventar datos: ni testimonios, métricas, ahorros, clientes, logos, proyectos ni años. Si falta, marcador
-    visible [[FALTA: …]] y anotarlo en docs/pendientes-juanma.md.
-  - Logo y firma solo desde web/public/brand/. Nunca redibujarlos.
-  - Solo colores, fuentes y espacios de los tokens. Proporción del manual: crema 40 · pino 30 · musgo 15 ·
-    salvia 11 · lima 4. Lima solo de acento.
-  - Que no parezca hecho por IA (ver 04-calidad.md). Juanma ya rechazó una landing genérica y un editor de código
-    «complicado para el usuario»: priorizar simple de usar y fiel al manual.
-
-rules:
-  proposal:
-    - Decir qué queda fuera de alcance.
-    - Listar los datos o assets que tiene que aportar Juanma; no asumirlos.
-  design:
-    - Respetar tokens y contraste de docs/specs/01-marca.md; justificar cualquier dependencia nueva.
-  tasks:
-    - Incluir verificación visual (capturas en 360, 768 y 1440 px y con reduced-motion).
-    - Incluir correr el subagente revisor-de-marca antes de cerrar tareas visuales o de copy.
-    - Incluir actualizar docs/specs y el registro de decisiones si cambia el rumbo.
+# Per-operation guidance (optional)
+# Add advisory guidance for how apply and archive work should be conducted.
+# This is separate from artifact rules above.
+# Example:
+#   operations:
+#     apply:
+#       guidance:
+#         - Keep test summaries concise
+#     archive:
+#       guidance:
+#         - Summarize the archive outcome before finishing

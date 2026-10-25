@@ -115,7 +115,6 @@ Una línea por decisión no trivial (más reciente arriba).
 
 | Fecha | Decisión | Por qué |
 |---|---|---|
-| 2026-10-24 | Desarrollo guiado por specs con **OpenSpec 1.15** (`openspec/`, comandos `/opsx:*` para Claude Code y skills para Codex). Specs base de marca, home, proyectos, contacto y api. | Pedido de Juanma: ordenar el crecimiento del portfolio con propuestas revisables antes de codear. |
 | 2026-10-10 | Se descarta el editor de código: home editorial simple con el manual como guía de color (crema domina) y un guiño de terminal en el hero. Se mantienen Martian Mono + Atkinson. | Juanma: el editor era «complicado para el usuario» y «todo verde»; pidió hacerle caso al manual. |
 | 2026-10-10 | **Rediseño: la home es un editor de código** (explorador, pestañas, terminal). Tipografías nuevas: Martian Mono + Atkinson Hyperlegible Next. Se mantienen colores, logo y firma. | Juanma: «todo muy AI, dale un giro 180°»; eligió la dirección «Terminal / IDE». |
 | 2026-10-10 | Navegación por `#hash` con mejora progresiva (`components/ide/editor.ts`, ~2,4 KB gzip); sin JS se lee todo apilado. Trade-off: con JS los archivos cerrados están en `display: none`, así que Ctrl+F y el lector de pantalla solo ven el archivo abierto. | SEO, accesibilidad y que funcione sin JS. |
