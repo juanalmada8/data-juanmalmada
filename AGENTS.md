@@ -69,7 +69,6 @@ npm install
 npm run dev       # servidor local
 npm run build     # build de producción a dist/
 npm run check     # astro check (tipos + contenido)
-# /_tokens (solo en dev): hoja de tokens y componentes de marca
 
 # api/
 cd api
@@ -80,6 +79,6 @@ uv run ruff check . && uv run ruff format --check .
 uv run mypy app tests
 ```
 
-## Estructura (inicial)
+## Estructura
 
 Monorepo: `web/` (Astro), `api/` (Python/FastAPI), `docs/`. Detalle en `docs/specs/03-arquitectura.md`.

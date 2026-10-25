@@ -15,7 +15,7 @@ Una tarea por rama y por PR; tildá `[x]` al mergear.
       *Acepta:* `npm run build` en `web/` y `uv run pytest` en `api/` pasan; `GET /health` responde; `.env.example` y `.gitignore` listos.
 - [x] **1.2 CI.** GitHub Actions: lint + tests de `api/`, `check` + build de `web/`, en cada PR.
 - [x] **1.3 Tokens y base.** `tokens.css` y `base.css` según `01-marca.md`; fuentes self-hosted.
-      *Acepta:* página `/_tokens` (solo dev) con paleta, escala tipográfica y espaciados, coincidiendo con el manual.
+      *Acepta:* paleta, escala tipográfica y espaciados en `tokens.css`, coincidiendo con el manual. (La página dev `/_tokens` se retiró en el rediseño `0c1dc17`.)
 - [x] **1.4 Layout, header y footer.** `Base.astro` con meta, OG por defecto, favicon `</j>`; menú mobile accesible.
       *Acepta:* teclado y lector de pantalla OK; header compacto con `</j>` en < 480 px.
 - [x] **1.5 Componentes de marca.** `Logo`, `Firma`, `Etiqueta`, `Chip`, `Boton`, `Sticker`, `PatronM`, `Pipeline`.
