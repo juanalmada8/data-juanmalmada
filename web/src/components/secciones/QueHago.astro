@@ -4,27 +4,27 @@
 const ejemplos = [
   {
     titulo: "Webs y apps a medida",
-    problema: "«Mi web no se ve bien en el celular y no la puedo cambiar.»",
-    solucion: "Armo una web o una app a tu medida, rápida y fácil de actualizar.",
+    problema: "¿Tu web no se ve bien en el celular?",
+    solucion: "Armo una web o una app a tu medida, pensada para el celular.",
   },
   {
     titulo: "Portales y plataformas con su backend",
-    problema: "«Necesito que usuarios y empresas trabajen en un mismo sistema.»",
+    problema: "¿Necesitás que usuarios y empresas trabajen en un mismo sistema?",
     solucion: "Armo el portal y lo que lo sostiene: usuarios, publicaciones, postulaciones y paneles.",
   },
   {
     titulo: "Turnos y reservas online",
-    problema: "«Me paso el día atendiendo el teléfono para dar turnos.»",
+    problema: "¿Pasás el día atendiendo el teléfono para dar turnos?",
     solucion: "Tus clientes reservan solos y reciben la confirmación y el recordatorio.",
   },
   {
     titulo: "Sistemas de gestión interna",
-    problema: "«Todo anda en planillas, cuadernos y chats sueltos.»",
+    problema: "¿Todo anda en planillas, cuadernos y chats sueltos?",
     solucion: "Un sistema a tu medida donde se ordena el trabajo de todo el equipo.",
   },
   {
     titulo: "Automatización y datos",
-    problema: "«Cada lunes armo el reporte a mano.»",
+    problema: "¿Armás el reporte a mano todos los lunes?",
     solucion: "Conecto tus fuentes y armo reportes y tableros que se actualizan solos.",
   },
 ];
@@ -65,7 +65,7 @@ const ejemplos = [
     transition: border-color .2s ease, transform .2s ease;
   }
   .tarjeta:hover { border-color: var(--lima); transform: translateY(calc(-1 * var(--space-1))); }
-  .problema { font-style: italic; color: var(--salvia); }
+  .problema { color: var(--salvia); }
   .solucion { color: var(--crema); }
 
   @media (prefers-reduced-motion: reduce) { .tarjeta:hover { transform: none; } }
@@ -78,5 +78,14 @@ const ejemplos = [
   .cierre .boton:hover { background: transparent; color: var(--pino); }
 
   @media (min-width: 40rem) { .tarjetas { grid-template-columns: repeat(2, 1fr); } }
-  @media (min-width: 64rem) { .tarjetas { grid-template-columns: repeat(3, 1fr); gap: var(--space-6); } }
+  @media (min-width: 64rem) {
+    .tarjetas { grid-template-columns: repeat(3, 1fr); gap: var(--space-6); }
+    /* Ritmo: una tarjeta ancha y el cierre como banda de ancho completo */
+    .tarjeta:nth-child(2) { grid-column: span 2; }
+    .tarjeta:nth-child(2) .solucion { max-width: 36rem; }
+    .cierre { grid-column: 1 / -1; grid-template-columns: 1fr auto; align-items: center; column-gap: var(--space-8); padding-block: var(--space-8); }
+    .cierre-tit { grid-column: 1; }
+    .cierre p:nth-child(2) { grid-column: 1; }
+    .cierre .boton { grid-column: 2; grid-row: 1 / span 2; }
+  }
 </style>

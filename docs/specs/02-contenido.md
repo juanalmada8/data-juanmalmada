@@ -164,6 +164,6 @@ Agregar un caso nuevo = crear su archivo; aparece como una pestaña más, sin to
 
 ## SEO y metadatos
 
-- Title home: «Juan Martín Almada Ortiz · Webs, apps y datos» (≤ 60 caracteres).
+- Title home: «Juan Martín Almada Ortiz · Sistemas a medida» (≤ 60 caracteres).
 - Description: una frase en la voz de la marca que mencione el ahorro, ≤ 155 caracteres.
 - OG image propia por página (1200×630), con la marca.

@@ -12,7 +12,7 @@ interface Props {
 }
 const {
   titulo = "Juan Martín Almada Ortiz · Sistemas a medida",
-  descripcion = "Armo sistemas a medida: desde la app que usan tus clientes hasta los datos que te ayudan a decidir. Contame tu idea.",
+  descripcion = "Armo sistemas a medida, desde la app de tus clientes hasta los datos para decidir. Lo que hoy hacés a mano, que lo haga el sistema.",
   imagen = "/brand/og-default.png",
 } = Astro.props;
 const canonica = new URL(Astro.url.pathname, sitio.url).href;
@@ -26,6 +26,7 @@ const og = new URL(imagen, sitio.url).href;
     <title>{titulo}</title>
     <meta name="description" content={descripcion} />
     <link rel="canonical" href={canonica} />
+    <!-- theme-color no admite var(): es el hex de --pino (tokens.css) -->
     <meta name="theme-color" content="#133A2E" />
 
     <link rel="icon" href="/favicon.svg" type="image/svg+xml" />

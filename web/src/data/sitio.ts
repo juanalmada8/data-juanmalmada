@@ -8,7 +8,7 @@ export const sitio = {
   titular: "Todo el sistema, un solo proveedor.", // titular del hero (decisión de Juanma, 2026-10-27)
   base: "General Belgrano, Buenos Aires",
   url: "https://juanmalmada.com",
-  experiencia: "más de 7 años",
+  experiencia: "más de 7\u00a0años",
   respuesta: "menos de 24 h hábiles",
 };
 

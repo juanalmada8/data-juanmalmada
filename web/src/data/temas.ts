@@ -21,7 +21,7 @@ export const temas: Tema[] = [
     id: "web",
     chip: "Una web o app",
     ejemplo: "Una web o una app hecha a tu medida.",
-    frase: "Tu negocio se ve bien desde el celular y lo actualizás vos, sin depender de nadie.",
+    frase: "Tu negocio se ve bien desde el celular y tiene lo que necesita para trabajar.",
     vista: { tipo: "capturas", casos: ["oral", "staffy"] },
     mensaje: "Hola Juanma, quiero armar una web o app",
   },

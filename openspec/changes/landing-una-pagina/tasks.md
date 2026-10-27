@@ -54,7 +54,7 @@
 - [x] 8.1 Capturas en 360, 768 y 1440 px y con `prefers-reduced-motion`; verificar sin scroll horizontal y con la primera pantalla correcta en 390×844 y 360×640.
 - [x] 8.2 Lighthouse móvil (Rendimiento, Accesibilidad y SEO ≥ 90) y peso del JavaScript < 15 kB comprimido; verificar con el informe adjunto al PR.
 - [x] 8.3 Contraste AA y navegación completa por teclado y lector de pantalla; verificar con la lista de 04-calidad.
-- [ ] 8.4 Pasar `revisor-de-marca` sobre la página final; verificar que no deja observaciones abiertas.
+- [x] 8.4 Pasar `revisor-de-marca` sobre la página final; verificar que no deja observaciones abiertas.
 - [ ] 8.5 Compartir el link en una vista previa de WhatsApp/Instagram; verificar la imagen Open Graph de la marca.
 
 ## Workflow follow-up
