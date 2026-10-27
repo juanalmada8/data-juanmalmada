@@ -59,19 +59,20 @@ texto pino («detrás de escena») está permitida, como mucho una por pantalla.
 
 ## Tipografía
 
-> **Cambio 2026-10-10 (decisión de Juanma):** se reemplazan las tipografías del manual (DM Serif Display, Manrope,
-> JetBrains Mono). Quedan los colores, el logo y la firma.
+Las del manual de marca (vuelven el 2026-10-24: ver el registro de decisiones de `03-arquitectura.md`).
 
-| Rol | Familia | Uso |
-|---|---|---|
-| Títulos y detalles | **Martian Mono** (variable: peso 100–800, ancho 75–112.5 %) | Títulos (bold), rótulos `01 — QUÉ HAGO`, guiños de terminal. |
-| Lectura | **Atkinson Hyperlegible Next** (variable + itálica) | Párrafos y explicaciones «en criollo». Es la que lee el cliente no técnico. |
+| Rol | Familia | Pesos | Uso |
+|---|---|---|---|
+| Títulos | **DM Serif Display** | 400 + itálica | Títulos y frases. La itálica (`<em>`) destaca **una** palabra por título. |
+| Textos | **Manrope** | variable 200–800 | Párrafos, UI, botones, descripciones. |
+| Detalles | **JetBrains Mono** | 400 / 500 | Etiquetas chicas en mayúsculas con tracking (`.12em`), numeraciones (`01 — QUÉ HAGO`), guiños de código. Dosis chicas. |
 
-Self-hosted en `web/public/fonts/` (woff2 latin, OFL). Tamaños en `tokens.css`: `--fs-ui` (13 px, interfaz),
-`--fs-code`, `--fs-body`, `--fs-lead`, `--fs-h2`, `--fs-h1`.
+Self-hosted en `web/public/fonts/` (woff2 latin, OFL, `font-display: swap`). Nada de Google Fonts en runtime.
+Tamaños en `tokens.css`: `--fs-micro` (11 px, nunca menos), `--fs-label`, `--fs-small`, `--fs-body`, `--fs-lead`,
+`--fs-h3`, `--fs-h2`, `--fs-h1`.
 
 Detalles tipográficos que **sí** importan:
-- Títulos en *sentence case*. El acento de un título (`.acento`) va en musgo sobre crema y en lima sobre pino; una idea por título.
+- Títulos en *sentence case*. El acento de un título (`<em>`, itálica) va en musgo sobre crema (solo en títulos grandes) y en lima sobre pino; una idea por título.
 - `text-wrap: balance` en títulos, `text-wrap: pretty` en párrafos.
 - Comillas latinas «así». Signos de apertura ¿¡ siempre. Puntos suspensivos con `…`.
 - `&nbsp;` entre número y unidad (`8&nbsp;años`, `24&nbsp;h`).
@@ -87,7 +88,7 @@ a `--fs-h1`; `--tap-min` 44 px.
   que más se ve; pino en bandas y tarjetas; salvia en una banda y placas; lima solo en acentos, el botón de WhatsApp
   sobre pino y una placa chica.
 - Plano: bloques sólidos, tarjetas blancas con borde salvia sobre crema, sin sombras.
-- Botón principal: pino sobre crema (lima sobre pino), pill, Atkinson 700.
+- Botón principal: pino sobre crema (lima sobre pino), pill, Manrope 700.
 
 ## Recursos gráficos
 

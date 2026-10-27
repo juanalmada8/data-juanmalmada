@@ -1,0 +1,57 @@
+---
+// Patrón de la `m` del manual: grilla tono sobre tono con algunas `m` en lima.
+// Se arma como grilla (no como tile repetido) para evitar costuras. Usa el trazo real de brand/m.svg.
+import { leerSvg } from "../lib/marca";
+
+interface Props {
+  tono?: "pino" | "crema";
+  filas?: number;
+  /** Posiciones [fila, columna] de las `m` en lima. */
+  lima?: [number, number][];
+  alto?: string;
+  class?: string;
+}
+// Recurso decorativo y sutil: una banda baja entre secciones, nunca de fondo detrás de texto.
+const { tono = "pino", filas = 1, lima = [], alto = "clamp(64px, 9vw, 118px)", class: clase } = Astro.props;
+
+const m = leerSvg("m.svg");
+const d = /\sd="([^"]+)"/.exec(m.interior)?.[1] ?? "";
+const PASO_X = 140, PASO_Y = 118, COLUMNAS = 15;
+const ancho = PASO_X * COLUMNAS;
+const altoVb = PASO_Y * filas - (PASO_Y - m.alto);
+const id = `m-${tono}-${filas}-${lima.map((p) => p.join("x")).join("-") || "0"}`;
+const esLima = (f: number, c: number) => lima.some(([lf, lc]) => lf === f && lc === c);
+
+const celdas: { x: number; y: number; lima: boolean }[] = [];
+for (let f = 0; f < filas; f++) {
+  const corrido = f % 2 === 1 ? -PASO_X / 2 : 0;
+  for (let c = 0; c <= COLUMNAS; c++) {
+    celdas.push({ x: c * PASO_X + corrido, y: f * PASO_Y, lima: esLima(f, c) });
+  }
+}
+---
+<div class:list={["patron", `patron-${tono}`, clase]} style={`--alto:${alto}`} aria-hidden="true">
+  <svg viewBox={`0 0 ${ancho} ${altoVb}`} preserveAspectRatio="xMinYMin slice" width="100%" height="100%">
+    <defs><path id={id} d={d} /></defs>
+    <g class="base">
+      {celdas.filter((c) => !c.lima).map((c) => <use href={`#${id}`} x={c.x} y={c.y} />)}
+    </g>
+    <g class="lima">
+      {celdas.filter((c) => c.lima).map((c) => <use href={`#${id}`} x={c.x} y={c.y} />)}
+    </g>
+  </svg>
+</div>
+
+<style>
+  .patron {
+    height: var(--alto);
+    overflow: hidden;
+  }
+  .patron svg { width: 100%; height: 100%; max-width: none; }
+  .patron-pino { background: var(--pino); }
+  .patron-pino .base { fill: var(--musgo); fill-opacity: .45; }
+  .patron-pino .lima { fill: var(--lima); }
+  .patron-crema { background: var(--crema); }
+  .patron-crema .base { fill: var(--salvia); fill-opacity: .6; }
+  .patron-crema .lima { fill: var(--lima); }
+</style>

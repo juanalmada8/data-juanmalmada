@@ -2,10 +2,10 @@
 
 ## 1. Marca y base
 
-- [ ] 1.1 Recuperar los woff2 de DM Serif Display, Manrope y JetBrains Mono desde `feat/base`, borrar Martian Mono y Atkinson y actualizar `LICENSE.md`; verificar que `web/public/fonts/` solo tiene las del manual y el build pasa.
-- [ ] 1.2 Reescribir `tokens.css` y `base.css` con las fuentes y escalas del manual (títulos serif con itálica, etiquetas mono en mayúsculas con tracking); verificar con una página de prueba que carga las tres fuentes y que no quedan referencias a las anteriores (`git grep`).
-- [ ] 1.3 Actualizar `docs/specs/01-marca.md` (tipografías vuelven al manual) y registrar la decisión en `03-arquitectura.md`; verificar que ya no menciona Martian Mono ni Atkinson como vigentes.
-- [ ] 1.4 Recuperar `PatronM` de `feat/home` y adaptarlo (decorativo, `aria-hidden`); verificar que se ve sin costuras y que no queda detrás de texto.
+- [x] 1.1 Recuperar los woff2 de DM Serif Display, Manrope y JetBrains Mono desde `feat/base`, borrar Martian Mono y Atkinson y actualizar `LICENSE.md`; verificar que `web/public/fonts/` solo tiene las del manual y el build pasa.
+- [x] 1.2 Reescribir `tokens.css` y `base.css` con las fuentes y escalas del manual (títulos serif con itálica, etiquetas mono en mayúsculas con tracking); verificar con una página de prueba que carga las tres fuentes y que no quedan referencias a las anteriores (`git grep`).
+- [x] 1.3 Actualizar `docs/specs/01-marca.md` (tipografías vuelven al manual) y registrar la decisión en `03-arquitectura.md`; verificar que ya no menciona Martian Mono ni Atkinson como vigentes.
+- [x] 1.4 Recuperar `PatronM` de `feat/home` y adaptarlo (decorativo, `aria-hidden`); verificar que se ve sin costuras y que no queda detrás de texto.
 
 ## 2. Datos y colección de casos
 
