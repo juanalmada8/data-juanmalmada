@@ -1,54 +1,34 @@
 ---
+// Barra fija mínima: logo + «Contame tu idea», siempre visible. Spec: specs/landing («Barra fija mínima»).
+// El logo <jm> va desde 480 px (mínimo de marca: 100 px); por debajo, el ícono </j>.
+import Logo from "./Logo.astro";
 import Icono from "./Icono.astro";
-import { contacto, sitio } from "../data/sitio";
-const enlaces = [
-  { href: "/#que-hago", texto: "Qué hago" },
-  { href: "/#como-trabajo", texto: "Cómo trabajo" },
-  { href: "/#sobre-mi", texto: "Sobre mí" },
-];
+import { sitio } from "../data/sitio";
 ---
-<header class="header">
+<header class="barra tema-crema">
   <div class="contenedor fila">
-    <a class="marca" href="/" aria-label={`${sitio.nombre}, inicio`}>
-      <Icono variante="circulo" ancho="36px" />
-      <span class="nombre mono">juanma</span>
+    <a class="marca" href="#inicio" aria-label={`${sitio.nombre}, ir al inicio`}>
+      <Logo variante="pino" ancho="104px" class="logo-grande" decorativo />
+      <Icono variante="pino" ancho="34px" class="logo-chico" />
     </a>
-    <nav aria-label="Principal">
-      <ul>
-        {enlaces.map((e) => <li class="ocultable"><a href={e.href}>{e.texto}</a></li>)}
-        <li><a class="escribime" href={contacto.whatsapp} target="_blank" rel="noopener noreferrer">Escribime</a></li>
-      </ul>
-    </nav>
+    <a class="boton lima" href="#contacto">Contame tu idea</a>
   </div>
 </header>
 
 <style>
-  .header {
+  .barra {
     position: sticky;
     top: 0;
     z-index: 50;
-    background: var(--crema);
     border-bottom: 1px solid var(--pino);
   }
-  .fila { display: flex; align-items: center; justify-content: space-between; gap: var(--space-4); min-height: 4rem; }
-  .marca { display: inline-flex; align-items: center; gap: var(--space-3); text-decoration: none; }
-  .nombre { font-size: var(--fs-small); font-weight: 600; }
-  ul { list-style: none; padding: 0; display: flex; align-items: center; gap: var(--space-6); }
-  nav a {
-    display: inline-flex;
-    align-items: center;
-    min-height: var(--tap-min);
-    font-size: var(--fs-small);
-    font-weight: 700;
-    text-decoration: none;
+  .fila { display: flex; align-items: center; justify-content: space-between; gap: var(--space-4); min-height: var(--alto-barra); }
+  .marca { display: inline-flex; align-items: center; min-height: var(--tap-min); }
+  .marca :global(.logo-grande) { display: none; }
+  .barra .boton { min-height: var(--tap-min); padding: 0 var(--space-4); font-size: var(--fs-small); }
+  @media (min-width: 30rem) {
+    .marca :global(.logo-grande) { display: block; }
+    .marca :global(.logo-chico) { display: none; }
+    .barra .boton { padding: 0 var(--space-6); font-size: var(--fs-body); }
   }
-  nav a:not(.escribime):hover { text-decoration: underline; text-underline-offset: var(--space-1); }
-  .escribime {
-    padding: 0 var(--space-4);
-    border-radius: var(--radius-pill);
-    background: var(--pino);
-    color: var(--crema);
-  }
-  .escribime:hover { background: var(--musgo); }
-  @media (max-width: 40rem) { .ocultable { display: none; } }
 </style>

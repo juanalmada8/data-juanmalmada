@@ -1,31 +1,26 @@
 ---
-import Logo from "./Logo.astro";
+// Pie: el lema del manual, LinkedIn, la base y el año.
 import { contacto, sitio } from "../data/sitio";
 const anio = new Date().getFullYear();
 ---
-<footer class="footer tema-pino">
+<footer class="pie tema-pino">
   <div class="contenedor fila">
-    <Logo variante="crema" ancho="120px" />
     <p class="lema">{sitio.lema}</p>
-    <ul class="links">
-      <li><a href={contacto.whatsapp} target="_blank" rel="noopener noreferrer">WhatsApp</a></li>
-      <li><a href={`mailto:${contacto.mail}`}>Mail</a></li>
-      <li><a href={contacto.linkedin} target="_blank" rel="noopener noreferrer">LinkedIn</a></li>
-    </ul>
-    <p class="datos mono">General Belgrano · 100% remoto · © {anio}</p>
+    <a class="link" href={contacto.linkedin} target="_blank" rel="noopener noreferrer">
+      LinkedIn <span aria-hidden="true">↗</span><span class="sr-only"> (se abre en otra pestaña)</span>
+    </a>
+    <p class="datos">General Belgrano · 100% remoto · © {anio}</p>
   </div>
 </footer>
 
 <style>
-  .footer { padding-block: var(--space-12); border-top: 1px solid var(--musgo); }
-  .fila { display: grid; gap: var(--space-6); justify-items: start; }
-  .lema { font-family: var(--font-mono); font-weight: 600; letter-spacing: -.02em; }
-  .links { list-style: none; padding: 0; display: flex; flex-wrap: wrap; gap: 0 var(--space-6); }
-  .links a { display: inline-flex; align-items: center; min-height: var(--tap-min); text-underline-offset: var(--space-1); }
-  .links a:hover { color: var(--lima); }
-  .datos { font-size: var(--fs-micro); color: var(--salvia); letter-spacing: .06em; }
-  @media (min-width: 52rem) {
-    .fila { grid-template-columns: auto 1fr auto; align-items: center; column-gap: var(--space-12); }
+  .pie { padding-block: var(--space-12); }
+  .fila { display: grid; gap: var(--space-4); justify-items: start; }
+  .lema { font-family: var(--font-serif); font-size: var(--fs-h3); line-height: 1.15; }
+  .link { display: inline-flex; align-items: center; min-height: var(--tap-min); }
+  .datos { font-family: var(--font-mono); font-size: var(--fs-micro); letter-spacing: .08em; text-transform: uppercase; color: var(--salvia); }
+  @media (min-width: 48rem) {
+    .fila { grid-template-columns: 1fr auto; align-items: center; }
     .datos { grid-column: 1 / -1; }
   }
 </style>

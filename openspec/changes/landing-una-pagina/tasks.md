@@ -38,10 +38,10 @@
 
 ## 6. Contacto y barra fija
 
-- [ ] 6.1 Barra fija con `</j>`/`<jm>` y «Contame tu idea»; verificar que no tapa los títulos al navegar por anclas y que el CTA se ve completo en 360 px.
-- [ ] 6.2 Sección de contacto con WhatsApp, Instagram, mail, línea de presentación («más de 7 años»), firma y pie con el lema del manual y LinkedIn; verificar que los links abren bien, llevan `rel="noopener noreferrer"` y que el texto dice «más de 7 años».
-- [ ] 6.3 Conectar el tema elegido en el selector al mensaje de WhatsApp; verificar eligiendo cada chip y comprobando el texto del link.
-- [ ] 6.4 Verificar el tope de clics: barra → contacto → botón, y chip → CTA → botón; contar los clics con Playwright.
+- [x] 6.1 Barra fija con `</j>`/`<jm>` y «Contame tu idea»; verificar que no tapa los títulos al navegar por anclas y que el CTA se ve completo en 360 px.
+- [x] 6.2 Sección de contacto con WhatsApp, Instagram, mail, línea de presentación («más de 7 años»), firma y pie con el lema del manual y LinkedIn; verificar que los links abren bien, llevan `rel="noopener noreferrer"` y que el texto dice «más de 7 años».
+- [x] 6.3 Conectar el tema elegido en el selector al mensaje de WhatsApp; verificar eligiendo cada chip y comprobando el texto del link.
+- [x] 6.4 Verificar el tope de clics: barra → contacto → botón, y chip → CTA → botón; contar los clics con Playwright.
 
 ## 7. Limpieza
 

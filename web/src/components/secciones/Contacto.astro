@@ -1,31 +1,47 @@
 ---
+// Cierre: contacto directo. WhatsApp lleva el tema que eligió el visitante en el hero (lo actualiza el script del Hero).
+// Spec: specs/contacto.
 import Firma from "../Firma.astro";
-import PatronDatos from "../PatronDatos.astro";
+import PatronM from "../PatronM.astro";
 import { contacto, sitio } from "../../data/sitio";
 ---
-<section id="contacto" class="seccion tema-pino" aria-labelledby="contacto-titulo">
+<section id="contacto" class="seccion tema-crema" aria-labelledby="contacto-titulo">
   <div class="contenedor grilla">
     <div class="texto" data-aparece>
-      <p class="rotulo">07 — Contacto</p>
-      <h2 id="contacto-titulo">¿Tenés una idea? <span class="acento">Armemos el sistema</span>.</h2>
-      <p class="lead texto-2">Contame qué hacés y qué te está comiendo el tiempo. Te respondo en {sitio.respuesta}.</p>
-      <a class="boton lima" href={contacto.whatsapp} target="_blank" rel="noopener noreferrer">Escribime por WhatsApp</a>
-      <p class="otros">
-        O por <a class="link" href={`mailto:${contacto.mail}`}>mail</a> o <a class="link" href={contacto.linkedin} target="_blank" rel="noopener noreferrer">LinkedIn</a>.
-        Cada proyecto se presupuesta.
-      </p>
-      <Firma color="crema" ancho="9rem" decorativa />
+      <p class="rotulo">04 — Contacto</p>
+      <h2 id="contacto-titulo">¿Tenés un negocio, un consultorio, una empresa o una idea? <em>Armemos el sistema.</em></h2>
+      <div class="botones">
+        <a class="boton lima grande" data-wa-tema href={contacto.whatsapp} target="_blank" rel="noopener noreferrer">
+          WhatsApp<span class="sr-only"> (se abre en otra pestaña)</span>
+        </a>
+        <a class="boton sec grande" href={contacto.instagram} target="_blank" rel="noopener noreferrer">
+          Instagram<span class="sr-only"> (se abre en otra pestaña)</span>
+        </a>
+        <a class="boton sec grande" href={`mailto:${contacto.mail}`}>Mail</a>
+      </div>
+      <p class="respuesta">Te respondo en {sitio.respuesta}.</p>
     </div>
-    <PatronDatos class="puntos" />
+
+    <div class="yo" data-aparece>
+      <p>
+        Soy Juanma: ingeniero de datos y desarrollador full stack, con {sitio.experiencia} de experiencia en equipos
+        y empresas de distintos rubros. Trabajo desde General Belgrano, de forma remota para todo el país.
+      </p>
+      <Firma color="pino" ancho="10rem" decorativa />
+    </div>
   </div>
+  <PatronM tono="crema" lima={[[0, 5]]} class="banda" />
 </section>
 
 <style>
-  .grilla { display: grid; gap: var(--space-12); align-items: center; }
+  .grilla { display: grid; gap: var(--space-8); padding-bottom: var(--space-12); }
   .texto { display: grid; gap: var(--space-6); justify-items: start; }
-  .otros { color: var(--salvia); }
-  .otros .link { color: var(--crema); }
-  .grilla :global(.puntos) { width: 100%; max-width: 28rem; }
-  @media (max-width: 40rem) { .grilla :global(.puntos) { display: none; } }
-  @media (min-width: 60rem) { .grilla { grid-template-columns: 1.3fr 1fr; gap: var(--space-16); } }
+  .botones { display: grid; gap: var(--space-3); width: 100%; }
+  .boton.grande { min-height: 3.5rem; font-size: var(--fs-lead); }
+  .respuesta { font-family: var(--font-mono); font-size: var(--fs-small); }
+  .yo { display: grid; gap: var(--space-4); align-content: start; max-width: 32rem; }
+  @media (min-width: 40rem) { .botones { grid-template-columns: repeat(3, auto); justify-content: start; } }
+  @media (min-width: 60rem) {
+    .grilla { grid-template-columns: 1.4fr 1fr; gap: var(--space-16); align-items: end; }
+  }
 </style>
