@@ -30,11 +30,11 @@
 
 ## 5. Casos reales
 
-- [ ] 5.1 Componente de pestañas ARIA para los casos y sus datos; verificar navegación con flechas y que el cambio es de un clic.
-- [ ] 5.2 Marcos de celu/ventana en CSS y componente de captura con `astro:assets`, `alt` obligatorio, ancho/alto y lazy; verificar que el build falla sin `alt`.
-- [ ] 5.3 Placeholders de capturas de Oral y Staffy hasta que lleguen; verificar que se ven y que el chequeo de build los lista.
+- [x] 5.1 Componente de pestañas ARIA para los casos y sus datos; verificar navegación con flechas y que el cambio es de un clic.
+- [x] 5.2 Marcos de celu/ventana en CSS y componente de captura con `astro:assets`, `alt` obligatorio, ancho/alto y lazy; verificar que el build falla sin `alt`.
+- [x] 5.3 Placeholders de capturas de Oral y Staffy hasta que lleguen; verificar que se ven y que el chequeo de build los lista.
 - [ ] 5.4 Con las capturas de Juanma (si ya llegaron), cargarlas y anonimizar datos de personas; verificar que ninguna muestra nombres ni teléfonos.
-- [ ] 5.5 Actualizar la plantilla de caso en `02-contenido.md`; verificar que lista los campos del esquema.
+- [x] 5.5 Actualizar la plantilla de caso en `02-contenido.md`; verificar que lista los campos del esquema.
 
 ## 6. Contacto y barra fija
 

@@ -1,0 +1,132 @@
+---
+// Casos reales en pestañas (patrón ARIA de tabs). Cada caso es un archivo de src/content/casos/: sumar uno no toca este componente.
+// Sin JavaScript se ven uno debajo del otro. Spec: openspec/changes/landing-una-pagina/specs/casos.
+import Captura from "../Captura.astro";
+import { cargarCasos } from "../../lib/casos";
+
+const casos = await cargarCasos();
+---
+<section id="casos" class="seccion tema-crema" aria-labelledby="casos-titulo">
+  <div class="contenedor" data-casos>
+    <header class="cabecera" data-aparece>
+      <p class="rotulo">02 — Casos reales</p>
+      <h2 id="casos-titulo">Proyectos reales, <em>mundos distintos</em>.</h2>
+    </header>
+
+    <div class="pestanas" role="tablist" aria-label="Casos" data-pestanas>
+      {casos.map((c, i) => (
+        <button
+          type="button"
+          role="tab"
+          class="pestana"
+          id={`tab-${c.id}`}
+          aria-controls={`caso-${c.id}`}
+          aria-selected={i === 0 ? "true" : "false"}
+          tabindex={i === 0 ? 0 : -1}
+        >{c.data.nombre}</button>
+      ))}
+    </div>
+
+    <div class="casos" data-aparece>
+      {casos.map((c, i) => (
+        <article
+          class:list={["caso", { activo: i === 0 }]}
+          id={`caso-${c.id}`}
+          role="tabpanel"
+          aria-labelledby={`tab-${c.id}`}
+        >
+          <div class="info">
+            <h3>{c.data.nombre}</h3>
+            <p class="resumen">{c.data.resumen}</p>
+            <ul class="bullets">
+              {c.data.bullets.map((b) => <li>{b}</li>)}
+            </ul>
+            <a class="link" href={c.data.url} target="_blank" rel="noopener noreferrer">
+              Ver {new URL(c.data.url).hostname} <span aria-hidden="true">↗</span><span class="sr-only"> (se abre en otra pestaña)</span>
+            </a>
+          </div>
+          <div class="capturas">
+            {c.data.capturas.length > 0 ? (
+              c.data.capturas.map((cap) => <Captura caso={c.data.nombre} captura={cap} />)
+            ) : (
+              <Captura caso={c.data.nombre} marco="ventana" />
+            )}
+          </div>
+        </article>
+      ))}
+    </div>
+  </div>
+</section>
+
+<script>
+  // Pestañas: un clic cambia de caso; flechas, Home y End con el teclado.
+  const raiz = document.querySelector<HTMLElement>("[data-casos]");
+  if (raiz) {
+    const tabs = [...raiz.querySelectorAll<HTMLButtonElement>('[role="tab"]')];
+    const paneles = [...raiz.querySelectorAll<HTMLElement>('[role="tabpanel"]')];
+    const activar = (tab: HTMLButtonElement) => {
+      tabs.forEach((t) => {
+        const on = t === tab;
+        t.setAttribute("aria-selected", String(on));
+        t.tabIndex = on ? 0 : -1;
+      });
+      paneles.forEach((p) => p.classList.toggle("activo", p.id === tab.getAttribute("aria-controls")));
+    };
+    tabs.forEach((tab, i) => {
+      tab.addEventListener("click", () => activar(tab));
+      tab.addEventListener("keydown", (e) => {
+        const mov = { ArrowRight: 1, ArrowLeft: -1 }[e.key];
+        const destino = e.key === "Home" ? 0 : e.key === "End" ? tabs.length - 1 : mov ? (i + mov + tabs.length) % tabs.length : -1;
+        if (destino < 0) return;
+        e.preventDefault();
+        tabs[destino].focus();
+        activar(tabs[destino]);
+      });
+    });
+  }
+</script>
+
+<style>
+  .pestanas { display: flex; flex-wrap: wrap; gap: var(--space-2); margin-bottom: var(--space-6); }
+  .pestana {
+    min-height: var(--tap-min);
+    padding: 0 var(--space-6);
+    border: 2px solid var(--pino);
+    border-radius: var(--radius-pill);
+    background: transparent;
+    color: var(--pino);
+    font-family: var(--font-sans);
+    font-size: var(--fs-body);
+    font-weight: 700;
+    cursor: pointer;
+    transition: background-color .15s ease, color .15s ease;
+  }
+  .pestana:hover { background: var(--blanco); }
+  .pestana[aria-selected="true"] { background: var(--pino); color: var(--crema); }
+
+  .caso {
+    display: grid;
+    gap: var(--space-6);
+    padding: var(--space-6);
+    background: var(--blanco);
+    border: var(--borde-suave);
+    border-radius: var(--radius-card);
+  }
+  .info { display: grid; gap: var(--space-4); align-content: start; }
+  .resumen { font-size: var(--fs-lead); line-height: 1.35; }
+  .bullets { list-style: none; padding: 0; display: grid; gap: var(--space-2); }
+  .bullets li { position: relative; padding-left: var(--space-6); }
+  .bullets li::before { content: ""; position: absolute; left: 0; top: .6em; width: .75rem; height: 2px; background: var(--musgo); }
+  .info .link { justify-self: start; }
+  .capturas { display: flex; flex-wrap: wrap; align-items: flex-start; gap: var(--space-4); }
+  .capturas :global(.captura:not(.celu)) { flex: 1 1 14rem; }
+
+  /* Sin JavaScript: todos apilados, sin pestañas. Con JavaScript: uno por vez. */
+  :global(html:not(.js)) .pestanas { display: none; }
+  :global(html:not(.js)) .caso + .caso { margin-top: var(--space-6); }
+  :global(html.js) .caso:not(.activo) { display: none; }
+
+  @media (min-width: 56rem) {
+    .caso { grid-template-columns: 1fr 1.1fr; gap: var(--space-12); padding: var(--space-12); align-items: center; }
+  }
+</style>

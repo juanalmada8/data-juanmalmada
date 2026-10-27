@@ -138,23 +138,29 @@ Se lleva **casi todo** lo del `index.html` actual. Cambia la voz, no la sustanci
 | «Respuesta en menos de 24h hábiles» | 8. Contacto (confirmado) |
 | Footer «Buenos Aires, Argentina» | «General Belgrano · 100% remoto» |
 
-## Plantilla de caso (`/proyectos/<slug>`)
+## Plantilla de caso (`web/src/content/casos/<id>.md`)
+
+Un caso = un archivo + sus capturas. El esquema está en `web/src/content.config.ts` y **falla el build** si falta un campo.
 
 ```yaml
-titulo: "Turnos online para un consultorio"
-cliente: "Consultorio odontológico"   # o nombre real si hay permiso
-rubro: "Salud"
-tamanio: "chico"                      # chico | mediano | grande | sector público
-anio: 2026
-servicios: ["web", "turnos", "datos"]
-resultado: "Los pacientes sacan turno solos, 24/7."   # una línea, verificable
-ahorro: ""                            # solo si el cliente lo confirma (ej. "ya no atienden el teléfono para turnos")
-portada: "./portada.webp"
-publicado: false
+nombre: "Oral Odontología Familiar"
+url: "https://oral.com.ar"              # sitio real; abre en otra pestaña
+resumen: "El sitio de un consultorio odontológico, con turnos online y panel de gestión."   # una línea
+bullets:                                 # exactamente 3, cortos: qué se armó
+  - "La web del consultorio."
+  - "Reserva de turnos online, con confirmación y recordatorio por mail."
+  - "Lista de espera y un panel para gestionar todo."
+capturas:                                # reales; vacío = placeholder visible [[FALTA]]
+  - src: "../../assets/oral-turnos.png"
+    alt: "Pantalla de reserva de turnos de Oral"   # obligatorio
+    marco: celu                          # celu | ventana (marco decorativo)
+orden: 1
+publicado: true                          # false = no aparece
 ```
 
-Cuerpo, en este orden: **Antes** (cómo trabajaban y qué les costaba) · **Qué armamos** · **Cómo quedó** (capturas reales) ·
-**Qué ahorran hoy** (tiempo, plata, errores; solo lo confirmado) · **Lo técnico** (opcional, para equipos técnicos).
+Reglas: solo lo que Juanma contó; sin métricas, ahorros ni testimonios que no estén confirmados; capturas sin datos
+de personas (anonimizar antes de subir). `npm run build` lista en consola las capturas que faltan (`[FALTA] captura de …`).
+Agregar un caso nuevo = crear su archivo; aparece como una pestaña más, sin tocar componentes.
 
 ## SEO y metadatos
 
