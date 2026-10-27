@@ -16,11 +16,11 @@
 
 ## 3. Hero y selector
 
-- [ ] 3.1 Hero con titular, bajada, CTA y fila de chips; verificar en 390×844 y 360×640 que se ven titular, chips y CTA sin scrollear.
-- [ ] 3.2 Isla del selector (radiogroup, flechas, `aria-live`, transición, «Otra idea»); verificar con teclado y que no hay animación con `prefers-reduced-motion`.
-- [ ] 3.3 Vistas previas con capturas o patrones del manual y placeholders visibles; verificar que ninguna muestra una UI inventada.
-- [ ] 3.4 Degradación sin JavaScript (lista de temas); verificar con JavaScript desactivado.
-- [ ] 3.5 Actualizar el hero en `docs/specs/02-contenido.md`; verificar que coincide con lo construido.
+- [x] 3.1 Hero con titular, bajada, CTA y fila de chips; verificar en 390×844 y 360×640 que se ven titular, chips y CTA sin scrollear.
+- [x] 3.2 Isla del selector (radiogroup, flechas, `aria-live`, transición, «Otra idea»); verificar con teclado y que no hay animación con `prefers-reduced-motion`.
+- [x] 3.3 Vistas previas con capturas o patrones del manual y placeholders visibles; verificar que ninguna muestra una UI inventada.
+- [x] 3.4 Degradación sin JavaScript (lista de temas); verificar con JavaScript desactivado.
+- [x] 3.5 Actualizar el hero en `docs/specs/02-contenido.md`; verificar que coincide con lo construido.
 
 ## 4. Qué hago y Cómo trabajo
 

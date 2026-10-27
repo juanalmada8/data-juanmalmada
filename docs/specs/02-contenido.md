@@ -74,44 +74,53 @@ Excepción: **«de punta a punta»** y **«todo el sistema»** son frases de la 
 
 - Nombre: **Juan Martín Almada Ortiz**. Corto: **Juanma**.
 - Base: **General Belgrano, Buenos Aires** · **100% remoto**.
-- Experiencia: **8 años** trabajando con datos.
+- Experiencia: **más de 7 años** (decisión de Juanma, 2026-10-27; reemplaza al «8 años»). Ingeniero de datos y desarrollador full stack, en equipos multidisciplinarios y empresas de distintos rubros.
 - Formación: **Sistemas en la UNLP**.
 - Fuera del código: **hockey**, **cocina**, **rock nacional** (y alternativo), **viajes**.
-- Contacto (de `index.html` actual, mantener), en este orden: **WhatsApp** con mensaje precargado (principal),
-  **MD de Instagram** (cuando exista la cuenta), **mail**. LinkedIn como link aparte.
+- Contacto, en este orden: **WhatsApp** con mensaje precargado según el tema elegido (principal), **Instagram**
+  (`instagram.com/almadaortiz.dev`), **mail**. LinkedIn queda en el pie.
+- Dominio principal: **juanmalmada.com**.
 - Respuesta en **menos de 24&nbsp;h hábiles**.
 - Precios: **todo a presupuesto.** No se muestran precios ni paquetes.
 - **No se nombran las empresas** donde trabajó (Mercado Libre, Cencosud, Ualá, Naranja X): fue como consultor y empleado.
   Ni nombres ni logos.
 
-## Mapa del sitio (inicial)
+## Mapa del sitio
 
 ```
-/                    Home (una página, con anclas por sección)
-/proyectos/<slug>    Un caso por proyecto real
-/gracias             Confirmación del formulario (funciona sin JS)
+/        Una sola página, con anclas: #que-hago, #casos, #como-trabajo, #contacto
 /404
-/apps/<nombre>       Más adelante
 ```
 
-## Home: editorial, siguiendo el manual
+No hay páginas internas, modales ni formularios (cambio `landing-una-pagina`).
 
-> **Historial 2026-10-10.** Landing con secciones → editor de código («todo muy AI») → editor descartado («complicado
-> para el usuario»). Queda una página editorial simple que se scrollea, con el manual como guía de color
-> (crema domina) y un guiño de terminal en la tarjeta del hero.
+## Home: una sola página de 5 secciones
 
-Orden y fondo (ritmo claro · oscuro · color del manual):
+> **Historial 2026-10-10 → 2026-10-27.** Landing de 8 secciones → editor de código → página editorial → **una sola
+> página de 5 secciones** con selector interactivo (cambio OpenSpec `landing-una-pagina`, que es la fuente de verdad del
+> comportamiento: `openspec/changes/landing-una-pagina/specs/`). Esto resume el contenido.
 
-| # | Sección | Fondo | Qué tiene |
+Mensaje: **«Todo el sistema, un solo proveedor.»** Armo sistemas a medida para lo que el negocio necesite; los servicios
+y los casos son **ejemplos, no un límite**. Ver y contactar, a 2 o 3 clics desde cualquier punto.
+
+Ritmo de fondo: crema · pino · crema · pino · crema, y pie pino.
+
+| # | Sección | Fondo | Contenido |
 |---|---|---|---|
-| — | Hero | crema | Meta (nombre · General Belgrano · 100% remoto), «Un solo proveedor, *todo el sistema*.», bajada, WhatsApp. Tarjeta pino girada con `hola_mundo()`, `<jm▌>` y 2 líneas de terminal. |
-| 01 | Qué hago | crema + tarjetas blancas | 4 servicios: problema (palabras del cliente) → qué armo → qué te ahorra. Cierre «¿Lo tuyo no está en la lista? Contame igual.» |
-| 02 | Todo conectado | pino + placa salvia | Patrón pipeline del manual. |
-| 03 | Para quién | salvia | 5 perfiles; «ya trabajé en esto» solo en clínicas y RRHH. |
-| 04 | Cómo trabajo | crema + placa lima | 4 pasos del método viejo; inversión y presupuesto. |
-| 05 | Proyectos | crema | Lista de casos; hoy el del consultorio «en preparación» con `[[FALTA]]`. |
-| 06 | Sobre mí | crema | Tarjeta pino con firma lima (como la lámina «Quién es»), rasgos en pino/lima/musgo, fuera del código. Sin foto. |
-| 07 | Contacto | pino | WhatsApp (lima), mail, LinkedIn, patrón de datos. |
+| 1 | Hero | crema | `hola_mundo()`, titular «Todo el sistema, *un solo proveedor.*», bajada «Armo sistemas a medida: desde la app que usan tus clientes hasta los datos que te ayudan a decidir.», selector **«¿Qué necesitás?»** (6 chips) con vista previa y el CTA «Contame tu idea». |
+| 2 | Qué hago | pino | 5 ejemplos («algunas cosas que puedo armar») + «¿Lo tuyo no está acá? Contámelo, seguro se puede armar.» |
+| 3 | Casos | crema | Oral y Staffy en pestañas: nombre, una línea, 3 bullets, capturas y link. |
+| 4 | Cómo trabajo | pino | Charla → Propuesta → Desarrollo → Soporte. |
+| 5 | Contacto | crema | «¿Tenés un negocio, un consultorio, una empresa o una idea? Armemos el sistema.», WhatsApp, Instagram y mail, presentación y firma. Pie: lema del manual, LinkedIn, base y año. |
+
+### Selector del hero
+
+Chips: **Una web o app · Una plataforma · Turnos · Gestión · Datos · Otra idea**. Un clic cambia la vista previa
+(captura real de un caso, o un patrón del manual; nunca una interfaz inventada) con un ejemplo y una frase de qué se
+resuelve. «Otra idea» muestra «Contame qué tenés en mente y lo armamos» y el botón de contacto. El tema que **elige** el
+visitante precarga el WhatsApp: «Hola Juanma, quiero armar una plataforma». Datos en `web/src/data/temas.ts`.
+
+Sin JavaScript, los 6 temas se leen como lista.
 
 ## Migración del contenido actual
 

@@ -1,84 +1,190 @@
 ---
-import Logo from "../Logo.astro";
-import { contacto } from "../../data/sitio";
+// Hero: titular, bajada, selector «¿Qué necesitás?» con vista previa, y el CTA.
+// Spec: openspec/changes/landing-una-pagina/specs/{landing,selector-hero}.
+// Sin JavaScript se leen los 6 temas como lista; con JavaScript son chips y una vista previa por vez.
+import Captura from "../Captura.astro";
+import Pipeline from "../Pipeline.astro";
+import PatronDatos from "../PatronDatos.astro";
+import PatronM from "../PatronM.astro";
+import { sitio } from "../../data/sitio";
+import { temas, temaInicial } from "../../data/temas";
+import { cargarCasos } from "../../lib/casos";
+import { urlWhatsApp } from "../../lib/whatsapp";
+
+const casos = await cargarCasos();
+const caso = (id: string) => casos.find((c) => c.id === id);
 ---
 <section class="hero tema-crema" aria-labelledby="hero-titulo">
-  <div class="contenedor">
-    <p class="meta mono" aria-hidden="true">
-      <span>Juan Martín Almada Ortiz</span><span>General Belgrano · 100% remoto</span>
-    </p>
-    <div class="grilla">
-      <div class="texto">
-        <h1 id="hero-titulo">Un solo proveedor, <span class="acento">todo el&nbsp;sistema.</span></h1>
-        <p class="lead">Webs, apps y datos que trabajan por vos. Lo que hoy hacés a mano, que lo haga el sistema.</p>
-        <div class="acciones">
-          <a class="boton" href={contacto.whatsapp} target="_blank" rel="noopener noreferrer">Escribime por WhatsApp</a>
-          <a class="link" href="#que-hago">Ver qué armo ↓</a>
-        </div>
-      </div>
+  <div class="contenedor grilla">
+    <div class="h-texto">
+      <p class="rotulo">hola_mundo()</p>
+      <h1 id="hero-titulo">Todo el sistema, <em>un solo&nbsp;proveedor.</em></h1>
+      <p class="lead">Armo sistemas a medida: desde la app que usan tus clientes hasta los datos que te ayudan a decidir.</p>
+    </div>
 
-      <div class="tarjeta tema-pino" aria-hidden="true">
-        <span class="tag mono">hola_mundo()</span>
-        <Logo variante="cursor" ancho="100%" decorativo class="logo" />
-        <p class="term mono">
-          <span><b>$</b> whoami</span>
-          <span>datos · web · nube</span>
-          <span><b>$</b> uptime</span>
-          <span>8 años trabajando con datos</span>
-        </p>
+    <div class="h-selector" data-selector>
+      <p class="rotulo" id="sel-etiqueta">¿Qué necesitás?</p>
+      <div class="chips" role="radiogroup" aria-labelledby="sel-etiqueta">
+        {temas.map((t) => (
+          <button
+            type="button"
+            class="chip"
+            role="radio"
+            aria-checked={t.id === temaInicial ? "true" : "false"}
+            tabindex={t.id === temaInicial ? 0 : -1}
+            data-tema={t.id}
+            data-wa={urlWhatsApp(t.mensaje)}
+          >{t.chip}</button>
+        ))}
       </div>
     </div>
+
+    <div class="h-cta">
+      <a class="boton lima" href="#contacto">Contame tu idea</a>
+    </div>
+
+    <div class="vistas" aria-live="polite">
+      {temas.map((t) => (
+        <div class:list={["vista", { activo: t.id === temaInicial }]} data-vista={t.id} role="group" aria-label={t.chip}>
+          <p class="nombre-tema rotulo">{t.chip}</p>
+          <div class="visual">
+            {t.vista.tipo === "capturas" && (
+              <div class="caps">
+                {t.vista.casos.map((id) => {
+                  const c = caso(id);
+                  return c && <Captura caso={c.data.nombre} captura={c.data.capturas[0]} marco="ventana" />;
+                })}
+              </div>
+            )}
+            {t.vista.tipo === "pipeline" && (
+              <Pipeline pasos={["planillas", "se ordenan", "un solo lugar"]} />
+            )}
+            {t.vista.tipo === "datos" && <PatronDatos columnas={10} filas={3} class="datos" />}
+          </div>
+          {t.vista.tipo === "invitacion" ? (
+            <>
+              <p class="frase grande">{t.frase}</p>
+              <a class="boton" href="#contacto">Contame tu idea</a>
+            </>
+          ) : (
+            <>
+              <p class="ejemplo">{t.ejemplo}</p>
+              <p class="frase">{t.frase}</p>
+            </>
+          )}
+        </div>
+      ))}
+    </div>
   </div>
+  <PatronM tono="crema" class="banda" />
 </section>
 
+<script>
+  // Selector: radiogroup con flechas. El tema que ELIGE el visitante (no el inicial) viaja al mensaje de WhatsApp.
+  const grupo = document.querySelector<HTMLElement>("[data-selector] .chips");
+  if (grupo) {
+    const chips = [...grupo.querySelectorAll<HTMLButtonElement>('[role="radio"]')];
+    const vistas = [...document.querySelectorAll<HTMLElement>("[data-vista]")];
+    const enlaces = () => [...document.querySelectorAll<HTMLAnchorElement>("[data-wa-tema]")];
+
+    const elegir = (chip: HTMLButtonElement, desdeVisitante: boolean) => {
+      chips.forEach((c) => {
+        const activo = c === chip;
+        c.setAttribute("aria-checked", String(activo));
+        c.tabIndex = activo ? 0 : -1;
+      });
+      vistas.forEach((v) => v.classList.toggle("activo", v.dataset.vista === chip.dataset.tema));
+      if (desdeVisitante) enlaces().forEach((a) => (a.href = chip.dataset.wa!));
+    };
+
+    chips.forEach((chip, i) => {
+      chip.addEventListener("click", () => elegir(chip, true));
+      chip.addEventListener("keydown", (e) => {
+        const salto = { ArrowRight: 1, ArrowDown: 1, ArrowLeft: -1, ArrowUp: -1 }[e.key];
+        const destino = e.key === "Home" ? 0 : e.key === "End" ? chips.length - 1 : salto ? (i + salto + chips.length) % chips.length : -1;
+        if (destino < 0) return;
+        e.preventDefault();
+        chips[destino].focus();
+        elegir(chips[destino], true);
+      });
+    });
+  }
+</script>
+
 <style>
-  .hero { padding-block: var(--space-8) clamp(var(--space-16), 8vw, var(--space-24)); border-bottom: 1px solid var(--pino); }
-  .meta {
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: space-between;
-    gap: var(--space-2) var(--space-6);
-    padding-bottom: var(--space-4);
-    margin-bottom: clamp(var(--space-8), 6vw, var(--space-16));
-    border-bottom: 1px solid var(--salvia);
-    font-size: var(--fs-micro);
-    letter-spacing: .12em;
-    text-transform: uppercase;
-  }
-  .grilla { display: grid; gap: var(--space-12); align-items: center; }
-  .texto { display: grid; gap: var(--space-6); justify-items: start; }
-  .acciones { display: flex; flex-wrap: wrap; align-items: center; gap: var(--space-4) var(--space-8); }
+  .hero { padding-top: var(--space-8); position: relative; }
+  .grilla { display: grid; gap: var(--space-6); padding-bottom: clamp(var(--space-8), 6vw, var(--space-16)); }
+  .h-texto { display: grid; gap: var(--space-4); justify-items: start; }
+  .lead { max-width: 36ch; }
 
-  .tarjeta {
-    position: relative;
-    display: grid;
-    gap: var(--space-8);
-    padding: var(--space-12) var(--space-8) var(--space-8);
-    border-radius: var(--radius-card);
-    transform: rotate(-2deg);
-    max-width: 26rem;
-  }
-  .tarjeta :global(.logo) { width: min(100%, 18rem); }
-  .tag {
-    position: absolute;
-    top: calc(-1 * var(--space-3));
-    right: var(--space-6);
-    padding: var(--space-1) var(--space-4);
+  /* Chips */
+  .h-selector { display: grid; gap: var(--space-2); }
+  .chips { display: flex; flex-wrap: wrap; gap: var(--space-2); }
+  .chip {
+    min-height: var(--tap-min);
+    padding: 0 var(--space-4);
+    border: 2px solid var(--pino);
     border-radius: var(--radius-pill);
-    background: var(--lima);
+    background: transparent;
     color: var(--pino);
+    font-family: var(--font-mono);
     font-size: var(--fs-small);
-    transform: rotate(3deg);
+    font-weight: 500;
+    cursor: pointer;
+    transition: background-color .15s ease, color .15s ease;
   }
-  .term { display: grid; gap: var(--space-1); font-size: var(--fs-small); color: var(--salvia); }
-  .term b { color: var(--lima); font-weight: 500; }
-  .term span:nth-child(odd) { color: var(--crema); }
+  .chip:hover { background: var(--blanco); }
+  .chip[aria-checked="true"] { background: var(--pino); color: var(--crema); }
 
+  /* Vista previa */
+  .vistas {
+    padding: var(--space-4);
+    background: var(--blanco);
+    border: var(--borde-suave);
+    border-radius: var(--radius-card);
+  }
+  .vista { display: grid; gap: var(--space-3); align-content: start; }
+  .nombre-tema { display: none; }
+  .visual:empty { display: none; }
+  .caps { display: grid; grid-template-columns: repeat(auto-fit, minmax(8.5rem, 1fr)); gap: var(--space-3); }
+  .ejemplo { font-family: var(--font-serif); font-size: var(--fs-h3); line-height: 1.15; }
+  .frase { color: var(--pino); }
+  .frase.grande { font-family: var(--font-serif); font-size: var(--fs-h3); line-height: 1.2; }
+  .vista :global(.datos) { width: 100%; max-height: 7rem; }
+  .vista .boton { justify-self: start; }
+
+  /* Sin JavaScript: lista de los 6 temas, sin chips */
+  :global(html:not(.js)) .chips { display: none; }
+  :global(html:not(.js)) .vista { padding-block: var(--space-4); border-top: var(--borde-suave); }
+  :global(html:not(.js)) .nombre-tema { display: block; }
+  :global(html.js) .vista:not(.activo) { display: none; }
+
+  /* Transición del selector: aparición suave de la vista elegida */
+  @media (prefers-reduced-motion: no-preference) {
+    :global(html.js) .vista.activo { animation: entra .25s ease; }
+  }
+  @keyframes entra { from { opacity: 0; transform: translateY(var(--space-2)); } }
+
+  /* Celular: lo justo para que entren titular, chips y CTA en 360×640 */
   @media (max-width: 40rem) {
-    .tarjeta { display: none; }
+    .hero { padding-top: var(--space-6); }
+    .h-texto { gap: var(--space-3); }
+    .lead { font-size: var(--fs-body); }
   }
+
   @media (min-width: 60rem) {
-    .grilla { grid-template-columns: 1.5fr 1fr; gap: var(--space-16); }
-    .tarjeta { justify-self: end; }
+    .grilla {
+      grid-template-columns: 1.1fr 1fr;
+      grid-template-areas: "texto vista" "selector vista" "cta vista";
+      column-gap: var(--space-16);
+      align-content: center;
+      min-height: 32rem;
+    }
+    .h-texto { grid-area: texto; }
+    .h-selector { grid-area: selector; }
+    .h-cta { grid-area: cta; }
+    .vistas { grid-area: vista; align-self: center; padding: var(--space-8); }
   }
+
+  .banda { opacity: .9; }
 </style>

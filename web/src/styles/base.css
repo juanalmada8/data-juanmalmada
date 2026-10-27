@@ -104,6 +104,9 @@ p { text-wrap: pretty; }
 .boton:hover { background: transparent; color: var(--pino); }
 .boton.lima { background: var(--lima); border-color: var(--lima); color: var(--pino); }
 .boton.lima:hover { background: transparent; color: var(--lima); }
+/* Lima sobre crema: borde pino de 2px, texto pino (la lima sola no se distingue del fondo) */
+.tema-crema .boton.lima, .tema-blanco .boton.lima { border-color: var(--pino); }
+.tema-crema .boton.lima:hover, .tema-blanco .boton.lima:hover { background: var(--pino); color: var(--lima); }
 .boton.sec { background: transparent; color: var(--texto); border-color: var(--texto); }
 .boton.sec:hover { background: var(--texto); color: var(--fondo); }
 
