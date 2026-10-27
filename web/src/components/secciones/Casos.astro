@@ -29,7 +29,7 @@ const casos = await cargarCasos();
 
     <div class="casos" data-aparece>
       {casos.map((c, i) => (
-        <article
+        <div
           class:list={["caso", { activo: i === 0 }]}
           id={`caso-${c.id}`}
           role="tabpanel"
@@ -52,7 +52,7 @@ const casos = await cargarCasos();
               <Captura caso={c.data.nombre} marco="ventana" />
             )}
           </div>
-        </article>
+        </div>
       ))}
     </div>
   </div>

@@ -54,3 +54,13 @@ test("se escaneó el sitio entero (hay archivos .astro, datos y casos)", () => {
   assert.ok(nombres.some((n) => n.startsWith("data/temas.ts")));
   assert.ok(nombres.some((n) => n.startsWith("content/casos/oral.md")));
 });
+
+// Metadatos por defecto (src/layouts/Base.astro): largos recomendados.
+test("título ≤ 60 y descripción ≤ 155 caracteres, sin lista cerrada de servicios", () => {
+  const base = readFileSync(new URL("../src/layouts/Base.astro", import.meta.url), "utf8");
+  const titulo = /titulo = "([^"]+)"/.exec(base)[1];
+  const descripcion = /descripcion = "([^"]+)"/.exec(base)[1];
+  assert.ok(titulo.length <= 60, `título de ${titulo.length} caracteres`);
+  assert.ok(descripcion.length <= 155, `descripción de ${descripcion.length} caracteres`);
+  assert.doesNotMatch(`${titulo} ${descripcion}`, /la web, los turnos|webs, apps y datos/i);
+});
