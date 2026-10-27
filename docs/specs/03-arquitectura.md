@@ -77,10 +77,13 @@ web/
   src/
     styles/      tokens.css  base.css
     layouts/     Base.astro
-    components/  Header Footer Logo Icono Firma Falta PatronDatos
-      secciones/ Hero QueHago Sistema ParaQuien ComoTrabajo Proyectos SobreMi Contacto
-    content/     config.ts  proyectos/
-    pages/       index.astro  proyectos/[slug].astro  gracias.astro  404.astro  apps/
+    components/  Header Footer Logo Icono Firma Falta Captura Pipeline PatronM PatronDatos
+      secciones/ Hero QueHago Casos ComoTrabajo Contacto
+    content.config.ts  content/casos/   (un caso = un archivo)
+    data/        sitio.ts (contacto y datos fijos)  temas.ts (chips del selector)
+    lib/         whatsapp.ts  casos.ts  marca.ts
+    pages/       index.astro  404.astro
+  tests/         temas.test.mjs  copy.test.mjs   (node --test, sin dependencias)
 api/
   pyproject.toml  uv.lock  Dockerfile  .env.example
   app/
@@ -115,6 +118,11 @@ Una línea por decisión no trivial (más reciente arriba).
 
 | Fecha | Decisión | Por qué |
 |---|---|---|
+| 2026-10-27 | **Web de una sola página de 5 secciones** (hero con selector, qué hago, casos, cómo trabajo, contacto), cambio OpenSpec `landing-una-pagina`. Casos en la colección `casos` (un archivo por caso); se borran `proyectos/[slug]`, Todo conectado, Para quién y Sobre mí. | Pedido de Juanma: simple, interactiva, 2–3 clics hasta el contacto; los servicios y casos son ejemplos, no un límite. |
+| 2026-10-27 | Todos los «Contame tu idea» llevan a `#contacto`; el tema elegido en el hero precarga el WhatsApp (`data-wa-tema`). 2 clics desde la barra, 3 desde el hero con un tema elegido. | Un solo comportamiento por botón; Instagram y mail quedan a la misma distancia que WhatsApp. |
+| 2026-10-27 | `404.astro` propia. Cloudflare Pages sin `404.html` trata el sitio como SPA y serviría la home con 200 en rutas inexistentes. | La spec pide 404 real para rutas internas. |
+| 2026-10-27 | Tests con `node:test` sin dependencias (`npm test`, en CI): temas/WhatsApp y copy (frases prohibidas, cifras, límites de tipo de proyecto). Datos y helpers sin imports para poder correrlos con type stripping de Node. | Verificar el comportamiento y la voz sin sumar un runner. |
+| 2026-10-27 | Experiencia: «más de 7 años». | Decisión de Juanma. |
 | 2026-10-24 | **Vuelven las tipografías del manual** (DM Serif Display, Manrope, JetBrains Mono); se sacan Martian Mono y Atkinson Hyperlegible Next. | Juanma pidió respetar el manual en la web de una sola página (cambio OpenSpec `landing-una-pagina`). |
 | 2026-10-10 | Se descarta el editor de código: home editorial simple con el manual como guía de color (crema domina) y un guiño de terminal en el hero. Se mantienen Martian Mono + Atkinson. | Juanma: el editor era «complicado para el usuario» y «todo verde»; pidió hacerle caso al manual. |
 | 2026-10-10 | **Rediseño: la home es un editor de código** (explorador, pestañas, terminal). Tipografías nuevas: Martian Mono + Atkinson Hyperlegible Next. Se mantienen colores, logo y firma. | Juanma: «todo muy AI, dale un giro 180°»; eligió la dirección «Terminal / IDE». |

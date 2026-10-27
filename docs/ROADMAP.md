@@ -1,5 +1,8 @@
 # Roadmap
 
+> **Cambio en curso:** `openspec/changes/landing-una-pagina` (web de una sola página de 5 secciones). Su `tasks.md` es
+> el detalle; este archivo queda como mapa general de fases.
+
 Orden tentativo para arrancar. Se reordena, se recorta o se agregan tareas cuando Juanma quiera.
 Una tarea por rama y por PR; tildá `[x]` al mergear.
 

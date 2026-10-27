@@ -15,16 +15,18 @@ y sacala de esta lista.
 - **Tiempos de entrega** («una web simple: 2–3 semanas»). Mientras no estén, «Cómo trabajo» no muestra tiempos.
 - **Demos vivas** (un turnero o un tablero de ejemplo que se pueda probar en la web). Ideas sueltas, sin apuro.
 
-## Contenido (más adelante)
+## Contenido
 
-- [ ] Usuario de Instagram (todavía no existe; hasta entonces, el contacto es WhatsApp y mail).
-- [ ] Casos reales: para cada uno, qué era antes, qué armaste, capturas, y si el cliente acepta aparecer con nombre.
-  - [ ] Turnos online — consultorio odontológico.
-  - [ ] Salud (clínicas) y empresas de RRHH: hay experiencia real, falta elegir qué contar.
-- [ ] Frase propia para «detrás de escena» si querés cambiar la del manual.
+- [ ] **Capturas de Oral (oral.com.ar) y de Staffy (jobs.wearestaffy.com)**, en celu y/o en ventana, sin datos de
+  personas. Hasta entonces la web muestra `[[FALTA: captura de …]]` (el build las lista) y **no se publica así**.
+  Se cargan en `web/src/assets/` y se referencian en `web/src/content/casos/<caso>.md` (campo `capturas`, con `alt`).
+  Tarea 5.4 de `openspec/changes/landing-una-pagina`.
+- [ ] Confirmar la URL de Instagram (se asume `instagram.com/almadaortiz.dev`).
+- [ ] Más casos reales: clínicas y empresas de RRHH (hay experiencia, falta elegir qué contar).
+- [ ] Si «Fuera del código» (hockey, cocina, rock nacional, viajes) vuelve en otra versión: hoy quedó afuera por el tope de 5 secciones.
 
 ## Resuelto (2026-10-10)
 
-Stack, hosting y mail (ver `03-arquitectura.md`) · el sitio actual lo sirve Cloudflare Pages desde la raíz de `main` · 8 años · no se nombran empresas · perfiles con experiencia:
+Stack, hosting y mail (ver `03-arquitectura.md`) · el sitio actual lo sirve Cloudflare Pages desde la raíz de `main` · «más de 7 años» (2026-10-27) · dominio principal juanmalmada.com · titular «Todo el sistema, un solo proveedor.» · no se nombran empresas · perfiles con experiencia:
 clínicas y RRHH · todo a presupuesto · canales: WhatsApp, Instagram, mail · respuesta en menos de 24 h hábiles ·
-sin foto · assets de marca completos.
+sin foto · assets de marca completos · Instagram `almadaortiz.dev`.

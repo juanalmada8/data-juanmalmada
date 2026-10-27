@@ -75,7 +75,7 @@ Detalles tipográficos que **sí** importan:
 - Títulos en *sentence case*. El acento de un título (`<em>`, itálica) va en musgo sobre crema (solo en títulos grandes) y en lima sobre pino; una idea por título.
 - `text-wrap: balance` en títulos, `text-wrap: pretty` en párrafos.
 - Comillas latinas «así». Signos de apertura ¿¡ siempre. Puntos suspensivos con `…`.
-- `&nbsp;` entre número y unidad (`8&nbsp;años`, `24&nbsp;h`).
+- `&nbsp;` entre número y unidad (`7&nbsp;años`, `24&nbsp;h`).
 - Rótulos del manual: `01 — QUÉ HAGO` (mono, mayúscula, `.12em`), `hola_mundo()`.
 
 ## Espaciado y forma

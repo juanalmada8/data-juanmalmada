@@ -45,9 +45,9 @@
 
 ## 7. Limpieza
 
-- [ ] 7.1 Borrar `pages/proyectos/[slug].astro`, `Sistema`, `ParaQuien`, `SobreMi`, `PatronDatos` si no se usa y los componentes viejos; verificar que `/proyectos/x` da 404 y que `npm run check` y `build` pasan.
-- [ ] 7.2 Revisar la tabla de migración de `proposal.md`; verificar que cada punto del sitio anterior tiene su lugar o su razón anotada.
-- [ ] 7.3 Actualizar `docs/ROADMAP.md`, `docs/pendientes-juanma.md` (capturas pendientes), `02-contenido.md` (datos fijos: «más de 7 años») y `03-arquitectura.md`; verificar con `git grep "8 años\|8&nbsp;años"` que no quedan menciones de 8 años en docs ni en el sitio.
+- [x] 7.1 Borrar `pages/proyectos/[slug].astro`, `Sistema`, `ParaQuien`, `SobreMi`, `PatronDatos` si no se usa y los componentes viejos; verificar que `/proyectos/x` da 404 y que `npm run check` y `build` pasan.
+- [x] 7.2 Revisar la tabla de migración de `proposal.md`; verificar que cada punto del sitio anterior tiene su lugar o su razón anotada.
+- [x] 7.3 Actualizar `docs/ROADMAP.md`, `docs/pendientes-juanma.md` (capturas pendientes), `02-contenido.md` (datos fijos: «más de 7 años») y `03-arquitectura.md`; verificar con `git grep "8 años\|8&nbsp;años"` que no quedan menciones de 8 años en docs ni en el sitio.
 
 ## 8. Verificación integrada
 

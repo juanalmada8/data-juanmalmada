@@ -74,7 +74,7 @@ Excepción: **«de punta a punta»** y **«todo el sistema»** son frases de la 
 
 - Nombre: **Juan Martín Almada Ortiz**. Corto: **Juanma**.
 - Base: **General Belgrano, Buenos Aires** · **100% remoto**.
-- Experiencia: **más de 7 años** (decisión de Juanma, 2026-10-27; reemplaza al «8 años»). Ingeniero de datos y desarrollador full stack, en equipos multidisciplinarios y empresas de distintos rubros.
+- Experiencia: **más de 7 años** (decisión de Juanma, 2026-10-27). Ingeniero de datos y desarrollador full stack, en equipos multidisciplinarios y empresas de distintos rubros.
 - Formación: **Sistemas en la UNLP**.
 - Fuera del código: **hockey**, **cocina**, **rock nacional** (y alternativo), **viajes**.
 - Contacto, en este orden: **WhatsApp** con mensaje precargado según el tema elegido (principal), **Instagram**

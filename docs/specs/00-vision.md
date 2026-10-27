@@ -17,7 +17,7 @@ Esta versión reemplaza eso por la identidad del manual de marca 2026 (verdes, `
 Consultorios, clínicas, estudios, comercios, emprendimientos, empresas, gobierno, etc.
 
 **Secundario — equipos técnicos** que buscan a alguien de datos/nube que además resuelva el front
-y el back. Para ellos pesan los 8&nbsp;años de oficio con datos y la
+y el back. Para ellos pesan los más de 7&nbsp;años de oficio con datos y la
 profundidad técnica (las empresas donde trabajó no se nombran). Se les habla igual de claro, pero pueden encontrar más detalle técnico en los casos.
 
 ## Qué se vende
