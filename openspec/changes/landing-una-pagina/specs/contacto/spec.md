@@ -33,15 +33,15 @@ Los enlaces de WhatsApp, Instagram, mail y LinkedIn SHALL definirse en un único
 - **THEN** se actualiza en toda la página
 
 ### Requirement: Presentación breve
-La sección SHALL incluir una línea que diga que Juanma es ingeniero de datos y desarrollador full stack con experiencia en equipos y empresas de distintos rubros, que trabaja desde General Belgrano de forma remota para todo el país, junto con su firma.
+La sección SHALL incluir una línea que diga que Juanma es ingeniero de datos y desarrollador full stack con más de 7 años de experiencia en equipos y empresas de distintos rubros, que trabaja desde General Belgrano de forma remota para todo el país, junto con su firma.
 
 #### Scenario: Años de experiencia
 - **WHEN** la línea menciona los años de experiencia
-- **THEN** usa el valor que Juanma confirme (ver pregunta abierta de `design.md`)
+- **THEN** dice «más de 7 años», el valor que Juanma confirmó, y no otro
 
 ### Requirement: LinkedIn en el pie
 El pie SHALL conservar el link a LinkedIn y el lema, sin ocupar un botón del contacto principal.
 
 #### Scenario: Pie de página
 - **WHEN** se llega al final
-- **THEN** se ven el link a LinkedIn, la base («General Belgrano · 100% remoto») y el año
+- **THEN** se ven el lema del manual «Un solo proveedor, todo el sistema.», el link a LinkedIn, la base («General Belgrano · 100% remoto») y el año

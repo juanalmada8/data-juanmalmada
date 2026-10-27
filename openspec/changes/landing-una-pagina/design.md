@@ -60,19 +60,17 @@ caso en el repo. `web/src/data/sitio.ts` tiene WhatsApp y mail; Instagram figura
 `index.html` y `styles.css` de la raíz no se tocan: Pages sigue publicando la raíz hasta el corte (fuera de alcance).
 Rollback: revertir el merge; el sitio publicado no cambia.
 
+## Decisiones confirmadas por Juanma (2026-10-27)
+
+- **Dominio canónico: `juanmalmada.com`.** `almadaortiz.dev` es solo el usuario de Instagram (`instagram.com/almadaortiz.dev`).
+  No cambia `sitio.url` ni canonical/Open Graph.
+- **Años de experiencia: «más de 7 años».** Reemplaza al «8 años» de las specs actuales; es una actualización de
+  `02-contenido` (datos fijos) y `pendientes`, dentro de las tareas de este cambio.
+- **Titular «Todo el sistema, un solo proveedor.»** en el hero; el lema del manual («Un solo proveedor, todo el sistema.»)
+  queda en el pie.
+- **Capturas: placeholders visibles** de Oral y Staffy hasta que Juanma las pase. No se sacan capturas de los sitios.
+
 ## Open Questions
 
-Resolver antes de aprobar (cambian lo que se construye):
-
-1. **Dominio.** El pedido habla de «la web de almadaortiz.dev», pero el repo y Cloudflare usan `juanmalmada.com`, y
-   `almadaortiz.dev` es también el usuario de Instagram que pasaste. ¿Cuál es el dominio canónico de esta web? Afecta
-   canonical, Open Graph y el `url` de `sitio.ts`.
-2. **Años de experiencia.** Pediste «más de 7 años»; antes confirmaste «8 años» (y así está en las specs). ¿Cuál va?
-   Por la regla de no inventar datos, no escribo ninguno hasta que lo digas.
-3. **Titular vs lema.** El titular que pediste es «Todo el sistema, un solo proveedor.»; el lema del manual es «Un solo
-   proveedor, todo el sistema.». Propongo titular nuevo en el hero y el lema del manual en el pie. ¿Está bien?
-4. **Capturas.** No hay ninguna de Oral ni de Staffy en el repo. ¿Las tenés, o las saco yo de los sitios públicos?
-   (No saco nada de Staffy sin que me lo digas.)
-
-Se pueden decidir después sin cambiar la estructura: URL exacta de Instagram (propongo `instagram.com/almadaortiz.dev`) y
-si «Fuera del código» (hockey, cocina, rock, viajes) vuelve en otra versión.
+Se pueden decidir más adelante sin cambiar la estructura: la URL exacta de Instagram (se asume
+`instagram.com/almadaortiz.dev`) y si «Fuera del código» (hockey, cocina, rock, viajes) vuelve en otra versión.

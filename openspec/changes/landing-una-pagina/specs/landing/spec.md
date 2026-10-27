@@ -73,7 +73,7 @@ La página SHALL alcanzar al menos 90 en Rendimiento, Accesibilidad y SEO en Lig
 - **THEN** es menor a 15 kB
 
 ### Requirement: Metadatos y vista previa al compartir
-La página SHALL declarar `lang="es-AR"`, título de hasta 60 caracteres, descripción de hasta 155, enlace canónico y una imagen Open Graph de 1200×630 con la marca.
+La página SHALL declarar `lang="es-AR"`, título de hasta 60 caracteres, descripción de hasta 155, enlace canónico a `https://juanmalmada.com` y una imagen Open Graph de 1200×630 con la marca.
 
 #### Scenario: Link compartido por WhatsApp o Instagram
 - **WHEN** se comparte el link

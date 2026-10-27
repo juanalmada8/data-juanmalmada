@@ -9,7 +9,7 @@
 
 ## 2. Datos y colección de casos
 
-- [ ] 2.1 Completar `data/sitio.ts` (Instagram, tema de mensajes) según las respuestas a las preguntas abiertas; verificar que `npm run check` pasa y que el mail y los links viven solo ahí.
+- [ ] 2.1 Completar `data/sitio.ts` (Instagram `almadaortiz.dev`, `url` `juanmalmada.com`, años «más de 7») y dejar el lema del manual para el pie; verificar que `npm run check` pasa y que el mail y los links viven solo ahí.
 - [ ] 2.2 Crear `data/temas.ts` (6 chips, frase, vista previa, mensaje de WhatsApp); verificar con un test del armado del link `wa.me` para cada tema y para «sin tema».
 - [ ] 2.3 Reemplazar la colección `proyectos` por `casos` con el esquema definido, cargar Oral y Staffy y borrar `content/proyectos/`; verificar que el build falla si falta nombre, link o bullets de un caso publicado.
 - [ ] 2.4 Chequeo de build que lista las capturas faltantes; verificar que informa Oral y Staffy mientras no estén.
@@ -39,7 +39,7 @@
 ## 6. Contacto y barra fija
 
 - [ ] 6.1 Barra fija con `</j>`/`<jm>` y «Contame tu idea»; verificar que no tapa los títulos al navegar por anclas y que el CTA se ve completo en 360 px.
-- [ ] 6.2 Sección de contacto con WhatsApp, Instagram, mail, línea de presentación, firma y pie con LinkedIn; verificar que los links abren bien y llevan `rel="noopener noreferrer"`.
+- [ ] 6.2 Sección de contacto con WhatsApp, Instagram, mail, línea de presentación («más de 7 años»), firma y pie con el lema del manual y LinkedIn; verificar que los links abren bien, llevan `rel="noopener noreferrer"` y que el texto dice «más de 7 años».
 - [ ] 6.3 Conectar el tema elegido en el selector al mensaje de WhatsApp; verificar eligiendo cada chip y comprobando el texto del link.
 - [ ] 6.4 Verificar el tope de clics: barra → contacto → botón, y chip → CTA → botón; contar los clics con Playwright.
 
@@ -47,7 +47,7 @@
 
 - [ ] 7.1 Borrar `pages/proyectos/[slug].astro`, `Sistema`, `ParaQuien`, `SobreMi`, `PatronDatos` si no se usa y los componentes viejos; verificar que `/proyectos/x` da 404 y que `npm run check` y `build` pasan.
 - [ ] 7.2 Revisar la tabla de migración de `proposal.md`; verificar que cada punto del sitio anterior tiene su lugar o su razón anotada.
-- [ ] 7.3 Actualizar `docs/ROADMAP.md`, `docs/pendientes-juanma.md` (capturas, años, dominio) y `03-arquitectura.md`; verificar que describen lo que hay.
+- [ ] 7.3 Actualizar `docs/ROADMAP.md`, `docs/pendientes-juanma.md` (capturas pendientes), `02-contenido.md` (datos fijos: «más de 7 años») y `03-arquitectura.md`; verificar con `git grep "8 años\|8&nbsp;años"` que no quedan menciones de 8 años en docs ni en el sitio.
 
 ## 8. Verificación integrada
 

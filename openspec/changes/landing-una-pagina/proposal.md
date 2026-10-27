@@ -20,6 +20,7 @@ clics desde cualquier punto.
 - **Barra fija mínima** (logo + «Contame tu idea») y contacto directo por WhatsApp, Instagram y mail.
 - Se **vuelve a las tipografías del manual** (DM Serif Display, Manrope, JetBrains Mono). **BREAKING** respecto del
   cambio del 2026-10-10, que las había reemplazado por Martian Mono y Atkinson Hyperlegible Next.
+- Se unifica la experiencia en **«más de 7 años»** (hoy las specs dicen «8 años»).
 - Se **eliminan** las páginas internas (`/proyectos/<slug>`) y las secciones Todo conectado, Para quién y Sobre mí.
 - Se reemplaza la colección `proyectos` por una de casos con el formato de este cambio.
 
@@ -64,8 +65,13 @@ toca), el correo con dominio, publicar en producción (otro cambio: Pages sigue 
 | Sobre mí (texto, rasgos, fuera del código) | Una línea de presentación en Contacto con la firma; **rasgos y «fuera del código» quedan afuera** por el tope de 5 secciones |
 | Contacto: WhatsApp, mail, LinkedIn | Contacto: WhatsApp, Instagram, mail; LinkedIn pasa al footer |
 
+## Decisiones tomadas con Juanma
+
+- Dominio principal: `juanmalmada.com` (`almadaortiz.dev` es el usuario de Instagram).
+- Experiencia: «más de 7 años». Titular nuevo en el hero y lema del manual en el pie.
+- Capturas de Oral y Staffy: placeholders visibles hasta que Juanma las pase.
+
 ## Lo que tiene que aportar Juanma
 
-- **Capturas** de Oral (oral.com.ar) y de Staffy (jobs.wearestaffy.com): hoy no hay ninguna en el repo. Mientras tanto,
-  placeholders visibles.
-- Respuesta a las preguntas abiertas de `design.md`: dominio, años, titular vs lema, URL de Instagram.
+- **Capturas** de Oral (oral.com.ar) y de Staffy (jobs.wearestaffy.com), cuando las tenga. No hay ninguna en el repo.
+- Confirmar la URL de Instagram (se asume `instagram.com/almadaortiz.dev`).
