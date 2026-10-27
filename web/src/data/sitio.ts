@@ -1,20 +1,21 @@
-// Datos fijos del sitio. Fuente: docs/specs/02-contenido.md («Datos fijos») y el index.html original.
-
-const mensajeWhatsApp = "Hola Juanma, te escribo desde la web.";
+// Datos fijos del sitio: único lugar para nombre, contacto y base. Fuente: docs/specs/02-contenido.md.
+import { urlWhatsApp } from "../lib/whatsapp";
 
 export const sitio = {
   nombre: "Juan Martín Almada Ortiz",
   corto: "Juanma",
-  lema: "Un solo proveedor, todo el sistema.",
+  lema: "Un solo proveedor, todo el sistema.", // lema del manual: va en el pie
+  titular: "Todo el sistema, un solo proveedor.", // titular del hero (decisión de Juanma, 2026-10-27)
   base: "General Belgrano, Buenos Aires",
   url: "https://juanmalmada.com",
+  experiencia: "más de 7 años",
   respuesta: "menos de 24 h hábiles",
 };
 
-// En orden de preferencia: WhatsApp, Instagram (cuando exista), mail. LinkedIn aparte.
+// Orden de preferencia: WhatsApp, Instagram, mail. LinkedIn aparte, en el pie.
 export const contacto = {
-  whatsapp: `https://wa.me/5492241583314?text=${encodeURIComponent(mensajeWhatsApp)}`,
-  instagram: null as string | null, // [[FALTA: usuario de Instagram]]
-  mail: "juanalmada1395@gmail.com", // pasa a hola@juanmalmada.com cuando esté el correo con dominio (1.7)
+  whatsapp: urlWhatsApp(),
+  instagram: "https://instagram.com/almadaortiz.dev",
+  mail: "juanalmada1395@gmail.com",
   linkedin: "https://www.linkedin.com/in/juan-martin-almada-ortiz/",
 };

@@ -9,10 +9,10 @@
 
 ## 2. Datos y colección de casos
 
-- [ ] 2.1 Completar `data/sitio.ts` (Instagram `almadaortiz.dev`, `url` `juanmalmada.com`, años «más de 7») y dejar el lema del manual para el pie; verificar que `npm run check` pasa y que el mail y los links viven solo ahí.
-- [ ] 2.2 Crear `data/temas.ts` (6 chips, frase, vista previa, mensaje de WhatsApp); verificar con un test del armado del link `wa.me` para cada tema y para «sin tema».
-- [ ] 2.3 Reemplazar la colección `proyectos` por `casos` con el esquema definido, cargar Oral y Staffy y borrar `content/proyectos/`; verificar que el build falla si falta nombre, link o bullets de un caso publicado.
-- [ ] 2.4 Chequeo de build que lista las capturas faltantes; verificar que informa Oral y Staffy mientras no estén.
+- [x] 2.1 Completar `data/sitio.ts` (Instagram `almadaortiz.dev`, `url` `juanmalmada.com`, años «más de 7») y dejar el lema del manual para el pie; verificar que `npm run check` pasa y que el mail y los links viven solo ahí.
+- [x] 2.2 Crear `data/temas.ts` (6 chips, frase, vista previa, mensaje de WhatsApp); verificar con un test del armado del link `wa.me` para cada tema y para «sin tema».
+- [x] 2.3 Reemplazar la colección `proyectos` por `casos` con el esquema definido, cargar Oral y Staffy y borrar `content/proyectos/`; verificar que el build falla si falta nombre, link o bullets de un caso publicado.
+- [x] 2.4 Chequeo de build que lista las capturas faltantes; verificar que informa Oral y Staffy mientras no estén.
 
 ## 3. Hero y selector
 

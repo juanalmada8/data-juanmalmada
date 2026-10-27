@@ -1,13 +1,14 @@
 ---
 import Base from "../layouts/Base.astro";
+import { cargarCasos } from "../lib/casos";
 import Hero from "../components/secciones/Hero.astro";
 import QueHago from "../components/secciones/QueHago.astro";
 import Sistema from "../components/secciones/Sistema.astro";
 import ParaQuien from "../components/secciones/ParaQuien.astro";
 import ComoTrabajo from "../components/secciones/ComoTrabajo.astro";
-import Proyectos from "../components/secciones/Proyectos.astro";
 import SobreMi from "../components/secciones/SobreMi.astro";
 import Contacto from "../components/secciones/Contacto.astro";
+await cargarCasos(); // avisa en el build qué capturas faltan
 ---
 <Base>
   <Hero />
@@ -15,7 +16,6 @@ import Contacto from "../components/secciones/Contacto.astro";
   <Sistema />
   <ParaQuien />
   <ComoTrabajo />
-  <Proyectos />
   <SobreMi />
   <Contacto />
 </Base>
