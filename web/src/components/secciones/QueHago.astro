@@ -1,84 +1,82 @@
 ---
-import { contacto } from "../../data/sitio";
-const servicios = [
+// «Qué hago»: ejemplos, no un límite. Cada tarjeta: el problema como lo diría el cliente → la solución, en una línea.
+// Spec: openspec/changes/landing-una-pagina/specs/servicios.
+const ejemplos = [
   {
     titulo: "Webs y apps a medida",
-    problema: "«Mi web no la actualiza nadie y desde el celular ni se ve.»",
-    armo: "Una web o una app rápida, que se usa bien desde el celular y que podés cambiar vos.",
-    ahorra: "Depender de alguien para cambiar un precio o un horario.",
+    problema: "«Mi web no se ve bien en el celular y no la puedo cambiar.»",
+    solucion: "Armo una web o una app a tu medida, rápida y fácil de actualizar.",
   },
   {
-    titulo: "Turnos y sistemas de gestión",
-    problema: "«Me paso la mañana atendiendo el teléfono para dar turnos.»",
-    armo: "Turnos online con recordatorio, o un sistema que ordena tus pedidos o tus trámites en un solo lugar.",
-    ahorra: "Las llamadas para dar turnos y los pacientes que se olvidan de venir.",
+    titulo: "Portales y plataformas con su backend",
+    problema: "«Necesito que usuarios y empresas trabajen en un mismo sistema.»",
+    solucion: "Armo el portal y lo que lo sostiene: usuarios, publicaciones, postulaciones y paneles.",
   },
   {
-    titulo: "Dashboards y análisis de datos",
-    problema: "«Todos los lunes pierdo la mañana armando el reporte a mano.»",
-    armo: "Junto lo que tenés repartido entre planillas y sistemas en un tablero que se actualiza solo, con alertas cuando algo se desvía.",
-    ahorra: "Las horas de copiar y pegar, y enterarte tarde de los problemas.",
+    titulo: "Turnos y reservas online",
+    problema: "«Me paso el día atendiendo el teléfono para dar turnos.»",
+    solucion: "Tus clientes reservan solos y reciben la confirmación y el recordatorio.",
   },
   {
-    titulo: "Nube, infraestructura y arquitectura",
-    problema: "«Si se cae el servidor, no sé ni a quién llamar.»",
-    armo: "Dejo todo andando en la nube, con respaldos y avisos si algo falla.",
-    ahorra: "Que se caiga todo justo cuando más lo necesitás.",
+    titulo: "Sistemas de gestión interna",
+    problema: "«Todo anda en planillas, cuadernos y chats sueltos.»",
+    solucion: "Un sistema a tu medida donde se ordena el trabajo de todo el equipo.",
+  },
+  {
+    titulo: "Automatización y datos",
+    problema: "«Cada lunes armo el reporte a mano.»",
+    solucion: "Conecto tus fuentes y armo reportes y tableros que se actualizan solos.",
   },
 ];
 ---
-<section id="que-hago" class="seccion tema-crema" aria-labelledby="que-hago-titulo">
+<section id="que-hago" class="seccion tema-pino" aria-labelledby="que-hago-titulo">
   <div class="contenedor">
     <header class="cabecera" data-aparece>
       <p class="rotulo">01 — Qué hago</p>
-      <h2 id="que-hago-titulo">Lo que suele pedir un equipo entero, <span class="acento">lo resuelvo yo</span>.</h2>
+      <h2 id="que-hago-titulo">Algunas cosas que <em>puedo armar</em>.</h2>
     </header>
 
-    <ol class="lista">
-      {servicios.map((s, i) => (
-        <li class="servicio" data-aparece>
-          <span class="num mono" aria-hidden="true">{String(i + 1).padStart(2, "0")}</span>
-          <div class="cab">
-            <h3>{s.titulo}</h3>
-            <p class="problema">{s.problema}</p>
-          </div>
-          <dl class="detalle">
-            <div><dt class="rotulo">Qué armo</dt><dd>{s.armo}</dd></div>
-            <div><dt class="rotulo">Qué te ahorra</dt><dd>{s.ahorra}</dd></div>
-          </dl>
+    <ul class="tarjetas">
+      {ejemplos.map((e) => (
+        <li class="tarjeta" data-aparece>
+          <h3>{e.titulo}</h3>
+          <p class="problema">{e.problema}</p>
+          <p class="solucion">{e.solucion}</p>
         </li>
       ))}
-    </ol>
-
-    <p class="otra" data-aparece>¿Lo tuyo no está en la lista? <a class="link" href={contacto.whatsapp} target="_blank" rel="noopener noreferrer">Contame igual.</a></p>
+      <li class="tarjeta cierre" data-aparece>
+        <p class="cierre-tit">¿Lo tuyo no está acá?</p>
+        <p>Contámelo, seguro se puede armar.</p>
+        <a class="boton" href="#contacto">Contame tu idea</a>
+      </li>
+    </ul>
   </div>
 </section>
 
 <style>
-  .lista { list-style: none; padding: 0; display: grid; gap: var(--space-4); }
-  .servicio {
+  .tarjetas { list-style: none; padding: 0; display: grid; gap: var(--space-4); }
+  .tarjeta {
     display: grid;
-    gap: var(--space-4);
+    gap: var(--space-3);
+    align-content: start;
     padding: var(--space-6);
-    background: var(--blanco);
-    border: var(--borde-suave);
+    border: 1px solid var(--musgo);
     border-radius: var(--radius-card);
+    transition: border-color .2s ease, transform .2s ease;
   }
-  .num { font-size: var(--fs-h2); font-weight: 700; line-height: 1; color: var(--musgo); letter-spacing: -.04em; }
-  .cab { display: grid; gap: var(--space-2); }
-  .problema { font-style: italic; color: var(--musgo); font-size: var(--fs-body); }
-  .detalle { display: grid; gap: var(--space-4); }
-  .detalle .rotulo { color: var(--musgo); margin-bottom: var(--space-1); }
-  dd { margin: 0; }
-  .otra { margin-top: var(--space-8); font-size: var(--fs-lead); }
+  .tarjeta:hover { border-color: var(--lima); transform: translateY(calc(-1 * var(--space-1))); }
+  .problema { font-style: italic; color: var(--salvia); }
+  .solucion { color: var(--crema); }
 
-  @media (min-width: 56rem) {
-    .servicio {
-      grid-template-columns: 5rem 1fr 1.4fr;
-      gap: var(--space-8);
-      padding: var(--space-8);
-      align-items: start;
-    }
-    .detalle { grid-template-columns: 1fr 1fr; gap: var(--space-6); }
-  }
+  @media (prefers-reduced-motion: reduce) { .tarjeta:hover { transform: none; } }
+
+  /* Cierre: la puerta abierta a «lo que sea» */
+  .cierre { background: var(--lima); border-color: var(--lima); color: var(--pino); }
+  .cierre:hover { border-color: var(--lima); }
+  .cierre-tit { font-family: var(--font-serif); font-size: var(--fs-h3); line-height: 1.15; }
+  .cierre .boton { justify-self: start; background: var(--pino); border-color: var(--pino); color: var(--crema); }
+  .cierre .boton:hover { background: transparent; color: var(--pino); }
+
+  @media (min-width: 40rem) { .tarjetas { grid-template-columns: repeat(2, 1fr); } }
+  @media (min-width: 64rem) { .tarjetas { grid-template-columns: repeat(3, 1fr); gap: var(--space-6); } }
 </style>

@@ -1,47 +1,48 @@
 ---
+// «Cómo trabajo»: cuatro pasos. Sin plazos, precios ni niveles de soporte (no están confirmados).
 const pasos = [
-  { titulo: "Me contás", texto: "Cómo trabajás hoy y qué te cuesta tiempo. Con una charla alcanza." },
-  { titulo: "Te propongo", texto: "Qué armar, cuánto sale y qué te ahorra." },
-  { titulo: "Lo construyo", texto: "Y lo vas viendo mientras avanza. Nada de desaparecer y volver con algo que no pediste." },
-  { titulo: "Te lo dejo andando", texto: "Documentado, y te explico cómo usarlo. Si algo no se entiende, se ajusta." },
+  { titulo: "Charla", texto: "Me contás qué necesitás y cómo trabajás hoy." },
+  { titulo: "Propuesta", texto: "Te digo qué armar y cuánto sale, antes de empezar." },
+  { titulo: "Desarrollo", texto: "Lo construyo y lo vas viendo avanzar." },
+  { titulo: "Soporte", texto: "Te lo dejo andando y te acompaño después de la entrega." },
 ];
 ---
-<section id="como-trabajo" class="seccion tema-crema" aria-labelledby="como-trabajo-titulo">
+<section id="como-trabajo" class="seccion tema-pino" aria-labelledby="como-trabajo-titulo">
   <div class="contenedor">
     <header class="cabecera" data-aparece>
-      <p class="rotulo">04 — Cómo trabajo</p>
-      <h2 id="como-trabajo-titulo">Cuatro pasos, <span class="acento">sin sorpresas</span>.</h2>
+      <p class="rotulo">03 — Cómo trabajo</p>
+      <h2 id="como-trabajo-titulo">De la charla al soporte, <em>sin vueltas</em>.</h2>
     </header>
     <ol class="pasos">
       {pasos.map((p, i) => (
-        <li data-aparece>
-          <span class="num mono" aria-hidden="true">{String(i + 1).padStart(2, "0")}</span>
+        <li class="paso" data-aparece>
+          <span class="num" aria-hidden="true">{String(i + 1).padStart(2, "0")}</span>
           <h3>{p.titulo}</h3>
           <p>{p.texto}</p>
         </li>
       ))}
     </ol>
-    <aside class="nota" data-aparece>
-      <p class="nota-tit">Lo que invertís hoy te ahorra tiempo y plata mañana.</p>
-      <p>Cada proyecto se presupuesta: antes de arrancar sabés cuánto sale.</p>
-    </aside>
   </div>
 </section>
 
 <style>
-  .pasos { list-style: none; padding: 0; display: grid; gap: var(--space-8); }
-  .pasos li { display: grid; gap: var(--space-2); align-content: start; padding-top: var(--space-4); border-top: 2px solid var(--pino); }
-  .num { font-size: var(--fs-small); font-weight: 600; }
-  .nota {
+  .pasos { list-style: none; padding: 0; display: grid; gap: 0; }
+  .paso {
     display: grid;
-    gap: var(--space-2);
-    max-width: 30rem;
-    margin-top: var(--space-12);
-    padding: var(--space-6) var(--space-8);
-    border-radius: var(--radius-card);
-    background: var(--lima);
-    transform: rotate(-1.5deg);
+    grid-template-columns: 3rem 1fr;
+    column-gap: var(--space-4);
+    padding: var(--space-4) 0;
+    border-top: 1px solid var(--musgo);
   }
-  .nota-tit { font-family: var(--font-mono); font-weight: 700; font-size: var(--fs-h3); line-height: 1.25; letter-spacing: -.02em; }
-  @media (min-width: 56rem) { .pasos { grid-template-columns: repeat(4, 1fr); gap: var(--space-6); } }
+  .paso:last-child { border-bottom: 1px solid var(--musgo); }
+  .num { grid-row: span 2; font-family: var(--font-mono); font-size: var(--fs-label); font-weight: 500; color: var(--lima); padding-top: var(--space-2); }
+  .paso h3 { margin-bottom: var(--space-2); }
+  .paso p { color: var(--salvia); }
+
+  /* Desde 768 px: una sola fila de cuatro */
+  @media (min-width: 48rem) {
+    .pasos { grid-template-columns: repeat(4, 1fr); column-gap: var(--space-6); }
+    .paso { display: block; border-top: 2px solid var(--lima); border-bottom: 0 !important; padding-top: var(--space-4); }
+    .num { display: block; margin-bottom: var(--space-3); padding-top: 0; }
+  }
 </style>

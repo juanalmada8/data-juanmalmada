@@ -24,9 +24,9 @@
 
 ## 4. Qué hago y Cómo trabajo
 
-- [ ] 4.1 Sección «Qué hago» con 5 tarjetas (problema → solución) y el cierre «¿Lo tuyo no está acá?»; verificar que ningún texto sugiere un solo tipo de proyecto y que no hay cifras ni palabras prohibidas.
-- [ ] 4.2 Sección «Cómo trabajo» (4 pasos, fila desde 768 px, vertical en celular); verificar a 360, 768 y 1440 px sin scroll horizontal.
-- [ ] 4.3 Hover de tarjetas y aparición al scroll; verificar el comportamiento con y sin `prefers-reduced-motion`.
+- [x] 4.1 Sección «Qué hago» con 5 tarjetas (problema → solución) y el cierre «¿Lo tuyo no está acá?»; verificar que ningún texto sugiere un solo tipo de proyecto y que no hay cifras ni palabras prohibidas.
+- [x] 4.2 Sección «Cómo trabajo» (4 pasos, fila desde 768 px, vertical en celular); verificar a 360, 768 y 1440 px sin scroll horizontal.
+- [x] 4.3 Hover de tarjetas y aparición al scroll; verificar el comportamiento con y sin `prefers-reduced-motion`.
 
 ## 5. Casos reales
 
