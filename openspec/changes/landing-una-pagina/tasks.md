@@ -63,7 +63,7 @@
 - [x] 9.2 Hero a pantalla completa en escritorio con la banda del patrón al pie; verificar a 1466×820 que «Qué hago» no asoma y que en 360×640 y 390×844 siguen entrando titular, chips y CTA.
 - [x] 9.3 Navegación por secciones: enlaces con la sección actual marcada (escritorio), nombre de la sección (celular) y línea de progreso; verificar scrolleando a cada sección que cambia la marca, que la barra no tapa los títulos y que no hay animación con `prefers-reduced-motion`.
 - [x] 9.4 Tipografía fiel a la lámina del manual (interlineado del cuerpo 1.5, bajada en Manrope Medium, `hola_mundo()` en minúsculas); verificar las tipografías y tamaños calculados en el navegador.
-- [ ] 9.5 Capturas en 360, 768 y 1466 px, Lighthouse móvil, axe y `revisor-de-marca`; verificar que los puntajes siguen en 95 o más y que el revisor no deja observaciones abiertas.
+- [x] 9.5 Capturas en 360, 768 y 1466 px, Lighthouse móvil, axe y `revisor-de-marca`; verificar que los puntajes siguen en 95 o más y que el revisor no deja observaciones abiertas.
 - [x] 9.6 Actualizar `01-marca`, `02-contenido` y el registro de decisiones; verificar que describen la barra y el hero como quedaron.
 
 ## 10. Giro: letras con carácter, índice numerado y hero vivo (2026-10-29)
