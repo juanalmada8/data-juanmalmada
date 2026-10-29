@@ -34,6 +34,7 @@ const ejemplos = [
     <header class="cabecera" data-aparece>
       <p class="rotulo">01 — Qué hago</p>
       <h2 id="que-hago-titulo">Algunas cosas que <em>puedo armar</em>.</h2>
+      <p class="lead">Lo que invertís hoy te ahorra tiempo y plata mañana.</p>
     </header>
 
     <ul class="tarjetas">
@@ -47,7 +48,7 @@ const ejemplos = [
       <li class="tarjeta cierre" data-aparece>
         <p class="cierre-tit">¿Lo tuyo no está acá?</p>
         <p>Contámelo, seguro se puede armar.</p>
-        <a class="boton flecha" href="#contacto">Contame tu idea</a>
+        <a class="boton lima flecha" href="#contacto">Contame tu idea</a>
       </li>
     </ul>
   </div>
@@ -71,8 +72,10 @@ const ejemplos = [
   @media (prefers-reduced-motion: reduce) { .tarjeta:hover { transform: none; } }
 
   /* Cierre: la puerta abierta a «lo que sea» */
-  .cierre { background: var(--lima); border-color: var(--lima); color: var(--pino); }
+  .cierre { background: var(--pino); border-color: var(--pino); color: var(--crema); }
   .cierre:hover { border-color: var(--pino); }
+  .cierre .boton.lima { border-color: var(--lima); }
+  .cierre .boton.lima:hover { background: var(--crema); border-color: var(--crema); color: var(--pino); }
   .cierre-tit { font-family: var(--font-serif); font-size: var(--fs-h3); line-height: 1.1; }
   .cierre .boton { justify-self: start; }
 
@@ -81,7 +84,7 @@ const ejemplos = [
     .tarjetas { grid-template-columns: repeat(3, 1fr); gap: var(--space-6); }
     /* Ritmo: una tarjeta ancha y el cierre como banda de ancho completo */
     .tarjeta:nth-child(2) { grid-column: span 2; }
-    .tarjeta:nth-child(2) .solucion { max-width: 36rem; }
+    .tarjeta:nth-child(2) .solucion { max-width: var(--ancho-texto); }
     .cierre { grid-column: 1 / -1; grid-template-columns: 1fr auto; align-items: center; column-gap: var(--space-8); padding-block: var(--space-8); }
     .cierre-tit { grid-column: 1; }
     .cierre p:nth-child(2) { grid-column: 1; }

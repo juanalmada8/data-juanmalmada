@@ -20,3 +20,10 @@ Las tarjetas MUST NOT incluir cifras, porcentajes, plazos ni precios, y SHALL cu
 #### Scenario: Frase prohibida
 - **WHEN** el texto contiene «soluciones innovadoras» o «llevamos tu negocio al siguiente nivel»
 - **THEN** la revisión de marca lo marca como observación
+
+### Requirement: El mensaje de ahorro en el cuerpo
+La sección «Qué hago» SHALL decir, en una línea y sin cifras, que lo que el cliente invierte hoy le ahorra tiempo y plata mañana.
+
+#### Scenario: Texto de la sección
+- **WHEN** se lee la sección
+- **THEN** debajo del título dice «Lo que invertís hoy te ahorra tiempo y plata mañana.» y no aparecen porcentajes ni montos

@@ -21,7 +21,7 @@ const inicial = temas.find((t) => t.id === temaInicial)!;
     <div class="h-texto">
       <p class="etiqueta-codigo mono"><span>hola_mundo()</span></p>
       <h1 id="hero-titulo"><span class="r">Todo el sistema,</span> <em class="r">un solo&nbsp;proveedor.</em></h1>
-      <p class="lead" data-bajada>{inicial.bajada}</p>
+      <p class="lead" data-bajada aria-live="polite">{inicial.bajada}</p>
     </div>
 
     <div class="h-selector" data-selector>
@@ -48,10 +48,10 @@ const inicial = temas.find((t) => t.id === temaInicial)!;
     </div>
 
     <div class="derecha">
-      <Logo variante="cursor" ancho="min(100%, 22rem)" class="logo-hero" decorativo />
-      <div class="vistas tema-crema" aria-live="polite">
+      <Logo variante="cursor" ancho="min(100%, var(--ancho-logo-hero))" class="logo-hero" decorativo />
+      <div class="vistas tema-crema">
         {temas.map((t) => (
-          <div class:list={["vista", { activo: t.id === temaInicial }]} data-vista={t.id} role="group" aria-label={t.chip}>
+          <div class:list={["vista", { activo: t.id === temaInicial }]} data-vista={t.id}>
             <p class="nombre-tema rotulo">{t.chip}</p>
             <div class="visual">
               {t.vista.tipo === "capturas" && (
@@ -137,7 +137,6 @@ const inicial = temas.find((t) => t.id === temaInicial)!;
   .h-texto { display: grid; gap: var(--space-4); justify-items: start; }
   /* Dos renglones fijos: «Todo el sistema,» / «un solo proveedor.» */
   h1 .r { display: block; }
-  h1 { font-size: clamp(2.5rem, 1.3rem + 5vw, 4.5rem); } /* hasta 72 px: el techo de la lámina del manual */
   /* El alto mínimo evita que los chips se muevan cuando la bajada cambia de largo */
   .lead { max-width: 36ch; min-height: calc(1.45em * 3); }
 
@@ -155,6 +154,7 @@ const inicial = temas.find((t) => t.id === temaInicial)!;
 
   /* Chips sobre fondo oscuro: contorno claro; el elegido, lima */
   .h-selector { display: grid; gap: var(--space-2); }
+  .h-selector .rotulo { color: var(--salvia); }
   .chips { display: flex; flex-wrap: wrap; gap: var(--space-2); }
   .chip {
     min-height: var(--tap-min);
@@ -198,6 +198,8 @@ const inicial = temas.find((t) => t.id === temaInicial)!;
     :global(html.js) .vista.activo { animation: entra .25s ease; }
   }
   @keyframes entra { from { opacity: 0; transform: translateY(var(--space-2)); } }
+
+  @media (min-width: 40rem) { .derecha :global(.logo-hero) { display: block; } }
 
   @media (max-width: 40rem) {
     .hero { padding-top: var(--space-6); }

@@ -36,7 +36,7 @@ const capitulos = [
       </ol>
     </nav>
 
-    <a class="boton lima" href="/#contacto" data-seccion="contacto">Contame tu idea</a>
+    <a class="boton" href="/#contacto">Contame tu idea</a>
   </div>
 
   <!-- Celular: los cuatro tramos como una barra segmentada sobre el borde -->
@@ -91,20 +91,49 @@ const capitulos = [
     z-index: 50;
     border-bottom: var(--borde-suave); /* el 1px salvia del manual, no una línea dura */
   }
-  .fila { display: flex; align-items: center; justify-content: space-between; gap: var(--space-4); min-height: var(--alto-barra); }
+  .fila { display: flex; align-items: center; justify-content: space-between; gap: var(--space-4); min-height: var(--alto-barra); position: relative; }
   .marca { display: inline-flex; align-items: center; justify-content: center; min-height: var(--tap-min); min-width: var(--tap-min); }
   .marca :global(.logo-grande) { display: none; }
-  .barra .boton { min-height: var(--tap-min); padding: 0 var(--space-4); font-size: var(--fs-small); }
 
-  .donde { flex: 1; min-width: 0; font-size: var(--fs-label); letter-spacing: .12em; text-transform: uppercase; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; text-align: center; }
+  /* Botón de la barra: pino sobre crema; la lima queda para el CTA del hero. Nunca en dos renglones. */
+  .barra .boton { min-height: var(--tap-min); padding: 0 var(--space-4); font-size: var(--fs-small); white-space: nowrap; }
+  .barra .boton:hover { background: var(--lima); border-color: var(--pino); color: var(--pino); }
+
+  .donde { flex: 1; min-width: 0; font-size: var(--fs-label); letter-spacing: var(--tracking-mono); text-transform: uppercase; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; text-align: center; }
   .donde:empty { visibility: hidden; }
-  .indice { display: none; }
+
+  /* Capítulos del índice (los estilos de cada uno valen en todos los anchos; lo que cambia es dónde se muestran) */
+  .indice ol { list-style: none; padding: 0; display: flex; gap: var(--space-6); }
+  .cap { display: grid; gap: var(--space-2); padding: var(--space-2) 0; text-decoration: none; }
+  .rot { display: flex; align-items: baseline; gap: var(--space-2); }
+  .n {
+    padding: 0 var(--space-2);
+    border-radius: var(--radius-pill);
+    font-size: var(--fs-label);
+    font-weight: 500;
+    color: var(--pino);
+    transition: background-color .2s ease, color .2s ease;
+  }
+  .t { font-weight: 700; font-size: var(--fs-small); white-space: nowrap; }
+  .cap:hover .n { background: var(--salvia); }
+  /* El capítulo actual: pastilla lima con texto pino y un borde pino que no depende del color */
+  .cap[aria-current="location"] .n { background: var(--lima); box-shadow: inset 0 0 0 2px var(--pino); }
 
   /* Tramo de progreso: se llena de izquierda a derecha con --p (0 a 1); sin transición, solo refleja el scroll */
   .tramo { display: block; height: var(--grosor-nav); background: var(--salvia); overflow: hidden; }
   .tramo b { display: block; height: 100%; background: var(--pino); transform: scaleX(var(--p, 0)); transform-origin: left; }
 
-  /* Celular: barra segmentada sobre el borde inferior */
+  /* Menos de 1024 px: el índice no entra. Queda el capítulo actual y la barra segmentada; el índice sigue en el
+     documento para teclado y lector de pantalla y se despliega bajo la barra al recibir el foco. */
+  .indice:not(:focus-within) { position: absolute; width: 1px; height: 1px; overflow: hidden; clip-path: inset(50%); white-space: nowrap; }
+  .indice:focus-within {
+    position: absolute;
+    top: 100%; left: 0; right: 0;
+    padding: var(--space-3) var(--gutter);
+    background: var(--crema);
+    border-bottom: var(--borde-suave);
+  }
+  .indice:focus-within ol { flex-wrap: wrap; gap: var(--space-2) var(--space-6); }
   .segmentos { position: absolute; left: 0; right: 0; bottom: -1px; display: grid; grid-template-columns: repeat(4, 1fr); gap: var(--space-1); }
 
   @media (min-width: 30rem) {
@@ -113,27 +142,16 @@ const capitulos = [
     .barra .boton { padding: 0 var(--space-6); font-size: var(--fs-body); }
   }
 
-  /* Escritorio: el índice numerado, con un tramo bajo cada capítulo */
-  @media (min-width: 48rem) {
+  /* Escritorio (1024 px o más): el índice numerado completo, con un tramo bajo cada capítulo */
+  @media (min-width: 64rem) {
     .donde, .segmentos { display: none; }
     .fila { justify-content: flex-start; }
     .barra .boton { margin-left: auto; }
-    .indice { display: block; margin-left: var(--space-8); }
-    .indice ol { list-style: none; padding: 0; display: flex; gap: var(--space-6); }
-    .cap { display: grid; gap: var(--space-2); padding: var(--space-2) 0; text-decoration: none; }
-    .rot { display: flex; align-items: baseline; gap: var(--space-2); }
-    .n {
-      padding: 0 var(--space-2);
-      border-radius: var(--radius-pill);
-      font-size: var(--fs-label);
-      font-weight: 500;
-      color: var(--pino);
-      transition: background-color .2s ease, color .2s ease;
+    .indice:not(:focus-within), .indice:focus-within {
+      position: static; width: auto; height: auto; overflow: visible; clip-path: none;
+      padding: 0; background: none; border: 0; margin-left: var(--space-8);
     }
-    .t { font-weight: 700; font-size: var(--fs-small); }
-    .cap:hover .n { background: var(--salvia); }
-    /* El capítulo actual: el número pasa a una pastilla lima con texto pino */
-    .cap[aria-current="location"] .n { background: var(--lima); color: var(--pino); }
+    .indice:focus-within ol { flex-wrap: nowrap; }
   }
-  @media (min-width: 48rem) and (prefers-reduced-motion: reduce) { .n { transition: none; } }
+  @media (prefers-reduced-motion: reduce) { .n { transition: none; } }
 </style>

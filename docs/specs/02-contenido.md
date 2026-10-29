@@ -105,10 +105,11 @@ y los casos son **ejemplos, no un límite**. Ver y contactar, a 2 o 3 clics desd
 
 Ritmo de fondo: **pino · crema · salvia · crema · pino**, y pie pino (el hero oscuro abre como la portada del manual).
 
-**Barra fija** (5,5 rem desde 480 px, con el logo `<jm>` de 104 px y 12 px de aire arriba y abajo; en el celular, el ícono `</j>`):
+**Barra fija** (5,5 rem desde 480 px, con el logo `<jm>` de 104 px y 12 px de aire arriba y abajo; en el celular, el ícono `</j>`; botón «Contame tu idea» en pino):
 un **índice numerado** *01 Qué hago · 02 Casos · 03 Cómo trabajo · 04 Contacto*, donde cada capítulo tiene un tramo de
-progreso que se llena mientras se lee esa sección y el actual se marca con una pastilla lima en el número; en el celular, el
-capítulo actual («02 Casos») y los cuatro tramos como una barra segmentada. «Contame tu idea» siempre visible.
+progreso que se llena mientras se lee esa sección y el actual se marca con una pastilla lima en el número (desde 1024 px). Por
+debajo, el capítulo actual («02 Casos») y los cuatro tramos como una barra segmentada; el índice completo se despliega bajo
+la barra al navegar con teclado. «Contame tu idea» siempre visible.
 
 En escritorio el **hero llena la primera pantalla** debajo de la barra: fondo pino, titular grande, selector y a la derecha
 el `<jm▌>` grande con el cursor titilando y la vista previa; la banda del patrón queda entera al pie.

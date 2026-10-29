@@ -61,6 +61,12 @@ Elegido por Juanma entre varias opciones:
 - **El selector cambia el hero:** el fondo se mezcla de pino hacia musgo (0 a 40 %, siempre ≥ 7:1 con crema) y la
   bajada se reescribe por tema. **El titular no cambia** (es el mensaje de marca y el `h1`). *Alternativa descartada:*
   reescribir el titular por tema (perdía «un solo proveedor»).
+- **Barra:** el índice completo entra desde 1024 px (a 768 se partía en renglones); por debajo, el capítulo actual más
+  la barra segmentada, y el índice se despliega con el foco para teclado y lector de pantalla. El botón de la barra es
+  pino (la lima queda para el hero). *Alternativa:* menú «hamburguesa» (agrega un clic y no estaba en el pedido).
+- **Hero:** la bajada es la única región viva (`aria-live`); la vista previa dice el ejemplo y el ahorro concreto, no repite
+  la bajada. El logo grande se muestra desde 640 px; en el celular no entra sin sacar el CTA de la primera pantalla.
+- **Cierre de «Qué hago»:** tarjeta pino con CTA lima (la lima queda como acento, no como banda de ancho completo).
 - **Microinteracciones:** flecha que se desplaza en los CTA, firma que se revela al aparecer, respuesta al presionar un
   chip. Todo apagado con `prefers-reduced-motion`. No hay cursor propio (`04-calidad` lo prohíbe).
 

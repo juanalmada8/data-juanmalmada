@@ -27,7 +27,7 @@ import { contacto, sitio } from "../../data/sitio";
         Soy Juanma: ingeniero de datos y desarrollador full stack, con {sitio.experiencia} de experiencia en equipos
         y empresas de distintos rubros. Trabajo desde General Belgrano, de forma remota para todo el país.
       </p>
-      <div class="firma-rev"><Firma color="crema" ancho="10rem" decorativa /></div>
+      <div class="firma-rev"><Firma color="crema" ancho="var(--ancho-firma)" decorativa /></div>
     </div>
   </div>
   <PatronM tono="pino" lima={[[0, 5]]} class="banda" />
@@ -39,7 +39,7 @@ import { contacto, sitio } from "../../data/sitio";
   .botones { display: grid; gap: var(--space-3); width: 100%; }
   .boton.grande { min-height: 3.5rem; font-size: var(--fs-lead); }
   .respuesta { font-family: var(--font-mono); font-size: var(--fs-small); color: var(--salvia); }
-  .yo { display: grid; gap: var(--space-4); align-content: start; max-width: 32rem; }
+  .yo { display: grid; gap: var(--space-4); align-content: start; max-width: var(--ancho-texto); }
   .yo p { color: var(--crema); }
 
   /* La firma se revela de izquierda a derecha al aparecer (solo sin movimiento reducido) */

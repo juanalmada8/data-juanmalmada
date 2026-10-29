@@ -74,7 +74,7 @@
 - [x] 10.4 El selector cambia el fondo del hero (mezcla pino→musgo) y reescribe la bajada, con datos en `temas.ts` y tests; verificar los seis temas en el navegador (tono, bajada, titular intacto) y el contraste de cada tono con axe.
 - [x] 10.5 Barra con índice numerado y tramos de progreso por capítulo (escritorio y celular); verificar scrolleando que el tramo se llena por capítulo, que el actual queda marcado y que a 360 px nada se corta.
 - [x] 10.6 Microinteracciones (flecha en CTA, firma que se revela, respuesta al presionar chips, números grandes de «Cómo trabajo»); verificar con y sin `prefers-reduced-motion`.
-- [ ] 10.7 Capturas en 360, 768 y 1466 px, Lighthouse móvil, axe, conteo de clics y `revisor-de-marca`; verificar puntajes de 95 o más y sin observaciones abiertas.
+- [x] 10.7 Capturas en 360, 768 y 1466 px, Lighthouse móvil, axe, conteo de clics y `revisor-de-marca`; verificar puntajes de 95 o más y sin observaciones abiertas.
 - [x] 10.8 Actualizar `01-marca`, `02-contenido` y el registro de decisiones; verificar que describen lo construido.
 
 ## Workflow follow-up

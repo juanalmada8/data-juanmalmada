@@ -33,12 +33,20 @@ Ningún texto SHALL afirmar ni sugerir que Juanma hace un solo tipo de proyecto;
 La página SHALL tener una barra fija con el logo, un índice numerado de sus cuatro secciones (01 Qué hago, 02 Casos, 03 Cómo trabajo, 04 Contacto) y el botón «Contame tu idea», siempre visible al scrollear. Cada capítulo del índice SHALL tener un tramo de progreso que se llena a medida que se lee esa sección, y el de la sección actual SHALL estar marcado.
 
 #### Scenario: Escritorio
-- **WHEN** el ancho es de 768 px o más
-- **THEN** la barra muestra los cuatro capítulos con su número y nombre, cada uno con su tramo de progreso, y el actual marcado (número destacado y `aria-current`)
+- **WHEN** el ancho es de 1024 px o más
+- **THEN** la barra muestra los cuatro capítulos, cada uno en un solo renglón, con su número y nombre, cada uno con su tramo de progreso, y el actual marcado (número destacado y `aria-current`)
 
 #### Scenario: Celular
-- **WHEN** el ancho es menor a 768 px
-- **THEN** la barra muestra el ícono `</j>`, el número y nombre de la sección actual (por ejemplo «02 Casos») y el botón completo sin cortarse a 360 px, con los cuatro tramos como una barra segmentada bajo la barra
+- **WHEN** el ancho es menor a 1024 px
+- **THEN** la barra muestra el ícono `</j>` (o el logo `<jm>` desde 480 px), el número y nombre de la sección actual (por ejemplo «02 Casos») y el botón completo sin cortarse a 360 px, con los cuatro tramos como una barra segmentada bajo la barra
+
+#### Scenario: Índice por teclado en pantallas angostas
+- **WHEN** el ancho es menor a 1024 px y la persona navega con Tab
+- **THEN** el índice completo se despliega bajo la barra al recibir el foco, con los capítulos en un solo renglón cada uno, y se puede ir a cualquier sección
+
+#### Scenario: Un solo botón fuerte en la barra
+- **WHEN** se ve la barra sobre el hero
+- **THEN** «Contame tu idea» es pino sobre crema y la lima queda para el CTA del hero y el capítulo actual
 
 #### Scenario: Progreso por capítulo
 - **WHEN** la persona va por la mitad de «Casos»
@@ -56,10 +64,10 @@ El logo `<jm>` de la barra SHALL tener espacio libre arriba y abajo y MUST NOT t
 - **THEN** hay al menos 12 px entre el logo y la línea inferior de la barra, y el logo mide al menos 100 px de ancho
 
 ### Requirement: Hero oscuro con el logo grande
-En escritorio (960 px o más) el hero SHALL tener fondo pino y mostrar el logo `<jm▌>` grande con el cursor titilando, como la portada del manual. En el celular el logo grande no se muestra, para que entren el titular, los chips y el CTA.
+En pantallas de 640 px o más el hero SHALL tener fondo pino y mostrar el logo `<jm▌>` grande con el cursor titilando, como la portada del manual. En el celular (menos de 640 px) el logo grande no se muestra, para que entren el titular, los chips y el CTA.
 
 #### Scenario: Escritorio
-- **WHEN** el ancho es de 960 px o más
+- **WHEN** el ancho es de 640 px o más
 - **THEN** el hero es oscuro y el logo con cursor se ve junto a la vista previa
 
 #### Scenario: Movimiento reducido
