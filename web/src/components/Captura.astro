@@ -29,7 +29,7 @@ const tipo = captura?.marco ?? marco;
         loading={lazy ? "lazy" : "eager"}
       />
     ) : (
-      <div class="falta"><Falta que={`captura de ${caso}`} /></div>
+      <div class="falta"><p class="nombre" translate="no">{caso}</p><Falta que="captura" /></div>
     )}
   </div>
 </figure>
@@ -53,5 +53,6 @@ const tipo = captura?.marco ?? marco;
   .celu { width: min(100%, 11rem); border-radius: var(--radius-celu); padding: var(--space-2); }
   .celu .pantalla { aspect-ratio: 9 / 19; border-radius: calc(var(--radius-celu) - var(--space-2)); }
   .sin-captura .pantalla { display: grid; place-items: center; background: var(--salvia); }
-  .falta { padding: var(--space-3); text-align: center; }
+  .falta { display: grid; gap: var(--space-2); justify-items: center; padding: var(--space-3); text-align: center; }
+  .nombre { font-family: var(--font-serif); font-size: var(--fs-body); font-weight: 400; line-height: 1.15; color: var(--pino); overflow-wrap: anywhere; }
 </style>

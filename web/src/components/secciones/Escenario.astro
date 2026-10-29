@@ -1,5 +1,5 @@
 ---
-// El escenario fijo de escritorio (≥ 1024 px): la mitad izquierda no se mueve y cambia de tono y de contenido según la
+// El escenario fijo de escritorio (≥ 1024 px): el panel de la derecha no se mueve y cambia de tono y de contenido según la
 // sección que se lee: el logo con la vista previa del tema (hero), el diagrama «todo conectado» (qué hago) y la captura
 // del caso elegido (casos). En el celular no existe. Spec: specs/landing («Escenario fijo en escritorio»).
 import Logo from "../Logo.astro";
@@ -53,8 +53,10 @@ const pasos = ["tus datos", "se ordenan", "se conectan", "tablero y web", "tu ne
     .escenario {
       display: block;
       position: sticky;
-      top: var(--alto-barra);
-      height: calc(100svh - var(--alto-barra));
+      top: calc(var(--alto-barra) + var(--space-6));
+      height: calc(100svh - var(--alto-barra) - var(--space-12));
+      margin: var(--space-6) var(--margen-pagina) var(--space-6) 0; /* panel con aire: el crema lo rodea */
+      border-radius: var(--radius-card);
       overflow: hidden;
       background: var(--pino);
     }
@@ -87,7 +89,10 @@ const pasos = ["tus datos", "se ordenan", "se conectan", "tablero y web", "tu ne
     /* `hola_mundo()` como sticker de la lámina 06 del manual: pastilla lima torcida en la esquina, no una etiqueta sobre el título */
     .sticker { position: absolute; top: var(--space-8); right: var(--space-8); padding: var(--space-1) var(--space-4); border-radius: var(--radius-pill); background: var(--lima); color: var(--pino); font-size: var(--fs-small); font-weight: 500; transform: rotate(4deg); }
     .e-hero { background: color-mix(in srgb, var(--musgo) var(--mezcla, 0%), var(--pino)); color: var(--crema); }
-    .e-hero :global(.logo-hero) { width: min(100%, var(--ancho-logo-hero)); }
+    /* La vista previa arriba y el logo como remate abajo: la vista siempre arranca en el mismo lugar y no salta al cambiar de chip */
+    .e-hero { align-content: normal; grid-template-rows: 1fr auto; padding-top: var(--space-16); padding-bottom: var(--space-8); }
+    .e-hero > :global(.vistas) { grid-row: 1; align-self: start; }
+    .e-hero :global(.logo-hero) { grid-row: 2; width: min(100%, var(--ancho-logo-hero)); }
     .e-que-hago { background: var(--pino); color: var(--crema); }
     .e-casos { background: var(--salvia); color: var(--pino); }
 
@@ -100,6 +105,6 @@ const pasos = ["tus datos", "se ordenan", "se conectan", "tablero y web", "tu ne
     .cap-caso { width: min(100%, var(--ancho-escenario)); }
     .estado > :global(.vistas) { width: min(100%, var(--ancho-escenario)); }
     .cap-caso:not(.activo) { display: none; }
-    @media (max-height: 760px) { .e-hero :global(.logo-hero) { width: min(100%, 14rem); } .estado { gap: var(--space-4); padding-block: var(--space-4); } }
+    @media (max-height: 760px) { /* En pantallas bajas el logo (que ya está en la barra) se va: la vista previa necesita el lugar */ .e-hero :global(.logo-hero) { display: none; } .estado { gap: var(--space-4); padding-block: var(--space-4); } .e-hero { padding-top: var(--space-12); } }
   }
 </style>

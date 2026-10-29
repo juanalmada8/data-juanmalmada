@@ -11,6 +11,17 @@ El hero SHALL ofrecer seis chips (Una web o app, Una plataforma, Turnos, Gestió
 - **WHEN** la persona toca un chip
 - **THEN** en ese único clic la vista previa cambia a un ejemplo y una frase de qué se resuelve
 
+### Requirement: Datos de confianza y contacto directo en el hero
+El hero SHALL mostrar, bajo el CTA, enlaces directos a WhatsApp, Instagram y mail (en ese orden) y una línea con los hechos de `sitio.ts`: más de 7 años de oficio, respuesta en menos de 24 h hábiles y la base. No SHALL mostrar testimonios, logos ni cifras que no estén confirmadas.
+
+#### Scenario: Hero en 360 px
+- **WHEN** se ve el hero en un celular de 360 px
+- **THEN** los tres enlaces miden al menos 44 px de alto táctil y la línea de hechos corta en los puntos medios, no dentro de un dato
+
+#### Scenario: WhatsApp con el tema elegido
+- **WHEN** la persona elige un tema y toca «WhatsApp» del hero
+- **THEN** el mensaje precargado es el del tema elegido
+
 ### Requirement: Vista previa con ejemplos verdaderos
 Cada vista previa SHALL mostrar un ejemplo real (captura de un caso) o un diagrama de los patrones del manual, y MUST NOT mostrar interfaces inventadas que simulen un producto.
 

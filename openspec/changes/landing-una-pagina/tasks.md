@@ -89,6 +89,12 @@
 - [x] 11.8 Lighthouse móvil, axe, clics, primera pantalla en 360×640 y `revisor-de-marca`; verificar que nada empeora respecto de los valores de la tarea 10.7.
 - [x] 11.9 Actualizar `01-marca`, `02-contenido` y el registro de decisiones; verificar que describen lo construido.
 
+## 12. Híbrido clásico (escenario a la derecha)
+
+- [x] 12.1 Escenario a la derecha como panel con aire, lectura alineada con la barra y DOM en orden visual; verificar a 1024, 1440 y 1920 px.
+- [x] 12.2 Línea de hechos reales y enlaces directos en el hero; verificar contraste, voseo y que el test de copy pasa.
+- [x] 12.3 `revisor-de-marca`, axe, Lighthouse y capturas; commit y PR.
+
 ## Workflow follow-up
 
 - Archivar el cambio (`/opsx:archive`) al mergear.

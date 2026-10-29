@@ -10,7 +10,7 @@ import Contacto from "../components/secciones/Contacto.astro";
 await cargarCasos(); // avisa en el build qué capturas faltan
 ---
 <Base>
-  <!-- Mitad fija (escenario) + columna de lectura; en el celular se apilan -->
+  <!-- Columna de lectura + panel fijo a la derecha (escenario); en el celular se apilan. El DOM va en el orden visual. -->
   <div class="pagina" data-pagina>
     <div class="lectura">
       <Hero />
@@ -26,9 +26,10 @@ await cargarCasos(); // avisa en el build qué capturas faltan
 <style>
   .lectura { background: var(--crema); }
   @media (min-width: 64rem) {
-    .pagina { display: grid; grid-template-columns: 5fr 6fr; align-items: start; }
-    /* El escenario está después en el documento, pero se ve a la izquierda */
-    .pagina :global(.escenario) { grid-column: 1; grid-row: 1; }
-    .lectura { grid-column: 2; grid-row: 1; }
+    .pagina { display: grid; grid-template-columns: 6fr 5fr; align-items: start; }
+  }
+  /* Pantallas muy anchas: la lectura no crece más que su medida y el panel toma el resto (sin hueco muerto en el medio) */
+  @media (min-width: 90rem) {
+    .pagina { grid-template-columns: minmax(0, 46rem) 1fr; }
   }
 </style>

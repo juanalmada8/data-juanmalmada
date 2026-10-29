@@ -6,8 +6,10 @@
 import Vistas from "./Vistas.astro";
 import { temas, temaInicial } from "../../data/temas";
 import { urlWhatsApp } from "../../lib/whatsapp";
+import { sitio, contacto } from "../../data/sitio";
 
 const inicial = temas.find((t) => t.id === temaInicial)!;
+const experiencia = sitio.experiencia[0].toUpperCase() + sitio.experiencia.slice(1); // «Más de 7 años»
 ---
 <section id="hero" class="hero tema-pino" aria-labelledby="hero-titulo">
   <div class="interior">
@@ -35,7 +37,15 @@ const inicial = temas.find((t) => t.id === temaInicial)!;
 
     <div class="cta">
       <a class="boton lima flecha" href="#contacto">Contame tu idea</a>
+      <p class="directo">
+        O escribime directo por{" "}
+        <a data-wa-tema href={contacto.whatsapp} target="_blank" rel="noopener noreferrer">WhatsApp</a>,{" "}
+        <a href={contacto.instagram} target="_blank" rel="noopener noreferrer">Instagram</a> o{" "}
+        <a href={`mailto:${contacto.mail}`}>mail</a>.
+      </p>
     </div>
+
+    <p class="confianza"><span>{experiencia} de oficio</span> · <span>Respondo en {sitio.respuesta}</span> · <span>{sitio.base}</span></p>
 
     <Vistas donde="lectura" />
   </div>
@@ -98,6 +108,11 @@ const inicial = temas.find((t) => t.id === temaInicial)!;
   .interior { display: grid; gap: var(--space-4); justify-items: start; max-width: var(--ancho-lectura); }
   /* Dos renglones fijos: «Todo el sistema,» / «un solo proveedor.» */
   h1 .r { display: block; }
+  .cta { display: grid; gap: var(--space-3); justify-items: start; }
+  .directo { font-size: var(--fs-small); }
+  .directo a { font-weight: 700; text-underline-offset: .2em; padding-block: .7rem; } /* área táctil de ≈ 44 px sin mover el texto */
+  .confianza { font-size: var(--fs-small); }
+  .confianza span { white-space: nowrap; } /* corta en los puntos, no en el medio de un dato */ /* en --texto: el musgo chico sobre crema no pasa el contraste */
   .lead { max-width: 36ch; min-height: calc(1.45em * 3); } /* el alto fijo evita que los chips salten cuando cambia la bajada */
 
   .selector { display: grid; gap: var(--space-2); }
@@ -140,7 +155,7 @@ const inicial = temas.find((t) => t.id === temaInicial)!;
       min-height: calc(100svh - var(--alto-barra));
       display: grid;
       align-content: center;
-      padding: var(--space-12) var(--margen-pagina) var(--space-12) clamp(var(--space-8), 5vw, var(--space-24));
+      padding: var(--space-12) var(--aire-lectura) var(--space-12) var(--margen-pagina);
     }
     .interior { gap: var(--space-6); }
     .hero .boton.lima { border-color: var(--pino); }

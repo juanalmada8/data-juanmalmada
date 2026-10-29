@@ -18,7 +18,7 @@ y sacala de esta lista.
 ## Contenido
 
 - [ ] **Capturas de Oral (oral.com.ar) y de Staffy (jobs.wearestaffy.com)**, en celu y/o en ventana, sin datos de
-  personas. Hasta entonces la web muestra `[[FALTA: captura de …]]` (el build las lista) y **no se publica así**.
+  personas. Hasta entonces la web muestra `[[FALTA: captura]]` con el nombre del caso arriba (el build las lista) y **no se publica así**.
   Se cargan en `web/src/assets/` y se referencian en `web/src/content/casos/<caso>.md` (campo `capturas`, con `alt`).
   Tarea 5.4 de `openspec/changes/landing-una-pagina`.
 - [ ] Confirmar la URL de Instagram (se asume `instagram.com/almadaortiz.dev`).

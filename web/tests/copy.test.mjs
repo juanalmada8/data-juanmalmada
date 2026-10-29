@@ -64,3 +64,10 @@ test("título ≤ 60 y descripción ≤ 155 caracteres, sin lista cerrada de ser
   assert.ok(descripcion.length <= 155, `descripción de ${descripcion.length} caracteres`);
   assert.doesNotMatch(`${titulo} ${descripcion}`, /la web, los turnos|webs, apps y datos/i);
 });
+
+test("el hero muestra los hechos de sitio.ts y los enlaces directos en orden: WhatsApp, Instagram, mail", () => {
+  const hero = readFileSync(new URL("../src/components/secciones/Hero.astro", import.meta.url), "utf8");
+  for (const dato of ["sitio.experiencia", "sitio.respuesta", "sitio.base"]) assert.ok(hero.includes(dato), `falta ${dato}`);
+  const orden = ["contacto.whatsapp", "contacto.instagram", "contacto.mail"].map((c) => hero.indexOf(c));
+  assert.ok(orden.every((i) => i >= 0) && orden[0] < orden[1] && orden[1] < orden[2], "enlaces fuera de orden");
+});

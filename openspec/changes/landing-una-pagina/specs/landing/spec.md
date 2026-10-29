@@ -121,11 +121,11 @@ La página SHALL declarar `lang="es-AR"`, título de hasta 60 caracteres, descri
 - **THEN** la vista previa muestra la imagen de marca, el título y la descripción
 
 ### Requirement: Escenario fijo en escritorio
-En pantallas de 1024 px o más, la mitad izquierda de hero, «Qué hago» y «Casos» SHALL ser un escenario fijo a pantalla completa debajo de la barra, y la derecha una columna de lectura de una sola medida. El escenario SHALL mostrar el logo `<jm▌>` con la vista previa del tema elegido en el hero, el diagrama «todo conectado» en «Qué hago» y la captura del caso elegido en «Casos». «Cómo trabajo» y «Contacto» SHALL ocupar todo el ancho.
+En pantallas de 1024 px o más, hero, «Qué hago» y «Casos» SHALL tener la lectura a la izquierda, en una sola medida y alineada con la barra, y un escenario fijo a la derecha, como panel redondeado con aire debajo de la barra. El escenario SHALL mostrar la vista previa del tema elegido con el logo `<jm▌>` como firma en el hero (el logo se oculta en pantallas bajas), el diagrama «todo conectado» en «Qué hago» y la captura del caso elegido en «Casos». «Cómo trabajo» y «Contacto» SHALL ocupar todo el ancho.
 
 #### Scenario: Escritorio de 1466×820
 - **WHEN** se scrollea del hero a «Casos»
-- **THEN** el escenario no se mueve, cambia de tono y de contenido al llegar cada sección, y la columna de lectura sigue su curso
+- **THEN** el panel de la derecha no se mueve, cambia de tono y de contenido al llegar cada sección, y la columna de lectura sigue su curso
 
 #### Scenario: Celular
 - **WHEN** el ancho es menor a 1024 px

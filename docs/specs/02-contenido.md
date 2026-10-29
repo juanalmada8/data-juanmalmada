@@ -97,24 +97,26 @@ No hay páginas internas, modales ni formularios (cambio `landing-una-pagina`).
 ## Home: una sola página de 5 secciones, con escenario fijo
 
 > **Historial 2026-10-10 → 2026-10-29.** Landing de 8 secciones → editor de código → página editorial → una página de 5
-> secciones con selector → **nuevo frente con la skill taste** (dirección `split-stage`): en escritorio, la mitad izquierda
-> es un escenario fijo y la derecha una columna de lectura. La fuente de verdad del comportamiento es el cambio OpenSpec
+> secciones con selector → **nuevo frente con la skill taste** (dirección `split-stage`): en escritorio, la lectura va a la
+> izquierda y a la derecha hay un panel fijo (escenario). La fuente de verdad del comportamiento es el cambio OpenSpec
 > `landing-una-pagina` (`openspec/changes/landing-una-pagina/specs/`). Esto resume el contenido.
 
 Mensaje: **«Todo el sistema, un solo proveedor.»** Armo sistemas a medida para lo que el negocio necesite; los servicios
 y los casos son **ejemplos, no un límite**. Ver y contactar, a 2 o 3 clics desde cualquier punto.
 
-**Idea:** el logo `<jm▌>` (un trazo suelto y una letra con peso abrazados por código) es el escenario fijo.
+**Idea:** un híbrido clásico y confiable: lectura primero, y a un costado un panel fijo que muestra lo que promete el texto.
 
-**Escritorio (≥ 1024 px):** el escenario ocupa la mitad izquierda debajo de la barra y no se mueve; cambia de tono y de
-contenido con la sección: el logo con la vista previa del tema elegido (hero), el diagrama «todo conectado» (Qué hago) y la
-captura del caso elegido (Casos). La lectura va a la derecha, en una sola medida, sobre papel crema. «Cómo trabajo»
-(salvia) y «Contacto» (pino) rompen la mitad fija y ocupan todo el ancho. **Celular:** sin escenario; todo se apila y el
+**Escritorio (≥ 1024 px):** la lectura va a la izquierda (≈ 55 %), en una sola medida y sobre papel crema, alineada con la barra.
+El escenario es un **panel redondeado con aire** a la derecha (≈ 45 %) que no se mueve; cambia de tono y de contenido con la
+sección: la vista previa del tema elegido con el logo como remate abajo (hero), el diagrama «todo conectado» (Qué hago) y la
+captura del caso elegido (Casos). El hero suma una línea de hechos reales (más de 7 años de oficio · respuesta en menos de
+24 h hábiles · General Belgrano) y enlaces directos a WhatsApp, Instagram y mail. «Cómo trabajo» (salvia) y «Contacto» (pino)
+rompen el panel y ocupan todo el ancho. **Celular:** sin escenario; todo se apila y el
 hero es oscuro.
 
 | Sección | Contenido |
 |---|---|
-| Hero | Titular «Todo el sistema, *un solo proveedor.*» en dos renglones, bajada, selector **«¿Qué necesitás?»** (6 chips) y CTA. Elegir un tema cambia la vista previa, el tono del escenario (pino mezclado con musgo, 0–40 %) y la bajada; el titular no cambia. El sticker `hola_mundo()` queda en la esquina del escenario. |
+| Hero | Titular «Todo el sistema, *un solo proveedor.*» en dos renglones, bajada, selector **«¿Qué necesitás?»** (6 chips) y CTA, enlaces directos a WhatsApp, Instagram y mail y una línea de hechos reales (más de 7 años de oficio · respuesta en menos de 24 h hábiles · base). Elegir un tema cambia la vista previa, el tono del escenario (pino mezclado con musgo, 0–40 %) y la bajada; el titular no cambia. El sticker `hola_mundo()` queda en la esquina del escenario. |
 | Qué hago | Título, la línea «Lo que invertís hoy te ahorra tiempo y plata mañana.» y 5 ejemplos como filas (pregunta → solución), sin cajas, más «¿Lo tuyo no está acá? Contámelo, seguro se puede armar.» |
 | Casos | Oral y Staffy en pestañas de texto (el caso queda en la URL: `#caso-staffy`): nombre, una línea, 3 bullets y link; la captura va al escenario. |
 | Cómo trabajo | Charla · Propuesta · Desarrollo · Soporte, con números grandes en serif, a ancho completo sobre salvia. |
