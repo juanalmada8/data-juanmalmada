@@ -122,7 +122,7 @@ p { text-wrap: pretty; }
 
 /* ---------- Accesibilidad ---------- */
 
-:focus-visible { outline: 3px solid var(--musgo); outline-offset: 3px; border-radius: var(--space-1); }
+:focus-visible { outline: 3px solid var(--musgo); outline-offset: 3px; } /* sin border-radius: el outline sigue la forma del elemento (botones pill incluidos) */
 .tema-pino :focus-visible { outline-color: var(--lima); }
 
 .saltar {

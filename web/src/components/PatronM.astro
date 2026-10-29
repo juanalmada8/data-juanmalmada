@@ -12,7 +12,7 @@ interface Props {
   class?: string;
 }
 // Recurso decorativo y sutil: una banda baja entre secciones, nunca de fondo detrás de texto.
-const { tono = "pino", filas = 1, lima = [], alto = "clamp(44px, 6vw, 80px)", class: clase } = Astro.props;
+const { tono = "pino", filas = 1, lima = [], alto = "var(--alto-banda)", class: clase } = Astro.props;
 
 const m = leerSvg("m.svg");
 const d = /\sd="([^"]+)"/.exec(m.interior)?.[1] ?? "";

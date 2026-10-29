@@ -14,7 +14,7 @@ import { urlWhatsApp } from "../../lib/whatsapp";
 const casos = await cargarCasos();
 const caso = (id: string) => casos.find((c) => c.id === id);
 ---
-<section class="hero tema-crema" aria-labelledby="hero-titulo">
+<section id="hero" class="hero tema-crema" aria-labelledby="hero-titulo">
   <div class="contenedor grilla">
     <div class="h-texto">
       <p class="etiqueta-codigo mono"><span>hola_mundo()</span></p>

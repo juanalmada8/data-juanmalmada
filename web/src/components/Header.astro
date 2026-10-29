@@ -43,15 +43,16 @@ const secciones = [
     const donde = barra?.querySelector("[data-donde]");
     const progreso = barra?.querySelector("[data-progreso]");
     const enlaces = [...document.querySelectorAll("[data-seccion]")];
-    const secs = Object.keys(etiquetas).map((id) => document.getElementById(id)).filter(Boolean);
+    const secs = ["hero", ...Object.keys(etiquetas)].map((id) => document.getElementById(id)).filter(Boolean);
     if (!barra || !secs.length) return;
 
     let actual = null;
     const marcar = (id) => {
+      if (id === "hero") id = ""; // el hero no es una sección de la navegación
       if (id === actual) return;
       actual = id;
       enlaces.forEach((a) => {
-        if (a.dataset.seccion === id && a.closest(".secciones")) a.setAttribute("aria-current", "location");
+        if (a.dataset.seccion === id) a.setAttribute("aria-current", "location");
         else a.removeAttribute("aria-current");
       });
       if (donde) donde.textContent = etiquetas[id] ?? "";
@@ -84,10 +85,10 @@ const secciones = [
     border-bottom: var(--borde-suave); /* el 1px salvia del manual, no una línea dura */
   }
   .fila { display: flex; align-items: center; justify-content: space-between; gap: var(--space-4); min-height: var(--alto-barra); }
-  .marca { display: inline-flex; align-items: center; min-height: var(--tap-min); }
+  .marca { display: inline-flex; align-items: center; justify-content: center; min-height: var(--tap-min); min-width: var(--tap-min); }
   .marca :global(.logo-grande) { display: none; }
 
-  .donde { flex: 1; min-width: 0; font-size: var(--fs-micro); letter-spacing: .08em; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; text-align: center; }
+  .donde { flex: 1; min-width: 0; font-size: var(--fs-label); letter-spacing: .12em; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; text-align: center; }
   .donde:empty { visibility: hidden; }
   .secciones { display: none; }
   .barra .boton { min-height: var(--tap-min); padding: 0 var(--space-4); font-size: var(--fs-small); }
@@ -96,7 +97,7 @@ const secciones = [
   .progreso {
     position: absolute;
     left: 0; right: 0; bottom: -1px;
-    height: 3px;
+    height: var(--grosor-nav);
     background: var(--pino);
     transform: scaleX(0);
     transform-origin: left;
@@ -122,7 +123,7 @@ const secciones = [
       font-weight: 700;
       font-size: var(--fs-small);
       text-decoration: none;
-      border-bottom: 3px solid transparent;
+      border-bottom: var(--grosor-nav) solid transparent;
     }
     .secciones a:hover { border-bottom-color: var(--salvia); }
     .secciones a[aria-current="location"] { border-bottom-color: var(--musgo); }

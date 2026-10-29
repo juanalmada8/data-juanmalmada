@@ -50,8 +50,8 @@ const tipo = captura?.marco ?? marco;
   .pantalla :global(img) { width: 100%; height: auto; }
   .ventana .pantalla { aspect-ratio: 16 / 10; }
   .sin-captura .pantalla { aspect-ratio: auto; min-height: 6.5rem; } /* el placeholder crece con su texto */
-  .celu { width: min(100%, 11rem); border-radius: 28px; padding: var(--space-2); }
-  .celu .pantalla { aspect-ratio: 9 / 19; border-radius: 22px; }
+  .celu { width: min(100%, 11rem); border-radius: var(--radius-celu); padding: var(--space-2); }
+  .celu .pantalla { aspect-ratio: 9 / 19; border-radius: calc(var(--radius-celu) - var(--space-2)); }
   .sin-captura .pantalla { display: grid; place-items: center; background: var(--salvia); }
   .falta { padding: var(--space-3); text-align: center; }
 </style>
