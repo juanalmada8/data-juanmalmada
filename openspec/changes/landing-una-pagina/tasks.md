@@ -66,6 +66,17 @@
 - [ ] 9.5 Capturas en 360, 768 y 1466 px, Lighthouse móvil, axe y `revisor-de-marca`; verificar que los puntajes siguen en 95 o más y que el revisor no deja observaciones abiertas.
 - [x] 9.6 Actualizar `01-marca`, `02-contenido` y el registro de decisiones; verificar que describen la barra y el hero como quedaron.
 
+## 10. Giro: letras con carácter, índice numerado y hero vivo (2026-10-29)
+
+- [x] 10.1 Tipografía con más carácter (H1 hasta 80 px apretado, interlineado bajo 1.0, números grandes en serif) en `tokens.css`/`base.css`; verificar los tamaños calculados en el navegador a 360 y 1466 px.
+- [x] 10.2 Ritmo pino · crema · salvia · crema · pino con sus temas y el pie; verificar con capturas que no hay dos secciones seguidas del mismo fondo y que el contraste sigue en AA (axe).
+- [x] 10.3 Hero oscuro con `<jm▌>` grande en escritorio y chips sobre fondo oscuro; verificar a 1466×820 que llena la pantalla y a 360×640 que siguen entrando titular, chips y CTA.
+- [x] 10.4 El selector cambia el fondo del hero (mezcla pino→musgo) y reescribe la bajada, con datos en `temas.ts` y tests; verificar los seis temas en el navegador (tono, bajada, titular intacto) y el contraste de cada tono con axe.
+- [x] 10.5 Barra con índice numerado y tramos de progreso por capítulo (escritorio y celular); verificar scrolleando que el tramo se llena por capítulo, que el actual queda marcado y que a 360 px nada se corta.
+- [x] 10.6 Microinteracciones (flecha en CTA, firma que se revela, respuesta al presionar chips, números grandes de «Cómo trabajo»); verificar con y sin `prefers-reduced-motion`.
+- [ ] 10.7 Capturas en 360, 768 y 1466 px, Lighthouse móvil, axe, conteo de clics y `revisor-de-marca`; verificar puntajes de 95 o más y sin observaciones abiertas.
+- [x] 10.8 Actualizar `01-marca`, `02-contenido` y el registro de decisiones; verificar que describen lo construido.
+
 ## Workflow follow-up
 
 - Archivar el cambio (`/opsx:archive`) al mergear.

@@ -26,7 +26,7 @@ Los títulos SHALL usar DM Serif Display con itálica en la palabra destacada, e
 - **THEN** las tres fuentes salen del propio dominio, en formato woff2, y no se usa Martian Mono ni Atkinson
 
 ### Requirement: Escala tipográfica del manual
-La página SHALL seguir la lámina de tipografía: títulos H1 de 56 a 72 px con interlineado 1.0 (en el celular puede bajar para que entre), cuerpo de Manrope de 16 a 18 px con interlineado 1.5, y etiquetas de JetBrains Mono de 12 a 14 px con espaciado de letras. Manrope SHALL usarse en Bold para subtítulos y botones, Medium para destacados como la bajada, y Regular para párrafos.
+La página SHALL seguir la lámina de tipografía con más carácter: títulos H1 de 56 a 80 px (el manual da 56–72; en pantallas anchas se estira hasta 80) con interlineado menor a 1.0 y espaciado apretado (en el celular bajan para que entren), cuerpo de Manrope de 16 a 18 px con interlineado 1.5, y etiquetas de JetBrains Mono de 12 a 14 px con espaciado de letras. Manrope SHALL usarse en Bold para subtítulos y botones, Medium para destacados como la bajada, y Regular para párrafos.
 
 #### Scenario: Bajada del hero
 - **WHEN** se lee la bajada del hero
@@ -51,8 +51,15 @@ El patrón de la `m` SHALL usarse solo como adorno decorativo en bandas o separa
 - **THEN** el patrón no queda detrás del texto
 
 ### Requirement: Ritmo y aire
-Las secciones SHALL alternar fondos crema y pino, con espacio generoso y bordes redondeados.
+Las secciones SHALL alternar fondos en el orden pino, crema, salvia, crema y pino (hero, qué hago, casos, cómo trabajo y contacto), con espacio generoso y bordes redondeados.
 
 #### Scenario: Secciones consecutivas
 - **WHEN** hay dos secciones seguidas
 - **THEN** tienen fondos distintos
+
+### Requirement: Números grandes en serif
+Los pasos de «Cómo trabajo» SHALL mostrar su número (1 a 4) en DM Serif Display de gran tamaño, y las palabras destacadas de los títulos SHALL ir en la itálica de la serif.
+
+#### Scenario: Cómo trabajo
+- **WHEN** se ve la sección «Cómo trabajo»
+- **THEN** cada paso tiene su número grande en serif, de al menos 48 px, y el nombre del paso debajo

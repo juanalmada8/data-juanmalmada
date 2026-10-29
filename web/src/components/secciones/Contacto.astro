@@ -5,13 +5,13 @@ import Firma from "../Firma.astro";
 import PatronM from "../PatronM.astro";
 import { contacto, sitio } from "../../data/sitio";
 ---
-<section id="contacto" class="seccion tema-crema" aria-labelledby="contacto-titulo">
+<section id="contacto" class="seccion tema-pino" aria-labelledby="contacto-titulo">
   <div class="contenedor grilla">
     <div class="texto" data-aparece>
       <p class="rotulo">04 — Contacto</p>
       <h2 id="contacto-titulo">¿Tenés un negocio, un consultorio, una empresa o una idea? <em>Armemos el sistema.</em></h2>
       <div class="botones">
-        <a class="boton lima grande" data-wa-tema href={contacto.whatsapp} target="_blank" rel="noopener noreferrer">
+        <a class="boton lima grande flecha" data-wa-tema href={contacto.whatsapp} target="_blank" rel="noopener noreferrer">
           WhatsApp<span class="sr-only"> (se abre en otra pestaña)</span>
         </a>
         <a class="boton sec grande" href={contacto.instagram} target="_blank" rel="noopener noreferrer">
@@ -27,10 +27,10 @@ import { contacto, sitio } from "../../data/sitio";
         Soy Juanma: ingeniero de datos y desarrollador full stack, con {sitio.experiencia} de experiencia en equipos
         y empresas de distintos rubros. Trabajo desde General Belgrano, de forma remota para todo el país.
       </p>
-      <Firma color="pino" ancho="10rem" decorativa />
+      <div class="firma-rev"><Firma color="crema" ancho="10rem" decorativa /></div>
     </div>
   </div>
-  <PatronM tono="crema" lima={[[0, 5]]} class="banda" />
+  <PatronM tono="pino" lima={[[0, 5]]} class="banda" />
 </section>
 
 <style>
@@ -38,8 +38,16 @@ import { contacto, sitio } from "../../data/sitio";
   .texto { display: grid; gap: var(--space-6); justify-items: start; }
   .botones { display: grid; gap: var(--space-3); width: 100%; }
   .boton.grande { min-height: 3.5rem; font-size: var(--fs-lead); }
-  .respuesta { font-family: var(--font-mono); font-size: var(--fs-small); }
+  .respuesta { font-family: var(--font-mono); font-size: var(--fs-small); color: var(--salvia); }
   .yo { display: grid; gap: var(--space-4); align-content: start; max-width: 32rem; }
+  .yo p { color: var(--crema); }
+
+  /* La firma se revela de izquierda a derecha al aparecer (solo sin movimiento reducido) */
+  @media (prefers-reduced-motion: no-preference) {
+    :global(html.js) .firma-rev { clip-path: inset(0 100% 0 0); transition: clip-path 1.4s cubic-bezier(.4, 0, .2, 1) .3s; }
+    :global(html.js) .visible .firma-rev { clip-path: inset(0 0 0 0); }
+  }
+
   @media (min-width: 40rem) { .botones { grid-template-columns: repeat(3, auto); justify-content: start; } }
   @media (min-width: 60rem) {
     .grilla { grid-template-columns: 1.4fr 1fr; gap: var(--space-16); align-items: end; }

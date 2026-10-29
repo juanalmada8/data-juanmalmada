@@ -6,7 +6,7 @@ import { cargarCasos } from "../../lib/casos";
 
 const casos = await cargarCasos();
 ---
-<section id="casos" class="seccion tema-crema" aria-labelledby="casos-titulo">
+<section id="casos" class="seccion tema-salvia" aria-labelledby="casos-titulo">
   <div class="contenedor" data-casos>
     <header class="cabecera" data-aparece>
       <p class="rotulo">02 — Casos reales</p>
@@ -101,7 +101,7 @@ const casos = await cargarCasos();
     cursor: pointer;
     transition: background-color .15s ease, color .15s ease;
   }
-  .pestana:hover { background: var(--blanco); }
+  .pestana:hover { background: var(--crema); }
   .pestana[aria-selected="true"] { background: var(--pino); color: var(--crema); }
 
   .caso {

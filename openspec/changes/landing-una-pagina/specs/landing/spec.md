@@ -29,23 +29,23 @@ Ningún texto SHALL afirmar ni sugerir que Juanma hace un solo tipo de proyecto;
 - **WHEN** se lee todo el texto visible de la página
 - **THEN** no hay frases como «solo hago…», «me especializo en turnos» ni una lista cerrada de servicios
 
-### Requirement: Barra fija con navegación por secciones
-La página SHALL tener una barra fija con el logo, la navegación por secciones y el botón «Contame tu idea», siempre visible al scrollear. La navegación SHALL marcar la sección que se está viendo y el botón SHALL llevar a la sección de contacto.
+### Requirement: Barra fija con índice numerado
+La página SHALL tener una barra fija con el logo, un índice numerado de sus cuatro secciones (01 Qué hago, 02 Casos, 03 Cómo trabajo, 04 Contacto) y el botón «Contame tu idea», siempre visible al scrollear. Cada capítulo del índice SHALL tener un tramo de progreso que se llena a medida que se lee esa sección, y el de la sección actual SHALL estar marcado.
 
 #### Scenario: Escritorio
 - **WHEN** el ancho es de 768 px o más
-- **THEN** la barra muestra los enlaces Qué hago, Casos y Cómo trabajo, y marca con una línea el de la sección que está en pantalla
+- **THEN** la barra muestra los cuatro capítulos con su número y nombre, cada uno con su tramo de progreso, y el actual marcado (número destacado y `aria-current`)
 
 #### Scenario: Celular
 - **WHEN** el ancho es menor a 768 px
-- **THEN** la barra muestra el ícono `</j>`, el nombre de la sección actual (por ejemplo «Casos») y el botón completo, sin cortar el texto a 360 px
+- **THEN** la barra muestra el ícono `</j>`, el número y nombre de la sección actual (por ejemplo «02 Casos») y el botón completo sin cortarse a 360 px, con los cuatro tramos como una barra segmentada bajo la barra
 
-#### Scenario: Progreso
-- **WHEN** la persona scrollea
-- **THEN** una línea fina bajo la barra indica cuánto de la página recorrió, y sin movimiento reducido no hay animaciones asociadas
+#### Scenario: Progreso por capítulo
+- **WHEN** la persona va por la mitad de «Casos»
+- **THEN** el tramo 01 está lleno, el 02 a la mitad y el 03 y el 04 vacíos
 
 #### Scenario: Ir a una sección
-- **WHEN** la persona toca un enlace de la barra o «Contame tu idea»
+- **WHEN** la persona toca un capítulo o «Contame tu idea»
 - **THEN** la página baja hasta esa sección sin que la barra tape su título
 
 ### Requirement: Aire alrededor del logo
@@ -54,6 +54,17 @@ El logo `<jm>` de la barra SHALL tener espacio libre arriba y abajo y MUST NOT t
 #### Scenario: Escritorio de 1440 px
 - **WHEN** se ve la barra a 1440 px
 - **THEN** hay al menos 12 px entre el logo y la línea inferior de la barra, y el logo mide al menos 100 px de ancho
+
+### Requirement: Hero oscuro con el logo grande
+En escritorio (960 px o más) el hero SHALL tener fondo pino y mostrar el logo `<jm▌>` grande con el cursor titilando, como la portada del manual. En el celular el logo grande no se muestra, para que entren el titular, los chips y el CTA.
+
+#### Scenario: Escritorio
+- **WHEN** el ancho es de 960 px o más
+- **THEN** el hero es oscuro y el logo con cursor se ve junto a la vista previa
+
+#### Scenario: Movimiento reducido
+- **WHEN** el sistema pide movimiento reducido
+- **THEN** el cursor del logo queda fijo
 
 ### Requirement: El hero llena la primera pantalla
 En pantallas de escritorio el hero SHALL ocupar la primera pantalla completa debajo de la barra, de modo que la sección siguiente no asome cortada.

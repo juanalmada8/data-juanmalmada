@@ -47,6 +47,23 @@ caso en el repo. `web/src/data/sitio.ts` tiene WhatsApp y mail; Instagram figura
 - **Cómo trabajo:** fila de 4 desde 768 px; en celular, lista vertical compacta (4 textos en una fila de 360 px no se leen).
 - **Imágenes** con `astro:assets` (AVIF/WebP, ancho y alto, lazy debajo del primer pantallazo).
 
+## Giro del 2026-10-29 (feedback de Juanma: «las letras parecen muy AI, la nav es insulsa»)
+
+Elegido por Juanma entre varias opciones:
+
+- **Tipografía del manual, con más carácter.** Mismas familias; cambia el uso: H1 más grande (hasta 80 px) y apretado,
+  interlineado bajo 1.0, palabras en itálica protagonistas, números grandes en serif en «Cómo trabajo», mono solo para
+  detalles. *Alternativas descartadas:* cambiar solo los títulos o todo el sistema tipográfico (salían del manual).
+- **Índice numerado** (01–04) con un tramo de progreso por capítulo; en el celular, el capítulo actual y una barra
+  segmentada. Reemplaza al subrayado y a la línea de progreso únicos. *Alternativas:* píldora flotante, menú a pantalla completa.
+- **Hero oscuro (pino) con `<jm▌>` grande** en escritorio, como la portada del manual. Ritmo: pino · crema · salvia ·
+  crema · pino, y pie pino.
+- **El selector cambia el hero:** el fondo se mezcla de pino hacia musgo (0 a 40 %, siempre ≥ 7:1 con crema) y la
+  bajada se reescribe por tema. **El titular no cambia** (es el mensaje de marca y el `h1`). *Alternativa descartada:*
+  reescribir el titular por tema (perdía «un solo proveedor»).
+- **Microinteracciones:** flecha que se desplaza en los CTA, firma que se revela al aparecer, respuesta al presionar un
+  chip. Todo apagado con `prefers-reduced-motion`. No hay cursor propio (`04-calidad` lo prohíbe).
+
 ## Risks / Trade-offs
 
 - [La primera pantalla no entra en 360×640 con titular, bajada, chips, vista previa y CTA] → la spec exige titular, chips y

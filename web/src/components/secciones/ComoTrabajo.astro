@@ -7,7 +7,7 @@ const pasos = [
   { titulo: "Soporte", texto: "Te lo dejo andando y te acompaño después de la entrega." },
 ];
 ---
-<section id="como-trabajo" class="seccion tema-pino" aria-labelledby="como-trabajo-titulo">
+<section id="como-trabajo" class="seccion tema-crema" aria-labelledby="como-trabajo-titulo">
   <div class="contenedor">
     <header class="cabecera" data-aparece>
       <p class="rotulo">03 — Cómo trabajo</p>
@@ -16,7 +16,7 @@ const pasos = [
     <ol class="pasos">
       {pasos.map((p, i) => (
         <li class="paso" data-aparece>
-          <span class="num" aria-hidden="true">{String(i + 1).padStart(2, "0")}</span>
+          <span class="num" aria-hidden="true">{i + 1}</span>
           <h3>{p.titulo}</h3>
           <p>{p.texto}</p>
         </li>
@@ -29,20 +29,21 @@ const pasos = [
   .pasos { list-style: none; padding: 0; display: grid; gap: 0; }
   .paso {
     display: grid;
-    grid-template-columns: 3rem 1fr;
+    grid-template-columns: calc(var(--fs-numeral) * .7) 1fr;
     column-gap: var(--space-4);
     padding: var(--space-4) 0;
-    border-top: 1px solid var(--musgo);
+    border-top: 2px solid var(--pino);
   }
-  .paso:last-child { border-bottom: 1px solid var(--musgo); }
-  .num { grid-row: span 2; font-family: var(--font-mono); font-size: var(--fs-label); font-weight: 500; color: var(--lima); padding-top: var(--space-2); }
+  .paso:last-child { border-bottom: 2px solid var(--pino); }
+  /* Número grande en serif (musgo sobre crema: texto grande, pasa AA) */
+  .num { grid-row: span 2; font-family: var(--font-serif); font-size: var(--fs-numeral); line-height: .85; color: var(--musgo); }
   .paso h3 { margin-bottom: var(--space-2); }
-  .paso p { color: var(--salvia); }
+  .paso p { color: var(--pino); }
 
   /* Desde 768 px: una sola fila de cuatro */
   @media (min-width: 48rem) {
     .pasos { grid-template-columns: repeat(4, 1fr); column-gap: var(--space-6); }
-    .paso { display: block; border-top: 2px solid var(--lima); border-bottom: 0 !important; padding-top: var(--space-4); }
-    .num { display: block; margin-bottom: var(--space-3); padding-top: 0; }
+    .paso { display: block; border-bottom: 0 !important; padding-top: var(--space-6); }
+    .num { display: block; margin-bottom: var(--space-3); }
   }
 </style>

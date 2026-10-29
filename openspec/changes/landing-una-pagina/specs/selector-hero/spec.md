@@ -49,3 +49,22 @@ Sin JavaScript, el selector SHALL mostrarse como la lista de los seis temas con 
 #### Scenario: JavaScript desactivado
 - **WHEN** se abre sin JavaScript
 - **THEN** se leen los seis temas con su frase y el CTA lleva al contacto
+
+### Requirement: El tema elegido cambia el hero
+Al elegir un chip, el fondo del hero SHALL cambiar de tono dentro de la paleta (una mezcla de pino y musgo) y la bajada SHALL reescribirse para ese tema. El titular «Todo el sistema, un solo proveedor.» MUST NOT cambiar.
+
+#### Scenario: Elegir «Turnos»
+- **WHEN** la persona elige «Turnos»
+- **THEN** el fondo del hero toma otro tono y la bajada habla de reservas online con confirmación y recordatorio
+
+#### Scenario: Volver a «Una web o app»
+- **WHEN** la persona vuelve a «Una web o app»
+- **THEN** el fondo y la bajada vuelven a los del estado inicial
+
+#### Scenario: Contraste en todos los tonos
+- **WHEN** el hero muestra cualquiera de sus tonos
+- **THEN** el texto cumple contraste AA sobre ese fondo
+
+#### Scenario: Movimiento reducido
+- **WHEN** el sistema pide movimiento reducido
+- **THEN** el cambio de tono es instantáneo, sin transición

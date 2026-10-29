@@ -103,24 +103,27 @@ No hay páginas internas, modales ni formularios (cambio `landing-una-pagina`).
 Mensaje: **«Todo el sistema, un solo proveedor.»** Armo sistemas a medida para lo que el negocio necesite; los servicios
 y los casos son **ejemplos, no un límite**. Ver y contactar, a 2 o 3 clics desde cualquier punto.
 
-Ritmo de fondo: crema · pino · crema · pino · crema, y pie pino.
+Ritmo de fondo: **pino · crema · salvia · crema · pino**, y pie pino (el hero oscuro abre como la portada del manual).
 
 **Barra fija** (5,5 rem desde 480 px, con el logo `<jm>` de 104 px y 12 px de aire arriba y abajo; en el celular, el ícono `</j>`):
-enlaces *Qué hago · Casos · Cómo trabajo* con la sección actual marcada (desde 768 px), el nombre de la sección en el
-celular, una línea de progreso de lectura sobre el borde y «Contame tu idea» siempre visible. En escritorio el **hero llena
-la primera pantalla** debajo de la barra, con la banda del patrón al pie.
+un **índice numerado** *01 Qué hago · 02 Casos · 03 Cómo trabajo · 04 Contacto*, donde cada capítulo tiene un tramo de
+progreso que se llena mientras se lee esa sección y el actual se marca con una pastilla lima en el número; en el celular, el
+capítulo actual («02 Casos») y los cuatro tramos como una barra segmentada. «Contame tu idea» siempre visible.
+
+En escritorio el **hero llena la primera pantalla** debajo de la barra: fondo pino, titular grande, selector y a la derecha
+el `<jm▌>` grande con el cursor titilando y la vista previa; la banda del patrón queda entera al pie.
 
 | # | Sección | Fondo | Contenido |
 |---|---|---|---|
-| 1 | Hero | crema | `hola_mundo()` (código en minúsculas, pastilla lima como en el manual), titular «Todo el sistema, *un solo proveedor.*», bajada «Armo sistemas a medida: desde la app que usan tus clientes hasta los datos que te ayudan a decidir.», selector **«¿Qué necesitás?»** (6 chips) con vista previa y el CTA «Contame tu idea». |
-| 2 | Qué hago | pino | 5 ejemplos («algunas cosas que puedo armar») + «¿Lo tuyo no está acá? Contámelo, seguro se puede armar.» |
-| 3 | Casos | crema | Oral y Staffy en pestañas: nombre, una línea, 3 bullets, capturas y link. |
-| 4 | Cómo trabajo | pino | Charla → Propuesta → Desarrollo → Soporte. |
-| 5 | Contacto | crema | «¿Tenés un negocio, un consultorio, una empresa o una idea? Armemos el sistema.», WhatsApp, Instagram y mail, presentación y firma. Pie: lema del manual, LinkedIn, base y año. |
+| 1 | Hero | pino | `hola_mundo()` (código en minúsculas, pastilla lima como en el manual), titular «Todo el sistema, *un solo proveedor.*», bajada «Armo sistemas a medida: desde la app que usan tus clientes hasta los datos que te ayudan a decidir.», selector **«¿Qué necesitás?»** (6 chips) con vista previa y el CTA «Contame tu idea». |
+| 2 | Qué hago | crema, tarjetas blancas | 5 ejemplos («algunas cosas que puedo armar») + «¿Lo tuyo no está acá? Contámelo, seguro se puede armar.» |
+| 3 | Casos | salvia, tarjeta blanca | Oral y Staffy en pestañas: nombre, una línea, 3 bullets, capturas y link. |
+| 4 | Cómo trabajo | crema, números grandes en serif | Charla → Propuesta → Desarrollo → Soporte. |
+| 5 | Contacto | pino | «¿Tenés un negocio, un consultorio, una empresa o una idea? Armemos el sistema.», WhatsApp, Instagram y mail, presentación y firma. Pie: lema del manual, LinkedIn, base y año. |
 
 ### Selector del hero
 
-Chips: **Una web o app · Una plataforma · Turnos · Gestión · Datos · Otra idea**. Un clic cambia la vista previa
+Chips: **Una web o app · Una plataforma · Turnos · Gestión · Datos · Otra idea**. Un clic cambia la vista previa, el **tono del fondo del hero** (pino mezclado con un poco de musgo, 0–40 %, siempre con contraste ≥ 7:1) y la **bajada**; el titular no cambia
 (captura real de un caso, o un patrón del manual; nunca una interfaz inventada) con un ejemplo y una frase de qué se
 resuelve. «Otra idea» muestra «Contame qué tenés en mente y lo armamos» y el botón de contacto. El tema que **elige** el
 visitante precarga el WhatsApp: «Hola Juanma, quiero armar una plataforma». Datos en `web/src/data/temas.ts`.

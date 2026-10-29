@@ -43,12 +43,12 @@ button, input { font: inherit; color: inherit; }
 h1, h2, h3 {
   font-family: var(--font-serif);
   font-weight: 400;
-  letter-spacing: -.01em;
   text-wrap: balance;
 }
-h1 { font-size: var(--fs-h1); line-height: 1; }
-h2 { font-size: var(--fs-h2); line-height: 1.05; }
-h3 { font-size: var(--fs-h3); line-height: 1.15; }
+/* Con más carácter: grandes, apretados y con interlineado bajo */
+h1 { font-size: var(--fs-h1); line-height: .95; letter-spacing: -.03em; }
+h2 { font-size: var(--fs-h2); line-height: 1; letter-spacing: -.025em; }
+h3 { font-size: var(--fs-h3); line-height: 1.1; letter-spacing: -.01em; }
 /* La palabra destacada va en itálica y color de acento (musgo sobre crema solo en títulos grandes) */
 h1 em, h2 em, h3 em { font-style: italic; color: var(--acento); }
 .tema-crema h3 em { color: var(--pino); }
@@ -110,6 +110,13 @@ p { text-wrap: pretty; }
 .tema-crema .boton.lima:hover, .tema-blanco .boton.lima:hover { background: var(--pino); color: var(--lima); }
 .boton.sec { background: transparent; color: var(--texto); border-color: var(--texto); }
 .boton.sec:hover { background: var(--texto); color: var(--fondo); }
+
+/* Flecha que se corre al pasar el mouse; sin movimiento reducido */
+.boton.flecha::after { content: "→" / ""; display: inline-block; margin-left: var(--space-2); }
+@media (prefers-reduced-motion: no-preference) {
+  .boton.flecha::after { transition: transform .2s ease; }
+  .boton.flecha:hover::after { transform: translateX(var(--space-1)); }
+}
 
 .link {
   font-weight: 700;

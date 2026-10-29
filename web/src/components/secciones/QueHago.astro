@@ -29,7 +29,7 @@ const ejemplos = [
   },
 ];
 ---
-<section id="que-hago" class="seccion tema-pino" aria-labelledby="que-hago-titulo">
+<section id="que-hago" class="seccion tema-crema" aria-labelledby="que-hago-titulo">
   <div class="contenedor">
     <header class="cabecera" data-aparece>
       <p class="rotulo">01 — Qué hago</p>
@@ -47,7 +47,7 @@ const ejemplos = [
       <li class="tarjeta cierre" data-aparece>
         <p class="cierre-tit">¿Lo tuyo no está acá?</p>
         <p>Contámelo, seguro se puede armar.</p>
-        <a class="boton" href="#contacto">Contame tu idea</a>
+        <a class="boton flecha" href="#contacto">Contame tu idea</a>
       </li>
     </ul>
   </div>
@@ -60,22 +60,21 @@ const ejemplos = [
     gap: var(--space-3);
     align-content: start;
     padding: var(--space-6);
-    border: 1px solid var(--musgo);
+    background: var(--blanco);
+    border: var(--borde-suave);
     border-radius: var(--radius-card);
     transition: border-color .2s ease, transform .2s ease;
   }
-  .tarjeta:hover { border-color: var(--lima); transform: translateY(calc(-1 * var(--space-1))); }
-  .problema { color: var(--salvia); }
-  .solucion { color: var(--crema); }
-
+  .tarjeta:hover { border-color: var(--musgo); transform: translateY(calc(-1 * var(--space-1))); }
+  .problema { color: var(--musgo); } /* musgo sobre blanco: 5.1, pasa AA */
+  .solucion { color: var(--pino); }
   @media (prefers-reduced-motion: reduce) { .tarjeta:hover { transform: none; } }
 
   /* Cierre: la puerta abierta a «lo que sea» */
   .cierre { background: var(--lima); border-color: var(--lima); color: var(--pino); }
-  .cierre:hover { border-color: var(--lima); }
-  .cierre-tit { font-family: var(--font-serif); font-size: var(--fs-h3); line-height: 1.15; }
-  .cierre .boton { justify-self: start; background: var(--pino); border-color: var(--pino); color: var(--crema); }
-  .cierre .boton:hover { background: transparent; color: var(--pino); }
+  .cierre:hover { border-color: var(--pino); }
+  .cierre-tit { font-family: var(--font-serif); font-size: var(--fs-h3); line-height: 1.1; }
+  .cierre .boton { justify-self: start; }
 
   @media (min-width: 40rem) { .tarjetas { grid-template-columns: repeat(2, 1fr); } }
   @media (min-width: 64rem) {

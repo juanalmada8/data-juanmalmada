@@ -56,8 +56,9 @@
   --fs-body:  clamp(1rem, .95rem + .25vw, 1.125rem);
   --fs-lead:  clamp(1.125rem, 1.02rem + .5vw, 1.375rem);
   --fs-h3:    clamp(1.375rem, 1.2rem + .8vw, 1.75rem);
-  --fs-h2:    clamp(2rem, 1.4rem + 2.6vw, 3.25rem);
-  --fs-h1:    clamp(2.375rem, 1.5rem + 4.4vw, 4.5rem);
+  --fs-h2:    clamp(2.125rem, 1.4rem + 3vw, 3.75rem);
+  --fs-h1:    clamp(2.5rem, 1.3rem + 5.6vw, 5rem);        /* manual: 56–72 px; en pantallas anchas se estira hasta 80 */
+  --fs-numeral: clamp(3.5rem, 2.4rem + 4vw, 5.5rem);      /* números grandes en serif (≥ 48 px) */
 
   /* Espaciado */
   --space-1: .25rem; --space-2: .5rem; --space-3: .75rem; --space-4: 1rem;
