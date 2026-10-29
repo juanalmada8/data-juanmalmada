@@ -119,3 +119,35 @@ La página SHALL declarar `lang="es-AR"`, título de hasta 60 caracteres, descri
 #### Scenario: Link compartido por WhatsApp o Instagram
 - **WHEN** se comparte el link
 - **THEN** la vista previa muestra la imagen de marca, el título y la descripción
+
+### Requirement: Escenario fijo en escritorio
+En pantallas de 1024 px o más, la mitad izquierda de hero, «Qué hago» y «Casos» SHALL ser un escenario fijo a pantalla completa debajo de la barra, y la derecha una columna de lectura de una sola medida. El escenario SHALL mostrar el logo `<jm▌>` con la vista previa del tema elegido en el hero, el diagrama «todo conectado» en «Qué hago» y la captura del caso elegido en «Casos». «Cómo trabajo» y «Contacto» SHALL ocupar todo el ancho.
+
+#### Scenario: Escritorio de 1466×820
+- **WHEN** se scrollea del hero a «Casos»
+- **THEN** el escenario no se mueve, cambia de tono y de contenido al llegar cada sección, y la columna de lectura sigue su curso
+
+#### Scenario: Celular
+- **WHEN** el ancho es menor a 1024 px
+- **THEN** no hay escenario; las secciones se apilan y la vista previa y la captura aparecen dentro de la lectura
+
+### Requirement: Titulares de hasta dos renglones
+Todo `h1` y `h2` SHALL ocupar dos renglones o menos a 390, 768 y 1440 px.
+
+#### Scenario: Cierre de contacto
+- **WHEN** se ve el título del contacto
+- **THEN** es una frase corta («Armemos el sistema.») y la pregunta («¿Tenés un negocio, un consultorio, una empresa o una idea?») va como bajada
+
+### Requirement: Sin adornos que no dicen nada
+Las secciones MUST NOT llevar etiquetas sobre el título («01 — Qué hago»), líneas finas ni cajas definidas solo por un borde de 1 px; el orden lo da el índice de la barra y las superficies se definen por su relleno. Ningún texto pensado para leerse SHALL medir menos de 13 px.
+
+#### Scenario: Inspector
+- **WHEN** se corre el inspector de la skill taste sobre el build
+- **THEN** no marca etiquetas sobre títulos, líneas finas, cajas con borde ni texto menor a 13 px
+
+### Requirement: La lima como acento escaso
+La lima SHALL ocupar como máximo 0.7 veces los píxeles que ocupaba antes del 2026-10-29 (escritorio: 2.9 % en la primera pantalla y 1.0 % en la página; celular: 7.8 % y 2.7 %), y SHALL aparecer solo en el CTA principal, el logo y a lo sumo una `m` del patrón.
+
+#### Scenario: Medición
+- **WHEN** se miden los píxeles lima en capturas de la primera pantalla y de la página completa
+- **THEN** están por debajo de esos topes

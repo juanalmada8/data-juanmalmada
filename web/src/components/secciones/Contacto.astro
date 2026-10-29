@@ -1,15 +1,15 @@
 ---
-// Cierre: contacto directo. WhatsApp lleva el tema que eligió el visitante en el hero (lo actualiza el script del Hero).
-// Spec: specs/contacto.
+// Cierre a ancho completo sobre pino: título corto, la pregunta como bajada y los tres canales.
+// WhatsApp lleva el tema que eligió el visitante en el hero (lo actualiza el script del Hero). Spec: specs/contacto.
 import Firma from "../Firma.astro";
 import PatronM from "../PatronM.astro";
 import { contacto, sitio } from "../../data/sitio";
 ---
-<section id="contacto" class="seccion tema-pino" aria-labelledby="contacto-titulo">
-  <div class="contenedor grilla">
+<section id="contacto" class="seccion-ancha tema-pino" aria-labelledby="contacto-titulo">
+  <div class="marco grilla">
     <div class="texto" data-aparece>
-      <p class="rotulo">04 — Contacto</p>
-      <h2 id="contacto-titulo">¿Tenés un negocio, un consultorio, una empresa o una idea? <em>Armemos el sistema.</em></h2>
+      <h2 id="contacto-titulo">Armemos el <em>sistema</em>.</h2>
+      <p class="lead">¿Tenés un negocio, un consultorio, una empresa o una idea?</p>
       <div class="botones">
         <a class="boton lima grande flecha" data-wa-tema href={contacto.whatsapp} target="_blank" rel="noopener noreferrer">
           WhatsApp<span class="sr-only"> (se abre en otra pestaña)</span>
@@ -34,22 +34,22 @@ import { contacto, sitio } from "../../data/sitio";
 </section>
 
 <style>
-  .grilla { display: grid; gap: var(--space-8); padding-bottom: var(--space-12); }
+  .grilla { display: grid; gap: var(--space-12); align-items: end; }
   .texto { display: grid; gap: var(--space-6); justify-items: start; }
+  .lead { max-width: 30ch; }
+  h2 em { color: var(--salvia); } /* la lima se reserva para el botón de WhatsApp y una m del patrón */
   .botones { display: grid; gap: var(--space-3); width: 100%; }
   .boton.grande { min-height: 3.5rem; font-size: var(--fs-lead); }
-  .respuesta { font-family: var(--font-mono); font-size: var(--fs-small); color: var(--salvia); }
+  .respuesta { color: var(--salvia); }
   .yo { display: grid; gap: var(--space-4); align-content: start; max-width: var(--ancho-texto); }
   .yo p { color: var(--crema); }
+  .seccion-ancha :global(.banda) { margin-top: var(--space-16); background: transparent; }
 
   /* La firma se revela de izquierda a derecha al aparecer (solo sin movimiento reducido) */
   @media (prefers-reduced-motion: no-preference) {
     :global(html.js) .firma-rev { clip-path: inset(0 100% 0 0); transition: clip-path 1.4s cubic-bezier(.4, 0, .2, 1) .3s; }
     :global(html.js) .visible .firma-rev { clip-path: inset(0 0 0 0); }
   }
-
   @media (min-width: 40rem) { .botones { grid-template-columns: repeat(3, auto); justify-content: start; } }
-  @media (min-width: 60rem) {
-    .grilla { grid-template-columns: 1.4fr 1fr; gap: var(--space-16); align-items: end; }
-  }
+  @media (min-width: 60rem) { .grilla { grid-template-columns: 1.3fr 1fr; gap: var(--space-16); } }
 </style>

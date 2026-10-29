@@ -51,7 +51,7 @@ El patrón de la `m` SHALL usarse solo como adorno decorativo en bandas o separa
 - **THEN** el patrón no queda detrás del texto
 
 ### Requirement: Ritmo y aire
-Las secciones SHALL alternar fondos en el orden pino, crema, salvia, crema y pino (hero, qué hago, casos, cómo trabajo y contacto), con espacio generoso y bordes redondeados.
+En escritorio, el escenario SHALL tomar los tonos pino, pino y salvia (hero, qué hago y casos) frente al papel crema de la lectura; «Cómo trabajo» SHALL ir sobre salvia y «Contacto» sobre pino, con espacio generoso (120 px o más entre secciones) y bordes redondeados.
 
 #### Scenario: Secciones consecutivas
 - **WHEN** hay dos secciones seguidas
@@ -63,3 +63,10 @@ Los pasos de «Cómo trabajo» SHALL mostrar su número (1 a 4) en DM Serif Disp
 #### Scenario: Cómo trabajo
 - **WHEN** se ve la sección «Cómo trabajo»
 - **THEN** cada paso tiene su número grande en serif, de al menos 48 px, y el nombre del paso debajo
+
+### Requirement: Mono solo para código y números del índice
+JetBrains Mono SHALL usarse solo para guiños de código (`hola_mundo()`) y los números del índice; los chips, rótulos y datos van en Manrope.
+
+#### Scenario: Chips del selector
+- **WHEN** se ven los chips del hero
+- **THEN** están en Manrope Bold, no en mono

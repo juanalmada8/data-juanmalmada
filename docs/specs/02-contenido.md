@@ -94,42 +94,38 @@ Excepción: **«de punta a punta»** y **«todo el sistema»** son frases de la 
 
 No hay páginas internas, modales ni formularios (cambio `landing-una-pagina`).
 
-## Home: una sola página de 5 secciones
+## Home: una sola página de 5 secciones, con escenario fijo
 
-> **Historial 2026-10-10 → 2026-10-27.** Landing de 8 secciones → editor de código → página editorial → **una sola
-> página de 5 secciones** con selector interactivo (cambio OpenSpec `landing-una-pagina`, que es la fuente de verdad del
-> comportamiento: `openspec/changes/landing-una-pagina/specs/`). Esto resume el contenido.
+> **Historial 2026-10-10 → 2026-10-29.** Landing de 8 secciones → editor de código → página editorial → una página de 5
+> secciones con selector → **nuevo frente con la skill taste** (dirección `split-stage`): en escritorio, la mitad izquierda
+> es un escenario fijo y la derecha una columna de lectura. La fuente de verdad del comportamiento es el cambio OpenSpec
+> `landing-una-pagina` (`openspec/changes/landing-una-pagina/specs/`). Esto resume el contenido.
 
 Mensaje: **«Todo el sistema, un solo proveedor.»** Armo sistemas a medida para lo que el negocio necesite; los servicios
 y los casos son **ejemplos, no un límite**. Ver y contactar, a 2 o 3 clics desde cualquier punto.
 
-Ritmo de fondo: **pino · crema · salvia · crema · pino**, y pie pino (el hero oscuro abre como la portada del manual).
+**Idea:** el logo `<jm▌>` (un trazo suelto y una letra con peso abrazados por código) es el escenario fijo.
 
-**Barra fija** (5,5 rem desde 480 px, con el logo `<jm>` de 104 px y 12 px de aire arriba y abajo; en el celular, el ícono `</j>`; botón «Contame tu idea» en pino):
-un **índice numerado** *01 Qué hago · 02 Casos · 03 Cómo trabajo · 04 Contacto*, donde cada capítulo tiene un tramo de
-progreso que se llena mientras se lee esa sección y el actual se marca con una pastilla lima en el número (desde 1024 px). Por
-debajo, el capítulo actual («02 Casos») y los cuatro tramos como una barra segmentada; el índice completo se despliega bajo
-la barra al navegar con teclado. «Contame tu idea» siempre visible.
+**Escritorio (≥ 1024 px):** el escenario ocupa la mitad izquierda debajo de la barra y no se mueve; cambia de tono y de
+contenido con la sección: el logo con la vista previa del tema elegido (hero), el diagrama «todo conectado» (Qué hago) y la
+captura del caso elegido (Casos). La lectura va a la derecha, en una sola medida, sobre papel crema. «Cómo trabajo»
+(salvia) y «Contacto» (pino) rompen la mitad fija y ocupan todo el ancho. **Celular:** sin escenario; todo se apila y el
+hero es oscuro.
 
-En escritorio el **hero llena la primera pantalla** debajo de la barra: fondo pino, titular grande, selector y a la derecha
-el `<jm▌>` grande con el cursor titilando y la vista previa; la banda del patrón queda entera al pie.
+| Sección | Contenido |
+|---|---|
+| Hero | Titular «Todo el sistema, *un solo proveedor.*» en dos renglones, bajada, selector **«¿Qué necesitás?»** (6 chips) y CTA. Elegir un tema cambia la vista previa, el tono del escenario (pino mezclado con musgo, 0–40 %) y la bajada; el titular no cambia. El sticker `hola_mundo()` queda en la esquina del escenario. |
+| Qué hago | Título, la línea «Lo que invertís hoy te ahorra tiempo y plata mañana.» y 5 ejemplos como filas (pregunta → solución), sin cajas, más «¿Lo tuyo no está acá? Contámelo, seguro se puede armar.» |
+| Casos | Oral y Staffy en pestañas de texto (el caso queda en la URL: `#caso-staffy`): nombre, una línea, 3 bullets y link; la captura va al escenario. |
+| Cómo trabajo | Charla · Propuesta · Desarrollo · Soporte, con números grandes en serif, a ancho completo sobre salvia. |
+| Contacto | «Armemos el sistema.», la pregunta «¿Tenés un negocio, un consultorio, una empresa o una idea?» como bajada, WhatsApp, Instagram y mail, presentación y firma. Pie: lema del manual, LinkedIn, base y año. |
 
-| # | Sección | Fondo | Contenido |
-|---|---|---|---|
-| 1 | Hero | pino | `hola_mundo()` (código en minúsculas, pastilla lima como en el manual), titular «Todo el sistema, *un solo proveedor.*», bajada «Armo sistemas a medida: desde la app que usan tus clientes hasta los datos que te ayudan a decidir.», selector **«¿Qué necesitás?»** (6 chips) con vista previa y el CTA «Contame tu idea». |
-| 2 | Qué hago | crema, tarjetas blancas | 5 ejemplos («algunas cosas que puedo armar») + «¿Lo tuyo no está acá? Contámelo, seguro se puede armar.» |
-| 3 | Casos | salvia, tarjeta blanca | Oral y Staffy en pestañas: nombre, una línea, 3 bullets, capturas y link. |
-| 4 | Cómo trabajo | crema, números grandes en serif | Charla → Propuesta → Desarrollo → Soporte. |
-| 5 | Contacto | pino | «¿Tenés un negocio, un consultorio, una empresa o una idea? Armemos el sistema.», WhatsApp, Instagram y mail, presentación y firma. Pie: lema del manual, LinkedIn, base y año. |
+**Barra fija:** logo `<jm>` (ícono `</j>` en el celular), **índice numerado** 01–04 con un tramo de progreso por capítulo, y
+«Contame tu idea» en pino. El tema elegido también queda en la URL (`?tema=turnos`) y precarga el WhatsApp.
 
-### Selector del hero
-
-Chips: **Una web o app · Una plataforma · Turnos · Gestión · Datos · Otra idea**. Un clic cambia la vista previa, el **tono del fondo del hero** (pino mezclado con un poco de musgo, 0–40 %, siempre con contraste ≥ 7:1) y la **bajada**; el titular no cambia
-(captura real de un caso, o un patrón del manual; nunca una interfaz inventada) con un ejemplo y una frase de qué se
-resuelve. «Otra idea» muestra «Contame qué tenés en mente y lo armamos» y el botón de contacto. El tema que **elige** el
-visitante precarga el WhatsApp: «Hola Juanma, quiero armar una plataforma». Datos en `web/src/data/temas.ts`.
-
-Sin JavaScript, los 6 temas se leen como lista.
+**Sin adornos:** no hay etiquetas sobre los títulos, líneas finas ni cajas definidas por un borde; las superficies se definen
+por su relleno. Titulares de dos renglones o menos. Nada que se lea baja de 13 px. La lima queda para el CTA, el logo, la
+pastilla `hola_mundo()` y una `m` del patrón (−70 % de píxeles lima en escritorio respecto de antes del cambio).
 
 ## Migración del contenido actual
 

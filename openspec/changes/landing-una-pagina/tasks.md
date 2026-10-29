@@ -77,6 +77,18 @@
 - [x] 10.7 Capturas en 360, 768 y 1466 px, Lighthouse móvil, axe, conteo de clics y `revisor-de-marca`; verificar puntajes de 95 o más y sin observaciones abiertas.
 - [x] 10.8 Actualizar `01-marca`, `02-contenido` y el registro de decisiones; verificar que describen lo construido.
 
+## 11. Nuevo frente con la skill taste (2026-10-29)
+
+- [x] 11.1 Medir la lima de base (píxeles en primera pantalla y página, escritorio y celular) y fijar los topes; verificar con el script de medición y dejar los números en el PR.
+- [x] 11.2 Escenario fijo en escritorio con tres estados (hero, qué hago, casos) y su cambio por sección; verificar a 1466×820 scrolleando que no se mueve, que cambia de tono y de contenido y que en <1024 px no existe.
+- [x] 11.3 Hero, «Qué hago» y «Casos» como columna de lectura (sin tarjetas, líneas ni etiquetas sobre los títulos); verificar con el inspector que no marca eyebrow, hairline, outlined-box ni small-text.
+- [x] 11.4 «Cómo trabajo» a ancho completo sobre salvia y «Contacto» con título corto y la pregunta como bajada; verificar que todos los h1/h2 miden dos renglones o menos a 390, 768 y 1440 px.
+- [x] 11.5 Lima reducida (CTA, logo y una `m`); verificar con el script que la primera pantalla y la página están al menos 30 % por debajo de la base en escritorio y celular.
+- [x] 11.6 Espaciado: secciones separadas por 120 px o más, una sola medida de lectura, sin franjas vacías; verificar con el inspector (frame, lopsided, empty-screens) y a ojo en 360, 768 y 1466 px.
+- [x] 11.7 Revisar el código con la skill `web-design-guidelines` y corregir lo que marque; verificar re-corriendo la revisión.
+- [ ] 11.8 Lighthouse móvil, axe, clics, primera pantalla en 360×640 y `revisor-de-marca`; verificar que nada empeora respecto de los valores de la tarea 10.7.
+- [x] 11.9 Actualizar `01-marca`, `02-contenido` y el registro de decisiones; verificar que describen lo construido.
+
 ## Workflow follow-up
 
 - Archivar el cambio (`/opsx:archive`) al mergear.

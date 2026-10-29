@@ -1,0 +1,102 @@
+---
+// El escenario fijo de escritorio (≥ 1024 px): la mitad izquierda no se mueve y cambia de tono y de contenido según la
+// sección que se lee: el logo con la vista previa del tema (hero), el diagrama «todo conectado» (qué hago) y la captura
+// del caso elegido (casos). En el celular no existe. Spec: specs/landing («Escenario fijo en escritorio»).
+import Logo from "../Logo.astro";
+import Captura from "../Captura.astro";
+import Vistas from "./Vistas.astro";
+import { cargarCasos } from "../../lib/casos";
+
+const casos = await cargarCasos();
+const pasos = ["tus datos", "se ordenan", "se conectan", "tablero y web", "tu negocio"];
+---
+<aside class="escenario" data-escenario>
+  <div class="estado e-hero">
+    <code class="sticker" translate="no" aria-hidden="true">hola_mundo()</code>
+    <Logo variante="cursor" ancho="min(100%, var(--ancho-logo-hero))" class="logo-hero" decorativo />
+    <Vistas donde="escenario" />
+  </div>
+
+  <div class="estado e-que-hago" aria-hidden="true">
+    <ol class="sistema">
+      {pasos.map((p) => <li>{p}</li>)}
+    </ol>
+  </div>
+
+  <div class="estado e-casos">
+    {casos.map((c, i) => (
+      <div class:list={["cap-caso", { activo: i === 0 }]} data-caso-captura={c.id}>
+        {c.data.capturas.length > 0
+          ? c.data.capturas.map((cap) => <Captura caso={c.data.nombre} captura={cap} lazy={false} />)
+          : <Captura caso={c.data.nombre} marco="ventana" />}
+      </div>
+    ))}
+  </div>
+</aside>
+
+<script>
+  // El estado del escenario sigue a la sección que cruza la mitad de la pantalla.
+  const pagina = document.querySelector<HTMLElement>("[data-pagina]");
+  if (pagina) {
+    const io = new IntersectionObserver(
+      (entradas) => entradas.forEach((e) => e.isIntersecting && (pagina.dataset.escena = e.target.id)),
+      { rootMargin: "-45% 0px -50% 0px" },
+    );
+    ["hero", "que-hago", "casos"].forEach((id) => { const s = document.getElementById(id); if (s) io.observe(s); });
+  }
+</script>
+
+<style>
+  .escenario { display: none; }
+
+  @media (min-width: 64rem) {
+    .escenario {
+      display: block;
+      position: sticky;
+      top: var(--alto-barra);
+      height: calc(100svh - var(--alto-barra));
+      overflow: hidden;
+      background: var(--pino);
+    }
+    .estado {
+      position: absolute;
+      inset: 0;
+      display: grid;
+      align-content: center;
+      justify-items: center;
+      gap: var(--space-6);
+      padding: var(--space-8) clamp(var(--space-6), 4vw, var(--space-16));
+      opacity: 0;
+      visibility: hidden;
+    }
+    /* El estado activo se ve; el resto queda fuera de pantalla y del árbol de accesibilidad */
+    :global([data-pagina]:not([data-escena])) .e-hero,
+    :global([data-pagina][data-escena="hero"]) .e-hero,
+    :global([data-pagina][data-escena="que-hago"]) .e-que-hago,
+    :global([data-pagina][data-escena="casos"]) .e-casos { opacity: 1; visibility: visible; }
+    @media (prefers-reduced-motion: no-preference) {
+      .estado { transition: opacity .5s ease, visibility 0s linear .5s; }
+      :global([data-pagina]:not([data-escena])) .e-hero,
+      :global([data-pagina][data-escena="hero"]) .e-hero,
+      :global([data-pagina][data-escena="que-hago"]) .e-que-hago,
+      :global([data-pagina][data-escena="casos"]) .e-casos { transition-delay: 0s; }
+    }
+
+    /* `hola_mundo()` como sticker de la lámina 06 del manual: pastilla lima torcida en la esquina, no una etiqueta sobre el título */
+    .sticker { position: absolute; top: var(--space-8); right: var(--space-8); padding: var(--space-1) var(--space-4); border-radius: var(--radius-pill); background: var(--lima); color: var(--pino); font-size: var(--fs-small); font-weight: 500; transform: rotate(4deg); }
+    .e-hero { background: color-mix(in srgb, var(--musgo) var(--mezcla, 0%), var(--pino)); color: var(--crema); }
+    .e-hero :global(.logo-hero) { width: min(100%, var(--ancho-logo-hero)); }
+    .e-que-hago { background: var(--pino); color: var(--crema); }
+    .e-casos { background: var(--salvia); color: var(--pino); }
+
+    /* «Todo conectado»: el sistema como una columna de pasos grandes */
+    .sistema { list-style: none; padding: 0; display: grid; gap: var(--space-4); font-family: var(--font-serif); font-size: clamp(2rem, 1.2rem + 2.4vw, 3.5rem); line-height: 1; }
+    .sistema li { position: relative; }
+    .sistema li:not(:last-child)::after { content: "↓" / ""; display: block; margin-top: var(--space-2); font-family: var(--font-sans); font-size: var(--fs-body); color: var(--salvia); }
+    .sistema li:last-child { font-style: italic; }
+
+    .cap-caso { width: 100%; max-width: 34rem; }
+    .cap-caso:not(.activo) { display: none; }
+    @media (max-height: 760px) { .e-hero :global(.logo-hero) { width: min(100%, 16rem); } }
+  }
+</style>

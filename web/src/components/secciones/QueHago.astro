@@ -29,65 +29,33 @@ const ejemplos = [
   },
 ];
 ---
-<section id="que-hago" class="seccion tema-crema" aria-labelledby="que-hago-titulo">
-  <div class="contenedor">
-    <header class="cabecera" data-aparece>
-      <p class="rotulo">01 — Qué hago</p>
-      <h2 id="que-hago-titulo">Algunas cosas que <em>puedo armar</em>.</h2>
-      <p class="lead">Lo que invertís hoy te ahorra tiempo y plata mañana.</p>
-    </header>
+<section id="que-hago" class="seccion-lectura" aria-labelledby="que-hago-titulo">
+  <div class="interior">
+    <h2 id="que-hago-titulo" data-aparece>Algunas cosas que <em>puedo armar</em>.</h2>
+    <p class="lead" data-aparece>Lo que invertís hoy te ahorra tiempo y plata mañana.</p>
 
-    <ul class="tarjetas">
+    <ul class="filas">
       {ejemplos.map((e) => (
-        <li class="tarjeta" data-aparece>
+        <li class="fila" data-aparece>
           <h3>{e.titulo}</h3>
           <p class="problema">{e.problema}</p>
           <p class="solucion">{e.solucion}</p>
         </li>
       ))}
-      <li class="tarjeta cierre" data-aparece>
-        <p class="cierre-tit">¿Lo tuyo no está acá?</p>
-        <p>Contámelo, seguro se puede armar.</p>
-        <a class="boton lima flecha" href="#contacto">Contame tu idea</a>
+      <li class="fila cierre" data-aparece>
+        <h3>¿Lo tuyo no está acá?</h3>
+        <p class="solucion">Contámelo, seguro se puede armar.</p>
+        <a class="boton flecha" href="#contacto">Contame tu idea</a>
       </li>
     </ul>
   </div>
 </section>
-
 <style>
-  .tarjetas { list-style: none; padding: 0; display: grid; gap: var(--space-4); }
-  .tarjeta {
-    display: grid;
-    gap: var(--space-3);
-    align-content: start;
-    padding: var(--space-6);
-    background: var(--blanco);
-    border: var(--borde-suave);
-    border-radius: var(--radius-card);
-    transition: border-color .2s ease, transform .2s ease;
-  }
-  .tarjeta:hover { border-color: var(--musgo); transform: translateY(calc(-1 * var(--space-1))); }
-  .problema { color: var(--musgo); } /* musgo sobre blanco: 5.1, pasa AA */
-  .solucion { color: var(--pino); }
-  @media (prefers-reduced-motion: reduce) { .tarjeta:hover { transform: none; } }
-
-  /* Cierre: la puerta abierta a «lo que sea» */
-  .cierre { background: var(--pino); border-color: var(--pino); color: var(--crema); }
-  .cierre:hover { border-color: var(--pino); }
-  .cierre .boton.lima { border-color: var(--lima); }
-  .cierre .boton.lima:hover { background: var(--crema); border-color: var(--crema); color: var(--pino); }
-  .cierre-tit { font-family: var(--font-serif); font-size: var(--fs-h3); line-height: 1.1; }
-  .cierre .boton { justify-self: start; }
-
-  @media (min-width: 40rem) { .tarjetas { grid-template-columns: repeat(2, 1fr); } }
-  @media (min-width: 64rem) {
-    .tarjetas { grid-template-columns: repeat(3, 1fr); gap: var(--space-6); }
-    /* Ritmo: una tarjeta ancha y el cierre como banda de ancho completo */
-    .tarjeta:nth-child(2) { grid-column: span 2; }
-    .tarjeta:nth-child(2) .solucion { max-width: var(--ancho-texto); }
-    .cierre { grid-column: 1 / -1; grid-template-columns: 1fr auto; align-items: center; column-gap: var(--space-8); padding-block: var(--space-8); }
-    .cierre-tit { grid-column: 1; }
-    .cierre p:nth-child(2) { grid-column: 1; }
-    .cierre .boton { grid-column: 2; grid-row: 1 / span 2; }
-  }
+  .filas { list-style: none; padding: 0; display: grid; gap: var(--space-12); margin-top: var(--space-12); }
+  .fila { display: grid; gap: var(--space-2); justify-items: start; }
+  .fila h3 { font-size: var(--fs-h3); }
+  .problema { font-weight: 700; } /* la pregunta del cliente, en negrita; la solución, en regular */
+  .solucion { max-width: 36ch; }
+  .cierre { gap: var(--space-3); }
+  .cierre .boton { margin-top: var(--space-2); }
 </style>

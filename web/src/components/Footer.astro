@@ -4,7 +4,7 @@ import { contacto, sitio } from "../data/sitio";
 const anio = new Date().getFullYear();
 ---
 <footer class="pie tema-pino">
-  <div class="contenedor fila">
+  <div class="marco fila">
     <p class="lema">{sitio.lema}</p>
     <a class="link" href={contacto.linkedin} target="_blank" rel="noopener noreferrer">
       LinkedIn <span aria-hidden="true">↗</span><span class="sr-only"> (se abre en otra pestaña)</span>
@@ -14,11 +14,11 @@ const anio = new Date().getFullYear();
 </footer>
 
 <style>
-  .pie { padding-block: var(--space-12); border-top: 1px solid var(--musgo); }
+  .pie { padding-block: var(--space-12); }
   .fila { display: grid; gap: var(--space-4); justify-items: start; }
   .lema { font-family: var(--font-serif); font-size: var(--fs-h3); line-height: 1.15; }
   .link { display: inline-flex; align-items: center; min-height: var(--tap-min); }
-  .datos { font-family: var(--font-mono); font-size: var(--fs-label); letter-spacing: var(--tracking-mono); text-transform: uppercase; color: var(--salvia); }
+  .datos { font-size: var(--fs-label); color: var(--salvia); }
   @media (min-width: 48rem) {
     .fila { grid-template-columns: 1fr auto; align-items: center; }
     .datos { grid-column: 1 / -1; }

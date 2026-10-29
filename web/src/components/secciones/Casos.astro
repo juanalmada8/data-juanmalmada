@@ -1,17 +1,16 @@
 ---
 // Casos reales en pestañas (patrón ARIA de tabs). Cada caso es un archivo de src/content/casos/: sumar uno no toca este componente.
-// Sin JavaScript se ven uno debajo del otro. Spec: openspec/changes/landing-una-pagina/specs/casos.
+// En escritorio la captura se ve en el escenario fijo; en el celular, dentro de cada caso. Sin JavaScript se ven apilados.
+// Spec: openspec/changes/landing-una-pagina/specs/casos.
 import Captura from "../Captura.astro";
 import { cargarCasos } from "../../lib/casos";
 
 const casos = await cargarCasos();
 ---
-<section id="casos" class="seccion tema-salvia" aria-labelledby="casos-titulo">
-  <div class="contenedor" data-casos>
-    <header class="cabecera" data-aparece>
-      <p class="rotulo">02 — Casos reales</p>
-      <h2 id="casos-titulo">Un consultorio y una plataforma, <em>mundos distintos</em>.</h2>
-    </header>
+{casos.length > 0 && (
+<section id="casos" class="seccion-lectura" aria-labelledby="casos-titulo">
+  <div class="interior" data-casos>
+    <h2 id="casos-titulo" data-aparece>Un consultorio y una plataforma.</h2>
 
     <div class="pestanas" role="tablist" aria-label="Casos" data-pestanas>
       {casos.map((c, i) => (
@@ -23,6 +22,8 @@ const casos = await cargarCasos();
           aria-controls={`caso-${c.id}`}
           aria-selected={i === 0 ? "true" : "false"}
           tabindex={i === 0 ? 0 : -1}
+          data-caso={c.id}
+          translate="no"
         >{c.data.nombre}</button>
       ))}
     </div>
@@ -35,35 +36,33 @@ const casos = await cargarCasos();
           role="tabpanel"
           aria-labelledby={`tab-${c.id}`}
         >
-          <div class="info">
-            <h3>{c.data.nombre}</h3>
-            <p class="resumen">{c.data.resumen}</p>
-            <ul class="bullets">
-              {c.data.bullets.map((b) => <li>{b}</li>)}
-            </ul>
-            <a class="link" href={c.data.url} target="_blank" rel="noopener noreferrer">
-              Ver {new URL(c.data.url).hostname} <span aria-hidden="true">↗</span><span class="sr-only"> (se abre en otra pestaña)</span>
-            </a>
-          </div>
-          <div class="capturas">
-            {c.data.capturas.length > 0 ? (
-              c.data.capturas.map((cap) => <Captura caso={c.data.nombre} captura={cap} />)
-            ) : (
-              <Captura caso={c.data.nombre} marco="ventana" />
-            )}
+          <h3 translate="no">{c.data.nombre}</h3>
+          <p class="resumen">{c.data.resumen}</p>
+          <ul class="bullets">
+            {c.data.bullets.map((b) => <li>{b}</li>)}
+          </ul>
+          <a class="link" href={c.data.url} target="_blank" rel="noopener noreferrer">
+            Ver {new URL(c.data.url).hostname} <span aria-hidden="true">↗</span><span class="sr-only"> (se abre en otra pestaña)</span>
+          </a>
+          <div class="en-lectura">
+            {c.data.capturas.length > 0
+              ? c.data.capturas.map((cap) => <Captura caso={c.data.nombre} captura={cap} />)
+              : <Captura caso={c.data.nombre} marco="ventana" />}
           </div>
         </div>
       ))}
     </div>
   </div>
 </section>
+)}
 
 <script>
-  // Pestañas: un clic cambia de caso; flechas, Home y End con el teclado.
+  // Pestañas: un clic cambia de caso; flechas, Home y End con el teclado. También cambia la captura del escenario.
   const raiz = document.querySelector<HTMLElement>("[data-casos]");
   if (raiz) {
     const tabs = [...raiz.querySelectorAll<HTMLButtonElement>('[role="tab"]')];
     const paneles = [...raiz.querySelectorAll<HTMLElement>('[role="tabpanel"]')];
+    const capturas = [...document.querySelectorAll<HTMLElement>("[data-caso-captura]")];
     const activar = (tab: HTMLButtonElement) => {
       tabs.forEach((t) => {
         const on = t === tab;
@@ -71,62 +70,58 @@ const casos = await cargarCasos();
         t.tabIndex = on ? 0 : -1;
       });
       paneles.forEach((p) => p.classList.toggle("activo", p.id === tab.getAttribute("aria-controls")));
+      capturas.forEach((c) => c.classList.toggle("activo", c.dataset.casoCaptura === tab.dataset.caso));
     };
+    const elegirDesdeUsuario = (tab: HTMLButtonElement) => {
+      activar(tab);
+      history.replaceState(null, "", `#caso-${tab.dataset.caso}`); // la URL refleja el caso: se puede compartir
+    };
+    const inicial = tabs.find((t) => `#caso-${t.dataset.caso}` === location.hash);
+    if (inicial) activar(inicial);
     tabs.forEach((tab, i) => {
-      tab.addEventListener("click", () => activar(tab));
+      tab.addEventListener("click", () => elegirDesdeUsuario(tab));
       tab.addEventListener("keydown", (e) => {
         const mov = { ArrowRight: 1, ArrowLeft: -1 }[e.key];
         const destino = e.key === "Home" ? 0 : e.key === "End" ? tabs.length - 1 : mov ? (i + mov + tabs.length) % tabs.length : -1;
         if (destino < 0) return;
         e.preventDefault();
         tabs[destino].focus();
-        activar(tabs[destino]);
+        elegirDesdeUsuario(tabs[destino]);
       });
     });
   }
 </script>
 
 <style>
-  .pestanas { display: flex; flex-wrap: wrap; gap: var(--space-2); margin-bottom: var(--space-6); }
+  /* Pestañas de texto: la activa va subrayada, sin pastillas ni cajas */
+  .pestanas { display: flex; flex-wrap: wrap; gap: var(--space-2) var(--space-6); margin-top: var(--space-8); }
   .pestana {
     min-height: var(--tap-min);
-    padding: 0 var(--space-6);
-    border: 2px solid var(--pino);
-    border-radius: var(--radius-pill);
+    padding: 0;
+    border: 0;
+    border-bottom: var(--grosor-nav) solid transparent;
     background: transparent;
     color: var(--pino);
     font-family: var(--font-sans);
     font-size: var(--fs-body);
     font-weight: 700;
     cursor: pointer;
-    transition: background-color .15s ease, color .15s ease;
   }
-  .pestana:hover { background: var(--crema); }
-  .pestana[aria-selected="true"] { background: var(--pino); color: var(--crema); }
+  .pestana:hover { border-bottom-color: var(--salvia); }
+  .pestana[aria-selected="true"] { border-bottom-color: var(--pino); }
 
-  .caso {
-    display: grid;
-    gap: var(--space-6);
-    padding: var(--space-6);
-    background: var(--blanco);
-    border: var(--borde-suave);
-    border-radius: var(--radius-card);
-  }
-  .info { display: grid; gap: var(--space-4); align-content: start; }
-  .resumen { font-size: var(--fs-lead); line-height: 1.35; }
+  .caso { display: grid; gap: var(--space-4); justify-items: start; margin-top: var(--space-6); }
+  .resumen { font-size: var(--fs-lead); line-height: 1.35; max-width: 32ch; }
   .bullets { list-style: none; padding: 0; display: grid; gap: var(--space-2); }
   .bullets li { position: relative; padding-left: var(--space-6); }
   .bullets li::before { content: ""; position: absolute; left: 0; top: .6em; width: .75rem; height: 2px; background: var(--musgo); }
-  .info .link { justify-self: start; }
-  .capturas { display: flex; flex-wrap: wrap; align-items: flex-start; gap: var(--space-4); }
-  .capturas :global(.captura:not(.celu)) { flex: 1 1 14rem; }
+  .en-lectura { width: 100%; max-width: 30rem; margin-top: var(--space-4); }
 
   /* Sin JavaScript: todos apilados, sin pestañas. Con JavaScript: uno por vez. */
   :global(html:not(.js)) .pestanas { display: none; }
-  :global(html:not(.js)) .caso + .caso { margin-top: var(--space-6); }
+  :global(html:not(.js)) .caso + .caso { margin-top: var(--space-12); }
   :global(html.js) .caso:not(.activo) { display: none; }
 
-  @media (min-width: 56rem) {
-    .caso { grid-template-columns: 1fr 1.1fr; gap: var(--space-12); padding: var(--space-12); align-items: center; }
-  }
+  /* Escritorio: la captura vive en el escenario */
+  @media (min-width: 64rem) { .en-lectura { display: none; } }
 </style>

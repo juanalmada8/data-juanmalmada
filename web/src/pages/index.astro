@@ -1,6 +1,7 @@
 ---
 import Base from "../layouts/Base.astro";
 import { cargarCasos } from "../lib/casos";
+import Escenario from "../components/secciones/Escenario.astro";
 import Hero from "../components/secciones/Hero.astro";
 import QueHago from "../components/secciones/QueHago.astro";
 import Casos from "../components/secciones/Casos.astro";
@@ -9,9 +10,22 @@ import Contacto from "../components/secciones/Contacto.astro";
 await cargarCasos(); // avisa en el build qué capturas faltan
 ---
 <Base>
-  <Hero />
-  <QueHago />
-  <Casos />
+  <!-- Mitad fija (escenario) + columna de lectura; en el celular se apilan -->
+  <div class="pagina" data-pagina>
+    <Escenario />
+    <div class="lectura">
+      <Hero />
+      <QueHago />
+      <Casos />
+    </div>
+  </div>
   <ComoTrabajo />
   <Contacto />
 </Base>
+
+<style>
+  .lectura { background: var(--crema); }
+  @media (min-width: 64rem) {
+    .pagina { display: grid; grid-template-columns: 5fr 6fr; align-items: start; }
+  }
+</style>

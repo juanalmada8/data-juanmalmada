@@ -80,7 +80,7 @@ Detalles tipográficos que **sí** importan:
 - `text-wrap: balance` en títulos, `text-wrap: pretty` en párrafos.
 - Comillas latinas «así». Signos de apertura ¿¡ siempre. Puntos suspensivos con `…`.
 - `&nbsp;` entre número y unidad (`7&nbsp;años`, `24&nbsp;h`).
-- Rótulos del manual: `01 — QUÉ HAGO` (mono, mayúscula, `.12em`). Los guiños de código como `hola_mundo()` van en mono **en minúsculas**.
+- Rótulos del manual: `01 — QUÉ HAGO` (mono, mayúscula, `.12em`). Los guiños de código como `hola_mundo()` van en mono **en minúsculas** (y el mono se usa solo para código: chips, números del índice y datos van en Manrope).
 - Escala de la lámina de tipografía **con más carácter** (decisión de Juanma, 2026-10-29): H1 serif 56–72 px (40 px en el celular) con interlineado .95 y espaciado apretado; H2 hasta 60 px; **números grandes en serif** (56–88 px) en «Cómo trabajo»; cuerpo Manrope 16–18 px con interlineado 1.5; etiquetas mono 12–14 px con espaciado. Manrope Bold en subtítulos y botones, Medium en destacados (la bajada), Regular en párrafos.
 
 ## Espaciado y forma
@@ -89,7 +89,8 @@ Valores en `web/src/styles/tokens.css` (fuente de verdad): espacios `--space-1` 
 20 px, `--radius-box` 10 px, `--radius-pill`; `--borde-suave` 1 px salvia; tamaños `--fs-micro` (11 px, nunca menos)
 a `--fs-h1`; `--tap-min` 44 px.
 
-- **Ritmo de fondos en la web: pino · crema · salvia · crema · pino** (+ pie pino).
+- **Fondos en la web:** papel crema para la lectura; escenario fijo en pino (hero y Qué hago) y salvia (Casos); «Cómo trabajo» sobre salvia y «Contacto» y el pie sobre pino.
+- **Lima como acento escaso** (2026-10-29): solo el CTA principal, el logo, la pastilla `hola_mundo()` y una `m` del patrón; no en chips, índice, títulos ni marcadores.
 - **Proporción del manual, también en la web:** crema 40 · pino 30 · musgo 15 · salvia 11 · lima 4. Crema es el fondo
   que más se ve; pino en bandas y tarjetas; salvia en una banda y placas; lima solo en acentos, el botón de WhatsApp
   sobre pino y una placa chica.

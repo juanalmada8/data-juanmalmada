@@ -1,7 +1,7 @@
 ## ADDED Requirements
 
 ### Requirement: Cierre con contacto directo
-La sección de contacto SHALL titularse «¿Tenés un negocio, un consultorio, una empresa o una idea? Armemos el sistema.» y ofrecer botones directos a WhatsApp, Instagram y mail, con WhatsApp como principal.
+La sección de contacto SHALL titularse «Armemos el sistema.», con la bajada «¿Tenés un negocio, un consultorio, una empresa o una idea?», y ofrecer botones directos a WhatsApp, Instagram y mail, con WhatsApp como principal.
 
 #### Scenario: Botones visibles
 - **WHEN** se llega a la sección

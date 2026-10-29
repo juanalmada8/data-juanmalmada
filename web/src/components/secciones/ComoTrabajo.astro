@@ -1,5 +1,5 @@
 ---
-// «Cómo trabajo»: cuatro pasos. Sin plazos, precios ni niveles de soporte (no están confirmados).
+// «Cómo trabajo»: cuatro pasos, a ancho completo sobre salvia (rompe la mitad fija). Sin plazos, precios ni niveles de soporte.
 const pasos = [
   { titulo: "Charla", texto: "Me contás qué necesitás y cómo trabajás hoy." },
   { titulo: "Propuesta", texto: "Te paso la propuesta y el presupuesto." },
@@ -7,12 +7,9 @@ const pasos = [
   { titulo: "Soporte", texto: "Te lo dejo andando y te acompaño después de la entrega." },
 ];
 ---
-<section id="como-trabajo" class="seccion tema-crema" aria-labelledby="como-trabajo-titulo">
-  <div class="contenedor">
-    <header class="cabecera" data-aparece>
-      <p class="rotulo">03 — Cómo trabajo</p>
-      <h2 id="como-trabajo-titulo">De la charla al soporte, <em>sin vueltas</em>.</h2>
-    </header>
+<section id="como-trabajo" class="seccion-ancha tema-salvia" aria-labelledby="como-trabajo-titulo">
+  <div class="marco">
+    <h2 id="como-trabajo-titulo" data-aparece>De la charla al soporte, <em>sin vueltas</em>.</h2>
     <ol class="pasos">
       {pasos.map((p, i) => (
         <li class="paso" data-aparece>
@@ -26,25 +23,17 @@ const pasos = [
 </section>
 
 <style>
-  .pasos { list-style: none; padding: 0; display: grid; gap: 0; }
-  .paso {
-    display: grid;
-    grid-template-columns: calc(var(--fs-numeral) * .7) 1fr;
-    column-gap: var(--space-4);
-    padding: var(--space-4) 0;
-    border-top: 2px solid var(--pino);
-  }
-  .paso:last-child { border-bottom: 2px solid var(--pino); }
-  @media (min-width: 48rem) { .pasos .paso:last-child { border-bottom: 0; } }
-  /* Número grande en serif (musgo sobre crema: texto grande, pasa AA) */
-  .num { grid-row: span 2; font-family: var(--font-serif); font-size: var(--fs-numeral); line-height: .85; color: var(--musgo); }
-  .paso h3 { margin-bottom: var(--space-2); }
-  .paso p { color: var(--pino); }
+  .pasos { list-style: none; padding: 0; display: grid; gap: var(--space-8); margin-top: var(--space-12); }
+  .paso { display: grid; grid-template-columns: calc(var(--fs-numeral) * .7) 1fr; column-gap: var(--space-4); align-items: start; }
+  /* Número grande en serif, pino sobre salvia */
+  .num { grid-row: span 2; font-family: var(--font-serif); font-size: var(--fs-numeral); line-height: .85; }
+  .paso h3 { margin-bottom: var(--space-1); }
+  .paso p { max-width: 24ch; }
 
   /* Desde 768 px: una sola fila de cuatro */
   @media (min-width: 48rem) {
-    .pasos { grid-template-columns: repeat(4, 1fr); column-gap: var(--space-6); }
-    .paso { display: block; padding-top: var(--space-6); }
-    .num { display: block; margin-bottom: var(--space-3); }
+    .pasos { grid-template-columns: repeat(4, 1fr); column-gap: var(--space-8); }
+    .paso { display: block; }
+    .num { display: block; margin-bottom: var(--space-4); }
   }
 </style>

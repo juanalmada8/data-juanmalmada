@@ -70,6 +70,28 @@ Elegido por Juanma entre varias opciones:
 - **Microinteracciones:** flecha que se desplaza en los CTA, firma que se revela al aparecer, respuesta al presionar un
   chip. Todo apagado con `prefers-reduced-motion`. No hay cursor propio (`04-calidad` lo prohíbe).
 
+## Nuevo frente con la skill taste (2026-10-29)
+
+Juanma dijo que seguía viéndolo «muy AI», que había demasiada lima y pidió revisar el espaciado usando las skills
+`design-taste-frontend` y `web-design-guidelines`. Se usa la skill como **método y medidor**; la marca la manda el manual.
+
+- **Dirección dealt: `split-stage`** (con `--keep palette,type`). *Idea:* el logo `<jm▌>` (trazo suelto + letra con peso
+  abrazados por código) es el escenario fijo. *Prueba del competidor:* ningún otro dev tiene este logo. *Cosa viva:* el
+  selector, que cambia el tono del escenario. Alternativas dealt: `page-is-the-object` (necesita un artefacto, p. ej. un
+  presupuesto) y `contact-sheet` (necesita muchas imágenes que no hay).
+- **Fotos:** la dirección pide una fotografía vertical y la skill sugiere archivos abiertos. **No se usan**: las reglas del
+  repo prohíben el stock; el objeto del escenario es el logo y, en «Casos», la captura real (hoy placeholder).
+- **Qué se recorta del manual y por qué:** etiquetas sobre títulos, numeración en las secciones (la da el índice de la
+  barra), líneas finas, cajas con borde y mono en chips/etiquetas. Es lo que el inspector marca como tics de plantilla.
+  **Se mantiene del manual:** paleta, las tres tipografías (mono solo para `hola_mundo()` y el índice), la palabra en
+  itálica de los títulos, crema como papel, el patrón de la `m`, el índice numerado que eligió Juanma. Excepciones que el
+  inspector va a seguir marcando como WARN: 3 tipografías, itálica en títulos, crema.
+- **Lima −30 %:** solo CTA principal, logo y una `m`. El chip elegido, la pastilla del índice y la itálica del titular pasan
+  a pino/salvia/musgo.
+- **Estructura:** un `escenario` fijo (`position: sticky`) con tres estados que se cruzan por opacidad según la sección;
+  vistas y capturas existen dos veces (una en la lectura para el celular, una en el escenario para escritorio), y en cada
+  ancho una de las dos copias está `display: none`, así que nunca hay contenido duplicado para el lector de pantalla.
+
 ## Risks / Trade-offs
 
 - [La primera pantalla no entra en 360×640 con titular, bajada, chips, vista previa y CTA] → la spec exige titular, chips y
