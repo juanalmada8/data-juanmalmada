@@ -7,13 +7,13 @@ html {
   -webkit-text-size-adjust: 100%;
   text-size-adjust: 100%;
   scroll-behavior: smooth;
-  scroll-padding-top: calc(var(--alto-barra) + var(--space-4));
+  scroll-padding-top: var(--alto-barra); /* la sección queda justo bajo la barra; su propio padding da el aire */
 }
 
 body {
   font-family: var(--font-sans);
   font-size: var(--fs-body);
-  line-height: 1.55;
+  line-height: 1.5; /* lámina de tipografía del manual: cuerpo 16–18 px, interlineado 1.5 */
   color: var(--pino);
   background: var(--crema);
   -webkit-font-smoothing: antialiased;
@@ -55,7 +55,8 @@ h1 em, h2 em, h3 em { font-style: italic; color: var(--acento); }
 
 p { text-wrap: pretty; }
 
-.lead { font-size: var(--fs-lead); line-height: 1.45; max-width: 34ch; }
+.lead {
+  font-weight: 500; /* Manrope Medium: destacados */ font-size: var(--fs-lead); line-height: 1.45; max-width: 34ch; }
 .texto-2 { color: var(--texto-2); }
 
 /* Rótulo del manual: «01 — QUÉ HAGO» */

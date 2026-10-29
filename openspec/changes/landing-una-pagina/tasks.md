@@ -57,6 +57,15 @@
 - [x] 8.4 Pasar `revisor-de-marca` sobre la página final; verificar que no deja observaciones abiertas.
 - [ ] 8.5 Compartir el link en una vista previa de WhatsApp/Instagram; verificar la imagen Open Graph de la marca.
 
+## 9. Ajustes tras la primera revisión de Juanma (2026-10-29)
+
+- [x] 9.1 Barra más alta con aire alrededor del logo y borde suave en lugar de la línea dura; verificar a 1466 px que hay al menos 12 px entre el logo y la línea y que el logo mide 100 px o más.
+- [x] 9.2 Hero a pantalla completa en escritorio con la banda del patrón al pie; verificar a 1466×820 que «Qué hago» no asoma y que en 360×640 y 390×844 siguen entrando titular, chips y CTA.
+- [x] 9.3 Navegación por secciones: enlaces con la sección actual marcada (escritorio), nombre de la sección (celular) y línea de progreso; verificar scrolleando a cada sección que cambia la marca, que la barra no tapa los títulos y que no hay animación con `prefers-reduced-motion`.
+- [x] 9.4 Tipografía fiel a la lámina del manual (interlineado del cuerpo 1.5, bajada en Manrope Medium, `hola_mundo()` en minúsculas); verificar las tipografías y tamaños calculados en el navegador.
+- [ ] 9.5 Capturas en 360, 768 y 1466 px, Lighthouse móvil, axe y `revisor-de-marca`; verificar que los puntajes siguen en 95 o más y que el revisor no deja observaciones abiertas.
+- [x] 9.6 Actualizar `01-marca`, `02-contenido` y el registro de decisiones; verificar que describen la barra y el hero como quedaron.
+
 ## Workflow follow-up
 
 - Archivar el cambio (`/opsx:archive`) al mergear.

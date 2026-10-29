@@ -29,16 +29,38 @@ Ningún texto SHALL afirmar ni sugerir que Juanma hace un solo tipo de proyecto;
 - **WHEN** se lee todo el texto visible de la página
 - **THEN** no hay frases como «solo hago…», «me especializo en turnos» ni una lista cerrada de servicios
 
-### Requirement: Barra fija mínima
-La página SHALL tener una barra fija con el logo y el botón «Contame tu idea», visible en todo momento al scrollear, que lleva a la sección de contacto.
+### Requirement: Barra fija con navegación por secciones
+La página SHALL tener una barra fija con el logo, la navegación por secciones y el botón «Contame tu idea», siempre visible al scrollear. La navegación SHALL marcar la sección que se está viendo y el botón SHALL llevar a la sección de contacto.
 
-#### Scenario: Scroll hasta el final
-- **WHEN** la persona está en cualquier sección
-- **THEN** la barra sigue visible y «Contame tu idea» baja hasta el contacto sin tapar el título de la sección
+#### Scenario: Escritorio
+- **WHEN** el ancho es de 768 px o más
+- **THEN** la barra muestra los enlaces Qué hago, Casos y Cómo trabajo, y marca con una línea el de la sección que está en pantalla
 
-#### Scenario: Celular de 360 px
-- **WHEN** el ancho es de 360 px
-- **THEN** la barra muestra el ícono `</j>` y el botón completo, sin cortar el texto
+#### Scenario: Celular
+- **WHEN** el ancho es menor a 768 px
+- **THEN** la barra muestra el ícono `</j>`, el nombre de la sección actual (por ejemplo «Casos») y el botón completo, sin cortar el texto a 360 px
+
+#### Scenario: Progreso
+- **WHEN** la persona scrollea
+- **THEN** una línea fina bajo la barra indica cuánto de la página recorrió, y sin movimiento reducido no hay animaciones asociadas
+
+#### Scenario: Ir a una sección
+- **WHEN** la persona toca un enlace de la barra o «Contame tu idea»
+- **THEN** la página baja hasta esa sección sin que la barra tape su título
+
+### Requirement: Aire alrededor del logo
+El logo `<jm>` de la barra SHALL tener espacio libre arriba y abajo y MUST NOT tocar el borde de la barra ni su línea inferior.
+
+#### Scenario: Escritorio de 1440 px
+- **WHEN** se ve la barra a 1440 px
+- **THEN** hay al menos 12 px entre el logo y la línea inferior de la barra, y el logo mide al menos 100 px de ancho
+
+### Requirement: El hero llena la primera pantalla
+En pantallas de escritorio el hero SHALL ocupar la primera pantalla completa debajo de la barra, de modo que la sección siguiente no asome cortada.
+
+#### Scenario: Ventana de 1466×820
+- **WHEN** se abre la página a ese tamaño sin scrollear
+- **THEN** el borde superior de «Qué hago» queda en el borde inferior de la ventana o más abajo
 
 ### Requirement: Mobile first
 La página SHALL usarse sin scroll horizontal desde 360 px de ancho, con áreas táctiles de al menos 44 px.

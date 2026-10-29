@@ -38,7 +38,12 @@ caso en el repo. `web/src/data/sitio.ts` tiene WhatsApp y mail; Instagram figura
   Display y Manrope. Se borran Martian Mono y Atkinson y se actualiza `LICENSE.md`.
 - **Ritmo de color:** Hero crema · Qué hago pino · Casos crema · Cómo trabajo pino · Contacto crema, y pie pino. Respeta la
   proporción del manual (crema domina) y evita «todo verde». Botón lima sobre crema con borde pino.
-- **Barra fija arriba** con `</j>` en celular y `<jm>` desde 480 px; el CTA nunca se oculta.
+- **Barra fija arriba** con `</j>` en celular y `<jm>` desde 480 px; el CTA nunca se oculta. Desde el feedback de Juanma
+  (2026-10-29): altura de 5 rem desde 480 px para que el logo respire y no pise la línea, que pasa a ser el borde suave
+  salvia del manual; navegación por secciones con la actual marcada (IntersectionObserver), nombre de la sección en el
+  celular y una línea de progreso. *Alternativa:* rail de puntos lateral. Se descarta: tapa contenido en el celular.
+- **Hero a pantalla completa** en escritorio (`min-height: 100svh` menos la barra), con la banda del patrón al pie, para que
+  el verde oscuro no asome cortado en la primera pantalla.
 - **Cómo trabajo:** fila de 4 desde 768 px; en celular, lista vertical compacta (4 textos en una fila de 360 px no se leen).
 - **Imágenes** con `astro:assets` (AVIF/WebP, ancho y alto, lazy debajo del primer pantallazo).
 

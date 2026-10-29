@@ -17,7 +17,7 @@ const caso = (id: string) => casos.find((c) => c.id === id);
 <section class="hero tema-crema" aria-labelledby="hero-titulo">
   <div class="contenedor grilla">
     <div class="h-texto">
-      <p class="rotulo">hola_mundo()</p>
+      <p class="etiqueta-codigo mono"><span>hola_mundo()</span></p>
       <h1 id="hero-titulo">Todo el sistema, <em>un solo&nbsp;proveedor.</em></h1>
       <p class="lead">Armo sistemas a medida: desde la app que usan tus clientes hasta los datos que te ayudan a decidir.</p>
     </div>
@@ -112,8 +112,21 @@ const caso = (id: string) => casos.find((c) => c.id === id);
 </script>
 
 <style>
-  .hero { padding-top: var(--space-8); position: relative; }
+  .hero { padding-top: var(--space-8); position: relative; display: flex; flex-direction: column; }
   .grilla { display: grid; gap: var(--space-6); padding-bottom: clamp(var(--space-8), 6vw, var(--space-16)); }
+  .hero :global(.banda) { margin-top: auto; }
+
+  /* `hola_mundo()`: en el manual es código, en minúsculas y sobre una pastilla lima */
+  .etiqueta-codigo span {
+    display: inline-block;
+    padding: var(--space-1) var(--space-4);
+    border-radius: var(--radius-pill);
+    background: var(--lima);
+    color: var(--pino);
+    font-size: var(--fs-small);
+    font-weight: 500;
+    transform: rotate(-2deg);
+  }
   .h-texto { display: grid; gap: var(--space-4); justify-items: start; }
   .lead { max-width: 36ch; }
 
@@ -173,12 +186,14 @@ const caso = (id: string) => casos.find((c) => c.id === id);
   }
 
   @media (min-width: 60rem) {
+    .hero { min-height: calc(100svh - var(--alto-barra)); }
     .grilla {
       grid-template-columns: 1.1fr 1fr;
       grid-template-areas: "texto vista" "selector vista" "cta vista";
       column-gap: var(--space-16);
       align-content: center;
-      min-height: 32rem;
+      flex: 1;
+      padding-block: var(--space-8);
     }
     .h-texto { grid-area: texto; }
     .h-selector { grid-area: selector; }
@@ -186,5 +201,4 @@ const caso = (id: string) => casos.find((c) => c.id === id);
     .vistas { grid-area: vista; align-self: center; padding: var(--space-8); }
   }
 
-  .banda { opacity: .9; }
 </style>

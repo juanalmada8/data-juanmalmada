@@ -25,6 +25,17 @@ Los títulos SHALL usar DM Serif Display con itálica en la palabra destacada, e
 - **WHEN** se carga la página
 - **THEN** las tres fuentes salen del propio dominio, en formato woff2, y no se usa Martian Mono ni Atkinson
 
+### Requirement: Escala tipográfica del manual
+La página SHALL seguir la lámina de tipografía: títulos H1 de 56 a 72 px con interlineado 1.0 (en el celular puede bajar para que entre), cuerpo de Manrope de 16 a 18 px con interlineado 1.5, y etiquetas de JetBrains Mono de 12 a 14 px con espaciado de letras. Manrope SHALL usarse en Bold para subtítulos y botones, Medium para destacados como la bajada, y Regular para párrafos.
+
+#### Scenario: Bajada del hero
+- **WHEN** se lee la bajada del hero
+- **THEN** está en Manrope Medium
+
+#### Scenario: Código y etiquetas
+- **WHEN** hay un guiño de código como `hola_mundo()`
+- **THEN** va en JetBrains Mono en minúsculas, como en el manual, y las etiquetas numeradas (`01 — QUÉ HAGO`) van en mayúsculas
+
 ### Requirement: Logo, ícono y firma sin cambios
 La página SHALL usar el logo `<jm>`, el ícono `</j>` y la firma desde `web/public/brand/`, sin cambiar sus colores ni redibujarlos, y SHALL usar el ícono cuando el logo mediría menos de 100 px.
 

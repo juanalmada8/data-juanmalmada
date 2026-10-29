@@ -105,9 +105,14 @@ y los casos son **ejemplos, no un límite**. Ver y contactar, a 2 o 3 clics desd
 
 Ritmo de fondo: crema · pino · crema · pino · crema, y pie pino.
 
+**Barra fija** (5,5 rem desde 480 px, con el logo `<jm>` de 104 px y 12 px de aire arriba y abajo; en el celular, el ícono `</j>`):
+enlaces *Qué hago · Casos · Cómo trabajo* con la sección actual marcada (desde 768 px), el nombre de la sección en el
+celular, una línea de progreso de lectura sobre el borde y «Contame tu idea» siempre visible. En escritorio el **hero llena
+la primera pantalla** debajo de la barra, con la banda del patrón al pie.
+
 | # | Sección | Fondo | Contenido |
 |---|---|---|---|
-| 1 | Hero | crema | `hola_mundo()`, titular «Todo el sistema, *un solo proveedor.*», bajada «Armo sistemas a medida: desde la app que usan tus clientes hasta los datos que te ayudan a decidir.», selector **«¿Qué necesitás?»** (6 chips) con vista previa y el CTA «Contame tu idea». |
+| 1 | Hero | crema | `hola_mundo()` (código en minúsculas, pastilla lima como en el manual), titular «Todo el sistema, *un solo proveedor.*», bajada «Armo sistemas a medida: desde la app que usan tus clientes hasta los datos que te ayudan a decidir.», selector **«¿Qué necesitás?»** (6 chips) con vista previa y el CTA «Contame tu idea». |
 | 2 | Qué hago | pino | 5 ejemplos («algunas cosas que puedo armar») + «¿Lo tuyo no está acá? Contámelo, seguro se puede armar.» |
 | 3 | Casos | crema | Oral y Staffy en pestañas: nombre, una línea, 3 bullets, capturas y link. |
 | 4 | Cómo trabajo | pino | Charla → Propuesta → Desarrollo → Soporte. |

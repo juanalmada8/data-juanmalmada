@@ -74,5 +74,8 @@
   --gutter: clamp(1rem, 4vw, 3rem);
   --ancho-texto: 40rem;
   --tap-min: 44px;
-  --alto-barra: 3.75rem;
+  --alto-barra: 3.75rem; /* celular: ícono </j> */
+}
+@media (min-width: 30rem) {
+  :root { --alto-barra: 5.5rem; } /* con el logo <jm> (≥ 100 px de ancho ≈ 64 px de alto) y aire arriba y abajo */
 }

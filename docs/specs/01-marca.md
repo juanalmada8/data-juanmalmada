@@ -13,6 +13,10 @@ Si algo del manual no está acá, preguntá antes de interpretarlo.
 | `<jm▌>` con cursor | Momentos con onda (hero, 404). El cursor puede titilar | `logo-jm-cursor.svg`, cursor en `<g id="cursor">` |
 | Firma | Cierre de secciones largas, «Hola, soy Juanma», footer | `firma-crema.svg`, `firma-pino.svg`, `firma-lima.svg` |
 
+**En la barra fija de la web** el `<jm>` mide 104 px (mínimo de marca: 100 px) y tiene 12 px de aire arriba y abajo. Es
+menos que el «alto de la m» que pide el manual: una barra con ese aire (≈ 36 px por lado) sería desproporcionada. El aire
+completo se respeta donde el logo es protagonista; en el celular la barra usa el ícono `</j>`.
+
 Anatomía: la `j` es un trazo suelto con el punto en lima; la `m` es una letra con peso; los `< >` son cintas
 en dos tonos (musgo + salvia).
 
@@ -76,7 +80,8 @@ Detalles tipográficos que **sí** importan:
 - `text-wrap: balance` en títulos, `text-wrap: pretty` en párrafos.
 - Comillas latinas «así». Signos de apertura ¿¡ siempre. Puntos suspensivos con `…`.
 - `&nbsp;` entre número y unidad (`7&nbsp;años`, `24&nbsp;h`).
-- Rótulos del manual: `01 — QUÉ HAGO` (mono, mayúscula, `.12em`), `hola_mundo()`.
+- Rótulos del manual: `01 — QUÉ HAGO` (mono, mayúscula, `.12em`). Los guiños de código como `hola_mundo()` van en mono **en minúsculas**.
+- Escala de la lámina de tipografía: H1 serif 56–72 px con interlineado 1.0 (en el celular baja para que entre); cuerpo Manrope 16–18 px con interlineado 1.5; etiquetas mono 12–14 px con espaciado. Manrope Bold en subtítulos y botones, Medium en destacados (la bajada), Regular en párrafos.
 
 ## Espaciado y forma
 

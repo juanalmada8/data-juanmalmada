@@ -1,34 +1,130 @@
 ---
-// Barra fija mínima: logo + «Contame tu idea», siempre visible. Spec: specs/landing («Barra fija mínima»).
+// Barra fija: logo, navegación por secciones y «Contame tu idea». Spec: specs/landing («Barra fija con navegación por secciones»).
 // El logo <jm> va desde 480 px (mínimo de marca: 100 px); por debajo, el ícono </j>.
+// Un script chico marca la sección que se está viendo y dibuja la línea de progreso.
 import Logo from "./Logo.astro";
 import Icono from "./Icono.astro";
 import { sitio } from "../data/sitio";
+
+const secciones = [
+  { id: "que-hago", nav: "Qué hago", etiqueta: "Qué hago" },
+  { id: "casos", nav: "Casos", etiqueta: "Casos" },
+  { id: "como-trabajo", nav: "Cómo trabajo", etiqueta: "Cómo trabajo" },
+  { id: "contacto", nav: "Contacto", etiqueta: "Contacto" },
+];
 ---
-<header class="barra tema-crema">
+<header class="barra tema-crema" data-barra>
   <div class="contenedor fila">
     <a class="marca" href="/" aria-label={`${sitio.nombre}, ir al inicio`}>
       <Logo variante="pino" ancho="104px" class="logo-grande" decorativo />
       <Icono variante="pino" ancho="34px" class="logo-chico" />
     </a>
-    <a class="boton lima" href="/#contacto">Contame tu idea</a>
+
+    <!-- Celular: dónde estás (decorativo; el contenido ya tiene sus títulos) -->
+    <p class="donde rotulo" aria-hidden="true" data-donde></p>
+
+    <nav class="secciones" aria-label="Secciones">
+      <ul>
+        {secciones.filter((s) => s.id !== "contacto").map((s) => (
+          <li><a href={`/#${s.id}`} data-seccion={s.id}>{s.nav}</a></li>
+        ))}
+      </ul>
+    </nav>
+
+    <a class="boton lima" href="/#contacto" data-seccion="contacto">Contame tu idea</a>
   </div>
+  <span class="progreso" aria-hidden="true" data-progreso></span>
 </header>
+
+<script define:vars={{ etiquetas: Object.fromEntries(secciones.map((s) => [s.id, s.etiqueta])) }}>
+  // Corre al terminar de cargar el DOM: la barra va antes que las secciones en el documento.
+  addEventListener("DOMContentLoaded", () => {
+    const barra = document.querySelector("[data-barra]");
+    const donde = barra?.querySelector("[data-donde]");
+    const progreso = barra?.querySelector("[data-progreso]");
+    const enlaces = [...document.querySelectorAll("[data-seccion]")];
+    const secs = Object.keys(etiquetas).map((id) => document.getElementById(id)).filter(Boolean);
+    if (!barra || !secs.length) return;
+
+    let actual = null;
+    const marcar = (id) => {
+      if (id === actual) return;
+      actual = id;
+      enlaces.forEach((a) => {
+        if (a.dataset.seccion === id && a.closest(".secciones")) a.setAttribute("aria-current", "location");
+        else a.removeAttribute("aria-current");
+      });
+      if (donde) donde.textContent = etiquetas[id] ?? "";
+    };
+    // La sección que cruza la mitad de la pantalla es la actual; arriba de todo, ninguna.
+    const io = new IntersectionObserver(
+      (entradas) => entradas.forEach((e) => e.isIntersecting && marcar(e.target.id)),
+      { rootMargin: "-45% 0px -50% 0px" },
+    );
+    secs.forEach((s) => io.observe(s));
+
+    // Línea de progreso: sin transición, solo refleja el scroll.
+    let pendiente = false;
+    const pintar = () => {
+      pendiente = false;
+      if (scrollY < 40) marcar("");
+      const max = document.documentElement.scrollHeight - innerHeight;
+      progreso.style.transform = `scaleX(${max > 0 ? Math.min(1, scrollY / max) : 0})`;
+    };
+    addEventListener("scroll", () => { if (!pendiente) { pendiente = true; requestAnimationFrame(pintar); } }, { passive: true });
+    pintar();
+  });
+</script>
 
 <style>
   .barra {
     position: sticky;
     top: 0;
     z-index: 50;
-    border-bottom: 1px solid var(--pino);
+    border-bottom: var(--borde-suave); /* el 1px salvia del manual, no una línea dura */
   }
   .fila { display: flex; align-items: center; justify-content: space-between; gap: var(--space-4); min-height: var(--alto-barra); }
   .marca { display: inline-flex; align-items: center; min-height: var(--tap-min); }
   .marca :global(.logo-grande) { display: none; }
+
+  .donde { flex: 1; min-width: 0; font-size: var(--fs-micro); letter-spacing: .08em; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; text-align: center; }
+  .donde:empty { visibility: hidden; }
+  .secciones { display: none; }
   .barra .boton { min-height: var(--tap-min); padding: 0 var(--space-4); font-size: var(--fs-small); }
+
+  /* Línea de progreso sobre el borde: crece de izquierda a derecha */
+  .progreso {
+    position: absolute;
+    left: 0; right: 0; bottom: -1px;
+    height: 3px;
+    background: var(--pino);
+    transform: scaleX(0);
+    transform-origin: left;
+  }
+
   @media (min-width: 30rem) {
     .marca :global(.logo-grande) { display: block; }
     .marca :global(.logo-chico) { display: none; }
     .barra .boton { padding: 0 var(--space-6); font-size: var(--fs-body); }
+  }
+
+  @media (min-width: 48rem) {
+    .donde { display: none; }
+    .fila { justify-content: flex-start; }
+    .barra .boton { margin-left: auto; }
+    .secciones { display: block; margin-left: var(--space-8); }
+    .secciones ul { list-style: none; padding: 0; display: flex; gap: var(--space-2); }
+    .secciones a {
+      display: inline-flex;
+      align-items: center;
+      min-height: var(--tap-min);
+      padding: 0 var(--space-3);
+      font-weight: 700;
+      font-size: var(--fs-small);
+      text-decoration: none;
+      border-bottom: 3px solid transparent;
+    }
+    .secciones a:hover { border-bottom-color: var(--salvia); }
+    .secciones a[aria-current="location"] { border-bottom-color: var(--musgo); }
   }
 </style>

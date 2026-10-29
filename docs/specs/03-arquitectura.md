@@ -118,6 +118,7 @@ Una línea por decisión no trivial (más reciente arriba).
 
 | Fecha | Decisión | Por qué |
 |---|---|---|
+| 2026-10-29 | Barra fija con navegación por secciones (sección actual marcada, nombre de la sección en el celular, línea de progreso); hero a pantalla completa en escritorio; tipografía ajustada a la lámina del manual. Un script de ~0,6 kB marca la sección y el progreso. | Feedback de Juanma: la línea pisaba el logo, el verde oscuro asomaba cortado y quería algo que acompañe el recorrido; respetar el manual y la tipografía. |
 | 2026-10-27 | **Web de una sola página de 5 secciones** (hero con selector, qué hago, casos, cómo trabajo, contacto), cambio OpenSpec `landing-una-pagina`. Casos en la colección `casos` (un archivo por caso); se borran `proyectos/[slug]`, Todo conectado, Para quién y Sobre mí. | Pedido de Juanma: simple, interactiva, 2–3 clics hasta el contacto; los servicios y casos son ejemplos, no un límite. |
 | 2026-10-27 | Todos los «Contame tu idea» llevan a `#contacto`; el tema elegido en el hero precarga el WhatsApp (`data-wa-tema`). 2 clics desde la barra, 3 desde el hero con un tema elegido. | Un solo comportamiento por botón; Instagram y mail quedan a la misma distancia que WhatsApp. |
 | 2026-10-27 | `404.astro` propia. Cloudflare Pages sin `404.html` trata el sitio como SPA y serviría la home con 200 en rutas inexistentes. | La spec pide 404 real para rutas internas. |
