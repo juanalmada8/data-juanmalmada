@@ -144,6 +144,8 @@ const inicial = temas.find((t) => t.id === temaInicial)!;
     }
     .interior { gap: var(--space-6); }
     .hero .boton.lima { border-color: var(--pino); }
+    .hero .boton.lima:hover { background: var(--pino); border-color: var(--pino); color: var(--lima); }
+    .hero :focus-visible { outline-color: var(--pino); } /* el hero es tema-pino en el celular; acá está sobre crema */
     .interior :global(.vistas) { display: none; }
   }
 </style>

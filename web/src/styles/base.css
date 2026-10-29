@@ -87,6 +87,7 @@ p { text-wrap: pretty; }
 /* Columna de lectura: una sola medida, con 120 px o más entre secciones */
 .seccion-lectura { padding: var(--espacio-seccion) var(--gutter); color: var(--pino); }
 .seccion-lectura .interior { max-width: var(--ancho-lectura); }
+.seccion-lectura h2 + .lead { margin-top: var(--space-4); } /* el título no se pega a su bajada */
 @media (min-width: 64rem) { .seccion-lectura { padding-left: clamp(var(--space-8), 5vw, var(--space-24)); padding-right: var(--margen-pagina); } }
 
 /* Marco de ancho completo: el mismo par de márgenes en barra, secciones anchas y pie */

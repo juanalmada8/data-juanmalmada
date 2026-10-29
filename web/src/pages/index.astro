@@ -12,12 +12,12 @@ await cargarCasos(); // avisa en el build qué capturas faltan
 <Base>
   <!-- Mitad fija (escenario) + columna de lectura; en el celular se apilan -->
   <div class="pagina" data-pagina>
-    <Escenario />
     <div class="lectura">
       <Hero />
       <QueHago />
       <Casos />
     </div>
+    <Escenario />
   </div>
   <ComoTrabajo />
   <Contacto />
@@ -27,5 +27,8 @@ await cargarCasos(); // avisa en el build qué capturas faltan
   .lectura { background: var(--crema); }
   @media (min-width: 64rem) {
     .pagina { display: grid; grid-template-columns: 5fr 6fr; align-items: start; }
+    /* El escenario está después en el documento, pero se ve a la izquierda */
+    .pagina :global(.escenario) { grid-column: 1; grid-row: 1; }
+    .lectura { grid-column: 2; grid-row: 1; }
   }
 </style>

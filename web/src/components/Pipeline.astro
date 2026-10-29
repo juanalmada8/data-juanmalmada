@@ -14,7 +14,7 @@ const { pasos = ["tus datos", "se ordenan", "se conectan", "tablero", "tu negoci
     display: flex;
     flex-wrap: nowrap; /* una sola fila: con menos de 5 pasos cortos entra en 360 px */
     gap: var(--space-3) var(--space-4);
-    font-family: var(--font-mono);
+    font-weight: 700;
     font-size: var(--fs-small);
   }
   .pipeline li {
@@ -33,7 +33,10 @@ const { pasos = ["tus datos", "se ordenan", "se conectan", "tablero", "tu negoci
     width: var(--space-4);
     border-top: 2px solid var(--pino);
   }
-  .pipeline .fin { background: var(--lima); font-weight: 500; }
+  .pipeline .fin { background: var(--pino); color: var(--crema); }
+  /* Sobre pino (escenario): el conector va en crema y el cierre en salvia, para que no se fundan con el fondo */
+  :global(.tema-pino) .pipeline li:not(:last-child)::after { border-top-color: var(--crema); }
+  :global(.tema-pino) .pipeline .fin { background: var(--salvia); color: var(--pino); }
 
   /* Celular angosto: en vertical, con el conector hacia abajo */
   @media (max-width: 30rem) {

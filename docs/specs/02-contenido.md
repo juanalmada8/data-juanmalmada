@@ -124,8 +124,9 @@ hero es oscuro.
 «Contame tu idea» en pino. El tema elegido también queda en la URL (`?tema=turnos`) y precarga el WhatsApp.
 
 **Sin adornos:** no hay etiquetas sobre los títulos, líneas finas ni cajas definidas por un borde; las superficies se definen
-por su relleno. Titulares de dos renglones o menos. Nada que se lea baja de 13 px. La lima queda para el CTA, el logo, la
-pastilla `hola_mundo()` y una `m` del patrón (−70 % de píxeles lima en escritorio respecto de antes del cambio).
+por su relleno. Titulares de dos renglones o menos. Nada que se lea baja de 13 px. La lima queda para los CTA (principal y WhatsApp), el
+logo, la pastilla `hola_mundo()`, el itálico del titular en el hero oscuro del celular y una `m` del patrón, más los estados de foco y hover
+(−60 % o más de píxeles lima respecto de antes del cambio).
 
 ## Migración del contenido actual
 

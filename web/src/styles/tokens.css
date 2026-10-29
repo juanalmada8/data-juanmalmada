@@ -57,7 +57,7 @@
   --fs-lead:  clamp(1.125rem, 1.02rem + .5vw, 1.375rem);
   --fs-h3:    clamp(1.375rem, 1.2rem + .8vw, 1.75rem);
   --fs-h2:    clamp(2.125rem, 1.4rem + 3vw, 3.75rem);
-  --fs-h1:    clamp(2.5rem, 1.3rem + 5vw, 4.5rem);        /* hasta 72 px: el techo de la lámina del manual */
+  --fs-h1:    clamp(2.25rem, 1.3rem + 5vw, 4.5rem);        /* hasta 72 px: el techo de la lámina del manual */
   --fs-numeral: clamp(3.5rem, 2.4rem + 4vw, 5.5rem);      /* números grandes en serif (≥ 48 px) */
 
   /* Espaciado */
@@ -82,9 +82,15 @@
   --grosor-nav: 3px;     /* subrayado de la sección actual y línea de progreso */
   --tracking-mono: .12em; /* espaciado de las etiquetas mono */
   --ancho-logo-hero: 22rem;
+  --ancho-escenario: 26rem; /* un solo eje: el logo, la vista previa, el diagrama y la captura comparten este ancho */
+  --fs-sistema: clamp(2rem, 1.2rem + 2.4vw, 3.5rem); /* los pasos grandes del escenario */
   --ancho-firma: 10rem;
   --alto-banda: clamp(44px, 6vw, 80px); /* banda del patrón de la m */
   --radius-celu: 28px;   /* marco de celu de las capturas */
+}
+/* Con el escenario fijo, la columna de lectura mide ≈ 54 % del ancho (grid 5fr 6fr): el titular se ajusta a ella para quedar en dos renglones */
+@media (min-width: 64rem) {
+  :root { --fs-h1: clamp(2.5rem, 5.6vw, 4.5rem); }
 }
 @media (min-width: 30rem) {
   :root { --alto-barra: 5.5rem; } /* con el logo <jm> (≥ 100 px de ancho ≈ 64 px de alto) y aire arriba y abajo */

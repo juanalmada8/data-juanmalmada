@@ -76,7 +76,7 @@ Tamaños en `tokens.css`: `--fs-micro` (11 px, nunca menos), `--fs-label`, `--fs
 `--fs-h3`, `--fs-h2`, `--fs-h1`.
 
 Detalles tipográficos que **sí** importan:
-- Títulos en *sentence case*. El acento de un título (`<em>`, itálica) va en musgo sobre crema (solo en títulos grandes) y en lima sobre pino; una idea por título.
+- Títulos en *sentence case*. El acento de un título (`<em>`, itálica) va en musgo sobre crema (solo en títulos grandes), en salvia sobre pino y en lima solo en el hero oscuro del celular; una idea por título.
 - `text-wrap: balance` en títulos, `text-wrap: pretty` en párrafos.
 - Comillas latinas «así». Signos de apertura ¿¡ siempre. Puntos suspensivos con `…`.
 - `&nbsp;` entre número y unidad (`7&nbsp;años`, `24&nbsp;h`).
@@ -90,10 +90,10 @@ Valores en `web/src/styles/tokens.css` (fuente de verdad): espacios `--space-1` 
 a `--fs-h1`; `--tap-min` 44 px.
 
 - **Fondos en la web:** papel crema para la lectura; escenario fijo en pino (hero y Qué hago) y salvia (Casos); «Cómo trabajo» sobre salvia y «Contacto» y el pie sobre pino.
-- **Lima como acento escaso** (2026-10-29): solo el CTA principal, el logo, la pastilla `hola_mundo()` y una `m` del patrón; no en chips, índice, títulos ni marcadores.
+- **Lima como acento escaso** (2026-10-29): solo los CTA principal y de WhatsApp, el logo, la pastilla `hola_mundo()`, el itálico del titular sobre el hero oscuro del celular y una `m` del patrón, más los estados de foco y hover; no en chips, índice, otros títulos ni marcadores.
 - **Proporción del manual, también en la web:** crema 40 · pino 30 · musgo 15 · salvia 11 · lima 4. Crema es el fondo
-  que más se ve; pino en bandas y tarjetas; salvia en una banda y placas; lima solo en acentos, el botón de WhatsApp
-  sobre pino y una placa chica.
+  que más se ve; pino en bandas y tarjetas; salvia en una banda y placas; lima solo en acentos y el botón de WhatsApp
+  sobre pino.
 - Plano: bloques sólidos, tarjetas blancas con borde salvia sobre crema, sin sombras.
 - Botón principal: pino sobre crema (lima sobre pino), pill, Manrope 700.
 

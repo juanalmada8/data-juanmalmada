@@ -10,7 +10,7 @@ import { cargarCasos } from "../../lib/casos";
 const casos = await cargarCasos();
 const pasos = ["tus datos", "se ordenan", "se conectan", "tablero y web", "tu negocio"];
 ---
-<aside class="escenario" data-escenario>
+<aside class="escenario" data-escenario aria-label="Vista previa y capturas">
   <div class="estado e-hero">
     <code class="sticker" translate="no" aria-hidden="true">hola_mundo()</code>
     <Logo variante="cursor" ancho="min(100%, var(--ancho-logo-hero))" class="logo-hero" decorativo />
@@ -63,7 +63,9 @@ const pasos = ["tus datos", "se ordenan", "se conectan", "tablero y web", "tu ne
       inset: 0;
       display: grid;
       align-content: center;
-      justify-items: center;
+      justify-content: center;
+      justify-items: start; /* logo, vista y texto comparten un solo borde izquierdo */
+      grid-template-columns: min(100%, var(--ancho-escenario));
       gap: var(--space-6);
       padding: var(--space-8) clamp(var(--space-6), 4vw, var(--space-16));
       opacity: 0;
@@ -90,13 +92,14 @@ const pasos = ["tus datos", "se ordenan", "se conectan", "tablero y web", "tu ne
     .e-casos { background: var(--salvia); color: var(--pino); }
 
     /* «Todo conectado»: el sistema como una columna de pasos grandes */
-    .sistema { list-style: none; padding: 0; display: grid; gap: var(--space-4); font-family: var(--font-serif); font-size: clamp(2rem, 1.2rem + 2.4vw, 3.5rem); line-height: 1; }
+    .sistema { list-style: none; padding: 0; display: grid; gap: var(--space-4); font-family: var(--font-serif); font-size: var(--fs-sistema); line-height: 1; width: min(100%, var(--ancho-escenario)); }
     .sistema li { position: relative; }
     .sistema li:not(:last-child)::after { content: "↓" / ""; display: block; margin-top: var(--space-2); font-family: var(--font-sans); font-size: var(--fs-body); color: var(--salvia); }
     .sistema li:last-child { font-style: italic; }
 
-    .cap-caso { width: 100%; max-width: 34rem; }
+    .cap-caso { width: min(100%, var(--ancho-escenario)); }
+    .estado > :global(.vistas) { width: min(100%, var(--ancho-escenario)); }
     .cap-caso:not(.activo) { display: none; }
-    @media (max-height: 760px) { .e-hero :global(.logo-hero) { width: min(100%, 16rem); } }
+    @media (max-height: 760px) { .e-hero :global(.logo-hero) { width: min(100%, 14rem); } .estado { gap: var(--space-4); padding-block: var(--space-4); } }
   }
 </style>

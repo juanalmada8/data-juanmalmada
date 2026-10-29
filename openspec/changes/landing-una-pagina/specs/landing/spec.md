@@ -132,7 +132,7 @@ En pantallas de 1024 px o más, la mitad izquierda de hero, «Qué hago» y «Ca
 - **THEN** no hay escenario; las secciones se apilan y la vista previa y la captura aparecen dentro de la lectura
 
 ### Requirement: Titulares de hasta dos renglones
-Todo `h1` y `h2` SHALL ocupar dos renglones o menos a 390, 768 y 1440 px.
+Todo `h1` y `h2` SHALL ocupar dos renglones o menos a 360, 390, 768, 1024, 1440 y 1920 px.
 
 #### Scenario: Cierre de contacto
 - **WHEN** se ve el título del contacto
@@ -146,7 +146,7 @@ Las secciones MUST NOT llevar etiquetas sobre el título («01 — Qué hago»),
 - **THEN** no marca etiquetas sobre títulos, líneas finas, cajas con borde ni texto menor a 13 px
 
 ### Requirement: La lima como acento escaso
-La lima SHALL ocupar como máximo 0.7 veces los píxeles que ocupaba antes del 2026-10-29 (escritorio: 2.9 % en la primera pantalla y 1.0 % en la página; celular: 7.8 % y 2.7 %), y SHALL aparecer solo en el CTA principal, el logo y a lo sumo una `m` del patrón.
+La lima SHALL ocupar como máximo 0.7 veces los píxeles que ocupaba antes del 2026-10-29 (escritorio: 2.9 % en la primera pantalla y 1.0 % en la página; celular: 7.8 % y 2.7 %), y SHALL aparecer solo en el CTA principal y el de WhatsApp, el logo, la pastilla `hola_mundo()`, el itálico del titular sobre el hero oscuro del celular y a lo sumo una `m` del patrón. Medido el 2026-10-29: escritorio 1.1 % y 0.4 %; celular 3.5 % y 1.7 %.
 
 #### Scenario: Medición
 - **WHEN** se miden los píxeles lima en capturas de la primera pantalla y de la página completa

@@ -86,7 +86,7 @@
 - [x] 11.5 Lima reducida (CTA, logo y una `m`); verificar con el script que la primera pantalla y la página están al menos 30 % por debajo de la base en escritorio y celular.
 - [x] 11.6 Espaciado: secciones separadas por 120 px o más, una sola medida de lectura, sin franjas vacías; verificar con el inspector (frame, lopsided, empty-screens) y a ojo en 360, 768 y 1466 px.
 - [x] 11.7 Revisar el código con la skill `web-design-guidelines` y corregir lo que marque; verificar re-corriendo la revisión.
-- [ ] 11.8 Lighthouse móvil, axe, clics, primera pantalla en 360×640 y `revisor-de-marca`; verificar que nada empeora respecto de los valores de la tarea 10.7.
+- [x] 11.8 Lighthouse móvil, axe, clics, primera pantalla en 360×640 y `revisor-de-marca`; verificar que nada empeora respecto de los valores de la tarea 10.7.
 - [x] 11.9 Actualizar `01-marca`, `02-contenido` y el registro de decisiones; verificar que describen lo construido.
 
 ## Workflow follow-up
