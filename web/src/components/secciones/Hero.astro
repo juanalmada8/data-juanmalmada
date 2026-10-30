@@ -2,6 +2,7 @@
 // Hero: el titular habla del problema del visitante («lo que hoy hacés a mano»), una bajada, el CTA, el contacto directo y
 // stickers inclinados con hechos reales de sitio.ts. El lema del manual («Un solo proveedor, todo el sistema.») va en el pie.
 // Spec: openspec/changes/landing-una-pagina/specs/{landing,selector-hero}.
+import Firma from "../Firma.astro";
 import { sitio, contacto } from "../../data/sitio";
 
 const experiencia = sitio.experiencia[0].toUpperCase() + sitio.experiencia.slice(1); // «Más de 7 años»
@@ -12,7 +13,7 @@ const experiencia = sitio.experiencia[0].toUpperCase() + sitio.experiencia.slice
 
     <div class="pie-hero">
       <div class="accion">
-        <p class="lead">Armo sistemas a medida, sea lo que sea que necesite tu negocio.</p>
+        <p class="lead">Armo webs, apps, turnos, sistemas de gestión y reportes que se actualizan solos: lo que tu negocio necesite.</p>
         <a class="boton lima flecha" href="#contacto">Contame tu idea</a>
         <p class="directo">
           <span>O escribime directo:</span>
@@ -22,12 +23,19 @@ const experiencia = sitio.experiencia[0].toUpperCase() + sitio.experiencia.slice
         </p>
       </div>
 
+      <div class="lado">
+        <div class="presenta">
+          <p>Soy Juanma, ingeniero de datos y desarrollador full stack.</p>
+          <Firma color="pino" ancho="var(--ancho-firma)" decorativa />
+        </div>
+
       <ul class="stickers" aria-label="Datos de Juanma">
         <li class="st a"><span>{experiencia} de oficio</span></li>
         <li class="st b"><span>Respondo en {sitio.respuesta}</span></li>
         <li class="st c"><span>{sitio.base}</span></li>
         <li class="st d" aria-hidden="true"><code translate="no">hola_mundo()</code></li>
       </ul>
+      </div>
     </div>
   </div>
 </section>
@@ -39,7 +47,10 @@ const experiencia = sitio.experiencia[0].toUpperCase() + sitio.experiencia.slice
   .pie-hero { display: grid; gap: var(--space-8); }
   .accion { display: grid; gap: var(--space-4); justify-items: start; align-content: start; max-width: var(--ancho-accion); }
   .accion .boton { white-space: nowrap; }
-  .lead { max-width: 30ch; }
+  .lead { max-width: 34ch; }
+  .lado { display: grid; gap: var(--space-6); align-content: end; }
+  .presenta { display: grid; gap: var(--space-2); justify-items: start; max-width: 24rem; }
+  .presenta p { font-family: var(--font-serif); font-size: var(--fs-h3); line-height: 1.15; }
   .directo { display: flex; flex-wrap: wrap; align-items: center; column-gap: var(--space-4); font-size: var(--fs-small); }
   .directo a { display: inline-flex; align-items: center; min-height: var(--tap-min); min-width: var(--tap-min); font-weight: 700; text-underline-offset: .2em; }
 
@@ -61,7 +72,9 @@ const experiencia = sitio.experiencia[0].toUpperCase() + sitio.experiencia.slice
   /* Desde 1024 px la acción y los stickers van lado a lado; antes, los stickers bajan para que el CTA no se parta */
   @media (min-width: 64rem) {
     .hero { padding-top: var(--space-16); }
-    .pie-hero { grid-template-columns: 1fr auto; align-items: end; gap: var(--space-12); }
+    .pie-hero { grid-template-columns: 1fr auto; align-items: start; gap: var(--space-12); }
+    .lado { justify-items: end; }
+    .presenta { justify-items: end; text-align: right; }
     .stickers { justify-content: flex-end; max-width: var(--ancho-accion); }
   }
 </style>

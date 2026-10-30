@@ -110,10 +110,10 @@ de color donde cada una lleva directo a WhatsApp con su tema. Sin fotos de stock
 
 | Sección | Contenido |
 |---|---|
-| Hero | Titular «Lo que hoy hacés a mano, que lo haga *el sistema*.» (2 renglones desde 768 px, hasta 3 en celular), bajada «Armo sistemas a medida, sea lo que sea que necesite tu negocio.», CTA «Contame tu idea», enlaces directos a WhatsApp, Instagram y mail, y stickers inclinados con hechos reales (más de 7 años de oficio · respuesta en menos de 24 h hábiles · base) y `hola_mundo()`. |
+| Hero | Titular «Lo que hoy hacés a mano, que lo haga *el sistema*.» (2 renglones desde 768 px, hasta 3 en celular), bajada «Armo webs, apps, turnos, sistemas de gestión y reportes que se actualizan solos: lo que tu negocio necesite.», presentación «Soy Juanma, ingeniero de datos y desarrollador full stack.» con la firma, CTA «Contame tu idea», enlaces directos a WhatsApp, Instagram y mail, y stickers inclinados con hechos reales (más de 7 años de oficio · respuesta en menos de 24 h hábiles · base) y `hola_mundo()`. |
 | Franja | Banda pino que corre: Webs y apps · Plataformas · Turnos · Gestión · Datos · Automatización · Nube · y lo que haga falta. Quieta con movimiento reducido. |
 | Qué necesitás | «¿Qué necesitás? *Algo de esto*, o algo distinto.» y 6 tarjetas de color (problema como lo diría el cliente → solución → «Contame esto» a WhatsApp con el mensaje de su tema), «Otra idea» al final. Gestión y Datos llevan un mini diagrama. |
-| Cosas que armé | Oral y Staffy como tarjetas grandes lado a lado (nombre, una línea, 3 bullets, link, captura) y una tarjeta «El próximo puede ser el tuyo». Sin pestañas. |
+| Cosas que armé | Oral y Staffy como tarjetas grandes lado a lado (nombre, una línea, 3 bullets, link, captura) una tarjeta «El próximo puede ser el tuyo» y, debajo, «Y otras cosas que armé»: una grilla de líneas (estilo Etch) que se completa en `web/src/data/proyectos.ts` y no se ve mientras esté vacía. Sin pestañas. |
 | Cómo trabajo | Charla · Propuesta · Desarrollo · Soporte, con números grandes en serif, sobre salvia. |
 | Contacto | «Armemos el sistema.», la pregunta «¿Tenés un negocio, un consultorio, una empresa o una idea?», dos tarjetas («Contame tu idea» por WhatsApp, «Tengo una pregunta» por mail), Instagram aparte y la línea «Este sitio habla de mí, pero me interesa saber de vos.» con presentación y firma. Pie: lema del manual, LinkedIn, base y año. |
 

@@ -102,6 +102,12 @@
 - [x] 13.3 Actualizar specs, `01-marca`, `02-contenido` y el registro de decisiones; `openspec validate`.
 - [x] 13.4 `revisor-de-marca`, Lighthouse y capturas para Juanma; commit y PR.
 
+## 14. Lo que enseñaron thoughtbot, Etch y artobaweb
+
+- [x] 14.1 Bajada del hero con lo concreto; presentación «Soy Juanma» con firma en el hero; verificar a 390 y 1440 px.
+- [x] 14.2 Grilla «Y otras cosas que armé» alimentada por `proyectos.ts` (oculta si está vacía); probada con datos de ejemplo y revertida.
+- [ ] 14.3 Cargar los proyectos reales cuando Juanma los pase.
+
 ## Workflow follow-up
 
 - Archivar el cambio (`/opsx:archive`) al mergear.

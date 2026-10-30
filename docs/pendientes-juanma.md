@@ -23,7 +23,8 @@ y sacala de esta lista.
   Tarea 5.4 de `openspec/changes/landing-una-pagina`.
 - [ ] Confirmar la URL de Instagram (se asume `instagram.com/almadaortiz.dev`).
 - [ ] **Otros proyectos para «Cosas que armé»** (estilo Etch: una línea cada uno, de rubros distintos; propios o internos, sin nombres de
-  empresas). Con 5 o 6 líneas la web comunica «hago lo que sea» sin un titular. No se inventan.
+  empresas). Con 5 o 6 líneas la web comunica «hago lo que sea» sin un titular. No se inventan. Se cargan en
+  `web/src/data/proyectos.ts`; mientras esté vacío, la grilla no se muestra.
 - [ ] **Qué cambió en Oral y Staffy** (problema → qué armé → qué cambió), con tus palabras y sin cifras si no son reales.
 - [ ] **Dos tonos nuevos, mezclas de tu paleta** (propuesta): `--papel` (crema + 30 % salvia) para una tarjeta y `--musgo-hondo` (musgo + 40 % pino) para dos tarjetas y un sticker, porque crema sobre musgo puro no llega a 4.5:1. Confirmar o pedir otra cosa.
 - [ ] **Una línea de ahorro por tarjeta** (en tu voz, sin cifras inventadas): hoy «Portales», «Webs» y «Gestión» dicen qué hago pero no qué ahorra.

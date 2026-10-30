@@ -4,6 +4,7 @@
 import Captura from "../Captura.astro";
 import { cargarCasos } from "../../lib/casos";
 import { urlWhatsApp } from "../../lib/whatsapp";
+import { proyectos } from "../../data/proyectos";
 
 const casos = await cargarCasos();
 const fondos = ["salvia", "pino"];
@@ -39,6 +40,21 @@ const fondos = ["salvia", "pino"];
         </a>
       </li>
     </ul>
+
+    {proyectos.length > 0 && (
+      <div class="otras" data-aparece>
+        <h3>Y otras cosas que armé</h3>
+        <ul class="lineas">
+          {proyectos.map((p) => (
+            <li class="linea">
+              {p.destacado && p.linea.includes(p.destacado)
+                ? <>{p.linea.split(p.destacado)[0]}<strong>{p.destacado}</strong>{p.linea.split(p.destacado).slice(1).join(p.destacado)}</>
+                : p.linea}
+            </li>
+          ))}
+        </ul>
+      </div>
+    )}
   </div>
 </section>
 )}
@@ -62,5 +78,11 @@ const fondos = ["salvia", "pino"];
   .f-pino .link:focus-visible, .proximo .boton:focus-visible { outline-color: var(--lima); }
   .f-salvia .link:focus-visible { outline-color: var(--pino); }
 
+  .otras { margin-top: clamp(var(--space-12), 6vw, var(--space-16)); display: grid; gap: var(--space-6); }
+  .otras h3 { font-size: var(--fs-tarjeta); }
+  .lineas { list-style: none; padding: 0; display: grid; gap: var(--space-3); }
+  .linea { padding: var(--space-6); border-radius: var(--radius-tarjeta); background: var(--papel); color: var(--pino); }
+  @media (min-width: 40rem) { .lineas { grid-template-columns: repeat(2, minmax(0, 1fr)); } }
+  @media (min-width: 64rem) { .lineas { grid-template-columns: repeat(3, minmax(0, 1fr)); } }
   @media (min-width: 48rem) { .casos { grid-template-columns: repeat(2, minmax(0, 1fr)); } .proximo { grid-column: 1 / -1; grid-template-columns: 1fr auto; align-items: center; } }
 </style>

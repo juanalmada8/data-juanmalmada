@@ -18,6 +18,17 @@ Los casos SHALL presentarse como tarjetas grandes de color, lado a lado en escri
 - **WHEN** la persona llega a «Cosas que armé»
 - **THEN** ve nombre, una línea, los bullets, el link y la captura (o su marcador) de cada caso sin hacer clic
 
+### Requirement: Otras cosas que armé, de una línea cada una
+Debajo de los casos, «Y otras cosas que armé» SHALL listar proyectos de una línea cada uno, de rubros distintos, desde `web/src/data/proyectos.ts`. Mientras esa lista esté vacía la grilla MUST NOT mostrarse, y cada línea SHALL contener solo lo que Juanma contó, sin nombres de empresas ni cifras no confirmadas.
+
+#### Scenario: Lista vacía
+- **WHEN** `proyectos.ts` no tiene entradas
+- **THEN** no se ve el título ni la grilla
+
+#### Scenario: Línea nueva
+- **WHEN** se agrega una entrada con su fragmento destacado
+- **THEN** aparece como tarjeta con ese fragmento en negrita, sin tocar componentes
+
 ### Requirement: Solo lo que Juanma describió
 Los casos MUST NOT incluir métricas, ahorros, testimonios ni funciones que Juanma no haya descrito.
 

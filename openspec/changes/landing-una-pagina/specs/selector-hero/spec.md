@@ -1,7 +1,7 @@
 ## ADDED Requirements
 
 ### Requirement: Titular desde el problema del visitante
-El h1 del hero SHALL ser «Lo que hoy hacés a mano, que lo haga el sistema.» (con «el sistema» en itálica de acento), seguido de una bajada corta («Armo sistemas a medida, sea lo que sea que necesite tu negocio.») y el CTA «Contame tu idea».
+El h1 del hero SHALL ser «Lo que hoy hacés a mano, que lo haga el sistema.» (con «el sistema» en itálica de acento), seguido de una bajada que nombra lo concreto («Armo webs, apps, turnos, sistemas de gestión y reportes que se actualizan solos: lo que tu negocio necesite.») y el CTA «Contame tu idea». El hero SHALL incluir también una presentación en primera persona («Soy Juanma, ingeniero de datos y desarrollador full stack.») con la firma de Juanma.
 
 #### Scenario: Primera pantalla
 - **WHEN** se abre la página
