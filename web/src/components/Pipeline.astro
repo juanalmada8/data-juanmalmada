@@ -19,6 +19,7 @@ const { pasos = ["tus datos", "se ordenan", "se conectan", "tablero", "tu negoci
   }
   .pipeline li {
     position: relative;
+    white-space: nowrap;
     padding: var(--space-2) var(--space-4);
     border: 2px solid var(--pino);
     border-radius: var(--radius-box);
@@ -34,6 +35,8 @@ const { pasos = ["tus datos", "se ordenan", "se conectan", "tablero", "tu negoci
     border-top: 2px solid var(--pino);
   }
   .pipeline .fin { background: var(--pino); color: var(--crema); }
+  :global(.oscura) .pipeline li:not(:last-child)::after { border-top-color: var(--crema); }
+  :global(.oscura) .pipeline .fin { background: var(--salvia); color: var(--pino); }
   /* Sobre pino (escenario): el conector va en crema y el cierre en salvia, para que no se fundan con el fondo */
   :global(.tema-pino) .pipeline li:not(:last-child)::after { border-top-color: var(--crema); }
   :global(.tema-pino) .pipeline .fin { background: var(--salvia); color: var(--pino); }

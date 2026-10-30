@@ -1,8 +1,8 @@
 ---
 import Base from "../layouts/Base.astro";
 import { cargarCasos } from "../lib/casos";
-import Escenario from "../components/secciones/Escenario.astro";
 import Hero from "../components/secciones/Hero.astro";
+import Franja from "../components/secciones/Franja.astro";
 import QueHago from "../components/secciones/QueHago.astro";
 import Casos from "../components/secciones/Casos.astro";
 import ComoTrabajo from "../components/secciones/ComoTrabajo.astro";
@@ -10,26 +10,10 @@ import Contacto from "../components/secciones/Contacto.astro";
 await cargarCasos(); // avisa en el build qué capturas faltan
 ---
 <Base>
-  <!-- Columna de lectura + panel fijo a la derecha (escenario); en el celular se apilan. El DOM va en el orden visual. -->
-  <div class="pagina" data-pagina>
-    <div class="lectura">
-      <Hero />
-      <QueHago />
-      <Casos />
-    </div>
-    <Escenario />
-  </div>
+  <Hero />
+  <Franja />
+  <QueHago />
+  <Casos />
   <ComoTrabajo />
   <Contacto />
 </Base>
-
-<style>
-  .lectura { background: var(--crema); }
-  @media (min-width: 64rem) {
-    .pagina { display: grid; grid-template-columns: 6fr 5fr; align-items: start; }
-  }
-  /* Pantallas muy anchas: la lectura no crece más que su medida y el panel toma el resto (sin hueco muerto en el medio) */
-  @media (min-width: 90rem) {
-    .pagina { grid-template-columns: minmax(0, 46rem) 1fr; }
-  }
-</style>

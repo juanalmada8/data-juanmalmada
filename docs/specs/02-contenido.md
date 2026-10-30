@@ -94,41 +94,34 @@ Excepción: **«de punta a punta»** y **«todo el sistema»** son frases de la 
 
 No hay páginas internas, modales ni formularios (cambio `landing-una-pagina`).
 
-## Home: una sola página de 5 secciones, con escenario fijo
+## Home: una sola página de 5 secciones, a ancho completo con tarjetas
 
-> **Historial 2026-10-10 → 2026-10-29.** Landing de 8 secciones → editor de código → página editorial → una página de 5
-> secciones con selector → **nuevo frente con la skill taste** (dirección `split-stage`): en escritorio, la lectura va a la
-> izquierda y a la derecha hay un panel fijo (escenario). La fuente de verdad del comportamiento es el cambio OpenSpec
-> `landing-una-pagina` (`openspec/changes/landing-una-pagina/specs/`). Esto resume el contenido.
+> **Historial 2026-10-10 → 2026-10-30.** Landing de 8 secciones → editor de código → página editorial → una página de 5
+> secciones con selector → panel fijo a un costado → **tarjetas grandes de color a ancho completo** (referencias que mandó
+> Juanma y webs como Etch y thoughtbot). La fuente de verdad del comportamiento es el cambio OpenSpec `landing-una-pagina`
+> (`openspec/changes/landing-una-pagina/specs/`). Esto resume el contenido.
 
-Mensaje: **«Todo el sistema, un solo proveedor.»** Armo sistemas a medida para lo que el negocio necesite; los servicios
-y los casos son **ejemplos, no un límite**. Ver y contactar, a 2 o 3 clics desde cualquier punto.
+Mensaje: **«Lo que hoy hacés a mano, que lo haga el sistema.»** (titular, habla del problema del visitante). El lema del
+manual, **«Un solo proveedor, todo el sistema.»**, va en el pie. Armo sistemas a medida para lo que el negocio necesite;
+los servicios y los casos son **ejemplos, no un límite**. Ver y contactar, a 1–3 clics desde cualquier punto.
 
-**Idea:** un híbrido clásico y confiable: lectura primero, y a un costado un panel fijo que muestra lo que promete el texto.
-
-**Escritorio (≥ 1024 px):** la lectura va a la izquierda (≈ 55 %), en una sola medida y sobre papel crema, alineada con la barra.
-El escenario es un **panel redondeado con aire** a la derecha (≈ 45 %) que no se mueve; cambia de tono y de contenido con la
-sección: la vista previa del tema elegido con el logo como remate abajo (hero), el diagrama «todo conectado» (Qué hago) y la
-captura del caso elegido (Casos). El hero suma una línea de hechos reales (más de 7 años de oficio · respuesta en menos de
-24 h hábiles · General Belgrano) y enlaces directos a WhatsApp, Instagram y mail. «Cómo trabajo» (salvia) y «Contacto» (pino)
-rompen el panel y ocupan todo el ancho. **Celular:** sin escenario; todo se apila y el
-hero es oscuro.
+**Idea:** clásico y confiable, con color: un titular grande, hechos reales en stickers, una franja con lo que hago y tarjetas
+de color donde cada una lleva directo a WhatsApp con su tema. Sin fotos de stock, cifras ni logos inventados.
 
 | Sección | Contenido |
 |---|---|
-| Hero | Titular «Todo el sistema, *un solo proveedor.*» en dos renglones, bajada, selector **«¿Qué necesitás?»** (6 chips) y CTA, enlaces directos a WhatsApp, Instagram y mail y una línea de hechos reales (más de 7 años de oficio · respuesta en menos de 24 h hábiles · base). Elegir un tema cambia la vista previa, el tono del escenario (pino mezclado con musgo, 0–40 %) y la bajada; el titular no cambia. El sticker `hola_mundo()` queda en la esquina del escenario. |
-| Qué hago | Título, la línea «Lo que invertís hoy te ahorra tiempo y plata mañana.» y 5 ejemplos como filas (pregunta → solución), sin cajas, más «¿Lo tuyo no está acá? Contámelo, seguro se puede armar.» |
-| Casos | Oral y Staffy en pestañas de texto (el caso queda en la URL: `#caso-staffy`): nombre, una línea, 3 bullets y link; la captura va al escenario. |
-| Cómo trabajo | Charla · Propuesta · Desarrollo · Soporte, con números grandes en serif, a ancho completo sobre salvia. |
-| Contacto | «Armemos el sistema.», la pregunta «¿Tenés un negocio, un consultorio, una empresa o una idea?» como bajada, WhatsApp, Instagram y mail, presentación y firma. Pie: lema del manual, LinkedIn, base y año. |
+| Hero | Titular «Lo que hoy hacés a mano, que lo haga *el sistema*.» (2 renglones desde 768 px, hasta 3 en celular), bajada «Armo sistemas a medida, sea lo que sea que necesite tu negocio.», CTA «Contame tu idea», enlaces directos a WhatsApp, Instagram y mail, y stickers inclinados con hechos reales (más de 7 años de oficio · respuesta en menos de 24 h hábiles · base) y `hola_mundo()`. |
+| Franja | Banda pino que corre: Webs y apps · Plataformas · Turnos · Gestión · Datos · Automatización · Nube · y lo que haga falta. Quieta con movimiento reducido. |
+| Qué necesitás | «¿Qué necesitás? *Algo de esto*, o algo distinto.» y 6 tarjetas de color (problema como lo diría el cliente → solución → «Contame esto» a WhatsApp con el mensaje de su tema), «Otra idea» al final. Gestión y Datos llevan un mini diagrama. |
+| Cosas que armé | Oral y Staffy como tarjetas grandes lado a lado (nombre, una línea, 3 bullets, link, captura) y una tarjeta «El próximo puede ser el tuyo». Sin pestañas. |
+| Cómo trabajo | Charla · Propuesta · Desarrollo · Soporte, con números grandes en serif, sobre salvia. |
+| Contacto | «Armemos el sistema.», la pregunta «¿Tenés un negocio, un consultorio, una empresa o una idea?», dos tarjetas («Contame tu idea» por WhatsApp, «Tengo una pregunta» por mail), Instagram aparte y la línea «Este sitio habla de mí, pero me interesa saber de vos.» con presentación y firma. Pie: lema del manual, LinkedIn, base y año. |
 
-**Barra fija:** logo `<jm>` (ícono `</j>` en el celular), **índice numerado** 01–04 con un tramo de progreso por capítulo, y
-«Contame tu idea» en pino. El tema elegido también queda en la URL (`?tema=turnos`) y precarga el WhatsApp.
+**Barra:** píldora flotante con el logo `<jm>` (ícono `</j>` en el celular), **índice numerado** 01–04 con un tramo de progreso por
+capítulo, y «Contame tu idea» en pino.
 
 **Sin adornos:** no hay etiquetas sobre los títulos, líneas finas ni cajas definidas por un borde; las superficies se definen
-por su relleno. Titulares de dos renglones o menos. Nada que se lea baja de 13 px. La lima queda para los CTA (principal y WhatsApp), el
-logo, la pastilla `hola_mundo()`, el itálico del titular en el hero oscuro del celular y una `m` del patrón, más los estados de foco y hover
-(−60 % o más de píxeles lima respecto de antes del cambio).
+por su relleno. Titulares de dos renglones o menos desde 768 px. Nada que se lea baja de 13 px. La lima queda para el CTA principal, la tarjeta de WhatsApp, el botón de «El próximo», la pastilla `hola_mundo()` y una `m` del patrón, más los estados de foco y hover.
 
 ## Migración del contenido actual
 
@@ -168,7 +161,7 @@ publicado: true                          # false = no aparece
 
 Reglas: solo lo que Juanma contó; sin métricas, ahorros ni testimonios que no estén confirmados; capturas sin datos
 de personas (anonimizar antes de subir). `npm run build` lista en consola las capturas que faltan (`[FALTA] captura de …`).
-Agregar un caso nuevo = crear su archivo; aparece como una pestaña más, sin tocar componentes.
+Agregar un caso nuevo = crear su archivo; aparece como una tarjeta más, sin tocar componentes.
 
 ## SEO y metadatos
 

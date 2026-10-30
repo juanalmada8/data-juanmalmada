@@ -1,18 +1,22 @@
 ## ADDED Requirements
 
-### Requirement: Ejemplos de lo que puede armar
-La sección «Qué hago» SHALL presentar cinco ejemplos como «algunas cosas que puedo armar»: webs y apps a medida; portales y plataformas con su backend (usuarios, publicaciones, postulaciones, paneles); turnos y reservas online; sistemas de gestión interna; automatización y datos (integraciones, reportes y tableros que se actualizan solos).
+### Requirement: Seis tarjetas por necesidad
+La sección «¿Qué necesitás?» SHALL presentar seis tarjetas grandes de color, una por situación: webs y apps a medida; portales y plataformas (usuarios, publicaciones, postulaciones, paneles); turnos y reservas online; sistemas de gestión; automatización y datos; y «Otra idea». Cada una SHALL mostrar el problema como lo diría el cliente, la solución en una línea y un enlace «Contame esto» que abre WhatsApp con el mensaje de su tema.
 
 #### Scenario: Tarjeta de ejemplo
 - **WHEN** se lee una tarjeta
-- **THEN** expresa el problema y la solución en una línea, sin tecnicismos
+- **THEN** expresa el problema y la solución en una línea, sin tecnicismos, y toda la tarjeta es un solo destino
 
-### Requirement: Cierre que abre la puerta
-La sección SHALL terminar con «¿Lo tuyo no está acá? Contámelo, seguro se puede armar.» y un enlace al contacto.
+#### Scenario: Colores
+- **WHEN** se ven las seis tarjetas
+- **THEN** usan tonos de la paleta del manual (pino, salvia, crema oscurecida, musgo profundo), ninguna es lima y cada par texto/fondo pasa 4.5:1
 
-#### Scenario: Tocar el enlace del cierre
-- **WHEN** la persona toca el enlace
-- **THEN** baja a la sección de contacto
+### Requirement: «Otra idea» invita a contar
+La tarjeta «Otra idea» SHALL decir que lo que no está en la lista es justo para lo que Juanma está, e invitar a contar la idea por WhatsApp.
+
+#### Scenario: Tocar «Otra idea»
+- **WHEN** la persona toca la tarjeta
+- **THEN** se abre WhatsApp con «Hola Juanma, tengo una idea para armar»
 
 ### Requirement: Sin promesas inventadas
 Las tarjetas MUST NOT incluir cifras, porcentajes, plazos ni precios, y SHALL cumplir la voz de la marca (voseo, sin la lista de frases prohibidas de 02-contenido).

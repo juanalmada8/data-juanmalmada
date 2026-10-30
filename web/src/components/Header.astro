@@ -1,5 +1,5 @@
 ---
-// Barra fija con índice numerado: logo, cuatro capítulos (01–04) con su tramo de progreso, y «Contame tu idea».
+// Barra flotante en píldora, con índice numerado: logo, cuatro capítulos (01–04) con su tramo de progreso, y «Contame tu idea».
 // Spec: specs/landing («Barra fija con índice numerado»). El logo <jm> va desde 480 px (mínimo de marca: 100 px);
 // por debajo, el ícono </j> y el capítulo actual. Un script chico marca el capítulo y llena los tramos al leer.
 import Logo from "./Logo.astro";
@@ -13,8 +13,8 @@ const capitulos = [
   { id: "contacto", n: "04", nombre: "Contacto" },
 ];
 ---
-<header class="barra tema-crema" data-barra>
-  <div class="marco fila">
+<header class="barra" data-barra>
+  <div class="fila">
     <a class="marca" href="/" aria-label={`${sitio.nombre}, ir al inicio`}>
       <Logo variante="pino" ancho="104px" class="logo-grande" decorativo />
       <Icono variante="pino" ancho="34px" class="logo-chico" />
@@ -85,19 +85,28 @@ const capitulos = [
     const tramos = Object.fromEntries(ids.map((id) => [id, [...document.querySelectorAll(`[data-tramo="${id}"]`)]]));
     addEventListener("scroll", pedir, { passive: true });
     addEventListener("resize", () => { medir(); pedir(); });
-    new ResizeObserver(() => { medir(); pedir(); }).observe(document.body); // el contenido cambia de alto (pestañas, bajada)
+    new ResizeObserver(() => { medir(); pedir(); }).observe(document.body); // el contenido cambia de alto (tarjetas, imágenes)
     medir();
     pintar();
   });
 </script>
 
 <style>
+  /* Píldora flotante: el contenido pasa por debajo; el fondo es blanco, para que no se confunda con las tarjetas */
   .barra {
     position: sticky;
     top: 0;
     z-index: 50;
+    padding: var(--space-3) var(--margen-pagina) 0;
+    color: var(--pino);
   }
-  .fila { display: flex; align-items: center; justify-content: space-between; gap: var(--space-4); min-height: var(--alto-barra); position: relative; }
+  .fila {
+    display: flex; align-items: center; justify-content: space-between; gap: var(--space-4);
+    min-height: var(--alto-barra); position: relative;
+    padding-inline: var(--space-4);
+    background: var(--blanco);
+    border-radius: var(--radius-pill);
+  }
   .marca { display: inline-flex; align-items: center; justify-content: center; min-height: var(--tap-min); min-width: var(--tap-min); }
   .marca :global(.logo-grande) { display: none; }
 
@@ -136,14 +145,15 @@ const capitulos = [
   .indice:focus-within {
     position: absolute;
     top: 100%; left: 0; right: 0;
-    padding: var(--space-3) var(--gutter);
-    background: var(--crema);
-    border-bottom: var(--borde-suave);
+    padding: var(--space-4) var(--space-6);
+    background: var(--blanco);
+    border-radius: var(--radius-tarjeta);
   }
   .indice:focus-within ol { flex-wrap: wrap; gap: var(--space-2) var(--space-6); }
-  .segmentos { position: absolute; left: 0; right: 0; bottom: -1px; display: grid; grid-template-columns: repeat(4, 1fr); gap: var(--space-1); }
+  .segmentos { position: absolute; left: calc(var(--margen-pagina) + var(--space-8)); right: calc(var(--margen-pagina) + var(--space-8)); bottom: var(--space-2); display: grid; grid-template-columns: repeat(4, 1fr); gap: var(--space-1); }
 
   @media (min-width: 30rem) {
+    .fila { padding-inline: var(--space-6); }
     .marca :global(.logo-grande) { display: block; }
     .marca :global(.logo-chico) { display: none; }
     .barra .boton { padding: 0 var(--space-6); font-size: var(--fs-body); }
@@ -156,7 +166,7 @@ const capitulos = [
     .barra .boton { margin-left: auto; }
     .indice:not(:focus-within), .indice:focus-within {
       position: static; width: auto; height: auto; overflow: visible; clip-path: none;
-      padding: 0; background: none; border: 0; margin-left: var(--space-8);
+      padding: 0; background: none; border-radius: 0; margin-left: var(--space-8);
     }
     .indice:focus-within ol { flex-wrap: nowrap; }
   }

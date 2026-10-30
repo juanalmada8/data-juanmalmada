@@ -12,15 +12,15 @@ El sitio SHALL ser una única página con, en este orden, hero, qué hago, casos
 - **THEN** las secciones aparecen en el orden indicado y no hay una sexta
 
 ### Requirement: El mensaje se entiende en 5 segundos
-El hero SHALL mostrar el titular «Todo el sistema, un solo proveedor.», una línea de bajada, el selector «¿Qué necesitás?» y el CTA «Contame tu idea» en la primera pantalla del celular.
+El hero SHALL mostrar el titular «Lo que hoy hacés a mano, que lo haga el sistema.», una línea de bajada y el CTA «Contame tu idea» en la primera pantalla del celular; «Todo el sistema, un solo proveedor.» queda como lema del pie.
 
 #### Scenario: Celular de 390×844
 - **WHEN** se abre la página en un viewport de 390×844 sin scrollear
-- **THEN** se ven la barra, el titular, la bajada, los 6 chips del selector y el CTA
+- **THEN** se ven la barra, el titular, la bajada y el CTA
 
 #### Scenario: Celular chico de 360×640
 - **WHEN** se abre la página en un viewport de 360×640 sin scrollear
-- **THEN** se ven el titular, los chips y el CTA, y la vista previa puede continuar debajo
+- **THEN** se ven el titular y el CTA, y los enlaces directos y los stickers pueden continuar debajo
 
 ### Requirement: Nada limita el tipo de proyecto
 Ningún texto SHALL afirmar ni sugerir que Juanma hace un solo tipo de proyecto; los servicios y los casos SHALL presentarse como ejemplos.
@@ -30,7 +30,7 @@ Ningún texto SHALL afirmar ni sugerir que Juanma hace un solo tipo de proyecto;
 - **THEN** no hay frases como «solo hago…», «me especializo en turnos» ni una lista cerrada de servicios
 
 ### Requirement: Barra fija con índice numerado
-La página SHALL tener una barra fija con el logo, un índice numerado de sus cuatro secciones (01 Qué hago, 02 Casos, 03 Cómo trabajo, 04 Contacto) y el botón «Contame tu idea», siempre visible al scrollear. Cada capítulo del índice SHALL tener un tramo de progreso que se llena a medida que se lee esa sección, y el de la sección actual SHALL estar marcado.
+La página SHALL tener una barra fija, flotante como una píldora con margen a los costados, con el logo, un índice numerado de sus cuatro secciones (01 Qué hago, 02 Casos, 03 Cómo trabajo, 04 Contacto) y el botón «Contame tu idea», siempre visible al scrollear. Cada capítulo del índice SHALL tener un tramo de progreso que se llena a medida que se lee esa sección, y el de la sección actual SHALL estar marcado.
 
 #### Scenario: Escritorio
 - **WHEN** el ancho es de 1024 px o más
@@ -63,23 +63,27 @@ El logo `<jm>` de la barra SHALL tener espacio libre arriba y abajo y MUST NOT t
 - **WHEN** se ve la barra a 1440 px
 - **THEN** hay al menos 12 px entre el logo y la línea inferior de la barra, y el logo mide al menos 100 px de ancho
 
-### Requirement: Hero oscuro con el logo grande
-En pantallas de 640 px o más el hero SHALL tener fondo pino y mostrar el logo `<jm▌>` grande con el cursor titilando, como la portada del manual. En el celular (menos de 640 px) el logo grande no se muestra, para que entren el titular, los chips y el CTA.
+### Requirement: Hero claro con stickers de hechos reales
+El hero SHALL tener fondo crema, el titular grande en la tipografía del manual y, junto a la acción, stickers inclinados con hechos que existen en `sitio.ts` (más de 7 años de oficio, respuesta en menos de 24 h hábiles, la base) y la pastilla `hola_mundo()`. Los stickers MUST NOT llevar cifras, testimonios ni logos que no estén confirmados.
 
 #### Scenario: Escritorio
-- **WHEN** el ancho es de 640 px o más
-- **THEN** el hero es oscuro y el logo con cursor se ve junto a la vista previa
+- **WHEN** el ancho es de 768 px o más
+- **THEN** el titular ocupa dos renglones y los stickers quedan a la derecha de la acción
 
 #### Scenario: Movimiento reducido
 - **WHEN** el sistema pide movimiento reducido
-- **THEN** el cursor del logo queda fijo
+- **THEN** los stickers no giran ni se mueven al pasar el mouse
 
-### Requirement: El hero llena la primera pantalla
-En pantallas de escritorio el hero SHALL ocupar la primera pantalla completa debajo de la barra, de modo que la sección siguiente no asome cortada.
+### Requirement: Franja con lo que hago
+Entre el hero y «Qué necesitás» SHALL haber una franja pino que recorre, en una línea, lo que Juanma hace y cierra con «y lo que haga falta».
 
-#### Scenario: Ventana de 1466×820
-- **WHEN** se abre la página a ese tamaño sin scrollear
-- **THEN** el borde superior de «Qué hago» queda en el borde inferior de la ventana o más abajo
+#### Scenario: Movimiento reducido
+- **WHEN** el sistema pide movimiento reducido
+- **THEN** la franja queda quieta y se lee entera, y no hay regiones con scroll
+
+#### Scenario: Lector de pantalla
+- **WHEN** se lee la página con un lector de pantalla
+- **THEN** la lista se lee una sola vez (la copia de la animación está oculta)
 
 ### Requirement: Mobile first
 La página SHALL usarse sin scroll horizontal desde 360 px de ancho, con áreas táctiles de al menos 44 px.
@@ -120,19 +124,8 @@ La página SHALL declarar `lang="es-AR"`, título de hasta 60 caracteres, descri
 - **WHEN** se comparte el link
 - **THEN** la vista previa muestra la imagen de marca, el título y la descripción
 
-### Requirement: Escenario fijo en escritorio
-En pantallas de 1024 px o más, hero, «Qué hago» y «Casos» SHALL tener la lectura a la izquierda, en una sola medida y alineada con la barra, y un escenario fijo a la derecha, como panel redondeado con aire debajo de la barra. El escenario SHALL mostrar la vista previa del tema elegido con el logo `<jm▌>` como firma en el hero (el logo se oculta en pantallas bajas), el diagrama «todo conectado» en «Qué hago» y la captura del caso elegido en «Casos». «Cómo trabajo» y «Contacto» SHALL ocupar todo el ancho.
-
-#### Scenario: Escritorio de 1466×820
-- **WHEN** se scrollea del hero a «Casos»
-- **THEN** el panel de la derecha no se mueve, cambia de tono y de contenido al llegar cada sección, y la columna de lectura sigue su curso
-
-#### Scenario: Celular
-- **WHEN** el ancho es menor a 1024 px
-- **THEN** no hay escenario; las secciones se apilan y la vista previa y la captura aparecen dentro de la lectura
-
-### Requirement: Titulares de hasta dos renglones
-Todo `h1` y `h2` SHALL ocupar dos renglones o menos a 360, 390, 768, 1024, 1440 y 1920 px.
+### Requirement: Titulares de pocos renglones
+Todo `h1` y `h2` SHALL ocupar dos renglones o menos desde 768 px (a 768, 1024, 1440 y 1920 px) y tres o menos en el celular; el h1 del hero puede llegar a tres renglones por debajo de 768 px.
 
 #### Scenario: Cierre de contacto
 - **WHEN** se ve el título del contacto
@@ -146,7 +139,7 @@ Las secciones MUST NOT llevar etiquetas sobre el título («01 — Qué hago»),
 - **THEN** no marca etiquetas sobre títulos, líneas finas, cajas con borde ni texto menor a 13 px
 
 ### Requirement: La lima como acento escaso
-La lima SHALL ocupar como máximo 0.7 veces los píxeles que ocupaba antes del 2026-10-29 (escritorio: 2.9 % en la primera pantalla y 1.0 % en la página; celular: 7.8 % y 2.7 %), y SHALL aparecer solo en el CTA principal y el de WhatsApp, el logo, la pastilla `hola_mundo()`, el itálico del titular sobre el hero oscuro del celular y a lo sumo una `m` del patrón. Medido el 2026-10-29: escritorio 1.1 % y 0.4 %; celular 3.5 % y 1.7 %.
+La lima SHALL aparecer solo en el CTA principal del hero, la tarjeta de WhatsApp del contacto, la pastilla `hola_mundo()`, los botones de acción sobre fondos oscuros y a lo sumo una `m` del patrón, y MUST NOT usarse como fondo de las tarjetas de «Qué necesitás» ni de los casos. Medido el 2026-10-30 sobre capturas: primera pantalla 1.3 % en escritorio y 4.4 % en celular (antes de la reducción: 2.9 % y 7.8 %); página completa 1.4 % y 2.9 %. Esos valores SHALL ser el tope.
 
 #### Scenario: Medición
 - **WHEN** se miden los píxeles lima en capturas de la primera pantalla y de la página completa

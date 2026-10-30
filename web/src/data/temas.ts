@@ -1,84 +1,68 @@
-// Los chips del selector «¿Qué necesitás?»: una sola fuente para el hero y para el mensaje de WhatsApp.
+// Las tarjetas «¿Qué necesitás?»: una sola fuente para la sección y para el mensaje de WhatsApp de cada una.
 // Sin imports a propósito: lo usa también el test (node:test).
 
-export type Vista =
-  | { tipo: "capturas"; casos: string[] } // captura real de uno o más casos (ids de la colección `casos`)
-  | { tipo: "pipeline" } // patrón pipeline del manual
-  | { tipo: "datos" } // patrón de datos del manual
-  | { tipo: "invitacion" }; // «Otra idea»: texto + botón de contacto
+// Fondo de la tarjeta (tonos de la paleta del manual; ver tokens.css). El texto lo decide el CSS según el fondo.
+export type Fondo = "pino" | "salvia" | "papel" | "musgo";
 
 export interface Tema {
   id: string;
-  chip: string; // texto del chip
-  ejemplo: string; // un ejemplo, en una línea
-  frase: string; // qué se resuelve
-  bajada: string; // la bajada del hero cuando se elige este tema
-  mezcla: number; // % de musgo mezclado con el pino en el fondo del hero (0–40): el tono de cada tema
-  vista: Vista;
-  mensaje: string; // mensaje de WhatsApp si el visitante elige este tema
+  titulo: string; // título de la tarjeta
+  pregunta: string; // el problema como lo diría el cliente
+  solucion: string; // qué se resuelve, en una línea
+  fondo: Fondo;
+  pasos?: string[]; // mini diagrama (patrón pipeline del manual), solo en las tarjetas que lo piden
+  mensaje: string; // mensaje de WhatsApp al tocar la tarjeta
 }
 
 export const temas: Tema[] = [
   {
     id: "web",
-    chip: "Una web o app",
-    ejemplo: "Una web o una app pensada para tu negocio.",
-    frase: "Tus clientes encuentran lo que buscan desde el celular, sin tener que llamarte.",
-    bajada: "Armo sistemas a medida: desde la app que usan tus clientes hasta los datos que te ayudan a decidir.",
-    mezcla: 0,
-    vista: { tipo: "capturas", casos: ["oral", "staffy"] },
+    titulo: "Webs y apps a medida",
+    pregunta: "¿Tu web no se ve bien en el celular?",
+    solucion: "Armo una web o una app pensada para el celular, donde tus clientes encuentran lo que buscan sin llamarte.",
+    fondo: "pino",
     mensaje: "Hola Juanma, quiero armar una web o app",
   },
   {
     id: "plataforma",
-    chip: "Una plataforma",
-    ejemplo: "Usuarios, publicaciones, postulaciones y paneles.",
-    frase: "Tus usuarios y tu equipo trabajan en un mismo lugar, cada uno con lo suyo.",
-    bajada: "Portales y plataformas completas, con todo lo que va por detrás.",
-    mezcla: 12,
-    vista: { tipo: "capturas", casos: ["staffy"] },
+    titulo: "Portales y plataformas",
+    pregunta: "¿Necesitás que usuarios y empresas trabajen en un mismo sistema?",
+    solucion: "Armo el portal y lo que lo sostiene: usuarios, publicaciones, postulaciones y paneles.",
+    fondo: "salvia",
     mensaje: "Hola Juanma, quiero armar una plataforma",
   },
   {
     id: "turnos",
-    chip: "Turnos",
-    ejemplo: "Confirmación y recordatorio por mail.",
-    frase: "Tus clientes reservan solos y vos dejás de atender el teléfono para dar turnos.",
-    bajada: "Un sistema de turnos online para tu consultorio o tu negocio.",
-    mezcla: 24,
-    vista: { tipo: "capturas", casos: ["oral"] },
+    titulo: "Turnos y reservas online",
+    pregunta: "¿Pasás el día atendiendo el teléfono para dar turnos?",
+    solucion: "Tus clientes reservan solos y reciben la confirmación y el recordatorio.",
+    fondo: "papel",
     mensaje: "Hola Juanma, quiero armar un sistema de turnos",
   },
   {
     id: "gestion",
-    chip: "Gestión",
-    ejemplo: "Pedidos, clientes o trámites.",
-    frase: "Lo que hoy vive en planillas, cuadernos y chats sueltos, en un solo lugar.",
-    bajada: "Un sistema que ordena el trabajo de todo el equipo.",
-    mezcla: 32,
-    vista: { tipo: "pipeline" },
+    titulo: "Sistemas de gestión",
+    pregunta: "¿Todo anda en planillas, cuadernos y chats sueltos?",
+    solucion: "Un sistema donde se ordena el trabajo de todo el equipo, sin planillas ni chats sueltos.",
+    fondo: "musgo",
+    pasos: ["planillas", "se ordenan", "un solo lugar"],
     mensaje: "Hola Juanma, quiero armar un sistema de gestión",
   },
   {
     id: "datos",
-    chip: "Datos",
-    ejemplo: "Reportes y tableros que se actualizan solos.",
-    frase: "El reporte del lunes se arma solo.",
-    bajada: "Conecto tus fuentes de datos para que decidas con información al día.",
-    mezcla: 40,
-    vista: { tipo: "datos" },
+    titulo: "Automatización y datos",
+    pregunta: "¿Armás el reporte a mano todos los lunes?",
+    solucion: "Conecto tus fuentes y armo reportes y tableros que se actualizan solos.",
+    fondo: "pino",
+    pasos: ["tus fuentes", "se conectan", "tablero"],
     mensaje: "Hola Juanma, quiero armar algo con mis datos",
   },
   {
     id: "otra",
-    chip: "Otra idea",
-    ejemplo: "Contame qué tenés en mente y lo armamos",
-    frase: "Contame qué tenés en mente y lo armamos",
-    bajada: "Si lo tuyo no encaja en ninguna de estas, charlemos.",
-    mezcla: 6,
-    vista: { tipo: "invitacion" },
+    titulo: "Otra idea",
+    pregunta: "¿Lo tuyo no está en la lista?",
+    solucion: "Es justo para lo que estoy: contame qué tenés en mente y lo armamos.",
+    fondo: "salvia",
     mensaje: "Hola Juanma, tengo una idea para armar",
   },
 ];
-
-export const temaInicial = temas[0].id;

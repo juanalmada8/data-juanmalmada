@@ -1,6 +1,6 @@
 ---
 // Cierre a ancho completo sobre pino: título corto, la pregunta como bajada y los tres canales.
-// WhatsApp lleva el tema que eligió el visitante en el hero (lo actualiza el script del Hero). Spec: specs/contacto.
+// Dos tarjetas grandes (una pregunta y una idea, sin formularios) e Instagram como enlace aparte. Spec: specs/contacto.
 import Firma from "../Firma.astro";
 import PatronM from "../PatronM.astro";
 import { contacto, sitio } from "../../data/sitio";
@@ -10,22 +10,31 @@ import { contacto, sitio } from "../../data/sitio";
     <div class="texto" data-aparece>
       <h2 id="contacto-titulo">Armemos el <em>sistema</em>.</h2>
       <p class="lead">¿Tenés un negocio, un consultorio, una empresa o una idea?</p>
-      <div class="botones">
-        <a class="boton lima grande flecha" data-wa-tema href={contacto.whatsapp} target="_blank" rel="noopener noreferrer">
-          WhatsApp<span class="sr-only"> (se abre en otra pestaña)</span>
+
+      <div class="canales">
+        <a class="canal wa" href={contacto.whatsapp} target="_blank" rel="noopener noreferrer">
+          <span class="titulo">Contame tu idea</span>
+          <span class="detalle">Por WhatsApp. Te respondo en {sitio.respuesta}.</span>
+          <span class="flecha" aria-hidden="true">→</span>
+          <span class="sr-only">(se abre en otra pestaña)</span>
         </a>
-        <a class="boton sec grande" href={contacto.instagram} target="_blank" rel="noopener noreferrer">
-          Instagram<span class="sr-only"> (se abre en otra pestaña)</span>
+        <a class="canal mail" href={`mailto:${contacto.mail}`}>
+          <span class="titulo">Tengo una pregunta</span>
+          <span class="detalle">Por mail, sin apuro.</span>
+          <span class="flecha" aria-hidden="true">→</span>
         </a>
-        <a class="boton sec grande" href={`mailto:${contacto.mail}`}>Mail</a>
       </div>
-      <p class="respuesta">Te respondo en {sitio.respuesta}.</p>
+      <p class="ig">
+        También estoy en{" "}
+        <a class="link" href={contacto.instagram} target="_blank" rel="noopener noreferrer">Instagram<span class="sr-only"> (se abre en otra pestaña)</span></a>.
+      </p>
     </div>
 
     <div class="yo" data-aparece>
       <p>
-        Soy Juanma: ingeniero de datos y desarrollador full stack, con {sitio.experiencia} de experiencia en equipos
-        y empresas de distintos rubros. Trabajo desde General Belgrano, de forma remota para todo el país.
+        Este sitio habla de mí, pero me interesa saber de vos. Soy Juanma: ingeniero de datos y desarrollador full stack,
+        con {sitio.experiencia} de experiencia en equipos y empresas de distintos rubros. Trabajo desde General Belgrano,
+        100% remoto.
       </p>
       <div class="firma-rev"><Firma color="crema" ancho="var(--ancho-firma)" decorativa /></div>
     </div>
@@ -38,9 +47,29 @@ import { contacto, sitio } from "../../data/sitio";
   .texto { display: grid; gap: var(--space-6); justify-items: start; }
   .lead { max-width: 30ch; }
   h2 em { color: var(--salvia); } /* la lima se reserva para el botón de WhatsApp y una m del patrón */
-  .botones { display: grid; gap: var(--space-3); width: 100%; }
-  .boton.grande { min-height: 3.5rem; font-size: var(--fs-lead); }
-  .respuesta { color: var(--salvia); }
+  .canales { display: grid; gap: var(--space-4); width: 100%; margin-top: var(--space-4); }
+  .canal {
+    position: relative;
+    display: grid;
+    gap: var(--space-2);
+    align-content: start;
+    min-height: var(--alto-tarjeta-chica);
+    padding: var(--space-8);
+    border-radius: var(--radius-tarjeta);
+    text-decoration: none;
+    color: var(--pino);
+  }
+  .wa { background: var(--lima); }
+  .mail { background: var(--salvia); }
+  .titulo { font-family: var(--font-serif); font-size: var(--fs-tarjeta); line-height: 1; letter-spacing: -.02em; }
+  .detalle { font-weight: 500; max-width: 28ch; }
+  .flecha { position: absolute; right: var(--space-8); bottom: var(--space-6); font-size: var(--fs-h3); font-weight: 800; transition: transform .2s ease; }
+  .canal:hover .flecha { transform: translateX(var(--space-2)); }
+  .canal:focus-visible { outline: 3px solid var(--crema); outline-offset: 4px; }
+  @media (prefers-reduced-motion: no-preference) { .canal { transition: transform .25s ease; } .canal:hover { transform: translateY(calc(var(--space-2) * -1)); } }
+  .ig { color: var(--salvia); }
+  .ig .link { display: inline-flex; align-items: center; min-height: var(--tap-min); }
+  .ig .link { color: var(--crema); }
   .yo { display: grid; gap: var(--space-4); align-content: start; max-width: var(--ancho-texto); }
   .yo p { color: var(--crema); }
   .seccion-ancha :global(.banda) { margin-top: var(--space-16); background: transparent; }
@@ -50,6 +79,6 @@ import { contacto, sitio } from "../../data/sitio";
     :global(html.js) .firma-rev { clip-path: inset(0 100% 0 0); transition: clip-path 1.4s cubic-bezier(.4, 0, .2, 1) .3s; }
     :global(html.js) .visible .firma-rev { clip-path: inset(0 0 0 0); }
   }
-  @media (min-width: 40rem) { .botones { grid-template-columns: repeat(3, auto); justify-content: start; } }
+  @media (min-width: 40rem) { .canales { grid-template-columns: 1fr 1fr; } }
   @media (min-width: 60rem) { .grilla { grid-template-columns: 1.3fr 1fr; gap: var(--space-16); } }
 </style>

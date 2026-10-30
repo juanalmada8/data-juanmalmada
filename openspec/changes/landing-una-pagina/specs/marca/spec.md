@@ -65,8 +65,8 @@ Los pasos de «Cómo trabajo» SHALL mostrar su número (1 a 4) en DM Serif Disp
 - **THEN** cada paso tiene su número grande en serif, de al menos 48 px, y el nombre del paso debajo
 
 ### Requirement: Mono solo para código y números del índice
-JetBrains Mono SHALL usarse solo para guiños de código (`hola_mundo()`) y los números del índice; los chips, rótulos y datos van en Manrope.
+JetBrains Mono SHALL usarse solo para guiños de código (`hola_mundo()`) y los números del índice; los stickers, rótulos y datos van en Manrope.
 
-#### Scenario: Chips del selector
-- **WHEN** se ven los chips del hero
-- **THEN** están en Manrope Bold, no en mono
+#### Scenario: Stickers de hechos
+- **WHEN** se ven los stickers del hero
+- **THEN** los de hechos están en Manrope Bold; solo `hola_mundo()` va en mono

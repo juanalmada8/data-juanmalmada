@@ -44,6 +44,9 @@
   --crema:  #F3EFE3; /* fondos claros */
   --lima:   #D4E85C; /* SOLO acento y CTA */
   --blanco: #FFFFFF; /* tarjetas sobre crema, con borde salvia */
+  /* Tonos de la misma paleta (mezclas, no colores nuevos): fondos de tarjetas y de la barra */
+  --papel:  color-mix(in srgb, var(--salvia) 30%, var(--crema));  /* crema un poco más oscuro, pino encima: 11:1 */
+  --musgo-hondo: color-mix(in srgb, var(--musgo) 60%, var(--pino)); /* musgo más profundo, crema encima: 6:1 */
 
   /* Tipografía del manual */
   --font-serif: "DM Serif Display", Georgia, serif;
@@ -57,7 +60,10 @@
   --fs-lead:  clamp(1.125rem, 1.02rem + .5vw, 1.375rem);
   --fs-h3:    clamp(1.375rem, 1.2rem + .8vw, 1.75rem);
   --fs-h2:    clamp(2.125rem, 1.4rem + 3vw, 3.75rem);
-  --fs-h1:    clamp(2.25rem, 1.3rem + 5vw, 4.5rem);        /* hasta 72 px: el techo de la lámina del manual */
+  --fs-h1:    clamp(2.25rem, 1.2rem + 5.6vw, 6rem);         /* el titular del hero es grande: hasta 96 px */
+  --alto-tarjeta: 17rem; --alto-tarjeta-chica: 11rem; /* alto mínimo de las tarjetas grandes y de las chicas */
+  --ancho-accion: 30rem; /* columna de la bajada, el CTA y los enlaces del hero */
+  --fs-tarjeta: clamp(1.75rem, 1.1rem + 1.8vw, 2.75rem);    /* títulos de las tarjetas grandes */
   --fs-numeral: clamp(3.5rem, 2.4rem + 4vw, 5.5rem);      /* números grandes en serif (≥ 48 px) */
 
   /* Espaciado */
@@ -66,6 +72,7 @@
 
   /* Forma (manual: tarjetas redondeadas, bordes de 1px salvia, plano) */
   --radius-card: 20px;
+  --radius-tarjeta: 28px; /* las tarjetas grandes de color */
   --radius-box:  10px;
   --radius-pill: 999px;
   --borde-suave: 1px solid var(--salvia);
@@ -78,21 +85,14 @@
   --tap-min: 44px;
   --espacio-seccion: clamp(4.5rem, 9vw, 7.5rem); /* entre secciones: 120 px o más en escritorio */
   --ancho-lectura: 38rem;  /* una sola medida de lectura (≈ 46 caracteres) */
-  --alto-barra: 3.75rem; /* celular: ícono </j> */
+  --alto-barra: 4rem; /* alto de la píldora de la barra (celular: ícono </j>); con su aire de arriba queda en ≈ 76 px */
   --grosor-nav: 3px;     /* subrayado de la sección actual y línea de progreso */
   --tracking-mono: .12em; /* espaciado de las etiquetas mono */
-  --ancho-logo-hero: 9rem; /* el logo del escenario es un remate, no el protagonista: ya está en la barra */
-  --aire-lectura: clamp(var(--space-6), 4vw, var(--space-16)); /* entre la columna de lectura y el panel */
-  --ancho-escenario: 26rem; /* un solo eje: el logo, la vista previa, el diagrama y la captura comparten este ancho */
-  --fs-sistema: clamp(2rem, 1.2rem + 2.4vw, 3.5rem); /* los pasos grandes del escenario */
   --ancho-firma: 10rem;
   --alto-banda: clamp(44px, 6vw, 80px); /* banda del patrón de la m */
   --radius-celu: 28px;   /* marco de celu de las capturas */
-}
-/* Con el escenario fijo, la columna de lectura mide ≈ 54 % del ancho (grid 6fr 5fr): el titular se ajusta a ella para quedar en dos renglones */
-@media (min-width: 64rem) {
-  :root { --fs-h1: clamp(2.5rem, 5.6vw, 4.5rem); }
+  --giro-a: -3deg; --giro-b: 2.5deg; --giro-c: 4deg; /* stickers y tarjetas inclinadas (se apagan con movimiento reducido) */
 }
 @media (min-width: 30rem) {
-  :root { --alto-barra: 5.5rem; } /* con el logo <jm> (≥ 100 px de ancho ≈ 64 px de alto) y aire arriba y abajo */
+  :root { --alto-barra: 5rem; } /* con el logo <jm> (≥ 100 px de ancho ≈ 64 px de alto) y aire arriba y abajo */
 }

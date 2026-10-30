@@ -11,12 +11,12 @@ La sección SHALL mostrar el caso de Oral Odontología Familiar (oral.com.ar: we
 - **WHEN** se ven los dos casos
 - **THEN** uno es un consultorio local y el otro una plataforma para empresas
 
-### Requirement: Cambiar de caso con un clic
-Los casos SHALL presentarse en pestañas, de modo que cambiar de caso lleve un solo clic, con navegación por teclado y roles de pestaña.
+### Requirement: Los casos se ven a la vez, como tarjetas grandes
+Los casos SHALL presentarse como tarjetas grandes de color, lado a lado en escritorio y apiladas en el celular, sin pestañas, seguidas de una tarjeta que invita a sumar el próximo (enlace a WhatsApp).
 
-#### Scenario: Cambiar de caso
-- **WHEN** la persona toca la pestaña del otro caso
-- **THEN** ve ese caso sin recargar ni scrollear a otra parte
+#### Scenario: Ver los dos casos
+- **WHEN** la persona llega a «Cosas que armé»
+- **THEN** ve nombre, una línea, los bullets, el link y la captura (o su marcador) de cada caso sin hacer clic
 
 ### Requirement: Solo lo que Juanma describió
 Los casos MUST NOT incluir métricas, ahorros, testimonios ni funciones que Juanma no haya descrito.

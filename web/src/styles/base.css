@@ -84,16 +84,10 @@ p { text-wrap: pretty; }
 }
 .seccion { padding-block: var(--espacio-seccion); }
 
-/* Columna de lectura: una sola medida, con 120 px o más entre secciones */
-.seccion-lectura { padding: var(--espacio-seccion) var(--gutter); color: var(--pino); }
-.seccion-lectura .interior { max-width: var(--ancho-lectura); }
-.seccion-lectura h2 + .lead { margin-top: var(--space-4); } /* el título no se pega a su bajada */
-@media (min-width: 64rem) { .seccion-lectura { padding-left: var(--margen-pagina); padding-right: var(--aire-lectura); } }
-
 /* Marco de ancho completo: el mismo par de márgenes en barra, secciones anchas y pie */
 .marco { width: 100%; padding-inline: var(--margen-pagina); }
 
-/* Secciones que rompen el panel fijo y ocupan todo el ancho */
+/* Secciones a ancho completo */
 .seccion-ancha { padding-block: var(--espacio-seccion); }
 .cabecera { display: grid; gap: var(--space-4); margin-bottom: clamp(var(--space-8), 5vw, var(--space-16)); }
 

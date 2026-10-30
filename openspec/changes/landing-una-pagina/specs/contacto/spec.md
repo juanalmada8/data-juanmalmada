@@ -1,28 +1,28 @@
 ## ADDED Requirements
 
 ### Requirement: Cierre con contacto directo
-La sección de contacto SHALL titularse «Armemos el sistema.», con la bajada «¿Tenés un negocio, un consultorio, una empresa o una idea?», y ofrecer botones directos a WhatsApp, Instagram y mail, con WhatsApp como principal.
+La sección de contacto SHALL titularse «Armemos el sistema.», con la bajada «¿Tenés un negocio, un consultorio, una empresa o una idea?», y ofrecer dos tarjetas grandes («Contame tu idea», por WhatsApp, y «Tengo una pregunta», por mail) e Instagram como enlace aparte, con WhatsApp como principal.
 
-#### Scenario: Botones visibles
+#### Scenario: Canales visibles
 - **WHEN** se llega a la sección
-- **THEN** los tres botones se ven a la vez, sin scroll adicional en el celular
+- **THEN** las dos tarjetas y el enlace a Instagram se ven sin scroll adicional en escritorio
 
 ### Requirement: Dos clics hasta WhatsApp o Instagram
-Desde cualquier punto de la página, abrir WhatsApp o Instagram SHALL requerir como máximo dos clics, y el chip, el CTA y el botón de contacto SHALL sumar como máximo tres desde el hero.
+Desde cualquier punto de la página, abrir WhatsApp o Instagram SHALL requerir como máximo dos clics; desde una tarjeta de «¿Qué necesitás?» o desde el enlace directo del hero, un clic.
 
 #### Scenario: Desde la barra fija
 - **WHEN** la persona toca «Contame tu idea» en la barra y luego un botón de contacto
 - **THEN** llegó a WhatsApp o Instagram en dos clics
 
-#### Scenario: Desde el hero con un tema elegido
-- **WHEN** la persona elige un chip, toca el CTA del hero y luego WhatsApp
-- **THEN** llegó en tres clics
+#### Scenario: Desde una tarjeta
+- **WHEN** la persona toca «Contame esto» en una tarjeta de «¿Qué necesitás?»
+- **THEN** llegó a WhatsApp con el mensaje de esa tarjeta en un clic
 
 ### Requirement: Mensaje de WhatsApp precargado con el tema
-El botón de WhatsApp SHALL abrir el chat con un mensaje que nombre el tema elegido: «Hola Juanma, quiero armar una web o app», «…una plataforma», «…un sistema de turnos», «…un sistema de gestión», «…algo con mis datos» u «Hola Juanma, tengo una idea para armar» si eligió «Otra idea».
+El enlace de WhatsApp de cada tarjeta de «¿Qué necesitás?» SHALL abrir el chat con un mensaje que nombre su tema: «Hola Juanma, quiero armar una web o app», «…una plataforma», «…un sistema de turnos», «…un sistema de gestión», «…algo con mis datos» u «Hola Juanma, tengo una idea para armar» en la tarjeta «Otra idea». Los enlaces fuera de las tarjetas usan el mensaje genérico.
 
-#### Scenario: Sin tema elegido
-- **WHEN** no se eligió ningún chip
+#### Scenario: Enlace fuera de las tarjetas
+- **WHEN** se abre WhatsApp desde el hero o el contacto
 - **THEN** el mensaje es «Hola Juanma, te escribo desde la web.»
 
 ### Requirement: Datos de contacto en un solo lugar

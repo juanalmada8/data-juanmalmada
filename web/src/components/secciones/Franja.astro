@@ -1,0 +1,64 @@
+---
+// Franja que corre entre el hero y las tarjetas: lo que hago, en una línea, y que no es un límite. Solo CSS.
+// La copia repetida va aria-hidden: el lector de pantalla lee la lista una sola vez.
+const cosas = ["Webs y apps", "Plataformas", "Turnos", "Gestión", "Datos", "Automatización", "Nube", "y lo que haga falta"];
+---
+<div class="franja tema-pino" data-franja>
+  <ul class="pista" aria-label="Lo que armo">
+    {cosas.map((c) => <li>{c}</li>)}
+  </ul>
+  <ul class="pista" aria-hidden="true">
+    {cosas.map((c) => <li>{c}</li>)}
+  </ul>
+  <button type="button" class="pausa" aria-pressed="false" data-pausa hidden>Pausar la franja</button>
+</div>
+
+<script>
+  // La franja se mueve sola: hay que poder pausarla (WCAG 2.2.2). Sin JavaScript no hay botón, pero tampoco hay animación sin CSS de movimiento.
+  const franja = document.querySelector<HTMLElement>("[data-franja]");
+  const boton = franja?.querySelector<HTMLButtonElement>("[data-pausa]");
+  if (franja && boton && !matchMedia("(prefers-reduced-motion: reduce)").matches) {
+    boton.hidden = false;
+    boton.addEventListener("click", () => {
+      const pausada = franja.toggleAttribute("data-pausada");
+      boton.setAttribute("aria-pressed", String(pausada));
+      boton.textContent = pausada ? "Seguir la franja" : "Pausar la franja";
+    });
+  }
+</script>
+
+<style>
+  .franja { position: relative; display: flex; overflow: hidden; padding-block: var(--space-6); user-select: none; }
+  .pista {
+    flex: none;
+    display: flex;
+    align-items: center;
+    gap: var(--space-8);
+    padding: 0 var(--space-4);
+    list-style: none;
+    margin: 0;
+    font-family: var(--font-serif);
+    font-size: var(--fs-h3);
+    white-space: nowrap;
+  }
+  .pista li::after { content: ""; display: inline-block; width: .5rem; height: .5rem; margin-left: var(--space-8); border-radius: 50%; background: var(--salvia); vertical-align: middle; }
+  @media (prefers-reduced-motion: no-preference) {
+    .pista { animation: corre 40s linear infinite; }
+    .franja:hover .pista, .franja[data-pausada] .pista { animation-play-state: paused; }
+  }
+  /* El botón es chico y se esconde hasta tener foco o hover: cualquiera puede pausar con teclado o con el dedo (tocar la franja también) */
+  .pausa {
+    position: absolute; right: var(--space-4); top: 50%; transform: translateY(-50%);
+    min-height: var(--tap-min); padding: 0 var(--space-4);
+    border: 2px solid var(--crema); border-radius: var(--radius-pill);
+    background: var(--pino); color: var(--crema);
+    font-family: var(--font-sans); font-weight: 700; font-size: var(--fs-small); cursor: pointer;
+  }
+  .pausa:focus-visible { outline: 3px solid var(--lima); outline-offset: 2px; }
+  @keyframes corre { to { transform: translateX(-100%); } }
+  /* Sin movimiento: la franja queda quieta, se lee entera (la primera copia, en varios renglones si hace falta) */
+  @media (prefers-reduced-motion: reduce) {
+    .pista { flex-wrap: wrap; justify-content: center; row-gap: var(--space-2); white-space: normal; }
+    .pista[aria-hidden="true"] { display: none; }
+  }
+</style>

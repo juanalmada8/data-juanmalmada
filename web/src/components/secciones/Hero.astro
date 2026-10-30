@@ -1,166 +1,67 @@
 ---
-// Hero: titular, bajada, selector «¿Qué necesitás?» y CTA. En escritorio vive en la columna de lectura (papel crema) y el
-// logo con la vista previa están en el escenario fijo; en el celular el hero es oscuro y trae su propia vista previa.
-// El tema elegido cambia el tono del fondo y la bajada; el titular no cambia.
+// Hero: el titular habla del problema del visitante («lo que hoy hacés a mano»), una bajada, el CTA, el contacto directo y
+// stickers inclinados con hechos reales de sitio.ts. El lema del manual («Un solo proveedor, todo el sistema.») va en el pie.
 // Spec: openspec/changes/landing-una-pagina/specs/{landing,selector-hero}.
-import Vistas from "./Vistas.astro";
-import { temas, temaInicial } from "../../data/temas";
-import { urlWhatsApp } from "../../lib/whatsapp";
 import { sitio, contacto } from "../../data/sitio";
 
-const inicial = temas.find((t) => t.id === temaInicial)!;
 const experiencia = sitio.experiencia[0].toUpperCase() + sitio.experiencia.slice(1); // «Más de 7 años»
 ---
-<section id="hero" class="hero tema-pino" aria-labelledby="hero-titulo">
-  <div class="interior">
-    <h1 id="hero-titulo"><span class="r">Todo el sistema,</span> <em class="r">un solo&nbsp;proveedor.</em></h1>
-    <p class="lead" data-bajada aria-live="polite">{inicial.bajada}</p>
+<section id="hero" class="hero tema-crema" aria-labelledby="hero-titulo">
+  <div class="marco interior">
+    <h1 id="hero-titulo"><span class="r">Lo que hoy hacés a mano,</span> <span class="r">que lo haga <em>el sistema</em>.</span></h1>
 
-    <div class="selector" data-selector>
-      <p class="pregunta" id="sel-etiqueta">¿Qué necesitás?</p>
-      <div class="chips" role="radiogroup" aria-labelledby="sel-etiqueta">
-        {temas.map((t) => (
-          <button
-            type="button"
-            class="chip"
-            role="radio"
-            aria-checked={t.id === temaInicial ? "true" : "false"}
-            tabindex={t.id === temaInicial ? 0 : -1}
-            data-tema={t.id}
-            data-wa={urlWhatsApp(t.mensaje)}
-            data-bajada={t.bajada}
-            data-mezcla={t.mezcla}
-          >{t.chip}</button>
-        ))}
+    <div class="pie-hero">
+      <div class="accion">
+        <p class="lead">Armo sistemas a medida, sea lo que sea que necesite tu negocio.</p>
+        <a class="boton lima flecha" href="#contacto">Contame tu idea</a>
+        <p class="directo">
+          <span>O escribime directo:</span>
+          <a href={contacto.whatsapp} target="_blank" rel="noopener noreferrer">WhatsApp<span class="sr-only"> (se abre en otra pestaña)</span></a>
+          <a href={contacto.instagram} target="_blank" rel="noopener noreferrer">Instagram<span class="sr-only"> (se abre en otra pestaña)</span></a>
+          <a href={`mailto:${contacto.mail}`}>Mail</a>
+        </p>
       </div>
+
+      <ul class="stickers" aria-label="Datos de Juanma">
+        <li class="st a"><span>{experiencia} de oficio</span></li>
+        <li class="st b"><span>Respondo en {sitio.respuesta}</span></li>
+        <li class="st c"><span>{sitio.base}</span></li>
+        <li class="st d" aria-hidden="true"><code translate="no">hola_mundo()</code></li>
+      </ul>
     </div>
-
-    <div class="cta">
-      <a class="boton lima flecha" href="#contacto">Contame tu idea</a>
-      <p class="directo">
-        O escribime directo por{" "}
-        <a data-wa-tema href={contacto.whatsapp} target="_blank" rel="noopener noreferrer">WhatsApp</a>,{" "}
-        <a href={contacto.instagram} target="_blank" rel="noopener noreferrer">Instagram</a> o{" "}
-        <a href={`mailto:${contacto.mail}`}>mail</a>.
-      </p>
-    </div>
-
-    <p class="confianza"><span>{experiencia} de oficio</span> · <span>Respondo en {sitio.respuesta}</span> · <span>{sitio.base}</span></p>
-
-    <Vistas donde="lectura" />
   </div>
 </section>
 
-<script>
-  // Selector: radiogroup con flechas. Elegir un tema cambia la vista previa, el tono del fondo y la bajada del hero.
-  // El tema que ELIGE el visitante (no el inicial) viaja al mensaje de WhatsApp.
-  const raiz = document.documentElement;
-  const hero = document.getElementById("hero");
-  const grupo = document.querySelector<HTMLElement>("[data-selector] .chips");
-  if (hero && grupo) {
-    const chips = [...grupo.querySelectorAll<HTMLButtonElement>('[role="radio"]')];
-    const vistas = [...document.querySelectorAll<HTMLElement>("[data-vista]")];
-    const bajada = hero.querySelector<HTMLElement>("[data-bajada]");
-    const enlaces = () => [...document.querySelectorAll<HTMLAnchorElement>("[data-wa-tema]")];
-
-    const elegir = (chip: HTMLButtonElement, desdeVisitante: boolean) => {
-      chips.forEach((c) => {
-        const activo = c === chip;
-        c.setAttribute("aria-checked", String(activo));
-        c.tabIndex = activo ? 0 : -1;
-      });
-      vistas.forEach((v) => v.classList.toggle("activo", v.dataset.vista === chip.dataset.tema));
-      raiz.style.setProperty("--mezcla", `${chip.dataset.mezcla}%`); // lo leen el hero (celular) y el escenario (escritorio)
-      if (bajada) bajada.textContent = chip.dataset.bajada!;
-      if (desdeVisitante) enlaces().forEach((a) => (a.href = chip.dataset.wa!));
-    };
-
-    const desdeUsuario = (chip: HTMLButtonElement) => {
-      elegir(chip, true);
-      const url = new URL(location.href);
-      url.searchParams.set("tema", chip.dataset.tema!); // la URL refleja el tema: se puede compartir
-      history.replaceState(null, "", url);
-    };
-    const compartido = chips.find((c) => c.dataset.tema === new URLSearchParams(location.search).get("tema"));
-    if (compartido) elegir(compartido, true);
-
-    chips.forEach((chip, i) => {
-      chip.addEventListener("click", () => desdeUsuario(chip));
-      chip.addEventListener("keydown", (e) => {
-        const salto = { ArrowRight: 1, ArrowDown: 1, ArrowLeft: -1, ArrowUp: -1 }[e.key];
-        const destino = e.key === "Home" ? 0 : e.key === "End" ? chips.length - 1 : salto ? (i + salto + chips.length) % chips.length : -1;
-        if (destino < 0) return;
-        e.preventDefault();
-        chips[destino].focus();
-        desdeUsuario(chips[destino]);
-      });
-    });
-  }
-</script>
-
 <style>
-  /* Celular: hero oscuro, con el tono del tema elegido */
-  .hero {
-    padding: var(--space-6) var(--gutter) var(--space-12);
-    background-color: color-mix(in srgb, var(--musgo) var(--mezcla, 0%), var(--pino));
-    --inv: var(--pino); /* texto sobre el chip elegido */
-  }
-  .interior { display: grid; gap: var(--space-4); justify-items: start; max-width: var(--ancho-lectura); }
-  /* Dos renglones fijos: «Todo el sistema,» / «un solo proveedor.» */
-  h1 .r { display: block; }
-  .cta { display: grid; gap: var(--space-3); justify-items: start; }
-  .directo { font-size: var(--fs-small); }
-  .directo a { font-weight: 700; text-underline-offset: .2em; padding-block: .7rem; } /* área táctil de ≈ 44 px sin mover el texto */
-  .confianza { font-size: var(--fs-small); }
-  .confianza span { white-space: nowrap; } /* corta en los puntos, no en el medio de un dato */ /* en --texto: el musgo chico sobre crema no pasa el contraste */
-  .lead { max-width: 36ch; min-height: calc(1.45em * 3); } /* el alto fijo evita que los chips salten cuando cambia la bajada */
+  .hero { padding: var(--space-12) 0 var(--space-16); }
+  .interior { display: grid; gap: var(--space-8); }
+  /* Dos renglones fijos desde 768 px; en el celular corre libre (hasta 3) */
+  .pie-hero { display: grid; gap: var(--space-8); }
+  .accion { display: grid; gap: var(--space-4); justify-items: start; align-content: start; max-width: var(--ancho-accion); }
+  .accion .boton { white-space: nowrap; }
+  .lead { max-width: 30ch; }
+  .directo { display: flex; flex-wrap: wrap; align-items: center; column-gap: var(--space-4); font-size: var(--fs-small); }
+  .directo a { display: inline-flex; align-items: center; min-height: var(--tap-min); min-width: var(--tap-min); font-weight: 700; text-underline-offset: .2em; }
 
-  .selector { display: grid; gap: var(--space-2); }
-  .pregunta { font-size: var(--fs-small); font-weight: 700; }
-  .chips { display: flex; flex-wrap: wrap; gap: var(--space-2); }
-  .chip {
-    min-height: var(--tap-min);
-    padding: 0 var(--space-4);
-    border: 2px solid var(--texto);
-    border-radius: var(--radius-pill);
-    background: transparent;
-    color: var(--texto);
-    font-family: var(--font-sans);
-    font-size: var(--fs-small);
-    font-weight: 700;
-    cursor: pointer;
-    transition: background-color .15s ease, color .15s ease, transform .1s ease;
-  }
-  .chip:hover { background: color-mix(in srgb, var(--texto) 14%, transparent); }
-  .chip:active { transform: scale(.96); }
-  .chip[aria-checked="true"] { background: var(--texto); color: var(--inv); }
-
-  .interior :global(.vistas) { margin-top: var(--space-4); }
-
+  /* Stickers: pastillas inclinadas, cada una en un tono de la paleta; solo una lleva lima */
+  .stickers { list-style: none; padding: 0; display: flex; flex-wrap: wrap; gap: var(--space-3) var(--space-4); align-content: start; }
+  .st { padding: var(--space-3) var(--space-6); border-radius: var(--radius-pill); font-weight: 700; font-size: var(--fs-small); }
+  .a { background: var(--salvia); color: var(--pino); --giro: var(--giro-a); }
+  .b { background: var(--pino); color: var(--crema); --giro: var(--giro-b); }
+  .c { background: var(--musgo-hondo); color: var(--crema); --giro: var(--giro-c); }
+  .d { background: var(--lima); color: var(--pino); --giro: var(--giro-a); font-weight: 500; }
   @media (prefers-reduced-motion: no-preference) {
-    .hero { transition: background-color .5s ease; }
-  }
-  @media (max-width: 40rem) {
-    .hero { padding-top: var(--space-4); }
-    .interior { gap: var(--space-3); }
-    .lead { font-size: var(--fs-body); }
+    .st { transform: rotate(var(--giro)); transition: transform .2s ease; }
+    .st:hover { transform: rotate(0deg) scale(1.04); }
   }
 
-  /* Escritorio: papel crema en la lectura; el tono oscuro lo pone el escenario */
+  @media (min-width: 48rem) {
+    h1 .r { display: block; }
+  }
+  /* Desde 1024 px la acción y los stickers van lado a lado; antes, los stickers bajan para que el CTA no se parta */
   @media (min-width: 64rem) {
-    .hero {
-      background: transparent;
-      --fondo: transparent; --texto: var(--pino); --texto-2: var(--musgo); --acento: var(--musgo); --inv: var(--crema);
-      color: var(--pino);
-      min-height: calc(100svh - var(--alto-barra));
-      display: grid;
-      align-content: center;
-      padding: var(--space-12) var(--aire-lectura) var(--space-12) var(--margen-pagina);
-    }
-    .interior { gap: var(--space-6); }
-    .hero .boton.lima { border-color: var(--pino); }
-    .hero .boton.lima:hover { background: var(--pino); border-color: var(--pino); color: var(--lima); }
-    .hero :focus-visible { outline-color: var(--pino); } /* el hero es tema-pino en el celular; acá está sobre crema */
-    .interior :global(.vistas) { display: none; }
+    .hero { padding-top: var(--space-16); }
+    .pie-hero { grid-template-columns: 1fr auto; align-items: end; gap: var(--space-12); }
+    .stickers { justify-content: flex-end; max-width: var(--ancho-accion); }
   }
 </style>

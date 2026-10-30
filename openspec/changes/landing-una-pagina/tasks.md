@@ -95,6 +95,13 @@
 - [x] 12.2 Línea de hechos reales y enlaces directos en el hero; verificar contraste, voseo y que el test de copy pasa.
 - [x] 12.3 `revisor-de-marca`, axe, Lighthouse y capturas; commit y PR.
 
+## 13. Tarjetas a ancho completo (referencias de Juanma)
+
+- [x] 13.1 Sacar el panel fijo y el selector; hero con titular desde el problema, stickers y enlaces directos; franja; verificar a 360, 768 y 1440 px.
+- [x] 13.2 Seis tarjetas por necesidad (WhatsApp con su tema), casos como tarjetas, contacto en tarjetas, barra en píldora; verificar contraste (test) y axe.
+- [x] 13.3 Actualizar specs, `01-marca`, `02-contenido` y el registro de decisiones; `openspec validate`.
+- [x] 13.4 `revisor-de-marca`, Lighthouse y capturas para Juanma; commit y PR.
+
 ## Workflow follow-up
 
 - Archivar el cambio (`/opsx:archive`) al mergear.
