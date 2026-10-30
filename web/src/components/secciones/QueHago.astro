@@ -9,7 +9,7 @@ import { urlWhatsApp } from "../../lib/whatsapp";
 <section id="que-hago" class="seccion-ancha tema-crema" aria-labelledby="que-hago-titulo">
   <div class="marco">
     <h2 id="que-hago-titulo" data-aparece>¿Qué necesitás? <em>Algo de esto</em>, o algo distinto.</h2>
-    <p class="lead" data-aparece>Lo que invertís hoy te ahorra tiempo y plata mañana.</p>
+    <p class="manifiesto" data-aparece>Armo sistemas que se usan de verdad. Lo que invertís hoy te ahorra <em>tiempo y plata</em> mañana.</p>
 
     <ul class="tarjetas">
       {temas.map((t, i) => (
@@ -28,7 +28,8 @@ import { urlWhatsApp } from "../../lib/whatsapp";
 </section>
 
 <style>
-  .lead { margin-top: var(--space-4); }
+  .manifiesto { margin-top: var(--space-6); max-width: 28ch; font-family: var(--font-serif); font-size: var(--fs-h3); line-height: 1.2; }
+  .manifiesto em { font-style: italic; color: var(--musgo-hondo); } /* musgo hondo: el musgo puro no llega a 4.5:1 en este tamaño */
   .tarjetas { list-style: none; padding: 0; display: grid; gap: var(--space-4); margin-top: clamp(var(--space-8), 5vw, var(--space-12)); }
   .tarjeta {
     position: relative;

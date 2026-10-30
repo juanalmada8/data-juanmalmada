@@ -1,7 +1,7 @@
 ## ADDED Requirements
 
 ### Requirement: Cierre con contacto directo
-La sección de contacto SHALL cerrar con la pregunta «¿Cómo se ve el éxito para tu negocio?» como título, con la bajada «Sea un negocio, un consultorio, una empresa o una idea, contámelo y armemos el sistema.» (una afirmación, sin segunda pregunta), y ofrecer dos tarjetas grandes («Contame tu idea», por WhatsApp, y «Tengo una pregunta», por mail) e Instagram como enlace aparte, con WhatsApp como principal.
+La sección de contacto SHALL cerrar con la pregunta «¿Cómo se ve el éxito para tu negocio?» como título, con la bajada «Contámelo y lo vemos juntos, sin apuro.» (una afirmación, sin segunda pregunta), y ofrecer dos tarjetas grandes («Contame tu idea», por WhatsApp, y «Tengo una pregunta», por mail) e Instagram como enlace aparte, con WhatsApp como principal.
 
 #### Scenario: Canales visibles
 - **WHEN** se llega a la sección
@@ -45,3 +45,10 @@ El pie SHALL conservar el link a LinkedIn y el lema, sin ocupar un botón del co
 #### Scenario: Pie de página
 - **WHEN** se llega al final
 - **THEN** se ven el lema del manual «Un solo proveedor, todo el sistema.», el link a LinkedIn, la base («General Belgrano · 100% remoto») y el año
+
+### Requirement: Palabras que rotan en el cierre
+El cierre SHALL incluir la línea «Armemos el sistema de tu consultorio / equipo / empresa / idea / negocio.» con la última palabra cambiando en una sola pasada de menos de 5 s al llegar a la sección y terminando en «negocio», solo con CSS. Sin JavaScript o con movimiento reducido se ve directamente «negocio», y el lector de pantalla lee la frase completa una sola vez.
+
+#### Scenario: Movimiento reducido
+- **WHEN** el sistema pide movimiento reducido
+- **THEN** se ve «Armemos el sistema de tu negocio.» sin animación

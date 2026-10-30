@@ -6,6 +6,18 @@ const pasos = [
   { titulo: "Desarrollo", texto: "Lo construyo y lo vas viendo avanzar." },
   { titulo: "Soporte", texto: "Te lo dejo andando y te acompaño después de la entrega." },
 ];
+const hago = [
+  "Charlo antes de presupuestar.",
+  "Te explico en criollo qué voy a hacer y por qué.",
+  "Te aviso cuando algo no se puede o no conviene.",
+  "Dejo todo andando y te acompaño después de la entrega.",
+];
+const noHago = [
+  "Prometerte lo que no puedo cumplir.",
+  "Venderte algo que no necesitás.",
+  "Hablarte en difícil para impresionar.",
+  "Dejarte a medias o desaparecer después de entregar.",
+];
 ---
 <section id="como-trabajo" class="seccion-ancha tema-salvia" aria-labelledby="como-trabajo-titulo">
   <div class="marco">
@@ -19,6 +31,17 @@ const pasos = [
         </li>
       ))}
     </ol>
+
+    <div class="reglas" data-aparece>
+      <div class="regla si">
+        <h3 id="hago-titulo">Lo que hago</h3>
+        <ul aria-labelledby="hago-titulo">{hago.map((t) => <li>{t}</li>)}</ul>
+      </div>
+      <div class="regla no">
+        <h3 id="no-hago-titulo">Lo que no hago</h3>
+        <ul aria-labelledby="no-hago-titulo">{noHago.map((t) => <li>{t}</li>)}</ul>
+      </div>
+    </div>
   </div>
 </section>
 
@@ -29,6 +52,19 @@ const pasos = [
   .num { grid-row: span 2; font-family: var(--font-serif); font-size: var(--fs-numeral); line-height: .85; }
   .paso h3 { margin-bottom: var(--space-1); }
   .paso p { max-width: 24ch; }
+
+  /* Lo que hago / lo que no hago: dos tarjetas, con un signo en lugar de viñeta */
+  .reglas { display: grid; gap: var(--space-4); margin-top: clamp(var(--space-12), 6vw, var(--space-16)); }
+  .regla { display: grid; gap: var(--space-4); align-content: start; padding: var(--space-8); border-radius: var(--radius-tarjeta); }
+  .regla h3 { font-size: var(--fs-tarjeta); line-height: 1; letter-spacing: -.02em; }
+  .regla ul { list-style: none; padding: 0; display: grid; gap: var(--space-3); }
+  .regla li { position: relative; padding-left: var(--space-8); font-weight: 500; }
+  .regla li::before { position: absolute; left: 0; top: -.1em; font-weight: 800; font-size: 1.4em; line-height: 1.2; }
+  .si { background: var(--pino); color: var(--crema); }
+  .si li::before { content: "+"; content: "+" / ""; color: var(--salvia); } /* salvia, no lima: la lima no va en marcadores */
+  .no { background: var(--papel); color: var(--pino); }
+  .no li::before { content: "×"; content: "×" / ""; color: var(--pino); font-size: 1.7em; top: -.25em; } /* la × es más fina que el +: se agranda para pesar igual */
+  @media (min-width: 48rem) { .reglas { grid-template-columns: repeat(2, minmax(0, 1fr)); } }
 
   /* Desde 768 px: una sola fila de cuatro */
   @media (min-width: 48rem) {

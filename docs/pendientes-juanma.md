@@ -28,6 +28,7 @@ y sacala de esta lista.
 - [ ] **Qué cambió en Oral y Staffy** (problema → qué armé → qué cambió), con tus palabras y sin cifras si no son reales.
 - [ ] **Dos tonos nuevos, mezclas de tu paleta** (propuesta): `--papel` (crema + 30 % salvia) para una tarjeta y `--musgo-hondo` (musgo + 40 % pino) para dos tarjetas y el marco «años de oficio» del hero, porque crema sobre musgo puro no llega a 4.5:1. Confirmar o pedir otra cosa.
 - [ ] **Una línea de ahorro por tarjeta** (en tu voz, sin cifras inventadas): hoy «Portales», «Webs» y «Gestión» dicen qué hago pero no qué ahorra.
+- [ ] **«Lo que hago / Lo que no hago»** (idea de Humaan): los textos los redacté yo como compromisos de cualquier profesional serio; revisalos, cambialos o sumá los tuyos (con tu humor). Están en `web/src/components/secciones/ComoTrabajo.astro`. También el manifiesto de «¿Qué necesitás?» y las palabras que rotan en el cierre. Dejé **fuera**, hasta que lo valides, dos compromisos con peso: «Usar tus datos para otra cosa que no sea tu proyecto» (protección de datos, clínicas y RRHH) y «Esconder cómo funciona lo que armo» (transparencia/código); si querés alguno, decime cómo lo querés prometer.
 - [ ] **Titular nuevo** «Lo que hoy hacés a mano, que lo haga el sistema.» (2026-10-30, a prueba): confirmar o cambiar. El lema del manual quedó en el pie.
 - [ ] **El hilo común de lo que hacés** en una frase (¿convertís lo manual en sistema?, ¿juntás datos dispersos?): puede ser la bajada del hero.
 - [ ] Más casos reales: clínicas y empresas de RRHH (hay experiencia, falta elegir qué contar).

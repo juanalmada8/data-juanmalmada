@@ -26,8 +26,16 @@ Las tarjetas MUST NOT incluir cifras, porcentajes, plazos ni precios, y SHALL cu
 - **THEN** la revisión de marca lo marca como observación
 
 ### Requirement: El mensaje de ahorro en el cuerpo
-La sección «Qué hago» SHALL decir, en una línea y sin cifras, que lo que el cliente invierte hoy le ahorra tiempo y plata mañana.
+La sección «Qué necesitás» SHALL decir, sin cifras, que lo que el cliente invierte hoy le ahorra tiempo y plata mañana (dentro del manifiesto).
 
 #### Scenario: Texto de la sección
 - **WHEN** se lee la sección
-- **THEN** debajo del título dice «Lo que invertís hoy te ahorra tiempo y plata mañana.» y no aparecen porcentajes ni montos
+- **THEN** debajo del título el manifiesto dice «Lo que invertís hoy te ahorra tiempo y plata mañana.» y no aparecen porcentajes ni montos
+
+### Requirement: Manifiesto con palabras resaltadas
+«¿Qué necesitás?» SHALL abrir con una frase grande en serif («Armo sistemas que se usan de verdad. Lo que invertís hoy te ahorra *tiempo y plata* mañana.») con las palabras clave en itálica de acento.
+
+#### Scenario: Contraste del resaltado
+- **WHEN** se ve la frase sobre crema
+- **THEN** el itálico va en musgo hondo (musgo mezclado con pino), que pasa 4.5:1 en cualquier ancho
+

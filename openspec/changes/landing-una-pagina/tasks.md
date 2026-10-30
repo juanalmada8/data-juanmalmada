@@ -114,6 +114,11 @@
 - [x] 15.2 Caso destacado, franja salvia y cierre con pregunta; verificar axe, Lighthouse y lima.
 - [x] 15.3 `revisor-de-marca`, commit y PR.
 
+## 16. Ideas de Humaan
+
+- [x] 16.1 «Lo que hago / Lo que no hago» en «Cómo trabajo», manifiesto con palabras resaltadas y palabra que rota en el cierre; verificar a 360, 768 y 1440 px y con movimiento reducido.
+- [ ] 16.2 Juanma revisa y ajusta los textos de las tarjetas.
+
 ## Workflow follow-up
 
 - Archivar el cambio (`/opsx:archive`) al mergear.

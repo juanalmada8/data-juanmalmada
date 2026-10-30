@@ -9,7 +9,7 @@ import { contacto, sitio } from "../../data/sitio";
   <div class="marco grilla">
     <div class="texto" data-aparece>
       <h2 id="contacto-titulo">¿Cómo se ve el <em>éxito</em> para tu negocio?</h2>
-      <p class="lead">Sea un negocio, un consultorio, una empresa o una idea, contámelo y armemos el sistema.</p>
+      <p class="lead">Contámelo y lo vemos juntos, sin apuro.</p>
 
       <div class="canales">
         <a class="canal wa" href={contacto.whatsapp} target="_blank" rel="noopener noreferrer">
@@ -24,6 +24,10 @@ import { contacto, sitio } from "../../data/sitio";
           <span class="flecha" aria-hidden="true">→</span>
         </a>
       </div>
+      <p class="rota">
+        <span class="sr-only">Armemos el sistema de tu consultorio, tu equipo, tu empresa, tu idea o tu negocio.</span>
+        <span aria-hidden="true">Armemos el sistema de tu <span class="palabras"><em class="p" style="--i:0">consultorio</em><em class="p" style="--i:1">equipo</em><em class="p" style="--i:2">empresa</em><em class="p" style="--i:3">idea</em><em class="p" style="--i:4">negocio</em></span></span>
+      </p>
       <p class="ig">
         También estoy en{" "}
         <a class="link" href={contacto.instagram} target="_blank" rel="noopener noreferrer">Instagram<span class="sr-only"> (se abre en otra pestaña)</span></a>.
@@ -68,6 +72,28 @@ import { contacto, sitio } from "../../data/sitio";
   .canal:focus-visible { outline: 3px solid var(--crema); outline-offset: 4px; }
   @media (prefers-reduced-motion: no-preference) { .canal { transition: transform .25s ease; } .canal:hover { transform: translateY(calc(var(--space-2) * -1)); } }
   .ig { color: var(--salvia); }
+  /* Palabras que rotan (idea de Humaan): una sola pasada de menos de 5 s al llegar a la sección, que termina en «negocio».
+     Sin JavaScript o con movimiento reducido se ve directamente la última. Cada palabra lleva su punto, para que no flote. */
+  .rota { margin-top: var(--space-6); font-family: var(--font-serif); font-size: var(--fs-tarjeta); line-height: 1.1; letter-spacing: -.02em; }
+  .palabras { display: inline-grid; vertical-align: bottom; }
+  .p { grid-area: 1 / 1; font-style: italic; color: var(--salvia); }
+  .p::after { content: "."; color: var(--crema); font-style: normal; }
+  .p:not(:last-child) { display: none; }
+  @media (prefers-reduced-motion: no-preference) {
+    :global(html.js) .p:not(:last-child) { display: inline; }
+    :global(html.js) .p { opacity: 0; }
+    :global(html.js) .visible .p { animation: pasa .9s ease both; animation-delay: calc(var(--i) * .9s); }
+    :global(html.js) .visible .p:last-child { animation-name: queda; }
+  }
+  @keyframes pasa {
+    0% { opacity: 0; transform: translateY(40%); }
+    20%, 80% { opacity: 1; transform: none; }
+    100% { opacity: 0; transform: translateY(-40%); }
+  }
+  @keyframes queda {
+    0% { opacity: 0; transform: translateY(40%); }
+    100% { opacity: 1; transform: none; }
+  }
   .ig .link { display: inline-flex; align-items: center; min-height: var(--tap-min); }
   .ig .link { color: var(--crema); }
   .yo { display: grid; gap: var(--space-4); align-content: start; max-width: var(--ancho-texto); }
