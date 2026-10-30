@@ -1,7 +1,7 @@
 ## ADDED Requirements
 
 ### Requirement: Cierre con contacto directo
-La sección de contacto SHALL titularse «Armemos el sistema.», con la bajada «¿Tenés un negocio, un consultorio, una empresa o una idea?», y ofrecer dos tarjetas grandes («Contame tu idea», por WhatsApp, y «Tengo una pregunta», por mail) e Instagram como enlace aparte, con WhatsApp como principal.
+La sección de contacto SHALL cerrar con la pregunta «¿Cómo se ve el éxito para tu negocio?» como título, con la bajada «Sea un negocio, un consultorio, una empresa o una idea, contámelo y armemos el sistema.» (una afirmación, sin segunda pregunta), y ofrecer dos tarjetas grandes («Contame tu idea», por WhatsApp, y «Tengo una pregunta», por mail) e Instagram como enlace aparte, con WhatsApp como principal.
 
 #### Scenario: Canales visibles
 - **WHEN** se llega a la sección

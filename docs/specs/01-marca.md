@@ -89,12 +89,12 @@ Valores en `web/src/styles/tokens.css` (fuente de verdad): espacios `--space-1` 
 20 px, `--radius-box` 10 px, `--radius-pill`; `--borde-suave` 1 px salvia; tamaños `--fs-micro` (11 px, nunca menos)
 a `--fs-h1`; `--tap-min` 44 px.
 
-- **Fondos en la web** (2026-10-30): crema para el hero y las secciones de tarjetas; la franja de servicios, «Contacto» y el pie sobre pino; «Cómo trabajo» sobre salvia. **Tarjetas grandes** (`--radius-tarjeta` 28 px) en tonos de la paleta, no colores nuevos: pino, salvia, `--papel` (crema con 30 % de salvia) y `--musgo-hondo` (musgo con 40 % de pino, para poder poner crema encima). Cada par texto/fondo pasa 4.5:1 (test en `web/tests/temas.test.mjs`). **Barra:** píldora flotante sobre `--papel`. **Stickers:** pastillas inclinadas (`--giro-a/b/c`), apagadas con movimiento reducido.
-- **Lima como acento escaso** (2026-10-29): solo el CTA principal, la tarjeta de WhatsApp del contacto, el botón «Contame» de la tarjeta «El próximo» (sobre fondo oscuro), la pastilla `hola_mundo()` y una `m` del patrón, más los estados de foco y hover; no en tarjetas, índice, títulos ni marcadores. Medido el 2026-10-30: primera pantalla 1.3 % (escritorio) y 4.4 % (celular); página 1.4 % y 2.9 %.
+- **Fondos en la web** (2026-10-30): pino para la barra y el hero; salvia para la franja de servicios y «Cómo trabajo»; crema para las secciones de tarjetas; «Contacto» y el pie sobre pino. **Tarjetas grandes** (`--radius-tarjeta` 28 px) en tonos de la paleta, no colores nuevos: pino, salvia, `--papel` (crema con 30 % de salvia) y `--musgo-hondo` (musgo con 40 % de pino, para poder poner crema encima). Cada par texto/fondo pasa 4.5:1 (test en `web/tests/temas.test.mjs`). **Barra:** pino a ancho completo, pegada al hero (referencia: thoughtbot). **Marcos del hero:** tarjetas de color con una esquina cortada.
+- **Lima como acento escaso** (2026-10-29): solo los botones principales (barra y hero), la tarjeta de WhatsApp del contacto, el botón «Contame» de la tarjeta «El próximo» (sobre fondo oscuro), la pastilla `hola_mundo()` y una `m` del patrón, más los estados de foco y hover; no en tarjetas, índice, títulos ni marcadores. Medido el 2026-10-30: primera pantalla 1.7 % (escritorio, 1440×900) y 4.6 % (celular, 390×844); página 1.4 % y 2.9 %.
 - **Proporción del manual, también en la web:** crema 40 · pino 30 · musgo 15 · salvia 11 · lima 4. Crema es el fondo
   que más se ve; pino en bandas y tarjetas; salvia en una banda y placas; lima solo en acentos y el botón de WhatsApp
   sobre pino.
-- Plano: bloques sólidos y tarjetas de color sin borde ni sombras (la barra es una píldora blanca).
+- Plano: bloques sólidos y tarjetas de color sin borde ni sombras (la barra es pino).
 - Botón principal: pino sobre crema (lima sobre pino), pill, Manrope 700.
 
 ## Recursos gráficos

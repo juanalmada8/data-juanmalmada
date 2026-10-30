@@ -26,7 +26,7 @@ y sacala de esta lista.
   empresas). Con 5 o 6 líneas la web comunica «hago lo que sea» sin un titular. No se inventan. Se cargan en
   `web/src/data/proyectos.ts`; mientras esté vacío, la grilla no se muestra.
 - [ ] **Qué cambió en Oral y Staffy** (problema → qué armé → qué cambió), con tus palabras y sin cifras si no son reales.
-- [ ] **Dos tonos nuevos, mezclas de tu paleta** (propuesta): `--papel` (crema + 30 % salvia) para una tarjeta y `--musgo-hondo` (musgo + 40 % pino) para dos tarjetas y un sticker, porque crema sobre musgo puro no llega a 4.5:1. Confirmar o pedir otra cosa.
+- [ ] **Dos tonos nuevos, mezclas de tu paleta** (propuesta): `--papel` (crema + 30 % salvia) para una tarjeta y `--musgo-hondo` (musgo + 40 % pino) para dos tarjetas y el marco «años de oficio» del hero, porque crema sobre musgo puro no llega a 4.5:1. Confirmar o pedir otra cosa.
 - [ ] **Una línea de ahorro por tarjeta** (en tu voz, sin cifras inventadas): hoy «Portales», «Webs» y «Gestión» dicen qué hago pero no qué ahorra.
 - [ ] **Titular nuevo** «Lo que hoy hacés a mano, que lo haga el sistema.» (2026-10-30, a prueba): confirmar o cambiar. El lema del manual quedó en el pie.
 - [ ] **El hilo común de lo que hacés** en una frase (¿convertís lo manual en sistema?, ¿juntás datos dispersos?): puede ser la bajada del hero.

@@ -20,7 +20,7 @@ El hero SHALL mostrar el titular «Lo que hoy hacés a mano, que lo haga el sist
 
 #### Scenario: Celular chico de 360×640
 - **WHEN** se abre la página en un viewport de 360×640 sin scrollear
-- **THEN** se ven el titular y el CTA, y los enlaces directos y los stickers pueden continuar debajo
+- **THEN** se ven el titular y el CTA, y los enlaces directos y los marcos de color pueden continuar debajo
 
 ### Requirement: Nada limita el tipo de proyecto
 Ningún texto SHALL afirmar ni sugerir que Juanma hace un solo tipo de proyecto; los servicios y los casos SHALL presentarse como ejemplos.
@@ -30,7 +30,7 @@ Ningún texto SHALL afirmar ni sugerir que Juanma hace un solo tipo de proyecto;
 - **THEN** no hay frases como «solo hago…», «me especializo en turnos» ni una lista cerrada de servicios
 
 ### Requirement: Barra fija con índice numerado
-La página SHALL tener una barra fija, flotante como una píldora con margen a los costados, con el logo, un índice numerado de sus cuatro secciones (01 Qué hago, 02 Casos, 03 Cómo trabajo, 04 Contacto) y el botón «Contame tu idea», siempre visible al scrollear. Cada capítulo del índice SHALL tener un tramo de progreso que se llena a medida que se lee esa sección, y el de la sección actual SHALL estar marcado.
+La página SHALL tener una barra fija, de ancho completo y color pino (el mismo fondo del hero, sin corte entre ambos), con el logo, un índice numerado de sus cuatro secciones (01 Qué hago, 02 Casos, 03 Cómo trabajo, 04 Contacto) y el botón «Contame tu idea», siempre visible al scrollear. Cada capítulo del índice SHALL tener un tramo de progreso que se llena a medida que se lee esa sección, y el de la sección actual SHALL estar marcado.
 
 #### Scenario: Escritorio
 - **WHEN** el ancho es de 1024 px o más
@@ -63,19 +63,23 @@ El logo `<jm>` de la barra SHALL tener espacio libre arriba y abajo y MUST NOT t
 - **WHEN** se ve la barra a 1440 px
 - **THEN** hay al menos 12 px entre el logo y la línea inferior de la barra, y el logo mide al menos 100 px de ancho
 
-### Requirement: Hero claro con stickers de hechos reales
-El hero SHALL tener fondo crema, el titular grande en la tipografía del manual y, junto a la acción, stickers inclinados con hechos que existen en `sitio.ts` (más de 7 años de oficio, respuesta en menos de 24 h hábiles, la base) y la pastilla `hola_mundo()`. Los stickers MUST NOT llevar cifras, testimonios ni logos que no estén confirmados.
+### Requirement: Hero pino con marcos de color de hechos reales
+El hero SHALL tener fondo pino continuo con la barra, el titular grande en crema (con «el sistema» en itálica salvia) y, junto a la acción, tres marcos de color con una esquina cortada que llevan datos reales de `sitio.ts` en lugar de fotos: la presentación con la firma de Juanma, los años de oficio y la respuesta en menos de 24 h hábiles con la base y la pastilla `hola_mundo()`. Los marcos MUST NOT llevar cifras, testimonios ni logos que no estén confirmados.
 
 #### Scenario: Escritorio
-- **WHEN** el ancho es de 768 px o más
-- **THEN** el titular ocupa dos renglones y los stickers quedan a la derecha de la acción
+- **WHEN** el ancho es de 1024 px o más
+- **THEN** el titular ocupa dos renglones y los marcos quedan a la derecha de la acción
+
+#### Scenario: Celular
+- **WHEN** el ancho es menor a 768 px
+- **THEN** los marcos se apilan debajo de los enlaces directos y no hay scroll horizontal
 
 #### Scenario: Movimiento reducido
 - **WHEN** el sistema pide movimiento reducido
-- **THEN** los stickers no giran ni se mueven al pasar el mouse
+- **THEN** los marcos no se mueven al pasar el mouse
 
 ### Requirement: Franja con lo que hago
-Entre el hero y «Qué necesitás» SHALL haber una franja pino que recorre, en una línea, lo que Juanma hace y cierra con «y lo que haga falta».
+Entre el hero y «Qué necesitás» SHALL haber una franja salvia que recorre, en una línea, lo que Juanma hace y cierra con «y lo que haga falta».
 
 #### Scenario: Movimiento reducido
 - **WHEN** el sistema pide movimiento reducido
@@ -129,7 +133,7 @@ Todo `h1` y `h2` SHALL ocupar dos renglones o menos desde 768 px (a 768, 1024, 1
 
 #### Scenario: Cierre de contacto
 - **WHEN** se ve el título del contacto
-- **THEN** es una frase corta («Armemos el sistema.») y la pregunta («¿Tenés un negocio, un consultorio, una empresa o una idea?») va como bajada
+- **THEN** es la pregunta «¿Cómo se ve el éxito para tu negocio?» (dos renglones o menos) y la bajada invita a contar sin hacer otra pregunta
 
 ### Requirement: Sin adornos que no dicen nada
 Las secciones MUST NOT llevar etiquetas sobre el título («01 — Qué hago»), líneas finas ni cajas definidas solo por un borde de 1 px; el orden lo da el índice de la barra y las superficies se definen por su relleno. Ningún texto pensado para leerse SHALL medir menos de 13 px.
@@ -139,7 +143,7 @@ Las secciones MUST NOT llevar etiquetas sobre el título («01 — Qué hago»),
 - **THEN** no marca etiquetas sobre títulos, líneas finas, cajas con borde ni texto menor a 13 px
 
 ### Requirement: La lima como acento escaso
-La lima SHALL aparecer solo en el CTA principal del hero, la tarjeta de WhatsApp del contacto, la pastilla `hola_mundo()`, los botones de acción sobre fondos oscuros y a lo sumo una `m` del patrón, y MUST NOT usarse como fondo de las tarjetas de «Qué necesitás» ni de los casos. Medido el 2026-10-30 sobre capturas: primera pantalla 1.3 % en escritorio y 4.4 % en celular (antes de la reducción: 2.9 % y 7.8 %); página completa 1.4 % y 2.9 %. Esos valores SHALL ser el tope.
+La lima SHALL aparecer solo en los botones principales (el de la barra, el del hero, la tarjeta de WhatsApp y el «Contame» de «El próximo»), la pastilla `hola_mundo()` y a lo sumo una `m` del patrón, y MUST NOT usarse como fondo de las tarjetas de «Qué necesitás» ni de los casos, ni en títulos. Medido el 2026-10-30 sobre capturas: primera pantalla 1.7 % en escritorio (1440×900) y 4.6 % en celular (390×844) (antes de la reducción: 2.9 % y 7.8 %); página completa 1.4 % y 2.9 %. Esos valores SHALL ser el tope.
 
 #### Scenario: Medición
 - **WHEN** se miden los píxeles lima en capturas de la primera pantalla y de la página completa

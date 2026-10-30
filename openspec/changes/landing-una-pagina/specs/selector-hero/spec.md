@@ -8,11 +8,11 @@ El h1 del hero SHALL ser «Lo que hoy hacés a mano, que lo haga el sistema.» (
 - **THEN** el titular habla de lo que el visitante hace hoy, no de Juanma, y el CTA se ve sin scrollear
 
 ### Requirement: Datos de confianza y contacto directo en el hero
-El hero SHALL mostrar enlaces directos a WhatsApp, Instagram y mail (en ese orden) y stickers con los hechos de `sitio.ts`: más de 7 años de oficio, respuesta en menos de 24 h hábiles y la base. No SHALL mostrar testimonios, logos ni cifras que no estén confirmadas.
+El hero SHALL mostrar enlaces directos a WhatsApp, Instagram y mail (en ese orden) y marcos de color con los hechos de `sitio.ts`: más de 7 años de oficio, respuesta en menos de 24 h hábiles y la base. No SHALL mostrar testimonios, logos ni cifras que no estén confirmadas.
 
 #### Scenario: Hero en 360 px
 - **WHEN** se ve el hero en un celular de 360 px
-- **THEN** los tres enlaces miden al menos 44 px de alto táctil y los stickers se apilan sin desbordar
+- **THEN** los tres enlaces miden al menos 44 px de alto táctil y los marcos se apilan sin desbordar
 
 ### Requirement: Sin selector interactivo ni panel fijo
 La página MUST NOT tener un selector de chips que cambie el hero ni un panel fijo con vista previa: la elección de «qué necesitás» ocurre en las tarjetas, donde cada una lleva directo a WhatsApp.

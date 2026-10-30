@@ -3,7 +3,7 @@
 // La copia repetida va aria-hidden: el lector de pantalla lee la lista una sola vez.
 const cosas = ["Webs y apps", "Plataformas", "Turnos", "Gestión", "Datos", "Automatización", "Nube", "y lo que haga falta"];
 ---
-<div class="franja tema-pino" data-franja>
+<div class="franja tema-salvia" data-franja>
   <ul class="pista" aria-label="Lo que armo">
     {cosas.map((c) => <li>{c}</li>)}
   </ul>
@@ -41,7 +41,7 @@ const cosas = ["Webs y apps", "Plataformas", "Turnos", "Gestión", "Datos", "Aut
     font-size: var(--fs-h3);
     white-space: nowrap;
   }
-  .pista li::after { content: ""; display: inline-block; width: .5rem; height: .5rem; margin-left: var(--space-8); border-radius: 50%; background: var(--salvia); vertical-align: middle; }
+  .pista li::after { content: ""; display: inline-block; width: .5rem; height: .5rem; margin-left: var(--space-8); border-radius: 50%; background: var(--pino); vertical-align: middle; }
   @media (prefers-reduced-motion: no-preference) {
     .pista { animation: corre 40s linear infinite; }
     .franja:hover .pista, .franja[data-pausada] .pista { animation-play-state: paused; }

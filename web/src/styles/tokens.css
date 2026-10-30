@@ -62,6 +62,7 @@
   --fs-h2:    clamp(2.125rem, 1.4rem + 3vw, 3.75rem);
   --fs-h1:    clamp(2.25rem, 1.2rem + 5.6vw, 6rem);         /* el titular del hero es grande: hasta 96 px */
   --alto-tarjeta: 17rem; --alto-tarjeta-chica: 11rem; /* alto mínimo de las tarjetas grandes y de las chicas */
+  --ancho-marcos: clamp(38rem, 36vw, 50rem); /* los tres marcos de color del hero */
   --ancho-accion: 30rem; /* columna de la bajada, el CTA y los enlaces del hero */
   --fs-tarjeta: clamp(1.75rem, 1.1rem + 1.8vw, 2.75rem);    /* títulos de las tarjetas grandes */
   --fs-numeral: clamp(3.5rem, 2.4rem + 4vw, 5.5rem);      /* números grandes en serif (≥ 48 px) */
@@ -85,13 +86,13 @@
   --tap-min: 44px;
   --espacio-seccion: clamp(4.5rem, 9vw, 7.5rem); /* entre secciones: 120 px o más en escritorio */
   --ancho-lectura: 38rem;  /* una sola medida de lectura (≈ 46 caracteres) */
-  --alto-barra: 4rem; /* alto de la píldora de la barra (celular: ícono </j>); con su aire de arriba queda en ≈ 76 px */
+  --alto-barra: 4rem; /* alto de la barra pino (celular: ícono </j>) */
   --grosor-nav: 3px;     /* subrayado de la sección actual y línea de progreso */
   --tracking-mono: .12em; /* espaciado de las etiquetas mono */
   --ancho-firma: 10rem;
   --alto-banda: clamp(44px, 6vw, 80px); /* banda del patrón de la m */
   --radius-celu: 28px;   /* marco de celu de las capturas */
-  --giro-a: -3deg; --giro-b: 2.5deg; --giro-c: 4deg; /* stickers y tarjetas inclinadas (se apagan con movimiento reducido) */
+  --giro-a: -3deg; --giro-b: 2.5deg; --giro-c: 4deg; /* tarjetas inclinadas al pasar el mouse (se apagan con movimiento reducido) */
 }
 @media (min-width: 30rem) {
   :root { --alto-barra: 5rem; } /* con el logo <jm> (≥ 100 px de ancho ≈ 64 px de alto) y aire arriba y abajo */

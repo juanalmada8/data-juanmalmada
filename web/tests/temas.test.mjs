@@ -63,3 +63,11 @@ test("cada par texto/fondo de las tarjetas pasa el contraste AA (4.5:1) con los 
     assert.ok(ratio >= 4.5, `${t.id} (${t.fondo}): contraste ${ratio.toFixed(2)}`);
   }
 });
+
+test("sobre el pino de la barra y el hero: crema y lima pasan AA (4.5:1) y la salvia del itálico también", () => {
+  const lin = (c) => { c /= 255; return c <= 0.03928 ? c / 12.92 : ((c + 0.055) / 1.055) ** 2.4; };
+  const L = ([r, g, b]) => 0.2126 * lin(r) + 0.7152 * lin(g) + 0.0722 * lin(b);
+  const ratio = (a, b) => (Math.max(L(a), L(b)) + 0.05) / (Math.min(L(a), L(b)) + 0.05);
+  const pino = [0x13, 0x3a, 0x2e], crema = [0xf3, 0xef, 0xe3], lima = [0xd4, 0xe8, 0x5c], salvia = [0xa8, 0xc5, 0xae];
+  for (const [nombre, c] of [["crema", crema], ["lima", lima], ["salvia", salvia]]) assert.ok(ratio(c, pino) >= 4.5, `${nombre} sobre pino: ${ratio(c, pino).toFixed(2)}`);
+});

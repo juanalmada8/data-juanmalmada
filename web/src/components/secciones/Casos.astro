@@ -1,5 +1,5 @@
 ---
-// «Cosas que armé»: casos reales como tarjetas grandes (problema → qué armé), lado a lado, y una tarjeta que invita a sumar el próximo.
+// «Cosas que armé»: casos reales como tarjetas grandes (el primero destacado a ancho completo) y una tarjeta que invita a sumar el próximo.
 // Cada caso es un archivo de src/content/casos/: sumar uno no toca este componente. Spec: specs/casos.
 import Captura from "../Captura.astro";
 import { cargarCasos } from "../../lib/casos";
@@ -13,7 +13,7 @@ const fondos = ["salvia", "pino"];
 <section id="casos" class="seccion-ancha tema-crema" aria-labelledby="casos-titulo">
   <div class="marco">
     <h2 id="casos-titulo" data-aparece>Cosas que <em>armé</em>.</h2>
-    <p class="lead" data-aparece>Dos ejemplos reales. Lo tuyo puede ser otra cosa.</p>
+    <p class="lead" data-aparece>Casos reales. Lo tuyo puede ser otra cosa.</p>
 
     <ul class="casos">
       {casos.map((c, i) => (
@@ -72,6 +72,12 @@ const fondos = ["salvia", "pino"];
   .bullets li { position: relative; padding-left: var(--space-6); }
   .bullets li::before { content: ""; position: absolute; left: 0; top: .6em; width: .75rem; height: 2px; background: currentColor; }
   .captura-caso { width: 100%; margin-top: var(--space-4); }
+  /* El primer caso es el destacado (como el «featured case study» de thoughtbot): a ancho completo, el texto a la izquierda y la captura a la derecha */
+  @media (min-width: 48rem) {
+    .caso:first-child { grid-column: 1 / -1; grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); column-gap: var(--space-12); align-items: start; }
+    .caso:first-child > * { grid-column: 1; }
+    .caso:first-child .captura-caso { grid-column: 2; grid-row: 1 / span 5; margin-top: 0; align-self: center; }
+  }
   .proximo { align-content: center; min-height: var(--alto-tarjeta-chica); }
   .link { display: inline-flex; align-items: center; min-height: var(--tap-min); }
   .caso .link:hover { color: inherit; text-decoration-thickness: 4px; } /* el hover global (musgo) no se lee sobre estos fondos */
@@ -84,5 +90,9 @@ const fondos = ["salvia", "pino"];
   .linea { padding: var(--space-6); border-radius: var(--radius-tarjeta); background: var(--papel); color: var(--pino); }
   @media (min-width: 40rem) { .lineas { grid-template-columns: repeat(2, minmax(0, 1fr)); } }
   @media (min-width: 64rem) { .lineas { grid-template-columns: repeat(3, minmax(0, 1fr)); } }
-  @media (min-width: 48rem) { .casos { grid-template-columns: repeat(2, minmax(0, 1fr)); } .proximo { grid-column: 1 / -1; grid-template-columns: 1fr auto; align-items: center; } }
+  @media (min-width: 48rem) {
+    .casos { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+    /* El primer caso ocupa una fila; si «El próximo» quedara solo en una fila, ocupa todo el ancho */
+    .proximo:last-child:nth-child(even) { grid-column: 1 / -1; }
+  }
 </style>

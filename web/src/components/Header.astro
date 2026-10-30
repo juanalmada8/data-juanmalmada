@@ -1,5 +1,5 @@
 ---
-// Barra flotante en píldora, con índice numerado: logo, cuatro capítulos (01–04) con su tramo de progreso, y «Contame tu idea».
+// Barra pino a ancho completo, pegada al hero (como thoughtbot), con índice numerado: logo, cuatro capítulos (01–04) con su tramo de progreso, y «Contame tu idea».
 // Spec: specs/landing («Barra fija con índice numerado»). El logo <jm> va desde 480 px (mínimo de marca: 100 px);
 // por debajo, el ícono </j> y el capítulo actual. Un script chico marca el capítulo y llena los tramos al leer.
 import Logo from "./Logo.astro";
@@ -13,11 +13,11 @@ const capitulos = [
   { id: "contacto", n: "04", nombre: "Contacto" },
 ];
 ---
-<header class="barra" data-barra>
-  <div class="fila">
+<header class="barra tema-pino" data-barra>
+  <div class="marco fila">
     <a class="marca" href="/" aria-label={`${sitio.nombre}, ir al inicio`}>
-      <Logo variante="pino" ancho="104px" class="logo-grande" decorativo />
-      <Icono variante="pino" ancho="34px" class="logo-chico" />
+      <Logo variante="crema" ancho="104px" class="logo-grande" decorativo />
+      <Icono variante="sin-fondo" ancho="34px" class="logo-chico" />
     </a>
 
     <!-- Celular: el capítulo actual (decorativo; el contenido ya tiene sus títulos) -->
@@ -36,7 +36,7 @@ const capitulos = [
       </ol>
     </nav>
 
-    <a class="boton" href="/#contacto">Contame tu idea</a>
+    <a class="boton lima" href="/#contacto">Contame tu idea</a>
   </div>
 
   <!-- Celular: los cuatro tramos como una barra segmentada sobre el borde -->
@@ -92,27 +92,18 @@ const capitulos = [
 </script>
 
 <style>
-  /* Píldora flotante: el contenido pasa por debajo; el fondo es blanco, para que no se confunda con las tarjetas */
+  /* Barra pino a ancho completo: sigue siendo pino al pasar a las secciones claras, así no hay franja cortada */
   .barra {
     position: sticky;
     top: 0;
     z-index: 50;
-    padding: var(--space-3) var(--margen-pagina) 0;
-    color: var(--pino);
   }
-  .fila {
-    display: flex; align-items: center; justify-content: space-between; gap: var(--space-4);
-    min-height: var(--alto-barra); position: relative;
-    padding-inline: var(--space-4);
-    background: var(--blanco);
-    border-radius: var(--radius-pill);
-  }
+  .fila { display: flex; align-items: center; justify-content: space-between; gap: var(--space-4); min-height: var(--alto-barra); position: relative; }
   .marca { display: inline-flex; align-items: center; justify-content: center; min-height: var(--tap-min); min-width: var(--tap-min); }
   .marca :global(.logo-grande) { display: none; }
 
-  /* Botón de la barra: pino sobre crema; la lima queda para el CTA del hero. Nunca en dos renglones. */
+  /* Botón de la barra: lima sobre pino. Nunca en dos renglones. */
   .barra .boton { min-height: var(--tap-min); padding: 0 var(--space-4); font-size: var(--fs-small); white-space: nowrap; }
-  .barra .boton:hover { background: var(--lima); border-color: var(--pino); color: var(--pino); }
 
   .donde { flex: 1; min-width: 0; font-size: var(--fs-label); letter-spacing: var(--tracking-mono); text-transform: uppercase; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; text-align: center; }
   .donde:empty { visibility: hidden; }
@@ -127,17 +118,17 @@ const capitulos = [
     font-size: var(--fs-label);
     font-weight: 700;
     font-variant-numeric: tabular-nums;
-    color: var(--pino);
+    color: var(--crema);
     transition: background-color .2s ease, color .2s ease;
   }
   .t { font-weight: 700; font-size: var(--fs-small); white-space: nowrap; }
-  .cap:hover .n { background: var(--salvia); }
-  /* El capítulo actual: el número pasa a una pastilla pino con texto crema */
-  .cap[aria-current="location"] .n { background: var(--pino); color: var(--crema); }
+  .cap:hover .n { background: var(--musgo-hondo); }
+  /* El capítulo actual: el número pasa a una pastilla crema con texto pino */
+  .cap[aria-current="location"] .n { background: var(--crema); color: var(--pino); }
 
   /* Tramo de progreso: se llena de izquierda a derecha con --p (0 a 1); sin transición, solo refleja el scroll */
-  .tramo { display: block; height: var(--grosor-nav); background: var(--salvia); overflow: hidden; }
-  .tramo b { display: block; height: 100%; background: var(--pino); transform: scaleX(var(--p, 0)); transform-origin: left; }
+  .tramo { display: block; height: var(--grosor-nav); background: var(--musgo); overflow: hidden; }
+  .tramo b { display: block; height: 100%; background: var(--crema); transform: scaleX(var(--p, 0)); transform-origin: left; }
 
   /* Menos de 1024 px: el índice no entra. Queda el capítulo actual y la barra segmentada; el índice sigue en el
      documento para teclado y lector de pantalla y se despliega bajo la barra al recibir el foco. */
@@ -145,15 +136,13 @@ const capitulos = [
   .indice:focus-within {
     position: absolute;
     top: 100%; left: 0; right: 0;
-    padding: var(--space-4) var(--space-6);
-    background: var(--blanco);
-    border-radius: var(--radius-tarjeta);
+    padding: var(--space-4) var(--margen-pagina);
+    background: var(--musgo-hondo);
   }
   .indice:focus-within ol { flex-wrap: wrap; gap: var(--space-2) var(--space-6); }
-  .segmentos { position: absolute; left: calc(var(--margen-pagina) + var(--space-8)); right: calc(var(--margen-pagina) + var(--space-8)); bottom: var(--space-2); display: grid; grid-template-columns: repeat(4, 1fr); gap: var(--space-1); }
+  .segmentos { position: absolute; left: var(--margen-pagina); right: var(--margen-pagina); bottom: 0; display: grid; grid-template-columns: repeat(4, 1fr); gap: var(--space-1); }
 
   @media (min-width: 30rem) {
-    .fila { padding-inline: var(--space-6); }
     .marca :global(.logo-grande) { display: block; }
     .marca :global(.logo-chico) { display: none; }
     .barra .boton { padding: 0 var(--space-6); font-size: var(--fs-body); }

@@ -12,7 +12,7 @@ La sección SHALL mostrar el caso de Oral Odontología Familiar (oral.com.ar: we
 - **THEN** uno es un consultorio local y el otro una plataforma para empresas
 
 ### Requirement: Los casos se ven a la vez, como tarjetas grandes
-Los casos SHALL presentarse como tarjetas grandes de color, lado a lado en escritorio y apiladas en el celular, sin pestañas, seguidas de una tarjeta que invita a sumar el próximo (enlace a WhatsApp).
+Los casos SHALL presentarse como tarjetas grandes de color, sin pestañas: el primero como caso destacado a ancho completo (texto a la izquierda y captura a la derecha en escritorio) y los demás lado a lado, seguidas de una tarjeta que invita a sumar el próximo (enlace a WhatsApp).
 
 #### Scenario: Ver los dos casos
 - **WHEN** la persona llega a «Cosas que armé»

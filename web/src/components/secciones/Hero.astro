@@ -1,13 +1,13 @@
 ---
-// Hero: el titular habla del problema del visitante («lo que hoy hacés a mano»), una bajada, el CTA, el contacto directo y
-// stickers inclinados con hechos reales de sitio.ts. El lema del manual («Un solo proveedor, todo el sistema.») va en el pie.
+// Hero pino pegado a la barra (como thoughtbot): titular crema, bajada, CTA lima y enlaces directos; a la derecha, tres marcos de color
+// con datos reales en lugar de fotos (la firma de Juanma, los años de oficio y la respuesta). El lema del manual va en el pie.
 // Spec: openspec/changes/landing-una-pagina/specs/{landing,selector-hero}.
 import Firma from "../Firma.astro";
 import { sitio, contacto } from "../../data/sitio";
 
-const experiencia = sitio.experiencia[0].toUpperCase() + sitio.experiencia.slice(1); // «Más de 7 años»
+const experiencia = sitio.experiencia.match(/\d+/)![0]; // «7»; el «Más de» va en el marcado
 ---
-<section id="hero" class="hero tema-crema" aria-labelledby="hero-titulo">
+<section id="hero" class="hero tema-pino" aria-labelledby="hero-titulo">
   <div class="marco interior">
     <h1 id="hero-titulo"><span class="r">Lo que hoy hacés a mano,</span> <span class="r">que lo haga <em>el sistema</em>.</span></h1>
 
@@ -23,58 +23,65 @@ const experiencia = sitio.experiencia[0].toUpperCase() + sitio.experiencia.slice
         </p>
       </div>
 
-      <div class="lado">
-        <div class="presenta">
+      <div class="marcos" role="group" aria-label="Datos de Juanma">
+        <div class="marco-c yo">
           <p>Soy Juanma, ingeniero de datos y desarrollador full stack.</p>
           <Firma color="pino" ancho="var(--ancho-firma)" decorativa />
         </div>
-
-      <ul class="stickers" aria-label="Datos de Juanma">
-        <li class="st a"><span>{experiencia} de oficio</span></li>
-        <li class="st b"><span>Respondo en {sitio.respuesta}</span></li>
-        <li class="st c"><span>{sitio.base}</span></li>
-        <li class="st d" aria-hidden="true"><code translate="no">hola_mundo()</code></li>
-      </ul>
+        <div class="marco-c anios">
+          <span class="mas">Más de</span>
+          <span class="num" aria-hidden="true">{experiencia}</span>
+          <span class="sr-only">{experiencia}</span>
+          <span class="unidad">años de oficio</span>
+        </div>
+        <div class="marco-c resp">
+          <p>Respondo en {sitio.respuesta}.</p>
+          <p class="base">{sitio.base}</p>
+          <code class="guino" translate="no" aria-hidden="true">hola_mundo()</code>
+        </div>
       </div>
     </div>
   </div>
 </section>
 
 <style>
-  .hero { padding: var(--space-12) 0 var(--space-16); }
+  .hero { padding: var(--space-8) 0 var(--space-16); }
   .interior { display: grid; gap: var(--space-8); }
-  /* Dos renglones fijos desde 768 px; en el celular corre libre (hasta 3) */
+  h1 em { color: var(--salvia); } /* la lima queda para los botones y la pastilla: el itálico del titular va en salvia */
   .pie-hero { display: grid; gap: var(--space-8); }
   .accion { display: grid; gap: var(--space-4); justify-items: start; align-content: start; max-width: var(--ancho-accion); }
   .accion .boton { white-space: nowrap; }
   .lead { max-width: 34ch; }
-  .lado { display: grid; gap: var(--space-6); align-content: end; }
-  .presenta { display: grid; gap: var(--space-2); justify-items: start; max-width: 24rem; }
-  .presenta p { font-family: var(--font-serif); font-size: var(--fs-h3); line-height: 1.15; }
   .directo { display: flex; flex-wrap: wrap; align-items: center; column-gap: var(--space-4); font-size: var(--fs-small); }
   .directo a { display: inline-flex; align-items: center; min-height: var(--tap-min); min-width: var(--tap-min); font-weight: 700; text-underline-offset: .2em; }
 
-  /* Stickers: pastillas inclinadas, cada una en un tono de la paleta; solo una lleva lima */
-  .stickers { list-style: none; padding: 0; display: flex; flex-wrap: wrap; gap: var(--space-3) var(--space-4); align-content: start; }
-  .st { padding: var(--space-3) var(--space-6); border-radius: var(--radius-pill); font-weight: 700; font-size: var(--fs-small); }
-  .a { background: var(--salvia); color: var(--pino); --giro: var(--giro-a); }
-  .b { background: var(--pino); color: var(--crema); --giro: var(--giro-b); }
-  .c { background: var(--musgo-hondo); color: var(--crema); --giro: var(--giro-c); }
-  .d { background: var(--lima); color: var(--pino); --giro: var(--giro-a); font-weight: 500; }
-  @media (prefers-reduced-motion: no-preference) {
-    .st { transform: rotate(var(--giro)); transition: transform .2s ease; }
-    .st:hover { transform: rotate(0deg) scale(1.04); }
+  /* Marcos de color con una esquina cortada (la hoja): cada uno lleva un dato real, no una foto */
+  .marcos { display: grid; gap: var(--space-4); align-content: start; }
+  .marco-c {
+    display: grid; gap: var(--space-2); align-content: space-between;
+    padding: var(--space-6);
+    border-radius: var(--radius-tarjeta) var(--radius-tarjeta) var(--radius-tarjeta) var(--space-2);
   }
+  .yo { background: var(--salvia); color: var(--pino); }
+  .anios { background: var(--musgo-hondo); color: var(--crema); justify-items: start; border-radius: var(--radius-tarjeta) var(--space-2) var(--radius-tarjeta) var(--radius-tarjeta); }
+  .resp { background: var(--papel); color: var(--pino); }
+  .yo p { font-family: var(--font-serif); font-size: var(--fs-h3); line-height: 1.15; }
+  .mas, .unidad { font-weight: 700; font-size: var(--fs-small); }
+  .num { font-family: var(--font-serif); font-size: var(--fs-numeral); line-height: .85; letter-spacing: -.03em; }
+  .resp p { font-weight: 700; }
+  .resp .base { font-weight: 500; font-size: var(--fs-small); }
+  .guino { justify-self: start; padding: var(--space-1) var(--space-4); border-radius: var(--radius-pill); background: var(--lima); color: var(--pino); font-size: var(--fs-small); font-weight: 500; }
 
   @media (min-width: 48rem) {
+    .hero { padding-bottom: var(--space-24); }
     h1 .r { display: block; }
+    .marcos { grid-template-columns: 1fr 1fr; }
+    .yo { grid-row: span 2; }
   }
-  /* Desde 1024 px la acción y los stickers van lado a lado; antes, los stickers bajan para que el CTA no se parta */
+  /* Desde 1024 px la acción y los marcos van lado a lado; antes, los marcos bajan para que el CTA no se parta */
   @media (min-width: 64rem) {
-    .hero { padding-top: var(--space-16); }
+    .hero { padding-top: var(--space-12); }
     .pie-hero { grid-template-columns: 1fr auto; align-items: start; gap: var(--space-12); }
-    .lado { justify-items: end; }
-    .presenta { justify-items: end; text-align: right; }
-    .stickers { justify-content: flex-end; max-width: var(--ancho-accion); }
+    .marcos { width: var(--ancho-marcos); }
   }
 </style>

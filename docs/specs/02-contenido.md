@@ -105,23 +105,23 @@ Mensaje: **«Lo que hoy hacés a mano, que lo haga el sistema.»** (titular, hab
 manual, **«Un solo proveedor, todo el sistema.»**, va en el pie. Armo sistemas a medida para lo que el negocio necesite;
 los servicios y los casos son **ejemplos, no un límite**. Ver y contactar, a 1–3 clics desde cualquier punto.
 
-**Idea:** clásico y confiable, con color: un titular grande, hechos reales en stickers, una franja con lo que hago y tarjetas
+**Idea:** clásico y confiable, con color: un titular grande, hechos reales en marcos de color, una franja con lo que hago y tarjetas
 de color donde cada una lleva directo a WhatsApp con su tema. Sin fotos de stock, cifras ni logos inventados.
 
 | Sección | Contenido |
 |---|---|
-| Hero | Titular «Lo que hoy hacés a mano, que lo haga *el sistema*.» (2 renglones desde 768 px, hasta 3 en celular), bajada «Armo webs, apps, turnos, sistemas de gestión y reportes que se actualizan solos: lo que tu negocio necesite.», presentación «Soy Juanma, ingeniero de datos y desarrollador full stack.» con la firma, CTA «Contame tu idea», enlaces directos a WhatsApp, Instagram y mail, y stickers inclinados con hechos reales (más de 7 años de oficio · respuesta en menos de 24 h hábiles · base) y `hola_mundo()`. |
-| Franja | Banda pino que corre: Webs y apps · Plataformas · Turnos · Gestión · Datos · Automatización · Nube · y lo que haga falta. Quieta con movimiento reducido. |
+| Hero | Barra y hero en pino continuo. Titular «Lo que hoy hacés a mano, que lo haga *el sistema*.» (2 renglones desde 768 px, hasta 3 en celular), bajada «Armo webs, apps, turnos, sistemas de gestión y reportes que se actualizan solos: lo que tu negocio necesite.», presentación «Soy Juanma, ingeniero de datos y desarrollador full stack.» con la firma, CTA «Contame tu idea», enlaces directos a WhatsApp, Instagram y mail, y tres marcos de color con datos reales en lugar de fotos: presentación con firma, «Más de 7 años de oficio», respuesta en menos de 24 h hábiles con la base y `hola_mundo()`. |
+| Franja | Banda salvia que corre: Webs y apps · Plataformas · Turnos · Gestión · Datos · Automatización · Nube · y lo que haga falta. Quieta con movimiento reducido. |
 | Qué necesitás | «¿Qué necesitás? *Algo de esto*, o algo distinto.» y 6 tarjetas de color (problema como lo diría el cliente → solución → «Contame esto» a WhatsApp con el mensaje de su tema), «Otra idea» al final. Gestión y Datos llevan un mini diagrama. |
-| Cosas que armé | Oral y Staffy como tarjetas grandes lado a lado (nombre, una línea, 3 bullets, link, captura) una tarjeta «El próximo puede ser el tuyo» y, debajo, «Y otras cosas que armé»: una grilla de líneas (estilo Etch) que se completa en `web/src/data/proyectos.ts` y no se ve mientras esté vacía. Sin pestañas. |
+| Cosas que armé | Oral como caso destacado a ancho completo y Staffy al lado de «El próximo» (nombre, una línea, 3 bullets, link, captura) una tarjeta «El próximo puede ser el tuyo» y, debajo, «Y otras cosas que armé»: una grilla de líneas (estilo Etch) que se completa en `web/src/data/proyectos.ts` y no se ve mientras esté vacía. Sin pestañas. |
 | Cómo trabajo | Charla · Propuesta · Desarrollo · Soporte, con números grandes en serif, sobre salvia. |
-| Contacto | «Armemos el sistema.», la pregunta «¿Tenés un negocio, un consultorio, una empresa o una idea?», dos tarjetas («Contame tu idea» por WhatsApp, «Tengo una pregunta» por mail), Instagram aparte y la línea «Este sitio habla de mí, pero me interesa saber de vos.» con presentación y firma. Pie: lema del manual, LinkedIn, base y año. |
+| Contacto | Cierre con la pregunta «¿Cómo se ve el éxito para tu negocio?» (como thoughtbot), «Sea un negocio, un consultorio, una empresa o una idea, contámelo y armemos el sistema.», dos tarjetas («Contame tu idea» por WhatsApp, «Tengo una pregunta» por mail), Instagram aparte y la línea «Este sitio habla de mí, pero me interesa saber de vos.» con presentación y firma. Pie: lema del manual, LinkedIn, base y año. |
 
-**Barra:** píldora flotante con el logo `<jm>` (ícono `</j>` en el celular), **índice numerado** 01–04 con un tramo de progreso por
-capítulo, y «Contame tu idea» en pino.
+**Barra:** pino a ancho completo, con el logo `<jm>` en crema (ícono `</j>` en el celular), **índice numerado** 01–04 con un tramo de progreso por
+capítulo, y «Contame tu idea» en lima.
 
 **Sin adornos:** no hay etiquetas sobre los títulos, líneas finas ni cajas definidas por un borde; las superficies se definen
-por su relleno. Titulares de dos renglones o menos desde 768 px. Nada que se lea baja de 13 px. La lima queda para el CTA principal, la tarjeta de WhatsApp, el botón de «El próximo», la pastilla `hola_mundo()` y una `m` del patrón, más los estados de foco y hover.
+por su relleno. Titulares de dos renglones o menos desde 768 px. Nada que se lea baja de 13 px. La lima queda para los botones principales, la tarjeta de WhatsApp, el botón de «El próximo», la pastilla `hola_mundo()` y una `m` del patrón, más los estados de foco y hover.
 
 ## Migración del contenido actual
 

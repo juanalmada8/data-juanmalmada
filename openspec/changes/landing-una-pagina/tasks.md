@@ -108,6 +108,12 @@
 - [x] 14.2 Grilla «Y otras cosas que armé» alimentada por `proyectos.ts` (oculta si está vacía); probada con datos de ejemplo y revertida.
 - [ ] 14.3 Cargar los proyectos reales cuando Juanma los pase.
 
+## 15. Estructura de thoughtbot (barra y hero pino)
+
+- [x] 15.1 Barra pino a ancho completo y hero pino con marcos de color; verificar a 390, 1024 y 1440 px.
+- [x] 15.2 Caso destacado, franja salvia y cierre con pregunta; verificar axe, Lighthouse y lima.
+- [x] 15.3 `revisor-de-marca`, commit y PR.
+
 ## Workflow follow-up
 
 - Archivar el cambio (`/opsx:archive`) al mergear.
