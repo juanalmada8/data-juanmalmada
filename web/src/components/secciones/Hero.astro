@@ -1,0 +1,87 @@
+---
+// Hero pino pegado a la barra (como thoughtbot): titular crema, bajada, CTA lima y enlaces directos; a la derecha, tres marcos de color
+// con datos reales en lugar de fotos (la firma de Juanma, los años de oficio y la respuesta). El lema del manual va en el pie.
+// Spec: openspec/changes/landing-una-pagina/specs/{landing,selector-hero}.
+import Firma from "../Firma.astro";
+import { sitio, contacto } from "../../data/sitio";
+
+const experiencia = sitio.experiencia.match(/\d+/)![0]; // «7»; el «Más de» va en el marcado
+---
+<section id="hero" class="hero tema-pino" aria-labelledby="hero-titulo">
+  <div class="marco interior">
+    <h1 id="hero-titulo"><span class="r">Lo que hoy hacés a mano,</span> <span class="r">que lo haga <em>el sistema</em>.</span></h1>
+
+    <div class="pie-hero">
+      <div class="accion">
+        <p class="lead">Armo webs, apps, turnos, sistemas de gestión y reportes que se actualizan solos: lo que tu negocio necesite.</p>
+        <a class="boton lima flecha" href="#contacto">Contame tu idea</a>
+        <p class="directo">
+          <span>O escribime directo:</span>
+          <a href={contacto.whatsapp} target="_blank" rel="noopener noreferrer">WhatsApp<span class="sr-only"> (se abre en otra pestaña)</span></a>
+          <a href={contacto.instagram} target="_blank" rel="noopener noreferrer">Instagram<span class="sr-only"> (se abre en otra pestaña)</span></a>
+          <a href={`mailto:${contacto.mail}`}>Mail</a>
+        </p>
+      </div>
+
+      <div class="marcos" role="group" aria-label="Datos de Juanma">
+        <div class="marco-c yo">
+          <p>Soy Juanma, ingeniero de datos y desarrollador full stack.</p>
+          <Firma color="pino" ancho="var(--ancho-firma)" decorativa />
+        </div>
+        <div class="marco-c anios">
+          <span class="mas">Más de</span>
+          <span class="num" aria-hidden="true">{experiencia}</span>
+          <span class="sr-only">{experiencia}</span>
+          <span class="unidad">años de oficio</span>
+        </div>
+        <div class="marco-c resp">
+          <p>Respondo en {sitio.respuesta}.</p>
+          <p class="base">{sitio.base}</p>
+          <code class="guino" translate="no" aria-hidden="true">hola_mundo()</code>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<style>
+  .hero { padding: var(--space-8) 0 var(--space-16); }
+  .interior { display: grid; gap: var(--space-8); }
+  h1 em { color: var(--salvia); } /* la lima queda para los botones y la pastilla: el itálico del titular va en salvia */
+  .pie-hero { display: grid; gap: var(--space-8); }
+  .accion { display: grid; gap: var(--space-4); justify-items: start; align-content: start; max-width: var(--ancho-accion); }
+  .accion .boton { white-space: nowrap; }
+  .lead { max-width: 34ch; }
+  .directo { display: flex; flex-wrap: wrap; align-items: center; column-gap: var(--space-4); font-size: var(--fs-small); }
+  .directo a { display: inline-flex; align-items: center; min-height: var(--tap-min); min-width: var(--tap-min); font-weight: 700; text-underline-offset: .2em; }
+
+  /* Marcos de color con una esquina cortada (la hoja): cada uno lleva un dato real, no una foto */
+  .marcos { display: grid; gap: var(--space-4); align-content: start; }
+  .marco-c {
+    display: grid; gap: var(--space-2); align-content: space-between;
+    padding: var(--space-6);
+    border-radius: var(--radius-tarjeta) var(--radius-tarjeta) var(--radius-tarjeta) var(--space-2);
+  }
+  .yo { background: var(--salvia); color: var(--pino); }
+  .anios { background: var(--musgo-hondo); color: var(--crema); justify-items: start; border-radius: var(--radius-tarjeta) var(--space-2) var(--radius-tarjeta) var(--radius-tarjeta); }
+  .resp { background: var(--papel); color: var(--pino); }
+  .yo p { font-family: var(--font-serif); font-size: var(--fs-h3); line-height: 1.15; }
+  .mas, .unidad { font-weight: 700; font-size: var(--fs-small); }
+  .num { font-family: var(--font-serif); font-size: var(--fs-numeral); line-height: .85; letter-spacing: -.03em; }
+  .resp p { font-weight: 700; }
+  .resp .base { font-weight: 500; font-size: var(--fs-small); }
+  .guino { justify-self: start; padding: var(--space-1) var(--space-4); border-radius: var(--radius-pill); background: var(--lima); color: var(--pino); font-size: var(--fs-small); font-weight: 500; }
+
+  @media (min-width: 48rem) {
+    .hero { padding-bottom: var(--space-24); }
+    h1 .r { display: block; }
+    .marcos { grid-template-columns: 1fr 1fr; }
+    .yo { grid-row: span 2; }
+  }
+  /* Desde 1024 px la acción y los marcos van lado a lado; antes, los marcos bajan para que el CTA no se parta */
+  @media (min-width: 64rem) {
+    .hero { padding-top: var(--space-12); }
+    .pie-hero { grid-template-columns: 1fr auto; align-items: start; gap: var(--space-12); }
+    .marcos { width: var(--ancho-marcos); }
+  }
+</style>

@@ -1,0 +1,70 @@
+---
+// «Qué necesitás»: seis tarjetas grandes de color, una por situación (el problema como lo diría el cliente → la solución).
+// Son ejemplos, no un límite: «Otra idea» lo dice. Cada tarjeta abre WhatsApp con el mensaje de su tema (1 clic).
+// Spec: openspec/changes/landing-una-pagina/specs/{servicios,selector-hero}.
+import Pipeline from "../Pipeline.astro";
+import { temas } from "../../data/temas";
+import { urlWhatsApp } from "../../lib/whatsapp";
+---
+<section id="que-hago" class="seccion-ancha tema-crema" aria-labelledby="que-hago-titulo">
+  <div class="marco">
+    <h2 id="que-hago-titulo" data-aparece>¿Qué necesitás? <em>Algo de esto</em>, o algo distinto.</h2>
+    <p class="manifiesto" data-aparece>Armo sistemas que se usan de verdad. Lo que invertís hoy te ahorra <em>tiempo y plata</em> mañana.</p>
+
+    <ul class="tarjetas">
+      {temas.map((t, i) => (
+        <li class:list={["tarjeta", `f-${t.fondo}`, { oscura: t.fondo === "pino" || t.fondo === "musgo" }]} data-aparece style={`--giro:${["var(--giro-a)", "var(--giro-b)", "var(--giro-c)"][i % 3]}`}>
+          <h3>{t.titulo}</h3>
+          <p class="pregunta">{t.pregunta}</p>
+          <p class="solucion">{t.solucion}</p>
+          {t.pasos && <Pipeline pasos={t.pasos} class="mini" />}
+          <a class="ir" href={urlWhatsApp(t.mensaje)} target="_blank" rel="noopener noreferrer">
+            Contame esto <span aria-hidden="true">→</span><span class="sr-only"> ({t.titulo}; se abre WhatsApp en otra pestaña)</span>
+          </a>
+        </li>
+      ))}
+    </ul>
+  </div>
+</section>
+
+<style>
+  .manifiesto { margin-top: var(--space-6); max-width: 28ch; font-family: var(--font-serif); font-size: var(--fs-h3); line-height: 1.2; }
+  .manifiesto em { font-style: italic; color: var(--musgo-hondo); } /* musgo hondo: el musgo puro no llega a 4.5:1 en este tamaño */
+  .tarjetas { list-style: none; padding: 0; display: grid; gap: var(--space-4); margin-top: clamp(var(--space-8), 5vw, var(--space-12)); }
+  .tarjeta {
+    position: relative;
+    display: grid;
+    gap: var(--space-3);
+    align-content: start;
+    min-height: var(--alto-tarjeta);
+    padding: var(--space-8);
+    border-radius: var(--radius-tarjeta);
+  }
+  .tarjeta h3 { font-size: var(--fs-tarjeta); line-height: 1; letter-spacing: -.02em; }
+  .pregunta { font-weight: 700; font-size: var(--fs-lead); line-height: 1.3; }
+  .solucion { max-width: 34ch; }
+  .tarjeta :global(.mini) { margin-top: var(--space-2); flex-wrap: wrap; }
+
+  /* Fondos: tonos de la paleta del manual; cada par texto/fondo pasa el contraste (test en tests/temas.test.mjs) */
+  .f-pino   { background: var(--pino);        color: var(--crema); }
+  .f-salvia { background: var(--salvia);      color: var(--pino); }
+  .f-papel  { background: var(--papel);       color: var(--pino); }
+  .f-musgo  { background: var(--musgo-hondo); color: var(--crema); }
+
+  /* El enlace ocupa toda la tarjeta (un solo destino por tarjeta); el foco se dibuja alrededor de la tarjeta */
+  .ir { align-self: end; margin-top: var(--space-4); display: inline-flex; align-items: center; gap: var(--space-2); min-height: var(--tap-min); font-weight: 800; font-size: var(--fs-lead); text-decoration: none; color: inherit; }
+  .ir::before { content: ""; position: absolute; inset: 0; border-radius: var(--radius-tarjeta); }
+  .ir:focus-visible { outline: none; }
+  /* El anillo va adentro de la tarjeta: lima sobre las oscuras, pino sobre las claras (afuera caería sobre el crema) */
+  .ir:focus-visible::before { outline: 3px solid var(--lima); outline-offset: calc(var(--space-2) * -1); }
+  .f-salvia .ir:focus-visible::before, .f-papel .ir:focus-visible::before { outline-color: var(--pino); }
+  .ir span[aria-hidden] { transition: transform .2s ease; }
+  .tarjeta:hover .ir span[aria-hidden] { transform: translateX(var(--space-2)); }
+
+  @media (prefers-reduced-motion: no-preference) {
+    .tarjeta { transition: transform .25s ease; }
+    .tarjeta:hover { transform: translateY(calc(var(--space-2) * -1)) rotate(calc(var(--giro) / 4)); }
+  }
+  @media (min-width: 40rem) { .tarjetas { grid-template-columns: repeat(2, minmax(0, 1fr)); } }
+  @media (min-width: 64rem) { .tarjetas { grid-template-columns: repeat(3, minmax(0, 1fr)); } }
+</style>

@@ -1,0 +1,58 @@
+---
+// Una captura real dentro de un marco decorativo (celu o ventana). Si no hay captura, placeholder visible.
+// El marco es solo bordes y radios: no dibuja interfaz.
+import { Image } from "astro:assets";
+import type { ImageMetadata } from "astro";
+import Falta from "./Falta.astro";
+
+interface Props {
+  caso: string; // nombre del caso, para el placeholder
+  captura?: { src: ImageMetadata; alt: string; marco: "celu" | "ventana" };
+  marco?: "celu" | "ventana"; // marco del placeholder
+  lazy?: boolean;
+  class?: string;
+}
+const { caso, captura, marco = "ventana", lazy = true, class: clase } = Astro.props;
+const tipo = captura?.marco ?? marco;
+---
+<figure class:list={["captura", tipo, { "sin-captura": !captura }, clase]}>
+  {tipo === "ventana" && (
+    <span class="barra" aria-hidden="true"><i></i><i></i><i></i></span>
+  )}
+  <div class="pantalla">
+    {captura ? (
+      <Image
+        src={captura.src}
+        alt={captura.alt}
+        widths={[320, 640, 960]}
+        sizes="(min-width: 60rem) 28rem, 90vw"
+        loading={lazy ? "lazy" : "eager"}
+      />
+    ) : (
+      <div class="falta"><p class="nombre" translate="no">{caso}</p><Falta que="captura" /></div>
+    )}
+  </div>
+</figure>
+
+<style>
+  .captura {
+    margin: 0;
+    background: var(--pino);
+    border-radius: var(--radius-card);
+    padding: var(--space-2);
+    overflow: hidden;
+  }
+  .ventana .barra { display: flex; gap: var(--space-1); padding: var(--space-1) var(--space-2) var(--space-2); }
+  .barra i { width: .5rem; height: .5rem; border-radius: 50%; background: var(--musgo); }
+  .barra i:first-child { background: var(--crema); }
+  .barra i:nth-child(2) { background: var(--salvia); }
+  .pantalla { border-radius: calc(var(--radius-card) - var(--space-2)); overflow: hidden; background: var(--crema); }
+  .pantalla :global(img) { width: 100%; height: auto; }
+  .ventana .pantalla { aspect-ratio: 16 / 10; }
+  .sin-captura .pantalla { aspect-ratio: auto; min-height: 6.5rem; } /* el placeholder crece con su texto */
+  .celu { width: min(100%, 11rem); border-radius: var(--radius-celu); padding: var(--space-2); }
+  .celu .pantalla { aspect-ratio: 9 / 19; border-radius: calc(var(--radius-celu) - var(--space-2)); }
+  .sin-captura .pantalla { display: grid; place-items: center; background: var(--salvia); }
+  .falta { display: grid; gap: var(--space-2); justify-items: center; padding: var(--space-3); text-align: center; }
+  .nombre { font-family: var(--font-serif); font-size: var(--fs-body); font-weight: 400; line-height: 1.15; color: var(--pino); overflow-wrap: anywhere; }
+</style>

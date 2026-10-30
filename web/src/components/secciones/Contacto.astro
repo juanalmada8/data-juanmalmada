@@ -1,0 +1,110 @@
+---
+// Cierre a ancho completo sobre pino: título corto, la pregunta como bajada y los tres canales.
+// Dos tarjetas grandes (una pregunta y una idea, sin formularios) e Instagram como enlace aparte. Spec: specs/contacto.
+import Firma from "../Firma.astro";
+import PatronM from "../PatronM.astro";
+import { contacto, sitio } from "../../data/sitio";
+---
+<section id="contacto" class="seccion-ancha tema-pino" aria-labelledby="contacto-titulo">
+  <div class="marco grilla">
+    <div class="texto" data-aparece>
+      <h2 id="contacto-titulo">¿Cómo se ve el <em>éxito</em> para tu negocio?</h2>
+      <p class="lead">Contámelo y lo vemos juntos, sin apuro.</p>
+
+      <div class="canales">
+        <a class="canal wa" href={contacto.whatsapp} target="_blank" rel="noopener noreferrer">
+          <span class="titulo">Contame tu idea</span>
+          <span class="detalle">Por WhatsApp. Te respondo en {sitio.respuesta}.</span>
+          <span class="flecha" aria-hidden="true">→</span>
+          <span class="sr-only">(se abre en otra pestaña)</span>
+        </a>
+        <a class="canal mail" href={`mailto:${contacto.mail}`}>
+          <span class="titulo">Tengo una pregunta</span>
+          <span class="detalle">Por mail, sin apuro.</span>
+          <span class="flecha" aria-hidden="true">→</span>
+        </a>
+      </div>
+      <p class="rota">
+        <span class="sr-only">Armemos el sistema de tu consultorio, tu equipo, tu empresa, tu idea o tu negocio.</span>
+        <span aria-hidden="true">Armemos el sistema de tu <span class="palabras"><em class="p" style="--i:0">consultorio</em><em class="p" style="--i:1">equipo</em><em class="p" style="--i:2">empresa</em><em class="p" style="--i:3">idea</em><em class="p" style="--i:4">negocio</em></span></span>
+      </p>
+      <p class="ig">
+        También estoy en{" "}
+        <a class="link" href={contacto.instagram} target="_blank" rel="noopener noreferrer">Instagram<span class="sr-only"> (se abre en otra pestaña)</span></a>.
+      </p>
+    </div>
+
+    <div class="yo" data-aparece>
+      <p>
+        Este sitio habla de mí, pero me interesa saber de vos. Soy Juanma: ingeniero de datos y desarrollador full stack,
+        con {sitio.experiencia} de experiencia en equipos y empresas de distintos rubros. Trabajo desde General Belgrano,
+        100% remoto.
+      </p>
+      <div class="firma-rev"><Firma color="crema" ancho="var(--ancho-firma)" decorativa /></div>
+    </div>
+  </div>
+  <PatronM tono="pino" lima={[[0, 5]]} class="banda" />
+</section>
+
+<style>
+  .grilla { display: grid; gap: var(--space-12); align-items: end; }
+  .texto { display: grid; gap: var(--space-6); justify-items: start; }
+  .lead { max-width: 30ch; }
+  h2 em { color: var(--salvia); } /* la lima se reserva para el botón de WhatsApp y una m del patrón */
+  .canales { display: grid; gap: var(--space-4); width: 100%; margin-top: var(--space-4); }
+  .canal {
+    position: relative;
+    display: grid;
+    gap: var(--space-2);
+    align-content: start;
+    min-height: var(--alto-tarjeta-chica);
+    padding: var(--space-8);
+    border-radius: var(--radius-tarjeta);
+    text-decoration: none;
+    color: var(--pino);
+  }
+  .wa { background: var(--lima); }
+  .mail { background: var(--salvia); }
+  .titulo { font-family: var(--font-serif); font-size: var(--fs-tarjeta); line-height: 1; letter-spacing: -.02em; }
+  .detalle { font-weight: 500; max-width: 28ch; }
+  .flecha { position: absolute; right: var(--space-8); bottom: var(--space-6); font-size: var(--fs-h3); font-weight: 800; transition: transform .2s ease; }
+  .canal:hover .flecha { transform: translateX(var(--space-2)); }
+  .canal:focus-visible { outline: 3px solid var(--crema); outline-offset: 4px; }
+  @media (prefers-reduced-motion: no-preference) { .canal { transition: transform .25s ease; } .canal:hover { transform: translateY(calc(var(--space-2) * -1)); } }
+  .ig { color: var(--salvia); }
+  /* Palabras que rotan (idea de Humaan): una sola pasada de menos de 5 s al llegar a la sección, que termina en «negocio».
+     Sin JavaScript o con movimiento reducido se ve directamente la última. Cada palabra lleva su punto, para que no flote. */
+  .rota { margin-top: var(--space-6); font-family: var(--font-serif); font-size: var(--fs-tarjeta); line-height: 1.1; letter-spacing: -.02em; }
+  .palabras { display: inline-grid; vertical-align: bottom; }
+  .p { grid-area: 1 / 1; font-style: italic; color: var(--salvia); }
+  .p::after { content: "."; color: var(--crema); font-style: normal; }
+  .p:not(:last-child) { display: none; }
+  @media (prefers-reduced-motion: no-preference) {
+    :global(html.js) .p:not(:last-child) { display: inline; }
+    :global(html.js) .p { opacity: 0; }
+    :global(html.js) .visible .p { animation: pasa .9s ease both; animation-delay: calc(var(--i) * .9s); }
+    :global(html.js) .visible .p:last-child { animation-name: queda; }
+  }
+  @keyframes pasa {
+    0% { opacity: 0; transform: translateY(40%); }
+    20%, 80% { opacity: 1; transform: none; }
+    100% { opacity: 0; transform: translateY(-40%); }
+  }
+  @keyframes queda {
+    0% { opacity: 0; transform: translateY(40%); }
+    100% { opacity: 1; transform: none; }
+  }
+  .ig .link { display: inline-flex; align-items: center; min-height: var(--tap-min); }
+  .ig .link { color: var(--crema); }
+  .yo { display: grid; gap: var(--space-4); align-content: start; max-width: var(--ancho-texto); }
+  .yo p { color: var(--crema); }
+  .seccion-ancha :global(.banda) { margin-top: var(--space-16); background: transparent; }
+
+  /* La firma se revela de izquierda a derecha al aparecer (solo sin movimiento reducido) */
+  @media (prefers-reduced-motion: no-preference) {
+    :global(html.js) .firma-rev { clip-path: inset(0 100% 0 0); transition: clip-path 1.4s cubic-bezier(.4, 0, .2, 1) .3s; }
+    :global(html.js) .visible .firma-rev { clip-path: inset(0 0 0 0); }
+  }
+  @media (min-width: 40rem) { .canales { grid-template-columns: 1fr 1fr; } }
+  @media (min-width: 60rem) { .grilla { grid-template-columns: 1.3fr 1fr; gap: var(--space-16); } }
+</style>

@@ -1,0 +1,19 @@
+---
+import Base from "../layouts/Base.astro";
+import { cargarCasos } from "../lib/casos";
+import Hero from "../components/secciones/Hero.astro";
+import Franja from "../components/secciones/Franja.astro";
+import QueHago from "../components/secciones/QueHago.astro";
+import Casos from "../components/secciones/Casos.astro";
+import ComoTrabajo from "../components/secciones/ComoTrabajo.astro";
+import Contacto from "../components/secciones/Contacto.astro";
+await cargarCasos(); // avisa en el build qué capturas faltan
+---
+<Base>
+  <Hero />
+  <Franja />
+  <QueHago />
+  <Casos />
+  <ComoTrabajo />
+  <Contacto />
+</Base>

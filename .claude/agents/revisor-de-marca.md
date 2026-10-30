@@ -15,7 +15,7 @@ Si hay capturas en el directorio de la tarea, miralas.
 1. **Datos inventados:** testimonios, métricas, ahorros en plata o porcentajes, clientes, logos, años, tiempos que no estén en las specs. Gravedad máxima.
 2. **Logo o firma redibujados** en vez de usar `web/public/brand/`. Gravedad máxima.
 3. **Colores o tamaños sueltos** (hex, px de fuente, espacios) fuera de `tokens.css`. Buscá con grep `#[0-9a-fA-F]{3,6}` en `web/src/` excluyendo `tokens.css`.
-4. **Contraste prohibido** según la tabla (lima o salvia sobre crema para texto; párrafos chicos en musgo/crema).
+4. **Contraste prohibido** según la tabla de contraste de `01-marca.md` (lima o salvia sobre crema para texto; párrafos chicos en musgo/crema).
 5. **Lima de más:** como fondo de secciones o en más de un bloque grande por pantalla.
 6. **Copy:** palabras prohibidas, «ofrecemos» en vez de primera persona, falta de voseo, tríadas, rayas encadenadas,
    títulos en Title Case, comillas inglesas, falta de ¿¡.
@@ -26,4 +26,4 @@ Si hay capturas en el directorio de la tarea, miralas.
 
 ## Formato del reporte
 Lista corta, ordenada por gravedad: `[ALTA|MEDIA|BAJA] archivo:línea — qué pasa — qué hacer`.
-Si no hay nada, decí «Sin observaciones» y una línea con lo que revisaste. No elogies; no rellenes.
+Si no hay nada, decí «Sin observaciones» y una línea con lo que revisaste. Cada línea del reporte es un hallazgo con su arreglo.

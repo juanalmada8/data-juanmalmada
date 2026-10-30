@@ -1,0 +1,99 @@
+/* Tokens de marca. Fuente: docs/specs/01-marca.md. Ningún color, fuente o espacio fuera de acá. */
+
+@font-face {
+  font-family: "DM Serif Display";
+  src: url("/fonts/dm-serif-display-latin-400-normal.woff2") format("woff2");
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+@font-face {
+  font-family: "DM Serif Display";
+  src: url("/fonts/dm-serif-display-latin-400-italic.woff2") format("woff2");
+  font-weight: 400;
+  font-style: italic;
+  font-display: swap;
+}
+@font-face {
+  font-family: "Manrope";
+  src: url("/fonts/manrope-latin-wght-normal.woff2") format("woff2");
+  font-weight: 200 800;
+  font-style: normal;
+  font-display: swap;
+}
+@font-face {
+  font-family: "JetBrains Mono";
+  src: url("/fonts/jetbrains-mono-latin-400-normal.woff2") format("woff2");
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+@font-face {
+  font-family: "JetBrains Mono";
+  src: url("/fonts/jetbrains-mono-latin-500-normal.woff2") format("woff2");
+  font-weight: 500;
+  font-style: normal;
+  font-display: swap;
+}
+
+:root {
+  /* Color: la paleta del manual. Proporción: crema 40 · pino 30 · musgo 15 · salvia 11 · lima 4 */
+  --pino:   #133A2E; /* fondos oscuros y texto principal */
+  --musgo:  #3F7A5C; /* secundario */
+  --salvia: #A8C5AE; /* detalles y placas */
+  --crema:  #F3EFE3; /* fondos claros */
+  --lima:   #D4E85C; /* SOLO acento y CTA */
+  --blanco: #FFFFFF; /* tarjetas sobre crema, con borde salvia */
+  /* Tonos de la misma paleta (mezclas, no colores nuevos): fondos de tarjetas y de la barra */
+  --papel:  color-mix(in srgb, var(--salvia) 30%, var(--crema));  /* crema un poco más oscuro, pino encima: 11:1 */
+  --musgo-hondo: color-mix(in srgb, var(--musgo) 60%, var(--pino)); /* musgo más profundo, crema encima: 6:1 */
+
+  /* Tipografía del manual */
+  --font-serif: "DM Serif Display", Georgia, serif;
+  --font-sans:  "Manrope", system-ui, sans-serif;
+  --font-mono:  "JetBrains Mono", ui-monospace, "SF Mono", Menlo, monospace;
+
+  --fs-micro: .6875rem;  /* 11 px, nunca menos */
+  --fs-label: .8125rem;  /* etiquetas: nada que se lea baja de 13 px */
+  --fs-small: .875rem;
+  --fs-body:  clamp(1rem, .95rem + .25vw, 1.125rem);
+  --fs-lead:  clamp(1.125rem, 1.02rem + .5vw, 1.375rem);
+  --fs-h3:    clamp(1.375rem, 1.2rem + .8vw, 1.75rem);
+  --fs-h2:    clamp(2.125rem, 1.4rem + 3vw, 3.75rem);
+  --fs-h1:    clamp(2.25rem, 1.2rem + 5.6vw, 6rem);         /* el titular del hero es grande: hasta 96 px */
+  --alto-tarjeta: 17rem; --alto-tarjeta-chica: 11rem; /* alto mínimo de las tarjetas grandes y de las chicas */
+  --ancho-marcos: clamp(38rem, 36vw, 50rem); /* los tres marcos de color del hero */
+  --ancho-accion: 30rem; /* columna de la bajada, el CTA y los enlaces del hero */
+  --fs-tarjeta: clamp(1.75rem, 1.1rem + 1.8vw, 2.75rem);    /* títulos de las tarjetas grandes */
+  --fs-numeral: clamp(3.5rem, 2.4rem + 4vw, 5.5rem);      /* números grandes en serif (≥ 48 px) */
+
+  /* Espaciado */
+  --space-1: .25rem; --space-2: .5rem; --space-3: .75rem; --space-4: 1rem;
+  --space-6: 1.5rem; --space-8: 2rem; --space-12: 3rem; --space-16: 4rem; --space-24: 6rem;
+
+  /* Forma (manual: tarjetas redondeadas, bordes de 1px salvia, plano) */
+  --radius-card: 20px;
+  --radius-tarjeta: 28px; /* las tarjetas grandes de color */
+  --radius-box:  10px;
+  --radius-pill: 999px;
+  --borde-suave: 1px solid var(--salvia);
+
+  /* Layout */
+  --max-w: 72rem;
+  --gutter: clamp(1rem, 4vw, 3rem);
+  --margen-pagina: clamp(1rem, 3.3vw, 3rem); /* el mismo margen izquierdo y derecho en barra, lectura, secciones anchas y pie */
+  --ancho-texto: 40rem;
+  --tap-min: 44px;
+  --espacio-seccion: clamp(4.5rem, 9vw, 7.5rem); /* entre secciones: 120 px o más en escritorio */
+  --ancho-lectura: 38rem;  /* una sola medida de lectura (≈ 46 caracteres) */
+  --alto-barra: 4rem; /* alto de la barra pino (celular: ícono </j>) */
+  --grosor-nav: 3px;     /* subrayado de la sección actual y línea de progreso */
+  --tracking-mono: .12em; /* espaciado de las etiquetas mono */
+  --ancho-firma: 10rem;
+  --alto-banda: clamp(44px, 6vw, 80px); /* banda del patrón de la m */
+  --radius-celu: 28px;   /* marco de celu de las capturas */
+  --giro-a: -3deg; --giro-b: 2.5deg; --giro-c: 4deg; /* tarjetas inclinadas al pasar el mouse (se apagan con movimiento reducido) */
+}
+@media (min-width: 30rem) {
+  :root { --alto-barra: 5rem; } /* con el logo <jm> (≥ 100 px de ancho ≈ 64 px de alto) y aire arriba y abajo */
+}

@@ -13,6 +13,10 @@ Si algo del manual no está acá, preguntá antes de interpretarlo.
 | `<jm▌>` con cursor | Momentos con onda (hero, 404). El cursor puede titilar | `logo-jm-cursor.svg`, cursor en `<g id="cursor">` |
 | Firma | Cierre de secciones largas, «Hola, soy Juanma», footer | `firma-crema.svg`, `firma-pino.svg`, `firma-lima.svg` |
 
+**En la barra fija de la web** el `<jm>` mide 104 px (mínimo de marca: 100 px) y tiene 12 px de aire arriba y abajo. Es
+menos que el «alto de la m» que pide el manual: una barra con ese aire (≈ 36 px por lado) sería desproporcionada. El aire
+completo se respeta donde el logo es protagonista; en el celular la barra usa el ícono `</j>`.
+
 Anatomía: la `j` es un trazo suelto con el punto en lima; la `m` es una letra con peso; los `< >` son cintas
 en dos tonos (musgo + salvia).
 
@@ -35,7 +39,7 @@ en dos tonos (musgo + salvia).
 }
 ```
 
-**Proporción de uso** (a ojo, en la página entera): crema 40 · pino 30 · musgo 15 · salvia 11 · lima 4.
+**Proporción de uso** del manual (redes y piezas): crema 40 · pino 30 · musgo 15 · salvia 11 · lima 4. En la web manda pino (ver «Espaciado, forma y superficies»).
 
 **Lima es un acento:** una palabra en itálica, un dato, un botón, el punto de la `j`, un sticker.
 Nunca fondo de una sección entera de texto largo. Excepción del manual: una placa/tarjeta chica en lima con
@@ -59,57 +63,39 @@ texto pino («detrás de escena») está permitida, como mucho una por pantalla.
 
 ## Tipografía
 
+Las del manual de marca (vuelven el 2026-10-24: ver el registro de decisiones de `03-arquitectura.md`).
+
 | Rol | Familia | Pesos | Uso |
 |---|---|---|---|
-| Títulos | **DM Serif Display** | 400 + itálica | Títulos, frases, destacados. La itálica subraya **una** idea por título. |
-| Textos | **Manrope** | 300 / 400 / 500 / 700 | Párrafos, UI, botones, descripciones. |
-| Detalles | **JetBrains Mono** | 400 / 500 | Etiquetas, numeraciones (`01 — LOGOTIPO`), datos, guiños de código. **Dosis chicas.** |
+| Títulos | **DM Serif Display** | 400 + itálica | Títulos y frases. La itálica (`<em>`) destaca **una** palabra por título. |
+| Textos | **Manrope** | variable 200–800 | Párrafos, UI, botones, descripciones. |
+| Detalles | **JetBrains Mono** | 400 / 500 | Etiquetas chicas en mayúsculas con tracking (`.12em`), numeraciones (`01 — QUÉ HAGO`), guiños de código. Dosis chicas. |
 
-Self-hosted en `web/public/fonts/` (woff2, `font-display: swap`, subset latin). Nada de Google Fonts en runtime.
-
-```css
-:root {
-  --font-serif: "DM Serif Display", Georgia, serif;
-  --font-sans:  "Manrope", system-ui, sans-serif;
-  --font-mono:  "JetBrains Mono", ui-monospace, monospace;
-
-  --fs-h1:    clamp(2.75rem, 1.6rem + 5vw, 4.5rem);   /* 44 → 72 px, lh 1.0 */
-  --fs-h2:    clamp(2rem, 1.4rem + 2.6vw, 3.25rem);   /* lh 1.05 */
-  --fs-h3:    clamp(1.375rem, 1.2rem + .8vw, 1.75rem);/* serif, lh 1.15 */
-  --fs-body:  clamp(1rem, .95rem + .25vw, 1.125rem);  /* 16 → 18 px, lh 1.5 */
-  --fs-small: .875rem;
-  --fs-label: .8125rem;  /* mono, uppercase, letter-spacing .12em */
-}
-```
+Self-hosted en `web/public/fonts/` (woff2 latin, OFL, `font-display: swap`). Nada de Google Fonts en runtime.
+Tamaños en `tokens.css`: `--fs-micro` (11 px, nunca menos), `--fs-label`, `--fs-small`, `--fs-body`, `--fs-lead`,
+`--fs-h3`, `--fs-h2`, `--fs-h1`.
 
 Detalles tipográficos que **sí** importan:
-- Títulos en *sentence case* (en castellano no se capitaliza cada palabra).
+- Títulos en *sentence case*. El acento de un título (`<em>`, itálica) va en musgo sobre crema (solo en títulos grandes), en salvia sobre pino y no en lima; una idea por título.
 - `text-wrap: balance` en títulos, `text-wrap: pretty` en párrafos.
 - Comillas latinas «así». Signos de apertura ¿¡ siempre. Puntos suspensivos con `…`.
-- `&nbsp;` entre número y unidad (`8&nbsp;años`, `24/7`), y para no dejar viudas en títulos cortos.
-- Números en datos con `font-variant-numeric: tabular-nums`.
-- Las etiquetas mono siguen el patrón del manual: `01 — PROYECTOS`, `// tip de la semana`, `hola_mundo()`.
+- `&nbsp;` entre número y unidad (`7&nbsp;años`, `24&nbsp;h`).
+- Rótulos del manual: `01 — QUÉ HAGO` (mono, mayúscula, `.12em`). Los guiños de código como `hola_mundo()` van en mono **en minúsculas** (y el mono se usa solo para código: chips, números del índice y datos van en Manrope).
+- Escala de la lámina de tipografía **con más carácter** (decisión de Juanma, 2026-10-29): H1 serif 56–72 px (40 px en el celular) con interlineado .95 y espaciado apretado; H2 hasta 60 px; **números grandes en serif** (56–88 px) en «Cómo trabajo»; cuerpo Manrope 16–18 px con interlineado 1.5; etiquetas mono 12–14 px con espaciado. Manrope Bold en subtítulos y botones, Medium en destacados (la bajada), Regular en párrafos.
 
-## Espaciado, forma y profundidad
+## Espaciado y forma
 
-```css
-:root {
-  --space-1: .25rem; --space-2: .5rem; --space-3: .75rem; --space-4: 1rem;
-  --space-6: 1.5rem; --space-8: 2rem; --space-12: 3rem; --space-16: 4rem; --space-24: 6rem;
+Valores en `web/src/styles/tokens.css` (fuente de verdad): espacios `--space-1` a `--space-24`; radios `--radius-card`
+20 px, `--radius-box` 10 px, `--radius-pill`; `--borde-suave` 1 px salvia; tamaños `--fs-micro` (11 px, nunca menos)
+a `--fs-h1`; `--tap-min` 44 px.
 
-  --radius-card: 20px;   /* placas y tarjetas */
-  --radius-pill: 999px;  /* chips y botones */
-  --border-soft: 1px solid var(--salvia);
-
-  --max-w: 72rem;        /* contenido */
-  --gutter: clamp(1rem, 4vw, 3rem);
-}
-```
-
-- **Plano.** Bloques de color sólidos, bordes de 1 px salvia sobre crema/blanco. Sombras: casi nunca; si hace falta
-  separar, que sea una sombra dura y corta, no difusa.
-- Chips/etiquetas: pill con borde de 1 px, texto mono (como los de la portada del manual).
-- Botón principal: fondo lima, texto pino, Manrope 700, pill. Secundario: borde crema o pino, sin relleno.
+- **Fondos en la web** (2026-10-30): pino para la barra y el hero; salvia para la franja de servicios y «Cómo trabajo»; crema para las secciones de tarjetas; «Contacto» y el pie sobre pino. **Tarjetas grandes** (`--radius-tarjeta` 28 px) en tonos de la paleta, no colores nuevos: pino, salvia, `--papel` (crema con 30 % de salvia) y `--musgo-hondo` (musgo con 40 % de pino, para poder poner crema encima). Cada par texto/fondo pasa 4.5:1 (test en `web/tests/temas.test.mjs`). **Barra:** pino a ancho completo, pegada al hero (referencia: thoughtbot). **Marcos del hero:** tarjetas de color con una esquina cortada.
+- **Lima como acento escaso** (2026-10-29): solo los botones principales (barra y hero), la tarjeta de WhatsApp del contacto, el botón «Contame» de la tarjeta «El próximo» (sobre fondo oscuro), la pastilla `hola_mundo()` y una `m` del patrón, más los estados de foco y hover; no en tarjetas, índice, títulos ni marcadores. Medido el 2026-10-30: primera pantalla 1.7 % (escritorio, 1440×900) y 4.6 % (celular, 390×844); página 1.4 % y 2.9 %.
+- **Proporción del manual, también en la web:** crema 40 · pino 30 · musgo 15 · salvia 11 · lima 4. Crema es el fondo
+  que más se ve; pino en bandas y tarjetas; salvia en una banda y placas; lima solo en acentos y el botón de WhatsApp
+  sobre pino.
+- Plano: bloques sólidos y tarjetas de color sin borde ni sombras (la barra es pino).
+- Botón principal: pino sobre crema (lima sobre pino), pill, Manrope 700.
 
 ## Recursos gráficos
 
@@ -129,4 +115,4 @@ Detalles tipográficos que **sí** importan:
 | **Hiperactivo** | El cursor que titila, stickers torcidos, ritmo entre bloques oscuro/claro/color. |
 | **Extrovertido** | Su firma, la voz en primera persona, lo técnico explicado en criollo. |
 
-El ritmo de la página copia el feed de Instagram del manual: **alternar oscuro · claro · color**.
+El ritmo de la página copia el feed del manual: **alternar claro · oscuro · color**, con crema como base.

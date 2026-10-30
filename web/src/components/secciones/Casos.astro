@@ -1,0 +1,98 @@
+---
+// «Cosas que armé»: casos reales como tarjetas grandes (el primero destacado a ancho completo) y una tarjeta que invita a sumar el próximo.
+// Cada caso es un archivo de src/content/casos/: sumar uno no toca este componente. Spec: specs/casos.
+import Captura from "../Captura.astro";
+import { cargarCasos } from "../../lib/casos";
+import { urlWhatsApp } from "../../lib/whatsapp";
+import { proyectos } from "../../data/proyectos";
+
+const casos = await cargarCasos();
+const fondos = ["salvia", "pino"];
+---
+{casos.length > 0 && (
+<section id="casos" class="seccion-ancha tema-crema" aria-labelledby="casos-titulo">
+  <div class="marco">
+    <h2 id="casos-titulo" data-aparece>Cosas que <em>armé</em>.</h2>
+    <p class="lead" data-aparece>Casos reales. Lo tuyo puede ser otra cosa.</p>
+
+    <ul class="casos">
+      {casos.map((c, i) => (
+        <li class:list={["caso", `f-${fondos[i % fondos.length]}`]} data-aparece>
+          <h3 translate="no">{c.data.nombre}</h3>
+          <p class="resumen">{c.data.resumen}</p>
+          <ul class="bullets">
+            {c.data.bullets.map((b) => <li>{b}</li>)}
+          </ul>
+          <a class="link" href={c.data.url} target="_blank" rel="noopener noreferrer">
+            Ver {new URL(c.data.url).hostname} <span aria-hidden="true">↗</span><span class="sr-only"> (se abre en otra pestaña)</span>
+          </a>
+          <div class="captura-caso">
+            {c.data.capturas.length > 0
+              ? c.data.capturas.map((cap) => <Captura caso={c.data.nombre} captura={cap} />)
+              : <Captura caso={c.data.nombre} marco="ventana" />}
+          </div>
+        </li>
+      ))}
+      <li class="caso proximo f-musgo" data-aparece>
+        <h3>El próximo puede ser el tuyo.</h3>
+        <a class="boton lima flecha" href={urlWhatsApp("Hola Juanma, quiero armar algo")} target="_blank" rel="noopener noreferrer">
+          Contame<span class="sr-only"> (se abre WhatsApp en otra pestaña)</span>
+        </a>
+      </li>
+    </ul>
+
+    {proyectos.length > 0 && (
+      <div class="otras" data-aparece>
+        <h3>Y otras cosas que armé</h3>
+        <ul class="lineas">
+          {proyectos.map((p) => (
+            <li class="linea">
+              {p.destacado && p.linea.includes(p.destacado)
+                ? <>{p.linea.split(p.destacado)[0]}<strong>{p.destacado}</strong>{p.linea.split(p.destacado).slice(1).join(p.destacado)}</>
+                : p.linea}
+            </li>
+          ))}
+        </ul>
+      </div>
+    )}
+  </div>
+</section>
+)}
+
+<style>
+  .lead { margin-top: var(--space-4); }
+  .casos { list-style: none; padding: 0; display: grid; gap: var(--space-4); margin-top: clamp(var(--space-8), 5vw, var(--space-12)); }
+  .caso { display: grid; gap: var(--space-4); align-content: start; justify-items: start; padding: var(--space-8); border-radius: var(--radius-tarjeta); }
+  .caso h3 { font-size: var(--fs-tarjeta); line-height: 1; letter-spacing: -.02em; }
+  .f-salvia { background: var(--salvia); color: var(--pino); }
+  .f-pino { background: var(--pino); color: var(--crema); }
+  .f-musgo { background: var(--musgo-hondo); color: var(--crema); }
+  .resumen { font-size: var(--fs-lead); line-height: 1.35; max-width: 32ch; }
+  .bullets { list-style: none; padding: 0; display: grid; gap: var(--space-2); }
+  .bullets li { position: relative; padding-left: var(--space-6); }
+  .bullets li::before { content: ""; position: absolute; left: 0; top: .6em; width: .75rem; height: 2px; background: currentColor; }
+  .captura-caso { width: 100%; margin-top: var(--space-4); }
+  /* El primer caso es el destacado (como el «featured case study» de thoughtbot): a ancho completo, el texto a la izquierda y la captura a la derecha */
+  @media (min-width: 48rem) {
+    .caso:first-child { grid-column: 1 / -1; grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); column-gap: var(--space-12); align-items: start; }
+    .caso:first-child > * { grid-column: 1; }
+    .caso:first-child .captura-caso { grid-column: 2; grid-row: 1 / span 5; margin-top: 0; align-self: center; }
+  }
+  .proximo { align-content: center; min-height: var(--alto-tarjeta-chica); }
+  .link { display: inline-flex; align-items: center; min-height: var(--tap-min); }
+  .caso .link:hover { color: inherit; text-decoration-thickness: 4px; } /* el hover global (musgo) no se lee sobre estos fondos */
+  .f-pino .link:focus-visible, .proximo .boton:focus-visible { outline-color: var(--lima); }
+  .f-salvia .link:focus-visible { outline-color: var(--pino); }
+
+  .otras { margin-top: clamp(var(--space-12), 6vw, var(--space-16)); display: grid; gap: var(--space-6); }
+  .otras h3 { font-size: var(--fs-tarjeta); }
+  .lineas { list-style: none; padding: 0; display: grid; gap: var(--space-3); }
+  .linea { padding: var(--space-6); border-radius: var(--radius-tarjeta); background: var(--papel); color: var(--pino); }
+  @media (min-width: 40rem) { .lineas { grid-template-columns: repeat(2, minmax(0, 1fr)); } }
+  @media (min-width: 64rem) { .lineas { grid-template-columns: repeat(3, minmax(0, 1fr)); } }
+  @media (min-width: 48rem) {
+    .casos { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+    /* El primer caso ocupa una fila; si «El próximo» quedara solo en una fila, ocupa todo el ancho */
+    .proximo:last-child:nth-child(even) { grid-column: 1 / -1; }
+  }
+</style>

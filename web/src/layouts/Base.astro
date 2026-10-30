@@ -1,0 +1,68 @@
+---
+import "../styles/tokens.css";
+import "../styles/base.css";
+import Header from "../components/Header.astro";
+import Footer from "../components/Footer.astro";
+import { sitio } from "../data/sitio";
+
+interface Props {
+  titulo?: string;
+  descripcion?: string;
+  imagen?: string;
+}
+const {
+  titulo = "Juan Martín Almada Ortiz · Sistemas a medida",
+  descripcion = "Armo sistemas a medida, desde la app de tus clientes hasta los datos para decidir. Lo que hoy hacés a mano, que lo haga el sistema.",
+  imagen = "/brand/og-default.png",
+} = Astro.props;
+const canonica = new URL(Astro.url.pathname, sitio.url).href;
+const og = new URL(imagen, sitio.url).href;
+---
+<!doctype html>
+<html lang="es-AR">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>{titulo}</title>
+    <meta name="description" content={descripcion} />
+    <link rel="canonical" href={canonica} />
+    <!-- theme-color no admite var(): es el hex de --pino (tokens.css), el color de la barra que queda arriba -->
+    <meta name="theme-color" content="#133A2E" />
+
+    <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
+    <link rel="apple-touch-icon" href="/apple-touch-icon.png" />
+
+    <link rel="preload" href="/fonts/dm-serif-display-latin-400-normal.woff2" as="font" type="font/woff2" crossorigin />
+    <link rel="preload" href="/fonts/manrope-latin-wght-normal.woff2" as="font" type="font/woff2" crossorigin />
+
+    <meta property="og:type" content="website" />
+    <meta property="og:locale" content="es_AR" />
+    <meta property="og:title" content={titulo} />
+    <meta property="og:description" content={descripcion} />
+    <meta property="og:url" content={canonica} />
+    <meta property="og:image" content={og} />
+    <meta property="og:image:width" content="1200" />
+    <meta property="og:image:height" content="630" />
+    <meta name="twitter:card" content="summary_large_image" />
+
+    <script is:inline>document.documentElement.classList.add("js");</script>
+  </head>
+  <body id="inicio">
+    <a class="saltar" href="#contenido">Saltar al contenido</a>
+    <Header />
+    <main id="contenido">
+      <slot />
+    </main>
+    <Footer />
+
+    <script>
+      const els = document.querySelectorAll<HTMLElement>("[data-aparece]");
+      if ("IntersectionObserver" in window) {
+        const io = new IntersectionObserver((entradas) => {
+          for (const e of entradas) if (e.isIntersecting) { e.target.classList.add("visible"); io.unobserve(e.target); }
+        }, { threshold: 0.15 });
+        els.forEach((el) => io.observe(el));
+      } else els.forEach((el) => el.classList.add("visible"));
+    </script>
+  </body>
+</html>

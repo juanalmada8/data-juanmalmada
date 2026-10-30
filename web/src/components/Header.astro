@@ -1,0 +1,163 @@
+---
+// Barra pino a ancho completo, pegada al hero (como thoughtbot), con índice numerado: logo, cuatro capítulos (01–04) con su tramo de progreso, y «Contame tu idea».
+// Spec: specs/landing («Barra fija con índice numerado»). El logo <jm> va desde 480 px (mínimo de marca: 100 px);
+// por debajo, el ícono </j> y el capítulo actual. Un script chico marca el capítulo y llena los tramos al leer.
+import Logo from "./Logo.astro";
+import Icono from "./Icono.astro";
+import { sitio } from "../data/sitio";
+
+const capitulos = [
+  { id: "que-hago", n: "01", nombre: "Qué hago" },
+  { id: "casos", n: "02", nombre: "Casos" },
+  { id: "como-trabajo", n: "03", nombre: "Cómo trabajo" },
+  { id: "contacto", n: "04", nombre: "Contacto" },
+];
+---
+<header class="barra tema-pino" data-barra>
+  <div class="marco fila">
+    <a class="marca" href="/" aria-label={`${sitio.nombre}, ir al inicio`}>
+      <Logo variante="crema" ancho="104px" class="logo-grande" decorativo />
+      <Icono variante="sin-fondo" ancho="34px" class="logo-chico" />
+    </a>
+
+    <!-- Celular: el capítulo actual (decorativo; el contenido ya tiene sus títulos) -->
+    <p class="donde" aria-hidden="true" data-donde></p>
+
+    <nav class="indice" aria-label="Secciones">
+      <ol>
+        {capitulos.map((c) => (
+          <li>
+            <a class="cap" href={`/#${c.id}`} data-seccion={c.id}>
+              <span class="rot"><span class="n">{c.n}</span><span class="t">{c.nombre}</span></span>
+              <i class="tramo" aria-hidden="true" data-tramo={c.id}><b></b></i>
+            </a>
+          </li>
+        ))}
+      </ol>
+    </nav>
+
+    <a class="boton lima" href="/#contacto">Contame tu idea</a>
+  </div>
+
+  <!-- Celular: los cuatro tramos como una barra segmentada sobre el borde -->
+  <div class="segmentos" aria-hidden="true">
+    {capitulos.map((c) => <i class="tramo" data-tramo={c.id}><b></b></i>)}
+  </div>
+</header>
+
+<script define:vars={{ etiquetas: Object.fromEntries(capitulos.map((c) => [c.id, `${c.n} ${c.nombre}`])) }}>
+  // Corre al terminar de cargar el DOM: la barra va antes que las secciones en el documento.
+  addEventListener("DOMContentLoaded", () => {
+    const donde = document.querySelector("[data-donde]");
+    const enlaces = [...document.querySelectorAll("[data-seccion]")];
+    const ids = Object.keys(etiquetas);
+    const secs = ids.map((id) => document.getElementById(id));
+    if (secs.some((s) => !s)) return; // p. ej. en la 404
+
+    let actual = null;
+    let pendiente = false;
+    // Se mide una sola vez (y al cambiar el tamaño): en el scroll solo se calcula, sin leer el layout.
+    let medidas = [];
+    const medir = () => {
+      medidas = secs.map((s) => ({ arriba: s.getBoundingClientRect().top + scrollY, alto: s.offsetHeight }));
+    };
+    const pintar = () => {
+      pendiente = false;
+      const medio = scrollY + innerHeight * 0.5;
+      const alFinal = scrollY + innerHeight >= document.documentElement.scrollHeight - 2;
+      let vigente = "";
+      const progresos = ids.map((id, i) => {
+        // Cuánto de la sección ya pasó por la mitad de la pantalla (0 a 1); al final de la página, todo lleno.
+        let p = Math.min(1, Math.max(0, (medio - medidas[i].arriba) / medidas[i].alto));
+        if (alFinal && i === ids.length - 1) p = 1;
+        if (p > 0 && (p < 1 || i === ids.length - 1)) vigente = id;
+        return p;
+      });
+      if (scrollY < 40) vigente = "";
+      ids.forEach((id, i) => tramos[id].forEach((t) => t.style.setProperty("--p", progresos[i]))); // todas las escrituras juntas
+      if (vigente !== actual) {
+        actual = vigente;
+        enlaces.forEach((a) => (a.dataset.seccion === vigente ? a.setAttribute("aria-current", "location") : a.removeAttribute("aria-current")));
+        if (donde) donde.textContent = etiquetas[vigente] ?? "";
+      }
+    };
+    const pedir = () => { if (!pendiente) { pendiente = true; requestAnimationFrame(pintar); } };
+    const tramos = Object.fromEntries(ids.map((id) => [id, [...document.querySelectorAll(`[data-tramo="${id}"]`)]]));
+    addEventListener("scroll", pedir, { passive: true });
+    addEventListener("resize", () => { medir(); pedir(); });
+    new ResizeObserver(() => { medir(); pedir(); }).observe(document.body); // el contenido cambia de alto (tarjetas, imágenes)
+    medir();
+    pintar();
+  });
+</script>
+
+<style>
+  /* Barra pino a ancho completo: sigue siendo pino al pasar a las secciones claras, así no hay franja cortada */
+  .barra {
+    position: sticky;
+    top: 0;
+    z-index: 50;
+  }
+  .fila { display: flex; align-items: center; justify-content: space-between; gap: var(--space-4); min-height: var(--alto-barra); position: relative; }
+  .marca { display: inline-flex; align-items: center; justify-content: center; min-height: var(--tap-min); min-width: var(--tap-min); }
+  .marca :global(.logo-grande) { display: none; }
+
+  /* Botón de la barra: lima sobre pino. Nunca en dos renglones. */
+  .barra .boton { min-height: var(--tap-min); padding: 0 var(--space-4); font-size: var(--fs-small); white-space: nowrap; }
+
+  .donde { flex: 1; min-width: 0; font-size: var(--fs-label); letter-spacing: var(--tracking-mono); text-transform: uppercase; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; text-align: center; }
+  .donde:empty { visibility: hidden; }
+
+  /* Capítulos del índice (los estilos de cada uno valen en todos los anchos; lo que cambia es dónde se muestran) */
+  .indice ol { list-style: none; padding: 0; display: flex; gap: var(--space-6); }
+  .cap { display: grid; gap: var(--space-2); padding: var(--space-2) 0; text-decoration: none; }
+  .rot { display: flex; align-items: baseline; gap: var(--space-2); }
+  .n {
+    padding: 0 var(--space-2);
+    border-radius: var(--radius-pill);
+    font-size: var(--fs-label);
+    font-weight: 700;
+    font-variant-numeric: tabular-nums;
+    color: var(--crema);
+    transition: background-color .2s ease, color .2s ease;
+  }
+  .t { font-weight: 700; font-size: var(--fs-small); white-space: nowrap; }
+  .cap:hover .n { background: var(--musgo-hondo); }
+  /* El capítulo actual: el número pasa a una pastilla crema con texto pino */
+  .cap[aria-current="location"] .n { background: var(--crema); color: var(--pino); }
+
+  /* Tramo de progreso: se llena de izquierda a derecha con --p (0 a 1); sin transición, solo refleja el scroll */
+  .tramo { display: block; height: var(--grosor-nav); background: var(--musgo); overflow: hidden; }
+  .tramo b { display: block; height: 100%; background: var(--crema); transform: scaleX(var(--p, 0)); transform-origin: left; }
+
+  /* Menos de 1024 px: el índice no entra. Queda el capítulo actual y la barra segmentada; el índice sigue en el
+     documento para teclado y lector de pantalla y se despliega bajo la barra al recibir el foco. */
+  .indice:not(:focus-within) { position: absolute; width: 1px; height: 1px; overflow: hidden; clip-path: inset(50%); white-space: nowrap; }
+  .indice:focus-within {
+    position: absolute;
+    top: 100%; left: 0; right: 0;
+    padding: var(--space-4) var(--margen-pagina);
+    background: var(--musgo-hondo);
+  }
+  .indice:focus-within ol { flex-wrap: wrap; gap: var(--space-2) var(--space-6); }
+  .segmentos { position: absolute; left: var(--margen-pagina); right: var(--margen-pagina); bottom: 0; display: grid; grid-template-columns: repeat(4, 1fr); gap: var(--space-1); }
+
+  @media (min-width: 30rem) {
+    .marca :global(.logo-grande) { display: block; }
+    .marca :global(.logo-chico) { display: none; }
+    .barra .boton { padding: 0 var(--space-6); font-size: var(--fs-body); }
+  }
+
+  /* Escritorio (1024 px o más): el índice numerado completo, con un tramo bajo cada capítulo */
+  @media (min-width: 64rem) {
+    .donde, .segmentos { display: none; }
+    .fila { justify-content: flex-start; }
+    .barra .boton { margin-left: auto; }
+    .indice:not(:focus-within), .indice:focus-within {
+      position: static; width: auto; height: auto; overflow: visible; clip-path: none;
+      padding: 0; background: none; border-radius: 0; margin-left: var(--space-8);
+    }
+    .indice:focus-within ol { flex-wrap: nowrap; }
+  }
+  @media (prefers-reduced-motion: reduce) { .n { transition: none; } }
+</style>
