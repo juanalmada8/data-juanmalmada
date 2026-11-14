@@ -9,13 +9,6 @@ html {
   scroll-behavior: smooth;
   scroll-padding-top: var(--alto-barra); /* la sección queda justo bajo la barra; su propio padding da el aire */
 }
-/* Imán suave (solo cerca): al soltar el scroll cerca del comienzo de una sección, esta queda justo bajo la barra y no cortada a la mitad.
-   No se aplica con movimiento reducido ni en pantallas táctiles chicas, donde el imán estorba al leer. */
-@media (min-width: 64rem) and (prefers-reduced-motion: no-preference) {
-  html { scroll-snap-type: y proximity; }
-  .hero, #que-hago, #casos, #como-trabajo, #contacto { scroll-snap-align: start; }
-}
-
 body {
   font-family: var(--font-sans);
   font-size: var(--fs-body);
