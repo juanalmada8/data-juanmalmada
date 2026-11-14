@@ -79,7 +79,7 @@ El hero SHALL tener fondo pino continuo con la barra, el titular grande en crema
 - **THEN** los marcos no se mueven al pasar el mouse
 
 ### Requirement: El hero llena la primera pantalla
-En escritorio el hero SHALL ocupar exactamente la primera pantalla debajo de la barra (alto de la ventana menos la barra), con todo su contenido adentro, de modo que la franja siguiente no asome cortada. Cada enlace del índice SHALL dejar la sección justo bajo la barra. La página MUST NOT mover el scroll por su cuenta (sin imanes de scroll): al llegar al final, se queda en el final.
+En escritorio el hero SHALL ocupar exactamente la primera pantalla debajo de la barra (alto de la ventana menos la barra), con todo su contenido adentro, de modo que la franja siguiente no asome cortada. Cada enlace del índice SHALL dejar la sección justo bajo la barra. Toda sección más baja que la pantalla (salvo la última, «Contacto») SHALL llenarla, con su contenido al medio, de modo que al ir a ella la siguiente no asome cortada abajo. La página MUST NOT mover el scroll por su cuenta (sin imanes de scroll): al llegar al final, se queda en el final.
 
 #### Scenario: Ventanas de 1470×780, 1440×800, 1366×640 y 1920×950
 - **WHEN** se abre la página a cualquiera de esos tamaños sin scrollear
