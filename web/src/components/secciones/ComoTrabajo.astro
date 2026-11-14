@@ -46,7 +46,7 @@ const noHago = [
 </section>
 
 <style>
-  .pasos { list-style: none; padding: 0; display: grid; gap: var(--space-8); margin-top: var(--space-12); }
+  .pasos { list-style: none; padding: 0; display: grid; gap: var(--space-6); margin-top: var(--space-8); }
   .paso { display: grid; grid-template-columns: calc(var(--fs-numeral) * .7) 1fr; column-gap: var(--space-4); align-items: start; }
   /* Número grande en serif, pino sobre salvia */
   .num { grid-row: span 2; font-family: var(--font-serif); font-size: var(--fs-numeral); line-height: .85; }
@@ -54,8 +54,8 @@ const noHago = [
   .paso p { max-width: 24ch; }
 
   /* Lo que hago / lo que no hago: dos tarjetas, con un signo en lugar de viñeta */
-  .reglas { display: grid; gap: var(--space-4); margin-top: clamp(var(--space-12), 6vw, var(--space-16)); }
-  .regla { display: grid; gap: var(--space-4); align-content: start; padding: var(--space-8); border-radius: var(--radius-tarjeta); }
+  .reglas { display: grid; gap: var(--space-4); margin-top: var(--space-8); }
+  .regla { display: grid; gap: var(--space-4); align-content: start; padding: var(--space-6); border-radius: var(--radius-tarjeta); }
   .regla h3 { font-size: var(--fs-tarjeta); line-height: 1; letter-spacing: -.02em; }
   .regla ul { list-style: none; padding: 0; display: grid; gap: var(--space-3); }
   .regla li { position: relative; padding-left: var(--space-8); font-weight: 500; }

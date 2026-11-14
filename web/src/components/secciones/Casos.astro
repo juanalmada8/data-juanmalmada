@@ -61,8 +61,8 @@ const fondos = ["salvia", "pino"];
 
 <style>
   .lead { margin-top: var(--space-4); }
-  .casos { list-style: none; padding: 0; display: grid; gap: var(--space-4); margin-top: clamp(var(--space-8), 5vw, var(--space-12)); }
-  .caso { display: grid; gap: var(--space-4); align-content: start; justify-items: start; padding: var(--space-8); border-radius: var(--radius-tarjeta); }
+  .casos { list-style: none; padding: 0; display: grid; gap: var(--space-4); margin-top: var(--space-6); }
+  .caso { display: grid; gap: var(--space-4); align-content: start; justify-items: start; padding: var(--space-6); border-radius: var(--radius-tarjeta); }
   .caso h3 { font-size: var(--fs-tarjeta); line-height: 1; letter-spacing: -.02em; }
   .f-salvia { background: var(--salvia); color: var(--pino); }
   .f-pino { background: var(--pino); color: var(--crema); }
@@ -71,10 +71,10 @@ const fondos = ["salvia", "pino"];
   .bullets { list-style: none; padding: 0; display: grid; gap: var(--space-2); }
   .bullets li { position: relative; padding-left: var(--space-6); }
   .bullets li::before { content: ""; position: absolute; left: 0; top: .6em; width: .75rem; height: 2px; background: currentColor; }
-  .captura-caso { width: 100%; margin-top: var(--space-4); }
+  .captura-caso { width: 100%; margin-top: var(--space-2); }
   /* El primer caso es el destacado (como el «featured case study» de thoughtbot): a ancho completo, el texto a la izquierda y la captura a la derecha */
   @media (min-width: 48rem) {
-    .caso:first-child { grid-column: 1 / -1; grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); column-gap: var(--space-12); align-items: start; }
+    .caso:first-child { grid-column: 1 / -1; grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); column-gap: var(--space-8); align-items: start; }
     .caso:first-child > * { grid-column: 1; }
     .caso:first-child .captura-caso { grid-column: 2; grid-row: 1 / span 5; margin-top: 0; align-self: center; }
   }
@@ -84,7 +84,7 @@ const fondos = ["salvia", "pino"];
   .f-pino .link:focus-visible, .proximo .boton:focus-visible { outline-color: var(--lima); }
   .f-salvia .link:focus-visible { outline-color: var(--pino); }
 
-  .otras { margin-top: clamp(var(--space-12), 6vw, var(--space-16)); display: grid; gap: var(--space-6); }
+  .otras { margin-top: var(--space-8); display: grid; gap: var(--space-6); }
   .otras h3 { font-size: var(--fs-tarjeta); }
   .lineas { list-style: none; padding: 0; display: grid; gap: var(--space-3); }
   .linea { padding: var(--space-6); border-radius: var(--radius-tarjeta); background: var(--papel); color: var(--pino); }

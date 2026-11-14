@@ -78,6 +78,17 @@ El hero SHALL tener fondo pino continuo con la barra, el titular grande en crema
 - **WHEN** el sistema pide movimiento reducido
 - **THEN** los marcos no se mueven al pasar el mouse
 
+### Requirement: El hero llena la primera pantalla
+En escritorio el hero SHALL ocupar exactamente la primera pantalla debajo de la barra (alto de la ventana menos la barra), con todo su contenido adentro, de modo que la franja siguiente no asome cortada. Cada enlace del índice SHALL dejar la sección justo bajo la barra, y al soltar el scroll cerca del comienzo de una sección esta SHALL acomodarse con un imán suave (solo desde 1024 px y sin movimiento reducido).
+
+#### Scenario: Ventanas de 1470×780, 1440×800, 1366×640 y 1920×950
+- **WHEN** se abre la página a cualquiera de esos tamaños sin scrollear
+- **THEN** el borde superior de la franja coincide con el borde inferior de la ventana
+
+#### Scenario: Ir a una sección desde el índice
+- **WHEN** la persona toca un capítulo del índice
+- **THEN** el título de esa sección queda visible justo bajo la barra, sin quedar cortado arriba
+
 ### Requirement: Franja con lo que hago
 Entre el hero y «Qué necesitás» SHALL haber una franja salvia que recorre, en una línea, lo que Juanma hace y cierra con «y lo que haga falta».
 

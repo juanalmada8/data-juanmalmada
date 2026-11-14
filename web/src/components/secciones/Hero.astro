@@ -45,7 +45,8 @@ const experiencia = sitio.experiencia.match(/\d+/)![0]; // «7»; el «Más de»
 </section>
 
 <style>
-  .hero { padding: var(--space-8) 0 var(--space-16); }
+  /* El hero llena la primera pantalla (alto de la ventana menos la barra): así la franja de abajo no asoma cortada */
+  .hero { padding: var(--space-6) 0 var(--space-12); min-height: calc(100svh - var(--alto-barra)); display: grid; align-content: center; }
   .interior { display: grid; gap: var(--space-8); }
   h1 em { color: var(--salvia); } /* la lima queda para los botones y la pastilla: el itálico del titular va en salvia */
   .pie-hero { display: grid; gap: var(--space-8); }
@@ -73,14 +74,19 @@ const experiencia = sitio.experiencia.match(/\d+/)![0]; // «7»; el «Más de»
   .guino { justify-self: start; padding: var(--space-1) var(--space-4); border-radius: var(--radius-pill); background: var(--lima); color: var(--pino); font-size: var(--fs-small); font-weight: 500; }
 
   @media (min-width: 48rem) {
-    .hero { padding-bottom: var(--space-24); }
     h1 .r { display: block; }
     .marcos { grid-template-columns: 1fr 1fr; }
     .yo { grid-row: span 2; }
   }
   /* Desde 1024 px la acción y los marcos van lado a lado; antes, los marcos bajan para que el CTA no se parta */
+  /* Ventanas bajas: marcos más compactos para que el hero entre en la pantalla */
+  @media (min-width: 48rem) and (max-height: 760px) {
+    .marco-c { padding: var(--space-4); }
+    .num { font-size: 3rem; }
+    .yo p { font-size: var(--fs-lead); }
+    .interior, .pie-hero { gap: var(--space-4); }
+  }
   @media (min-width: 64rem) {
-    .hero { padding-top: var(--space-12); }
     .pie-hero { grid-template-columns: 1fr auto; align-items: start; gap: var(--space-12); }
     .marcos { width: var(--ancho-marcos); }
   }

@@ -30,14 +30,14 @@ import { urlWhatsApp } from "../../lib/whatsapp";
 <style>
   .manifiesto { margin-top: var(--space-6); max-width: 28ch; font-family: var(--font-serif); font-size: var(--fs-h3); line-height: 1.2; }
   .manifiesto em { font-style: italic; color: var(--musgo-hondo); } /* musgo hondo: el musgo puro no llega a 4.5:1 en este tamaño */
-  .tarjetas { list-style: none; padding: 0; display: grid; gap: var(--space-4); margin-top: clamp(var(--space-8), 5vw, var(--space-12)); }
+  .tarjetas { list-style: none; padding: 0; display: grid; gap: var(--space-4); margin-top: var(--space-6); }
   .tarjeta {
     position: relative;
     display: grid;
     gap: var(--space-3);
     align-content: start;
     min-height: var(--alto-tarjeta);
-    padding: var(--space-8);
+    padding: var(--space-6);
     border-radius: var(--radius-tarjeta);
   }
   .tarjeta h3 { font-size: var(--fs-tarjeta); line-height: 1; letter-spacing: -.02em; }
