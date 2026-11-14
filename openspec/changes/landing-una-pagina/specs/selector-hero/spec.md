@@ -1,7 +1,7 @@
 ## ADDED Requirements
 
 ### Requirement: Titular desde el problema del visitante
-El h1 del hero SHALL ser «Todo anda. Pero el sistema sos vos.» (con «sos vos» en itálica de acento y «Todo anda.» solo en su renglón), seguido de una bajada con escenas concretas («Turnos por mensaje, pedidos en un cuaderno, los números en una planilla que solo entendés vos. Armo el sistema para que todo funcione sin que estés encima.») y el CTA «Contame cómo trabajás hoy». No SHALL hablar solo de «negocios»: Juanma aplica a todo lo que se pueda mejorar. El hero SHALL incluir una presentación en primera persona («Soy Juanma. Armo las dos puntas: lo que ven tus clientes y lo que ves vos.») con su firma.
+El h1 del hero SHALL ser «Todo anda. Pero el sistema sos vos.» (con «sos vos» en itálica de acento y «Todo anda.» solo en su renglón), seguido de una bajada con escenas concretas («Turnos por mensaje, pedidos en un cuaderno, los números en una planilla que solo entendés vos. Armo el sistema para que todo funcione sin que estés encima, y te enseño a usarlo.») y el CTA «Contame cómo trabajás hoy». No SHALL hablar solo de «negocios»: Juanma aplica a todo lo que se pueda mejorar. El hero SHALL incluir una presentación en primera persona («Soy Juanma. Armo las dos puntas: lo que ven tus clientes y lo que ves vos.») con su firma.
 
 #### Scenario: Primera pantalla
 - **WHEN** se abre la página

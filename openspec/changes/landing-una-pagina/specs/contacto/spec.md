@@ -11,7 +11,7 @@ La sección de contacto SHALL titularse «Contame cómo trabajás hoy.», con la
 Desde cualquier punto de la página, abrir WhatsApp o Instagram SHALL requerir como máximo dos clics; desde una tarjeta de «¿Qué te está comiendo el tiempo?» o desde el enlace directo del hero, un clic.
 
 #### Scenario: Desde la barra fija
-- **WHEN** la persona toca «Escribime» en la barra y luego una tarjeta de contacto
+- **WHEN** la persona toca «Charla sin costo» en la barra y luego una tarjeta de contacto
 - **THEN** llegó a WhatsApp o Instagram en dos clics
 
 #### Scenario: Desde una tarjeta

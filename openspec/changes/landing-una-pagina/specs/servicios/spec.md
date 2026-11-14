@@ -39,3 +39,10 @@ La sección «¿Qué te está comiendo el tiempo?» SHALL decir, sin cifras, que
 - **WHEN** se ve la frase sobre crema
 - **THEN** el itálico va en musgo hondo (musgo mezclado con pino), que pasa 4.5:1 en cualquier ancho
 
+### Requirement: Cómo se cobra, a la vista
+Debajo de las tarjetas, una nota SHALL decir cómo se cobra sin dar precios: cada proyecto se presupuesta por etapas y por escrito y, después, si la persona quiere, hay un plan mensual de soporte y mejoras (que la primera charla no tiene costo ya lo dice la última tarjeta). MUST NOT mostrar cifras.
+
+#### Scenario: Lectura de la nota
+- **WHEN** se llega al final de «¿Qué te está comiendo el tiempo?»
+- **THEN** se ve la nota «Cómo se cobra» antes de la línea para empresas y organismos
+

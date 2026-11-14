@@ -125,6 +125,11 @@
 - [x] 17.2 Specs, `02-contenido`, registro de decisiones y pendientes al día.
 - [x] 17.3 `revisor-de-marca`, axe, Lighthouse; commit y PR.
 
+## 18. Lo que se tomó de artobaweb
+
+- [x] 18.1 Botón «Charla sin costo» en la barra, «te enseño a usarlo» en la bajada y nota de cómo se cobra; verificar a 360, 390 y 1470 px.
+- [ ] 18.2 Nombrar integraciones y mostrar datos legales cuando Juanma los confirme.
+
 ## Workflow follow-up
 
 - Archivar el cambio (`/opsx:archive`) al mergear.

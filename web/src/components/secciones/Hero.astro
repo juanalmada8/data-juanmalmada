@@ -13,7 +13,7 @@ const experiencia = sitio.experiencia.match(/\d+/)![0]; // «7»; el «Más de»
 
     <div class="pie-hero">
       <div class="accion">
-        <p class="lead">Turnos por mensaje, pedidos en un cuaderno, los números en una planilla que solo entendés vos. Armo el sistema para que todo funcione sin que estés encima.</p>
+        <p class="lead">Turnos por mensaje, pedidos en un cuaderno, los números en una planilla que solo entendés vos. Armo el sistema para que todo funcione sin que estés encima, y te enseño a usarlo.</p>
         <a class="boton lima flecha" href="#contacto">Contame cómo trabajás hoy</a>
         <p class="directo">
           <span>O escribime directo:</span>
@@ -87,7 +87,6 @@ const experiencia = sitio.experiencia.match(/\d+/)![0]; // «7»; el «Más de»
     .interior, .pie-hero { gap: var(--space-4); }
   }
   @media (min-width: 64rem) {
-    .pie-hero { grid-template-columns: 1fr auto; align-items: start; gap: var(--space-12); }
-    .marcos { width: var(--ancho-marcos); }
+    .pie-hero { grid-template-columns: minmax(0, 1fr) minmax(0, var(--ancho-marcos)); align-items: start; gap: var(--space-12); }
   }
 </style>

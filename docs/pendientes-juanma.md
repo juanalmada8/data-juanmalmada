@@ -23,6 +23,8 @@ y sacala de esta lista.
   Tarea 5.4 de `openspec/changes/landing-una-pagina`.
 - [ ] **Precio del plan mensual** (no va en la web, pero lo vas a necesitar para la propuesta): qué incluye y cuánto sale.
 - [ ] **Oral, si querés contarlo con más calor**: que es el consultorio de tu mamá y que antes los turnos llegaban a su celular. Hoy la web lo dice sin nombrarla; contarlo es decisión tuya.
+- [ ] **Integraciones que hacés de verdad** (WhatsApp, Mercado Pago, Google Calendar, CRM…): si me las decís, las nombro en las tarjetas; da confianza local. No las puse sin tu confirmación.
+- [ ] **Datos legales en el pie** (nombre completo, ciudad, CUIT si querés): en Argentina tranquiliza a quien desconfía; la competencia local lo muestra. Decisión tuya.
 - [ ] Confirmar la URL de Instagram (se asume `instagram.com/almadaortiz.dev`).
 - [ ] **Otros proyectos para «Cosas que armé»** (estilo Etch: una línea cada uno, de rubros distintos; propios o internos, sin nombres de
   empresas). Con 5 o 6 líneas la web comunica «hago lo que sea» sin un titular. No se inventan. Se cargan en

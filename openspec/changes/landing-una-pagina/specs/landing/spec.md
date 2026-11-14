@@ -30,7 +30,7 @@ Ningún texto SHALL afirmar ni sugerir que Juanma hace un solo tipo de proyecto;
 - **THEN** no hay frases como «solo hago…», «me especializo en turnos» ni una lista cerrada de servicios
 
 ### Requirement: Barra fija con índice numerado
-La página SHALL tener una barra fija, de ancho completo y color pino (el mismo fondo del hero, sin corte entre ambos), con el logo, un índice numerado de sus cuatro secciones (01 Qué hago, 02 Casos, 03 Cómo trabajo, 04 Contacto) y el botón «Contame tu idea», siempre visible al scrollear. Cada capítulo del índice SHALL tener un tramo de progreso que se llena a medida que se lee esa sección, y el de la sección actual SHALL estar marcado.
+La página SHALL tener una barra fija, de ancho completo y color pino (el mismo fondo del hero, sin corte entre ambos), con el logo, un índice numerado de sus cuatro secciones (01 Qué hago, 02 Casos, 03 Cómo trabajo, 04 Contacto) y el botón «Charla sin costo», siempre visible al scrollear. Cada capítulo del índice SHALL tener un tramo de progreso que se llena a medida que se lee esa sección, y el de la sección actual SHALL estar marcado.
 
 #### Scenario: Escritorio
 - **WHEN** el ancho es de 1024 px o más
@@ -46,14 +46,14 @@ La página SHALL tener una barra fija, de ancho completo y color pino (el mismo 
 
 #### Scenario: Un solo botón fuerte en la barra
 - **WHEN** se ve la barra sobre el hero
-- **THEN** el botón de la barra dice «Escribime» (corto, para que entre con el índice) y es lima sobre pino
+- **THEN** el botón de la barra dice «Charla sin costo» (la puerta de entrada, siempre a mano) y es lima sobre pino, en una sola línea a 360 px
 
 #### Scenario: Progreso por capítulo
 - **WHEN** la persona va por la mitad de «Casos»
 - **THEN** el tramo 01 está lleno, el 02 a la mitad y el 03 y el 04 vacíos
 
 #### Scenario: Ir a una sección
-- **WHEN** la persona toca un capítulo o «Escribime»
+- **WHEN** la persona toca un capítulo o «Charla sin costo»
 - **THEN** la página baja hasta esa sección sin que la barra tape su título
 
 ### Requirement: Aire alrededor del logo
