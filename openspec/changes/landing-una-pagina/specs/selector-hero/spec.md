@@ -1,11 +1,11 @@
 ## ADDED Requirements
 
 ### Requirement: Titular desde el problema del visitante
-El h1 del hero SHALL ser «Lo que hoy hacés a mano, que lo haga el sistema.» (con «el sistema» en itálica de acento), seguido de una bajada que nombra lo concreto («Armo webs, apps, turnos, sistemas de gestión y reportes que se actualizan solos: lo que tu negocio necesite.») y el CTA «Contame tu idea». El hero SHALL incluir también una presentación en primera persona («Soy Juanma, ingeniero de datos y desarrollador full stack.») con la firma de Juanma.
+El h1 del hero SHALL ser «Todo anda. Pero el sistema sos vos.» (con «sos vos» en itálica de acento y «Todo anda.» solo en su renglón), seguido de una bajada con escenas concretas («Turnos por mensaje, pedidos en un cuaderno, los números en una planilla que solo entendés vos. Armo el sistema para que todo funcione sin que estés encima.») y el CTA «Contame cómo trabajás hoy». No SHALL hablar solo de «negocios»: Juanma aplica a todo lo que se pueda mejorar. El hero SHALL incluir una presentación en primera persona («Soy Juanma. Armo las dos puntas: lo que ven tus clientes y lo que ves vos.») con su firma.
 
 #### Scenario: Primera pantalla
 - **WHEN** se abre la página
-- **THEN** el titular habla de lo que el visitante hace hoy, no de Juanma, y el CTA se ve sin scrollear
+- **THEN** el titular habla de lo que le pasa a quien entra (todo depende de él), no de Juanma, y el CTA se ve sin scrollear
 
 ### Requirement: Datos de confianza y contacto directo en el hero
 El hero SHALL mostrar enlaces directos a WhatsApp, Instagram y mail (en ese orden) y marcos de color con los hechos de `sitio.ts`: más de 7 años de oficio, respuesta en menos de 24 h hábiles y la base. No SHALL mostrar testimonios, logos ni cifras que no estén confirmadas.

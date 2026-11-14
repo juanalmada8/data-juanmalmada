@@ -1,7 +1,7 @@
 ## ADDED Requirements
 
-### Requirement: Una sola página de cinco secciones
-El sitio SHALL ser una única página con, en este orden, hero, qué hago, casos reales, cómo trabajo y contacto, cada una con su ancla, y MUST NOT tener páginas internas, modales ni formularios.
+### Requirement: Una sola página de seis secciones
+El sitio SHALL ser una única página con, en este orden, hero, «¿Te suena?», «¿Qué te está comiendo el tiempo?», casos reales, cómo trabajo y contacto, cada una con su ancla, y MUST NOT tener páginas internas, modales ni formularios.
 
 #### Scenario: Ruta interna
 - **WHEN** alguien abre `/proyectos/oral` o cualquier ruta que no sea la home
@@ -9,10 +9,10 @@ El sitio SHALL ser una única página con, en este orden, hero, qué hago, casos
 
 #### Scenario: Orden de las secciones
 - **WHEN** se recorre la página de arriba hacia abajo
-- **THEN** las secciones aparecen en el orden indicado y no hay una sexta
+- **THEN** las secciones aparecen en el orden indicado y no hay una séptima
 
 ### Requirement: El mensaje se entiende en 5 segundos
-El hero SHALL mostrar el titular «Lo que hoy hacés a mano, que lo haga el sistema.», una línea de bajada y el CTA «Contame tu idea» en la primera pantalla del celular; «Todo el sistema, un solo proveedor.» queda como lema del pie.
+El hero SHALL mostrar el titular «Todo anda. Pero el sistema sos vos.», la bajada y el CTA «Contame cómo trabajás hoy» en la primera pantalla del celular; «Un solo proveedor, todo el sistema.» queda como lema del pie.
 
 #### Scenario: Celular de 390×844
 - **WHEN** se abre la página en un viewport de 390×844 sin scrollear
@@ -46,14 +46,14 @@ La página SHALL tener una barra fija, de ancho completo y color pino (el mismo 
 
 #### Scenario: Un solo botón fuerte en la barra
 - **WHEN** se ve la barra sobre el hero
-- **THEN** «Contame tu idea» es pino sobre crema y la lima queda para el CTA del hero y el capítulo actual
+- **THEN** el botón de la barra dice «Escribime» (corto, para que entre con el índice) y es lima sobre pino
 
 #### Scenario: Progreso por capítulo
 - **WHEN** la persona va por la mitad de «Casos»
 - **THEN** el tramo 01 está lleno, el 02 a la mitad y el 03 y el 04 vacíos
 
 #### Scenario: Ir a una sección
-- **WHEN** la persona toca un capítulo o «Contame tu idea»
+- **WHEN** la persona toca un capítulo o «Escribime»
 - **THEN** la página baja hasta esa sección sin que la barra tape su título
 
 ### Requirement: Aire alrededor del logo
@@ -89,16 +89,12 @@ En escritorio el hero SHALL ocupar exactamente la primera pantalla debajo de la 
 - **WHEN** la persona toca un capítulo del índice
 - **THEN** el título de esa sección queda visible justo bajo la barra, sin quedar cortado arriba
 
-### Requirement: Franja con lo que hago
-Entre el hero y «Qué necesitás» SHALL haber una franja salvia que recorre, en una línea, lo que Juanma hace y cierra con «y lo que haga falta».
+### Requirement: «¿Te suena?» entre el hero y las tarjetas
+Entre el hero y «¿Qué te está comiendo el tiempo?» SHALL haber una sección salvia «¿Te suena?» con cuatro escenas en segunda persona que quien entra reconoce (no son clientes ni testimonios, son situaciones: turnos confirmados a la noche, el stock en la cabeza de una persona, el reporte del lunes armado el domingo, las mismas preguntas por WhatsApp) y el cierre «Nada de esto se arregla con más horas tuyas. Se arregla con un sistema.». Reemplaza a la franja de servicios que corría.
 
-#### Scenario: Movimiento reducido
-- **WHEN** el sistema pide movimiento reducido
-- **THEN** la franja queda quieta y se lee entera, y no hay regiones con scroll
-
-#### Scenario: Lector de pantalla
-- **WHEN** se lee la página con un lector de pantalla
-- **THEN** la lista se lee una sola vez (la copia de la animación está oculta)
+#### Scenario: Lectura
+- **WHEN** se llega a la sección
+- **THEN** se ven las cuatro escenas como mensajes crema alternados a izquierda y derecha y el cierre, con una aparición sobria (ninguna con movimiento reducido)
 
 ### Requirement: Mobile first
 La página SHALL usarse sin scroll horizontal desde 360 px de ancho, con áreas táctiles de al menos 44 px.
@@ -144,7 +140,7 @@ Todo `h1` y `h2` SHALL ocupar dos renglones o menos desde 768 px (a 768, 1024, 1
 
 #### Scenario: Cierre de contacto
 - **WHEN** se ve el título del contacto
-- **THEN** es la pregunta «¿Cómo se ve el éxito para tu negocio?» (dos renglones o menos) y la bajada invita a contar sin hacer otra pregunta
+- **THEN** es «Contame cómo trabajás hoy.» (dos renglones o menos) y la bajada dice qué pasa después del mensaje
 
 ### Requirement: Sin adornos que no dicen nada
 Las secciones MUST NOT llevar etiquetas sobre el título («01 — Qué hago»), líneas finas ni cajas definidas solo por un borde de 1 px; el orden lo da el índice de la barra y las superficies se definen por su relleno. Ningún texto pensado para leerse SHALL medir menos de 13 px.

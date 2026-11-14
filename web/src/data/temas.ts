@@ -1,68 +1,68 @@
-// Las tarjetas «¿Qué necesitás?»: una sola fuente para la sección y para el mensaje de WhatsApp de cada una.
-// Sin imports a propósito: lo usa también el test (node:test).
+// Las tarjetas «¿Qué te está comiendo el tiempo?»: una por problema, como lo diría quien lo vive. Una sola fuente para la
+// sección y para el mensaje de WhatsApp de cada una. Sin imports a propósito: lo usa también el test (node:test).
 
 // Fondo de la tarjeta (tonos de la paleta del manual; ver tokens.css). El texto lo decide el CSS según el fondo.
 export type Fondo = "pino" | "salvia" | "papel" | "musgo";
 
 export interface Tema {
   id: string;
-  titulo: string; // título de la tarjeta
-  pregunta: string; // el problema como lo diría el cliente
-  solucion: string; // qué se resuelve, en una línea
+  titulo: string; // el problema, en palabras de quien lo vive (título de la tarjeta)
+  nombre: string; // cómo se llama lo que armo para eso
+  solucion: string; // qué cambia, en una o dos líneas
   fondo: Fondo;
   pasos?: string[]; // mini diagrama (patrón pipeline del manual), solo en las tarjetas que lo piden
-  mensaje: string; // mensaje de WhatsApp al tocar la tarjeta
+  mensaje: string; // mensaje de WhatsApp al tocar la tarjeta: el problema ya escrito
 }
 
 export const temas: Tema[] = [
   {
-    id: "web",
-    titulo: "Webs y apps a medida",
-    pregunta: "¿Tu web no se ve bien en el celular?",
-    solucion: "Armo una web o una app pensada para el celular, donde tus clientes encuentran lo que buscan sin llamarte.",
-    fondo: "pino",
-    mensaje: "Hola Juanma, quiero armar una web o app",
-  },
-  {
-    id: "plataforma",
-    titulo: "Portales y plataformas",
-    pregunta: "¿Necesitás que usuarios y empresas trabajen en un mismo sistema?",
-    solucion: "Armo el portal y lo que lo sostiene: usuarios, publicaciones, postulaciones y paneles.",
-    fondo: "salvia",
-    mensaje: "Hola Juanma, quiero armar una plataforma",
-  },
-  {
     id: "turnos",
-    titulo: "Turnos y reservas online",
-    pregunta: "¿Pasás el día atendiendo el teléfono para dar turnos?",
-    solucion: "Tus clientes reservan solos y reciben la confirmación y el recordatorio.",
-    fondo: "papel",
-    mensaje: "Hola Juanma, quiero armar un sistema de turnos",
+    titulo: "Te escriben y te llaman todo el día",
+    nombre: "Turnos, reservas y pedidos online",
+    solucion: "Tus clientes o pacientes sacan turno o hacen el pedido solos, a cualquier hora, y a vos te llega ordenado. Con confirmación y recordatorio.",
+    fondo: "pino",
+    mensaje: "Hola Juanma, me escriben y me llaman todo el día para turnos o pedidos y quiero ordenarlo.",
+  },
+  {
+    id: "web",
+    titulo: "Tu web no te trae nada",
+    nombre: "Webs y apps a medida",
+    solucion: "Una web que se ve bien en el celular, carga rápido y lleva a la gente a escribirte. Si hace falta, también la app.",
+    fondo: "salvia",
+    mensaje: "Hola Juanma, tengo una web que no me sirve y quiero una que funcione.",
   },
   {
     id: "gestion",
-    titulo: "Sistemas de gestión",
-    pregunta: "¿Todo anda en planillas, cuadernos y chats sueltos?",
-    solucion: "Un sistema donde se ordena el trabajo de todo el equipo, sin planillas ni chats sueltos.",
-    fondo: "musgo",
+    titulo: "Todo vive en planillas y chats",
+    nombre: "Sistemas de gestión",
+    solucion: "Un solo lugar para cargar clientes, pedidos, stock o trámites, y que todo el equipo vea lo mismo.",
+    fondo: "papel",
     pasos: ["planillas", "se ordenan", "un solo lugar"],
-    mensaje: "Hola Juanma, quiero armar un sistema de gestión",
+    mensaje: "Hola Juanma, tengo todo en planillas y chats y quiero un sistema.",
   },
   {
     id: "datos",
-    titulo: "Automatización y datos",
-    pregunta: "¿Armás el reporte a mano todos los lunes?",
-    solucion: "Conecto tus fuentes y armo reportes y tableros que se actualizan solos.",
-    fondo: "pino",
+    titulo: "Los números los sabés a fin de mes",
+    nombre: "Tableros y reportes que se arman solos",
+    solucion: "Conecto lo que ya usás y te armo un tablero que se actualiza solo. Lo mirás cuando quieras.",
+    fondo: "musgo",
     pasos: ["tus fuentes", "se conectan", "tablero"],
-    mensaje: "Hola Juanma, quiero armar algo con mis datos",
+    mensaje: "Hola Juanma, quiero ver mis números sin armarlos a mano.",
+  },
+  {
+    id: "plataforma",
+    titulo: "Necesitás que clientes o empresas entren con su usuario",
+    nombre: "Portales y plataformas, con todo lo que las sostiene",
+    solucion: "Usuarios, publicaciones, postulaciones y paneles. Y las integraciones con lo que ya tenés.",
+    fondo: "pino",
+    mensaje: "Hola Juanma, necesito armar una plataforma.",
   },
   {
     id: "otra",
-    titulo: "Otra idea",
-    pregunta: "¿Lo tuyo no está en la lista?",
-    solucion: "Es justo para lo que estoy: contame qué tenés en mente y lo armamos.",
+    titulo: "No sabés bien qué necesitás",
+    nombre: "Charlemos igual",
+    solucion: "Me contás cómo trabajás hoy y vemos juntos qué conviene armar primero. La primera charla no tiene costo.",
     fondo: "salvia",
-    mensaje: "Hola Juanma, tengo una idea para armar",
+    mensaje: "Hola Juanma, no sé bien qué necesito, pero quiero mejorar cómo trabajo.",
   },
 ];

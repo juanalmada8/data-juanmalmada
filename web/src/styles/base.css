@@ -140,6 +140,7 @@ p { text-wrap: pretty; }
 
 :focus-visible { outline: 3px solid var(--musgo); outline-offset: 3px; } /* sin border-radius: el outline sigue la forma del elemento (botones pill incluidos) */
 .tema-pino :focus-visible { outline-color: var(--lima); }
+.tema-salvia :focus-visible, .f-salvia :focus-visible { outline-color: var(--pino); } /* musgo sobre salvia no llega a 3:1 */
 
 .saltar {
   position: absolute;

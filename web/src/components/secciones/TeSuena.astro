@@ -1,0 +1,40 @@
+---
+// «¿Te suena?»: cuatro escenas que quien entra reconoce (no son clientes, son situaciones), entre el hero y las tarjetas.
+// Reemplaza a la franja de servicios: lo que hago ya está en las tarjetas; acá va lo que le pasa a la persona.
+const escenas = [
+  "Confirmás turnos a las once de la noche, desde la cama.",
+  "El stock está en la cabeza de una sola persona.",
+  "El reporte del lunes lo armás vos el domingo.",
+  "Te preguntan lo mismo por WhatsApp todo el día.",
+];
+---
+<section id="te-suena" class="seccion-ancha tema-salvia" aria-labelledby="te-suena-titulo">
+  <div class="marco">
+    <h2 id="te-suena-titulo" data-aparece>¿Te <em>suena</em>?</h2>
+    <ul class="escenas" role="list">
+      {escenas.map((e) => <li class="escena" data-aparece>{e}</li>)}
+    </ul>
+    <p class="cierre" data-aparece>Nada de esto se arregla con más horas tuyas. Se arregla con un sistema.</p>
+  </div>
+</section>
+
+<style>
+  /* Escenas como mensajes que llegan, alternadas a izquierda y derecha: ritmo, no una grilla de tarjetas iguales */
+  .escenas { list-style: none; padding: 0; display: grid; gap: var(--space-3); margin-top: var(--space-8); max-width: 60rem; }
+  .escena {
+    max-width: 30rem;
+    justify-self: start;
+    padding: var(--space-4) var(--space-6);
+    border-radius: var(--radius-tarjeta) var(--radius-tarjeta) var(--radius-tarjeta) var(--radius-box);
+    text-wrap: balance;
+    background: var(--crema);
+    color: var(--pino);
+    font-family: var(--font-serif);
+    font-size: var(--fs-h3);
+    line-height: 1.2;
+  }
+  .cierre { margin-top: var(--space-8); max-width: 34ch; font-weight: 700; font-size: var(--fs-lead); }
+  .escena:nth-child(even) { justify-self: end; border-radius: var(--radius-tarjeta) var(--radius-tarjeta) var(--radius-box) var(--radius-tarjeta); }
+  /* Más baja que la pantalla a propósito: llenarla dejaba un hueco de salvia */
+  #te-suena { min-height: 0; }
+</style>

@@ -94,31 +94,37 @@ Excepción: **«de punta a punta»** y **«todo el sistema»** son frases de la 
 
 No hay páginas internas, modales ni formularios (cambio `landing-una-pagina`).
 
-## Home: una sola página de 5 secciones, a ancho completo con tarjetas
+## Home: una sola página, a ancho completo con tarjetas
 
-> **Historial 2026-10-10 → 2026-10-30.** Landing de 8 secciones → editor de código → página editorial → una página de 5
-> secciones con selector → panel fijo a un costado → **tarjetas grandes de color a ancho completo** (referencias que mandó
-> Juanma y webs como Etch y thoughtbot). La fuente de verdad del comportamiento es el cambio OpenSpec `landing-una-pagina`
-> (`openspec/changes/landing-una-pagina/specs/`). Esto resume el contenido.
+> **Historial 2026-10-10 → 2026-11-14.** Landing de 8 secciones → editor de código → página editorial → una página de 5
+> secciones con selector → panel fijo a un costado → tarjetas grandes de color (referencias de Juanma, Etch y thoughtbot) →
+> **mensaje desde lo que le pasa a quien entra** (`docs/propuesta-mensaje.md`, aprobada el 2026-11-14). La fuente de verdad del
+> comportamiento es el cambio OpenSpec `landing-una-pagina`. Esto resume el contenido.
 
-Mensaje: **«Lo que hoy hacés a mano, que lo haga el sistema.»** (titular, habla del problema del visitante). El lema del
-manual, **«Un solo proveedor, todo el sistema.»**, va en el pie. Armo sistemas a medida para lo que el negocio necesite;
-los servicios y los casos son **ejemplos, no un límite**. Ver y contactar, a 1–3 clics desde cualquier punto.
+**Mensaje:** la persona que entra no busca «un sistema de gestión»: busca dejar de contestar mensajes a la noche, de pasar pedidos a
+una planilla, de esperar a fin de mes para ver los números. Titular: **«Todo anda. Pero el sistema sos vos.»** No habla solo de
+negocios: Juanma aplica a todo lo que se pueda mejorar. El lema del manual, **«Un solo proveedor, todo el sistema.»**, va en el pie.
 
-**Idea:** clásico y confiable, con color: un titular grande, hechos reales en marcos de color, una franja con lo que hago y tarjetas
-de color donde cada una lleva directo a WhatsApp con su tema. Sin fotos de stock, cifras ni logos inventados.
+**Posicionamiento:** una persona de oficio, no una agencia. Armo lo que ven los clientes y lo que ve quien lo maneja: la web, el
+sistema y los números. Hablás directo con quien lo construye.
+
+**Modelo de negocio (opción B, elegida por Juanma):** proyectos a medida por etapas, con presupuesto por etapa; **la primera
+charla no tiene costo**; después del proyecto, **plan mensual de soporte y mejoras** (sin precio en la web, todo a presupuesto).
 
 | Sección | Contenido |
 |---|---|
-| Hero | Barra y hero en pino continuo. Titular «Lo que hoy hacés a mano, que lo haga *el sistema*.» (2 renglones desde 768 px, hasta 3 en celular), bajada «Armo webs, apps, turnos, sistemas de gestión y reportes que se actualizan solos: lo que tu negocio necesite.», presentación «Soy Juanma, ingeniero de datos y desarrollador full stack.» con la firma, CTA «Contame tu idea», enlaces directos a WhatsApp, Instagram y mail, y tres marcos de color con datos reales en lugar de fotos: presentación con firma, «Más de 7 años de oficio», respuesta en menos de 24 h hábiles con la base y `hola_mundo()`. |
-| Franja | Banda salvia que corre: Webs y apps · Plataformas · Turnos · Gestión · Datos · Automatización · Nube · y lo que haga falta. Quieta con movimiento reducido. |
-| Qué necesitás | «¿Qué necesitás? *Algo de esto*, o algo distinto.», el manifiesto «Armo sistemas que se usan de verdad. Lo que invertís hoy te ahorra *tiempo y plata* mañana.» y 6 tarjetas de color (problema como lo diría el cliente → solución → «Contame esto» a WhatsApp con el mensaje de su tema), «Otra idea» al final. Gestión y Datos llevan un mini diagrama. |
-| Cosas que armé | Oral como caso destacado a ancho completo y Staffy al lado de «El próximo» (nombre, una línea, 3 bullets, link, captura) una tarjeta «El próximo puede ser el tuyo» y, debajo, «Y otras cosas que armé»: una grilla de líneas (estilo Etch) que se completa en `web/src/data/proyectos.ts` y no se ve mientras esté vacía. Sin pestañas. |
-| Cómo trabajo | Charla · Propuesta · Desarrollo · Soporte, con números grandes en serif, sobre salvia, y debajo «Lo que hago» / «Lo que no hago» (compromisos de oficio, a confirmar por Juanma; idea de Humaan). |
-| Contacto | Cierre con la pregunta «¿Cómo se ve el éxito para tu negocio?» (como thoughtbot), «Contámelo y lo vemos juntos, sin apuro.», la línea «Armemos el sistema de tu consultorio / equipo / empresa / idea / negocio.» con la palabra cambiando una sola vez (solo CSS, menos de 5 s), dos tarjetas («Contame tu idea» por WhatsApp, «Tengo una pregunta» por mail), Instagram aparte y la línea «Este sitio habla de mí, pero me interesa saber de vos.» con presentación y firma. Pie: lema del manual, LinkedIn, base y año. |
+| Hero | Barra y hero en pino. «Todo anda. / Pero el sistema *sos vos*.», bajada «Turnos por mensaje, pedidos en un cuaderno, los números en una planilla que solo entendés vos. Armo el sistema para que todo funcione sin que estés encima.», CTA «Contame cómo trabajás hoy», enlaces directos y tres marcos: «Soy Juanma. Armo las dos puntas: lo que ven tus clientes y lo que ves vos.» con la firma, «Más de 7 años de oficio», «Te respondo en menos de 24 h hábiles» con la base y `hola_mundo()`. |
+| ¿Te suena? | Sobre salvia, cuatro escenas como mensajes alternados que quien entra reconoce (turnos a la noche, el stock en la cabeza de una persona, el reporte del lunes armado el domingo, las mismas preguntas por WhatsApp) y «Nada de esto se arregla con más horas tuyas. Se arregla con un sistema.» Reemplaza a la franja que corría. |
+| ¿Qué te está comiendo el tiempo? | El manifiesto «Armo sistemas que se usan de verdad. Lo que invertís hoy te ahorra *tiempo y plata* mañana.» y 6 tarjetas **por problema** (título = el problema; debajo, cómo se llama lo que armo y qué cambia), con «Esto me pasa →» que abre WhatsApp con el problema ya escrito. La última: «No sabés bien qué necesitás» (charla sin costo). Debajo, una línea para empresas y organismos (integraciones, procesos de datos, plataformas con backend). |
+| Cosas que armé | Oral destacado: antes daban los turnos por mensaje de texto y los anotaban en una agenda en papel; hoy los pacientes reservan solos. Staffy: el portal (parte pública y panel de la empresa), un primer filtro de candidatos con IA conectado por APIs y mails automáticos; hoy, mejoras en su plataforma de RRHH («armé el portal y hoy sigo trabajando con ellos»). «El próximo puede ser el tuyo». La grilla «Y otras cosas que armé» (`proyectos.ts`) sigue vacía: lo de Staffy fue a su tarjeta para no repetirlo. |
+| Cómo trabajo | Charla (sin costo, «no hace falta que sepas de tecnología») · Propuesta (por escrito, qué, en qué orden y cuánto sale) · Desarrollo (por etapas, lo ves funcionar antes del final) · Soporte (te enseño a usarlo; si querés, plan mensual). Debajo, «Lo que hago» / «Lo que no hago». |
+| Contacto | «Contame cómo *trabajás* hoy.», «Un mensaje alcanza. Te respondo en menos de 24 h hábiles y vemos juntos qué conviene armar primero.», tarjetas «Contame por WhatsApp» («Es lo más rápido.») y «Prefiero mail», la línea que cambia «Armemos el sistema de tu consultorio / equipo / empresa / idea / negocio.», Instagram aparte y el texto «yo» (ingeniero de datos y desarrollador full stack, más de 7 años en empresas de distintos rubros, también para consultorios, negocios y proyectos; General Belgrano, 100% remoto; hablás siempre conmigo). Pie: lema del manual, LinkedIn, base y año. |
 
-**Barra:** pino a ancho completo, con el logo `<jm>` en crema (ícono `</j>` en el celular), **índice numerado** 01–04 con un tramo de progreso por
-capítulo, y «Contame tu idea» en lima.
+**Barra:** pino a ancho completo, logo `<jm>` en crema (ícono `</j>` en el celular), índice numerado 01–04 con tramos de progreso, y
+«Escribime» en lima (corto, para que entre al lado del índice).
+
+**WhatsApp:** cada tarjeta manda su problema ya escrito (fuente: `web/src/data/temas.ts`). El mensaje base, fuera de las tarjetas, termina
+abierto para que la persona siga con su caso: «Hola Juanma, vi tu web. Hoy hago esto a mano: ».
 
 **Sin adornos:** no hay etiquetas sobre los títulos, líneas finas ni cajas definidas por un borde; las superficies se definen
 por su relleno. Titulares de dos renglones o menos desde 768 px. Nada que se lea baja de 13 px. La lima queda para los botones principales, la tarjeta de WhatsApp, el botón de «El próximo», la pastilla `hola_mundo()` y una `m` del patrón, más los estados de foco y hover.
@@ -166,5 +172,5 @@ Agregar un caso nuevo = crear su archivo; aparece como una tarjeta más, sin toc
 ## SEO y metadatos
 
 - Title home: «Juan Martín Almada Ortiz · Sistemas a medida» (≤ 60 caracteres).
-- Description: una frase en la voz de la marca que mencione el ahorro, ≤ 155 caracteres.
+- Description: «Turnos, pedidos, gestión y números que se actualizan solos. Lo que invertís hoy te ahorra tiempo mañana, y hablás con quien lo construye.» (≤ 155 caracteres, menciona el ahorro).
 - OG image propia por página (1200×630), con la marca.

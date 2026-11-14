@@ -1,6 +1,6 @@
 ---
-// Hero pino pegado a la barra (como thoughtbot): titular crema, bajada, CTA lima y enlaces directos; a la derecha, tres marcos de color
-// con datos reales en lugar de fotos (la firma de Juanma, los años de oficio y la respuesta). El lema del manual va en el pie.
+// Hero pino pegado a la barra (como thoughtbot): un titular que nombra lo que le pasa a quien entra («el sistema sos vos»), bajada con
+// escenas concretas, CTA lima y enlaces directos; a la derecha, tres marcos con datos reales en lugar de fotos. El lema del manual va en el pie.
 // Spec: openspec/changes/landing-una-pagina/specs/{landing,selector-hero}.
 import Firma from "../Firma.astro";
 import { sitio, contacto } from "../../data/sitio";
@@ -9,12 +9,12 @@ const experiencia = sitio.experiencia.match(/\d+/)![0]; // «7»; el «Más de»
 ---
 <section id="hero" class="hero tema-pino" aria-labelledby="hero-titulo">
   <div class="marco interior">
-    <h1 id="hero-titulo"><span class="r">Lo que hoy hacés a mano,</span> <span class="r">que lo haga <em>el sistema</em>.</span></h1>
+    <h1 id="hero-titulo"><span class="r">Todo anda.</span> <span class="r">Pero el sistema <em>sos vos</em>.</span></h1>
 
     <div class="pie-hero">
       <div class="accion">
-        <p class="lead">Armo webs, apps, turnos, sistemas de gestión y reportes que se actualizan solos: lo que tu negocio necesite.</p>
-        <a class="boton lima flecha" href="#contacto">Contame tu idea</a>
+        <p class="lead">Turnos por mensaje, pedidos en un cuaderno, los números en una planilla que solo entendés vos. Armo el sistema para que todo funcione sin que estés encima.</p>
+        <a class="boton lima flecha" href="#contacto">Contame cómo trabajás hoy</a>
         <p class="directo">
           <span>O escribime directo:</span>
           <a href={contacto.whatsapp} target="_blank" rel="noopener noreferrer">WhatsApp<span class="sr-only"> (se abre en otra pestaña)</span></a>
@@ -25,7 +25,7 @@ const experiencia = sitio.experiencia.match(/\d+/)![0]; // «7»; el «Más de»
 
       <div class="marcos" role="group" aria-label="Datos de Juanma">
         <div class="marco-c yo">
-          <p>Soy Juanma, ingeniero de datos y desarrollador full stack.</p>
+          <p>Soy Juanma. Armo las dos puntas: lo que ven tus clientes y lo que ves vos.</p>
           <Firma color="pino" ancho="var(--ancho-firma)" decorativa />
         </div>
         <div class="marco-c anios">
@@ -35,7 +35,7 @@ const experiencia = sitio.experiencia.match(/\d+/)![0]; // «7»; el «Más de»
           <span class="unidad">años de oficio</span>
         </div>
         <div class="marco-c resp">
-          <p>Respondo en {sitio.respuesta}.</p>
+          <p>Te respondo en {sitio.respuesta}.</p>
           <p class="base">{sitio.base}</p>
           <code class="guino" translate="no" aria-hidden="true">hola_mundo()</code>
         </div>
@@ -73,8 +73,8 @@ const experiencia = sitio.experiencia.match(/\d+/)![0]; // «7»; el «Más de»
   .resp .base { font-weight: 500; font-size: var(--fs-small); }
   .guino { justify-self: start; padding: var(--space-1) var(--space-4); border-radius: var(--radius-pill); background: var(--lima); color: var(--pino); font-size: var(--fs-small); font-weight: 500; }
 
+  h1 .r { display: block; } /* «Todo anda.» siempre solo en su renglón: la pausa es parte del mensaje */
   @media (min-width: 48rem) {
-    h1 .r { display: block; }
     .marcos { grid-template-columns: 1fr 1fr; }
     .yo { grid-row: span 2; }
   }

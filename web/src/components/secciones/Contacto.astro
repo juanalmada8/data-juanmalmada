@@ -1,5 +1,5 @@
 ---
-// Cierre a ancho completo sobre pino: título corto, la pregunta como bajada y los tres canales.
+// Cierre a ancho completo sobre pino: la invitación a contar cómo trabaja hoy, y los canales.
 // Dos tarjetas grandes (una pregunta y una idea, sin formularios) e Instagram como enlace aparte. Spec: specs/contacto.
 import Firma from "../Firma.astro";
 import PatronM from "../PatronM.astro";
@@ -8,19 +8,19 @@ import { contacto, sitio } from "../../data/sitio";
 <section id="contacto" class="seccion-ancha tema-pino" aria-labelledby="contacto-titulo">
   <div class="marco grilla">
     <div class="texto" data-aparece>
-      <h2 id="contacto-titulo">¿Cómo se ve el <em>éxito</em> para tu negocio?</h2>
-      <p class="lead">Contámelo y lo vemos juntos, sin apuro.</p>
+      <h2 id="contacto-titulo">Contame cómo <em>trabajás</em> hoy.</h2>
+      <p class="lead">Un mensaje alcanza. Te respondo en {sitio.respuesta} y vemos juntos qué conviene armar primero.</p>
 
       <div class="canales">
         <a class="canal wa" href={contacto.whatsapp} target="_blank" rel="noopener noreferrer">
-          <span class="titulo">Contame tu idea</span>
-          <span class="detalle">Por WhatsApp. Te respondo en {sitio.respuesta}.</span>
+          <span class="titulo">Contame por WhatsApp</span>
+          <span class="detalle">Es lo más rápido.</span>
           <span class="flecha" aria-hidden="true">→</span>
           <span class="sr-only">(se abre en otra pestaña)</span>
         </a>
         <a class="canal mail" href={`mailto:${contacto.mail}`}>
-          <span class="titulo">Tengo una pregunta</span>
-          <span class="detalle">Por mail, sin apuro.</span>
+          <span class="titulo">Prefiero mail</span>
+          <span class="detalle">Sin apuro. Contame lo que quieras y te contesto con calma.</span>
           <span class="flecha" aria-hidden="true">→</span>
         </a>
       </div>
@@ -36,9 +36,8 @@ import { contacto, sitio } from "../../data/sitio";
 
     <div class="yo" data-aparece>
       <p>
-        Este sitio habla de mí, pero me interesa saber de vos. Soy Juanma: ingeniero de datos y desarrollador full stack,
-        con {sitio.experiencia} de experiencia en equipos y empresas de distintos rubros. Trabajo desde General Belgrano,
-        100% remoto.
+        Este sitio habla de mí, pero me interesa saber de vos. Soy Juanma, ingeniero de datos y desarrollador full stack: {sitio.experiencia}{" "}armando sistemas en empresas de distintos rubros, y también para consultorios, negocios y proyectos
+        que necesitan el suyo. Trabajo desde General Belgrano, 100% remoto, y hablás siempre conmigo.
       </p>
       <div class="firma-rev"><Firma color="crema" ancho="var(--ancho-firma)" decorativa /></div>
     </div>
@@ -49,7 +48,7 @@ import { contacto, sitio } from "../../data/sitio";
 <style>
   .grilla { display: grid; gap: var(--space-12); align-items: end; }
   .texto { display: grid; gap: var(--space-6); justify-items: start; }
-  .lead { max-width: 30ch; }
+  .lead { max-width: 40ch; }
   h2 em { color: var(--salvia); } /* la lima se reserva para el botón de WhatsApp y una m del patrón */
   .canales { display: grid; gap: var(--space-4); width: 100%; margin-top: var(--space-4); }
   .canal {

@@ -1,6 +1,6 @@
 ---
-// «Qué necesitás»: seis tarjetas grandes de color, una por situación (el problema como lo diría el cliente → la solución).
-// Son ejemplos, no un límite: «Otra idea» lo dice. Cada tarjeta abre WhatsApp con el mensaje de su tema (1 clic).
+// «¿Qué te está comiendo el tiempo?»: seis tarjetas grandes de color, una por problema (como lo diría quien lo vive → cómo se
+// llama lo que armo → qué cambia). Son ejemplos, no un límite: la última lo dice. Cada tarjeta abre WhatsApp con el problema ya escrito.
 // Spec: openspec/changes/landing-una-pagina/specs/{servicios,selector-hero}.
 import Pipeline from "../Pipeline.astro";
 import { temas } from "../../data/temas";
@@ -8,22 +8,27 @@ import { urlWhatsApp } from "../../lib/whatsapp";
 ---
 <section id="que-hago" class="seccion-ancha tema-crema" aria-labelledby="que-hago-titulo">
   <div class="marco">
-    <h2 id="que-hago-titulo" data-aparece>¿Qué necesitás? <em>Algo de esto</em>, o algo distinto.</h2>
+    <h2 id="que-hago-titulo" data-aparece>¿Qué te está comiendo el <em>tiempo</em>?</h2>
     <p class="manifiesto" data-aparece>Armo sistemas que se usan de verdad. Lo que invertís hoy te ahorra <em>tiempo y plata</em> mañana.</p>
 
     <ul class="tarjetas">
       {temas.map((t, i) => (
         <li class:list={["tarjeta", `f-${t.fondo}`, { oscura: t.fondo === "pino" || t.fondo === "musgo" }]} data-aparece style={`--giro:${["var(--giro-a)", "var(--giro-b)", "var(--giro-c)"][i % 3]}`}>
           <h3>{t.titulo}</h3>
-          <p class="pregunta">{t.pregunta}</p>
+          <p class="nombre">{t.nombre}</p>
           <p class="solucion">{t.solucion}</p>
           {t.pasos && <Pipeline pasos={t.pasos} class="mini" />}
           <a class="ir" href={urlWhatsApp(t.mensaje)} target="_blank" rel="noopener noreferrer">
-            Contame esto <span aria-hidden="true">→</span><span class="sr-only"> ({t.titulo}; se abre WhatsApp en otra pestaña)</span>
+            Esto me pasa <span aria-hidden="true">→</span><span class="sr-only"> ({t.titulo}; se abre WhatsApp en otra pestaña)</span>
           </a>
         </li>
       ))}
     </ul>
+
+    <p class="empresas" data-aparece>
+      ¿Sos una empresa o un organismo? También armo integraciones entre sistemas, procesos de datos y plataformas con su
+      backend. Mismo trato: hablás con quien lo construye.
+    </p>
   </div>
 </section>
 
@@ -41,7 +46,8 @@ import { urlWhatsApp } from "../../lib/whatsapp";
     border-radius: var(--radius-tarjeta);
   }
   .tarjeta h3 { font-size: var(--fs-tarjeta); line-height: 1; letter-spacing: -.02em; }
-  .pregunta { font-weight: 700; font-size: var(--fs-lead); line-height: 1.3; }
+  .nombre { font-weight: 700; font-size: var(--fs-lead); line-height: 1.3; }
+  .empresas { margin-top: var(--space-6); max-width: 60ch; font-weight: 500; }
   .solucion { max-width: 34ch; }
   .tarjeta :global(.mini) { margin-top: var(--space-2); flex-wrap: wrap; }
 

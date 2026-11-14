@@ -119,6 +119,12 @@
 - [x] 16.1 «Lo que hago / Lo que no hago» en «Cómo trabajo», manifiesto con palabras resaltadas y palabra que rota en el cierre; verificar a 360, 768 y 1440 px y con movimiento reducido.
 - [ ] 16.2 Juanma revisa y ajusta los textos de las tarjetas.
 
+## 17. Mensaje y modelo de negocio
+
+- [x] 17.1 Copy nuevo en hero, «¿Te suena?», tarjetas por problema, casos, cómo trabajo, contacto, WhatsApp y meta; verificar a 390 y 1470 px.
+- [x] 17.2 Specs, `02-contenido`, registro de decisiones y pendientes al día.
+- [x] 17.3 `revisor-de-marca`, axe, Lighthouse; commit y PR.
+
 ## Workflow follow-up
 
 - Archivar el cambio (`/opsx:archive`) al mergear.

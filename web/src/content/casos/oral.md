@@ -1,7 +1,7 @@
 ---
 nombre: "Oral Odontología Familiar"
 url: "https://oral.com.ar"
-resumen: "El sitio de un consultorio odontológico, con turnos online y panel de gestión."
+resumen: "Un consultorio que daba los turnos por mensaje de texto y los anotaba en una agenda en papel. Hoy los pacientes reservan solos."
 bullets:
   - "La web del consultorio."
   - "Reserva de turnos online, con confirmación y recordatorio por mail."

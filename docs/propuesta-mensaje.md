@@ -1,6 +1,10 @@
 # Propuesta: qué dice la web y cómo vendés (2026-11-14)
 
-> Estado: **propuesta, pendiente de ok de Juanma.** Nada de esto está en el código todavía. Cuando elijas, se aplica
+> Estado: **aplicada el 2026-11-14** con las respuestas de Juanma (sección 7): modelo B, charla gratis y plan mensual; titular
+> generalizado a «Todo anda. Pero el sistema sos vos.» porque Juanma aplica a todo lo que se pueda mejorar, no solo a negocios; sin
+> reuniones en persona; sin la línea de la planilla. Lo que sigue es el razonamiento y queda como referencia.
+>
+> (Texto original:) Nada de esto está en el código todavía. Cuando elijas, se aplica
 > y se actualiza `02-contenido.md`. Todo lo que sea una promesa nueva está marcado con **(a confirmar)**: no se publica
 > sin tu sí. No hay cifras, clientes ni testimonios inventados.
 

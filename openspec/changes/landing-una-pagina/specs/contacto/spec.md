@@ -1,29 +1,29 @@
 ## ADDED Requirements
 
 ### Requirement: Cierre con contacto directo
-La sección de contacto SHALL cerrar con la pregunta «¿Cómo se ve el éxito para tu negocio?» como título, con la bajada «Contámelo y lo vemos juntos, sin apuro.» (una afirmación, sin segunda pregunta), y ofrecer dos tarjetas grandes («Contame tu idea», por WhatsApp, y «Tengo una pregunta», por mail) e Instagram como enlace aparte, con WhatsApp como principal.
+La sección de contacto SHALL titularse «Contame cómo trabajás hoy.», con la bajada «Un mensaje alcanza. Te respondo en menos de 24 h hábiles y vemos juntos qué conviene armar primero.», y ofrecer dos tarjetas grandes («Contame por WhatsApp» y «Prefiero mail») e Instagram como enlace aparte, con WhatsApp como principal.
 
 #### Scenario: Canales visibles
 - **WHEN** se llega a la sección
 - **THEN** las dos tarjetas y el enlace a Instagram se ven sin scroll adicional en escritorio
 
 ### Requirement: Dos clics hasta WhatsApp o Instagram
-Desde cualquier punto de la página, abrir WhatsApp o Instagram SHALL requerir como máximo dos clics; desde una tarjeta de «¿Qué necesitás?» o desde el enlace directo del hero, un clic.
+Desde cualquier punto de la página, abrir WhatsApp o Instagram SHALL requerir como máximo dos clics; desde una tarjeta de «¿Qué te está comiendo el tiempo?» o desde el enlace directo del hero, un clic.
 
 #### Scenario: Desde la barra fija
-- **WHEN** la persona toca «Contame tu idea» en la barra y luego un botón de contacto
+- **WHEN** la persona toca «Escribime» en la barra y luego una tarjeta de contacto
 - **THEN** llegó a WhatsApp o Instagram en dos clics
 
 #### Scenario: Desde una tarjeta
-- **WHEN** la persona toca «Contame esto» en una tarjeta de «¿Qué necesitás?»
+- **WHEN** la persona toca «Esto me pasa» en una tarjeta de «¿Qué te está comiendo el tiempo?»
 - **THEN** llegó a WhatsApp con el mensaje de esa tarjeta en un clic
 
 ### Requirement: Mensaje de WhatsApp precargado con el tema
-El enlace de WhatsApp de cada tarjeta de «¿Qué necesitás?» SHALL abrir el chat con un mensaje que nombre su tema: «Hola Juanma, quiero armar una web o app», «…una plataforma», «…un sistema de turnos», «…un sistema de gestión», «…algo con mis datos» u «Hola Juanma, tengo una idea para armar» en la tarjeta «Otra idea». Los enlaces fuera de las tarjetas usan el mensaje genérico.
+El enlace de WhatsApp de cada tarjeta SHALL abrir el chat con el problema de esa tarjeta ya escrito en primera persona (p. ej. «Hola Juanma, me escriben y me llaman todo el día para turnos o pedidos y quiero ordenarlo.»; la fuente es `web/src/data/temas.ts`). Los enlaces fuera de las tarjetas usan el mensaje base, que termina abierto.
 
 #### Scenario: Enlace fuera de las tarjetas
 - **WHEN** se abre WhatsApp desde el hero o el contacto
-- **THEN** el mensaje es «Hola Juanma, te escribo desde la web.»
+- **THEN** el mensaje es «Hola Juanma, vi tu web. Hoy hago esto a mano: » (abierto, para que la persona siga con su caso)
 
 ### Requirement: Datos de contacto en un solo lugar
 Los enlaces de WhatsApp, Instagram, mail y LinkedIn SHALL definirse en un único archivo de datos, y los externos SHALL abrir con `rel="noopener noreferrer"`.

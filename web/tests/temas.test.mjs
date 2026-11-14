@@ -6,19 +6,17 @@ import { MENSAJE_BASE, NUMERO_WHATSAPP, urlWhatsApp } from "../src/lib/whatsapp.
 
 const texto = (url) => decodeURIComponent(new URL(url).searchParams.get("text"));
 
-test("hay seis tarjetas, con «Otra idea» al final y los ids sin repetir", () => {
-  assert.deepEqual(
-    temas.map((t) => t.titulo),
-    ["Webs y apps a medida", "Portales y plataformas", "Turnos y reservas online", "Sistemas de gestión", "Automatización y datos", "Otra idea"],
-  );
+test("hay seis tarjetas por problema, con la de «no sabés qué necesitás» al final y los ids sin repetir", () => {
+  assert.deepEqual(temas.map((t) => t.id), ["turnos", "web", "gestion", "datos", "plataforma", "otra"]);
+  assert.equal(temas.at(-1).titulo, "No sabés bien qué necesitás");
   assert.equal(new Set(temas.map((t) => t.id)).size, temas.length);
 });
 
 test("sin tema el mensaje es el genérico", () => {
   const url = urlWhatsApp();
   assert.equal(new URL(url).pathname, `/${NUMERO_WHATSAPP}`);
-  assert.equal(texto(url), "Hola Juanma, te escribo desde la web.");
   assert.equal(texto(url), MENSAJE_BASE);
+  assert.match(MENSAJE_BASE, /^Hola Juanma, vi tu web\./); // con espacios para que la persona cuente su caso
 });
 
 for (const t of temas) {
@@ -30,18 +28,19 @@ for (const t of temas) {
   });
 }
 
-test("«Una plataforma» y «Otra idea» tienen los mensajes pedidos", () => {
+test("cada mensaje de WhatsApp cuenta el problema de su tarjeta (no un «quiero un servicio» genérico)", () => {
   const por = (id) => temas.find((t) => t.id === id).mensaje;
-  assert.equal(por("plataforma"), "Hola Juanma, quiero armar una plataforma");
-  assert.equal(por("otra"), "Hola Juanma, tengo una idea para armar");
+  assert.match(por("turnos"), /me escriben y me llaman/);
+  assert.match(por("plataforma"), /plataforma/);
+  assert.match(por("otra"), /no sé bien qué necesito/);
 });
 
-test("ningún texto de los temas trae cifras ni frases prohibidas, y las preguntas van con voseo", () => {
+test("ningún texto de los temas trae cifras ni frases prohibidas, y va con voseo", () => {
   const prohibidas = /soluciones (integrales|innovadoras)|siguiente nivel|transformación digital|\d+\s?%/i;
   for (const t of temas) {
-    assert.doesNotMatch(`${t.titulo} ${t.pregunta} ${t.solucion}`, prohibidas);
-    assert.match(t.pregunta, /^¿.*\?$/, `${t.id}: la pregunta va entre signos`);
-    assert.doesNotMatch(t.pregunta, /\b(tienes|necesitas|quieres|puedes|haces)\b/i, `${t.id}: voseo`);
+    const todo = `${t.titulo} ${t.nombre} ${t.solucion} ${t.mensaje}`;
+    assert.doesNotMatch(todo, prohibidas);
+    assert.doesNotMatch(todo, /\b(tienes|necesitas|quieres|puedes|haces|sabes|usas)\b/i, `${t.id}: voseo`);
   }
 });
 
