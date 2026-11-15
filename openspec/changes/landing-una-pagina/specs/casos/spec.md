@@ -1,23 +1,21 @@
 ## ADDED Requirements
 
-### Requirement: Dos casos reales de mundos distintos
-La sección SHALL mostrar el caso de Oral Odontología Familiar (oral.com.ar: web, reserva de turnos online con confirmación y recordatorio por mail, lista de espera y panel de gestión) y el de Staffy (jobs.wearestaffy.com: portal de empleo IT que conecta profesionales con empresas de Latinoamérica y Estados Unidos; frontend del portal con vacantes, detalle y postulación en pocos pasos, y su backend).
+### Requirement: Dos casos reales contados en lenguaje claro
+La sección SHALL mostrar el caso de Oral Odontología Familiar (oral.com.ar), cuyo eje es la autogestión de los pacientes («Antes»: los turnos se coordinaban por mensaje de texto y con una agenda en papel; «Hoy»: los pacientes reservan por su cuenta, reciben la confirmación y el recordatorio por mail, y el consultorio ve todo en un panel), y el de Staffy (jobs.wearestaffy.com) en tres partes («Qué es», «Qué armé», «Hoy»): un portal de empleo para profesionales IT que conecta personas con empresas de Latinoamérica y Estados Unidos; el portal con lo que ven los candidatos y el panel de cada empresa, un primer filtro de candidatos con inteligencia artificial y avisos automáticos por mail; y la mejora de su plataforma de recursos humanos. MUST NOT copiar notas técnicas ni inventar métricas, resultados o funciones.
 
 #### Scenario: Contenido de un caso
-- **WHEN** se abre un caso
-- **THEN** muestra el nombre, una línea de qué es, tres bullets cortos de qué se armó, capturas y un link al sitio
+- **WHEN** se ve un caso
+- **THEN** muestra el nombre, dos o tres partes cortas con la última (la solución o lo que sigue hoy) en un panel propio, el link al sitio y la captura o su marcador
 
 #### Scenario: Contraste entre casos
 - **WHEN** se ven los dos casos
 - **THEN** uno es un consultorio local y el otro una plataforma para empresas
+### Requirement: Los casos se ven a la vez, en una fila
+Los casos SHALL presentarse como tarjetas sin pestañas, en una sola fila en escritorio (Oral, Staffy y una tarjeta que invita a sumar el próximo, con enlace a WhatsApp) y apiladas en el celular. La sección completa SHALL entrar en una pantalla de 1470×790.
 
-### Requirement: Los casos se ven a la vez, como tarjetas grandes
-Los casos SHALL presentarse como tarjetas grandes de color, sin pestañas: el primero como caso destacado a ancho completo (texto a la izquierda y captura a la derecha en escritorio) y los demás lado a lado, seguidas de una tarjeta que invita a sumar el próximo (enlace a WhatsApp).
-
-#### Scenario: Ver los dos casos
+#### Scenario: Ver los casos
 - **WHEN** la persona llega a «Cosas que armé»
-- **THEN** ve nombre, una línea, los bullets, el link y la captura (o su marcador) de cada caso sin hacer clic
-
+- **THEN** ve los casos a la vez, sin hacer clic ni scrollear dentro de la sección
 ### Requirement: Otras cosas que armé, de una línea cada una
 Debajo de los casos, «Y otras cosas que armé» SHALL listar proyectos de una línea cada uno, de rubros distintos, desde `web/src/data/proyectos.ts`. Mientras esa lista esté vacía la grilla MUST NOT mostrarse, y cada línea SHALL contener solo lo que Juanma contó, sin nombres de empresas ni cifras no confirmadas.
 
@@ -51,7 +49,7 @@ Agregar un caso SHALL requerir solo un archivo nuevo de contenido y sus imágene
 - **THEN** aparece una pestaña nueva sin cambios de código
 
 #### Scenario: Caso incompleto
-- **WHEN** a un caso publicado le falta el nombre, el link o los bullets
+- **WHEN** a un caso publicado le falta el nombre, el link o sus partes
 - **THEN** el build falla indicando el archivo y el campo
 
 ### Requirement: Link al sitio del caso

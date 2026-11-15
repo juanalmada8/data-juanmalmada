@@ -9,7 +9,7 @@ import { contacto, sitio } from "../../data/sitio";
   <div class="marco grilla">
     <div class="texto" data-aparece>
       <h2 id="contacto-titulo">Contame cómo <em>trabajás</em> hoy.</h2>
-      <p class="lead">Un mensaje alcanza. Te respondo en {sitio.respuesta} y vemos juntos qué conviene armar primero.</p>
+      <p class="lead">Un mensaje alcanza. Respondo ni bien lo veo y vemos juntos qué conviene armar primero.</p>
 
       <div class="canales">
         <a class="canal wa" href={contacto.whatsapp} target="_blank" rel="noopener noreferrer">
@@ -25,8 +25,8 @@ import { contacto, sitio } from "../../data/sitio";
         </a>
       </div>
       <p class="rota">
-        <span class="sr-only">Armemos el sistema de tu consultorio, tu equipo, tu empresa, tu idea o tu negocio.</span>
-        <span aria-hidden="true">Armemos el sistema de tu <span class="palabras"><em class="p" style="--i:0">consultorio</em><em class="p" style="--i:1">equipo</em><em class="p" style="--i:2">empresa</em><em class="p" style="--i:3">idea</em><em class="p" style="--i:4">negocio</em></span></span>
+        <span class="sr-only">Armemos el sistema de tu equipo, tu empresa, tu idea o tu negocio.</span>
+        <span aria-hidden="true">Armemos el sistema de tu <span class="palabras"><em class="p" style="--i:0">equipo</em><em class="p" style="--i:1">empresa</em><em class="p" style="--i:2">idea</em><em class="p" style="--i:3">negocio</em></span></span>
       </p>
       <p class="ig">
         También estoy en{" "}
@@ -36,8 +36,8 @@ import { contacto, sitio } from "../../data/sitio";
 
     <div class="yo" data-aparece>
       <p>
-        Este sitio habla de mí, pero me interesa saber de vos. Soy Juanma, ingeniero de datos y desarrollador full stack: {sitio.experiencia}{" "}armando sistemas en empresas de distintos rubros, y también para consultorios, negocios y proyectos
-        que necesitan el suyo. Trabajo desde General Belgrano, 100% remoto, y hablás siempre conmigo.
+        Este sitio habla de mí, pero me interesa saber de vos. Soy Juanma, ingeniero de datos y desarrollador full stack:{" "}{sitio.experiencia}{" "}armando sistemas en empresas de distintos rubros, y también para negocios y proyectos que necesitan
+        el suyo. Trabajo en forma remota y hablás siempre conmigo.
       </p>
       <div class="firma-rev"><Firma color="crema" ancho="var(--ancho-firma)" decorativa /></div>
     </div>
@@ -105,5 +105,10 @@ import { contacto, sitio } from "../../data/sitio";
     :global(html.js) .visible .firma-rev { clip-path: inset(0 0 0 0); }
   }
   @media (min-width: 40rem) { .canales { grid-template-columns: 1fr 1fr; } }
-  @media (min-width: 60rem) { .grilla { grid-template-columns: 1.3fr 1fr; gap: var(--space-16); } }
+  /* En escritorio, «Contacto» + pie = una pantalla: el pie queda entero al ir a Contacto desde el índice (en ventanas bajas, sin el patrón ni la línea que cambia) */
+  @media (min-width: 64rem) { #contacto { min-height: calc(100svh - var(--alto-barra) - var(--alto-pie)); align-content: center; padding-block: var(--space-6); } }
+  @media (min-width: 64rem) and (max-height: 800px) { .seccion-ancha :global(.banda) { display: none; } .canal { min-height: 7.5rem; padding: var(--space-4) var(--space-6); } }
+  @media (min-width: 64rem) and (max-height: 800px) { .texto { gap: var(--space-4); } .yo { gap: var(--space-2); } }
+  @media (min-width: 64rem) and (max-height: 700px) { .rota { display: none; } .grilla { gap: var(--space-6); } .canal { min-height: 5.5rem; } .lead { font-size: var(--fs-body); } }
+  @media (min-width: 60rem) { .grilla { grid-template-columns: 1.3fr 1fr; gap: var(--space-12); } }
 </style>

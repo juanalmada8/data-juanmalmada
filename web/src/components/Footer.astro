@@ -1,5 +1,5 @@
 ---
-// Pie: el lema del manual, LinkedIn, la base y el año.
+// Pie: el lema del manual, LinkedIn y el año. Mide --alto-pie en escritorio: «Contacto» + pie llenan la pantalla y el pie se ve entero.
 import { contacto, sitio } from "../data/sitio";
 const anio = new Date().getFullYear();
 ---
@@ -9,18 +9,19 @@ const anio = new Date().getFullYear();
     <a class="link" href={contacto.linkedin} target="_blank" rel="noopener noreferrer">
       LinkedIn <span aria-hidden="true">↗</span><span class="sr-only"> (se abre en otra pestaña)</span>
     </a>
-    <p class="datos">General Belgrano · 100% remoto · © {anio}</p>
+    <p class="datos">{sitio.ubicacion} · © {anio}</p>
   </div>
 </footer>
 
 <style>
-  .pie { padding-block: var(--space-12); }
+  .pie { padding-block: var(--space-8); }
   .fila { display: grid; gap: var(--space-4); justify-items: start; }
   .lema { font-family: var(--font-serif); font-size: var(--fs-h3); line-height: 1.15; }
   .link { display: inline-flex; align-items: center; min-height: var(--tap-min); }
   .datos { font-size: var(--fs-label); color: var(--salvia); }
   @media (min-width: 48rem) {
-    .fila { grid-template-columns: 1fr auto; align-items: center; }
+    .pie { min-height: var(--alto-pie); display: grid; align-content: center; }
+    .fila { grid-template-columns: 1fr auto; align-items: center; row-gap: var(--space-1); }
     .datos { grid-column: 1 / -1; }
   }
 </style>

@@ -1,7 +1,7 @@
 ## ADDED Requirements
 
 ### Requirement: Cuatro pasos en orden
-La sección «Cómo trabajo» SHALL mostrar los pasos Charla, Propuesta, Desarrollo y Soporte, numerados del 1 al 4, cada uno con una o dos líneas. La Charla SHALL decir que no tiene costo y el Soporte SHALL ofrecer un plan mensual de soporte y mejoras (modelo de negocio elegido por Juanma el 2026-11-14), sin precio.
+La sección «Cómo trabajo» SHALL abrir con una introducción que explique el enfoque («Trabajo de a pasos y sin apuro: primero te escucho, después te propongo qué armar y recién ahí lo construimos. Lo que invertís hoy te ahorra tiempo y plata mañana.») y mostrar los pasos Charla, Propuesta, Desarrollo y Soporte, numerados del 1 al 4, cada uno con una o dos líneas. La Charla SHALL decir que no tiene costo y el Soporte SHALL ofrecer un plan mensual de soporte y mejoras (modelo de negocio elegido por Juanma el 2026-11-14), sin precio.
 
 #### Scenario: Escritorio
 - **WHEN** el ancho es de 768 px o más

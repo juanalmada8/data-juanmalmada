@@ -2,8 +2,8 @@
 // «Cómo trabajo»: cuatro pasos sobre salvia (charla sin costo y plan mensual confirmados por Juanma, 2026-11-14). Sin plazos ni precios.
 const pasos = [
   { titulo: "Charla", texto: "Me contás cómo trabajás hoy. No hace falta que sepas de tecnología. No tiene costo." },
-  { titulo: "Propuesta", texto: "Te digo qué armaría, en qué orden y cuánto sale. Por escrito, para que lo pienses tranquilo." },
-  { titulo: "Desarrollo", texto: "Lo construyo por etapas y lo vas viendo funcionar antes de que esté todo terminado." },
+  { titulo: "Propuesta", texto: "Te digo qué armaría, en qué orden y cuánto sale. Por escrito, para pensarlo tranquilo." },
+  { titulo: "Desarrollo", texto: "Lo construyo por etapas y lo vas viendo funcionar antes del final." },
   { titulo: "Soporte", texto: "Te lo dejo andando y te enseño a usarlo. Si querés, sigo con un plan mensual de soporte y mejoras." },
 ];
 const hago = [
@@ -22,6 +22,10 @@ const noHago = [
 <section id="como-trabajo" class="seccion-ancha tema-salvia" aria-labelledby="como-trabajo-titulo">
   <div class="marco">
     <h2 id="como-trabajo-titulo" data-aparece>De la charla al soporte, <em>sin vueltas</em>.</h2>
+    <p class="intro" data-aparece>
+      Trabajo de a pasos y sin apuro: primero te escucho, después te propongo qué armar y recién ahí lo construimos.
+      Lo que invertís hoy te ahorra tiempo y plata mañana.
+    </p>
     <ol class="pasos">
       {pasos.map((p, i) => (
         <li class="paso" data-aparece>
@@ -46,6 +50,7 @@ const noHago = [
 </section>
 
 <style>
+  .intro { margin-top: var(--space-3); max-width: 80ch; font-weight: 500; }
   .pasos { list-style: none; padding: 0; display: grid; gap: var(--space-6); margin-top: var(--space-8); }
   .paso { display: grid; grid-template-columns: calc(var(--fs-numeral) * .7) 1fr; column-gap: var(--space-4); align-items: start; }
   /* Número grande en serif, pino sobre salvia */
@@ -54,8 +59,8 @@ const noHago = [
   .paso p { max-width: 28ch; }
 
   /* Lo que hago / lo que no hago: dos tarjetas, con un signo en lugar de viñeta */
-  .reglas { display: grid; gap: var(--space-4); margin-top: var(--space-8); }
-  .regla { display: grid; gap: var(--space-4); align-content: start; padding: var(--space-6); border-radius: var(--radius-tarjeta); }
+  .reglas { display: grid; gap: var(--space-4); margin-top: var(--space-6); }
+  .regla { display: grid; gap: var(--space-4); align-content: start; padding: var(--space-4) var(--space-6); border-radius: var(--radius-tarjeta); }
   .regla h3 { font-size: var(--fs-tarjeta); line-height: 1; letter-spacing: -.02em; }
   .regla ul { list-style: none; padding: 0; display: grid; gap: var(--space-3); }
   .regla li { position: relative; padding-left: var(--space-8); font-weight: 500; }

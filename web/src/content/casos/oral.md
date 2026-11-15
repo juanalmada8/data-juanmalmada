@@ -1,11 +1,11 @@
 ---
 nombre: "Oral Odontología Familiar"
 url: "https://oral.com.ar"
-resumen: "Un consultorio que daba los turnos por mensaje de texto y los anotaba en una agenda en papel. Hoy los pacientes reservan solos."
-bullets:
-  - "La web del consultorio."
-  - "Reserva de turnos online, con confirmación y recordatorio por mail."
-  - "Lista de espera y un panel para gestionar todo."
+partes:
+  - titulo: "Antes"
+    texto: "Los turnos se coordinaban por mensaje de texto y con una agenda en papel."
+  - titulo: "Hoy"
+    texto: "Los pacientes reservan por su cuenta, reciben la confirmación y el recordatorio por mail, y el consultorio ve todo en un panel."
 capturas: []
 orden: 1
 publicado: true

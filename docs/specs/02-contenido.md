@@ -73,7 +73,8 @@ Excepción: **«de punta a punta»** y **«todo el sistema»** son frases de la 
 ## Datos fijos (usar tal cual)
 
 - Nombre: **Juan Martín Almada Ortiz**. Corto: **Juanma**.
-- Base: **General Belgrano, Buenos Aires** · **100% remoto**.
+- Ubicación: **Argentina · 100% remoto** (sin ciudad: Juanma no quiere destacar de dónde es).
+- Disponibilidad: «Respondo ni bien veo tu mensaje.» (sin plazo fijo).
 - Experiencia: **más de 7 años** (decisión de Juanma, 2026-10-27). Ingeniero de datos y desarrollador full stack, en equipos multidisciplinarios y empresas de distintos rubros.
 - Formación: **Sistemas en la UNLP**.
 - Fuera del código: **hockey**, **cocina**, **rock nacional** (y alternativo), **viajes**.
@@ -108,20 +109,22 @@ negocios: Juanma aplica a todo lo que se pueda mejorar. El lema del manual, **«
 **Posicionamiento:** una persona de oficio, no una agencia. Armo lo que ven los clientes y lo que ve quien lo maneja: la web, el
 sistema y los números. Hablás directo con quien lo construye.
 
+**Qué NO dice la web (pedido de Juanma, 2026-11-15):** ningún plazo de respuesta («menos de 24 h»), la ciudad (General Belgrano; a lo sumo «Argentina») ni «consultorios» como público. Disponibilidad: «Respondo ni bien veo tu mensaje.» Un test lo vigila (`tests/copy.test.mjs`).
+
 **Modelo de negocio (opción B, elegida por Juanma):** proyectos a medida por etapas, con presupuesto por etapa; **la primera
 charla no tiene costo**; después del proyecto, **plan mensual de soporte y mejoras** (sin precio en la web, todo a presupuesto).
 
 | Sección | Contenido |
 |---|---|
-| Hero | Barra y hero en pino. «Todo anda. / Pero el sistema *sos vos*.», bajada «Turnos por mensaje, pedidos en un cuaderno, los números en una planilla que solo entendés vos. Armo el sistema para que todo funcione sin que estés encima, y te enseño a usarlo.», CTA «Contame cómo trabajás hoy», enlaces directos y tres marcos: «Soy Juanma. Armo las dos puntas: lo que ven tus clientes y lo que ves vos.» con la firma, «Más de 7 años de oficio», «Te respondo en menos de 24 h hábiles» con la base y `hola_mundo()`. |
-| ¿Te suena? | Sobre salvia, cuatro escenas como mensajes alternados que quien entra reconoce (turnos a la noche, el stock en la cabeza de una persona, el reporte del lunes armado el domingo, las mismas preguntas por WhatsApp) y «Nada de esto se arregla con más horas tuyas. Se arregla con un sistema.» Reemplaza a la franja que corría. |
-| ¿Qué te está comiendo el tiempo? | El manifiesto «Armo sistemas que se usan de verdad. Lo que invertís hoy te ahorra *tiempo y plata* mañana.» y 6 tarjetas **por problema** (título = el problema; debajo, cómo se llama lo que armo y qué cambia), con «Esto me pasa →» que abre WhatsApp con el problema ya escrito. La última: «No sabés bien qué necesitás» (charla sin costo). Debajo, una nota sobre cómo se cobra (por etapas y por escrito; plan mensual opcional; sin cifras) y una línea para empresas y organismos (integraciones, procesos de datos, plataformas con backend). |
-| Cosas que armé | Oral destacado: antes daban los turnos por mensaje de texto y los anotaban en una agenda en papel; hoy los pacientes reservan solos. Staffy: el portal (parte pública y panel de la empresa), un primer filtro de candidatos con IA conectado por APIs y mails automáticos; hoy, mejoras en su plataforma de RRHH («armé el portal y hoy sigo trabajando con ellos»). «El próximo puede ser el tuyo». La grilla «Y otras cosas que armé» (`proyectos.ts`) sigue vacía: lo de Staffy fue a su tarjeta para no repetirlo. |
-| Cómo trabajo | Charla (sin costo, «no hace falta que sepas de tecnología») · Propuesta (por escrito, qué, en qué orden y cuánto sale) · Desarrollo (por etapas, lo ves funcionar antes del final) · Soporte (te enseño a usarlo; si querés, plan mensual). Debajo, «Lo que hago» / «Lo que no hago». |
-| Contacto | «Contame cómo *trabajás* hoy.», «Un mensaje alcanza. Te respondo en menos de 24 h hábiles y vemos juntos qué conviene armar primero.», tarjetas «Contame por WhatsApp» («Es lo más rápido.») y «Prefiero mail», la línea que cambia «Armemos el sistema de tu consultorio / equipo / empresa / idea / negocio.», Instagram aparte y el texto «yo» (ingeniero de datos y desarrollador full stack, más de 7 años en empresas de distintos rubros, también para consultorios, negocios y proyectos; General Belgrano, 100% remoto; hablás siempre conmigo). Pie: lema del manual, LinkedIn, base y año. |
+| Hero | Barra y hero en pino. «Todo anda. / Pero el sistema *sos vos*.», bajada «Turnos por WhatsApp que manejás vos, a mano pero simple. Pedidos en un cuaderno. Los números en una planilla que solo entendés vos. Armo el sistema para que todo funcione sin que estés encima, y te enseño a usarlo.», CTA «Contame cómo trabajás hoy», enlaces directos y tres marcos: «Soy Juanma. Armo las dos puntas: lo que ven tus clientes y lo que ves vos.» con la firma, «Más de 7 años de oficio» y «Trabajo en forma remota desde Argentina. Respondo ni bien veo tu mensaje.» con `hola_mundo()`. |
+| ¿Te suena? | Sobre salvia, cuatro escenas como mensajes alternados («Confirmás turnos cuando podés. Mientras tanto, el cliente se cansa de esperar y busca otra opción.», el stock en la cabeza de una persona, el reporte del lunes armado el domingo, las mismas preguntas por WhatsApp) y «Nada de esto se arregla con más horas tuyas. Se arregla con un sistema.» Forma parte del capítulo 01 del menú («Qué resuelvo»). |
+| ¿Qué te está consumiendo el tiempo? | Solo el título y 6 tarjetas: **arriba el problema** (breve y reconocible) y **abajo, en un panel propio, la solución** (nombre y una línea) con «Esto me pasa →» a WhatsApp con el problema ya escrito. Sin manifiesto, nota de cobro ni línea para empresas (el manifiesto se fue a «Cómo trabajo»). Entra en una pantalla. |
+| Cosas que armé | Tres tarjetas en una fila (Oral, Staffy y «El próximo puede ser el tuyo»); cada caso separa el problema o qué es de la solución (la última parte, en un panel propio). **Oral** (eje: autogestión de pacientes): *Antes* — turnos por mensaje de texto y agenda en papel; *Hoy* — los pacientes reservan por su cuenta, reciben confirmación y recordatorio por mail y el consultorio lo ve todo en un panel. **Staffy**: *Qué es* — portal de empleo IT que conecta personas con empresas de Latinoamérica y Estados Unidos; *Qué armé* — el portal (lo que ven los candidatos y el panel de cada empresa), un primer filtro de candidatos con IA y avisos automáticos por mail; *Hoy* — mejoras en su plataforma de RRHH. La grilla «Y otras cosas que armé» (`proyectos.ts`) sigue vacía y oculta. |
+| Cómo trabajo | Intro («Trabajo de a pasos y sin apuro… Lo que invertís hoy te ahorra tiempo y plata mañana.»), Charla (sin costo) · Propuesta (por escrito, qué, en qué orden y cuánto sale) · Desarrollo (por etapas) · Soporte (te enseño a usarlo; si querés, plan mensual), y «Lo que hago» / «Lo que no hago». |
+| Contacto | «Contame cómo *trabajás* hoy.», «Un mensaje alcanza. Respondo ni bien lo veo y vemos juntos qué conviene armar primero.», tarjetas «Contame por WhatsApp» («Es lo más rápido.») y «Prefiero mail», la línea «Armemos el sistema de tu equipo / empresa / idea / negocio.» (la palabra cambia una sola vez, solo CSS), Instagram aparte y el texto «yo» (ingeniero de datos y desarrollador full stack, más de 7 años armando sistemas en empresas de distintos rubros y también para negocios y proyectos que necesitan el suyo; remoto; hablás siempre con él). Pie: lema del manual, LinkedIn y «Argentina · 100% remoto · año». Contacto + pie entran en una pantalla. |
 
 **Barra:** pino a ancho completo, logo `<jm>` en crema (ícono `</j>` en el celular), índice numerado 01–04 con tramos de progreso, y
-«Charla sin costo» en lima (la puerta de entrada, siempre a mano; idea de artobaweb).
+«Charla sin costo» en lima (la puerta de entrada, siempre a mano; idea de artobaweb). El capítulo 01 se llama «Qué resuelvo» y cubre «¿Te suena?» y las tarjetas.
 
 **WhatsApp:** cada tarjeta manda su problema ya escrito (fuente: `web/src/data/temas.ts`). El mensaje base, fuera de las tarjetas, termina
 abierto para que la persona siga con su caso: «Hola Juanma, vi tu web. Hoy hago esto a mano: ».
@@ -142,8 +145,8 @@ Se lleva **casi todo** lo del `index.html` actual. Cambia la voz, no la sustanci
 | Experiencia: Mercado Libre · Cencosud · Ualá · Naranja X | **No va.** Decisión de Juanma: no se nombran. |
 | Sobre mí + «convertir datos dispersos en un sistema de gestión confiable» | 7. Hola, soy Juanma, reescrito |
 | Contacto: mail, WhatsApp, LinkedIn | 8. Contacto + formulario |
-| «Respuesta en menos de 24h hábiles» | 8. Contacto (confirmado) |
-| Footer «Buenos Aires, Argentina» | «General Belgrano · 100% remoto» |
+| «Respuesta en menos de 24h hábiles» | (quitado el 2026-11-15: no se promete un plazo) |
+| Footer «Buenos Aires, Argentina» | «Argentina · 100% remoto» |
 
 ## Plantilla de caso (`web/src/content/casos/<id>.md`)
 
@@ -152,11 +155,11 @@ Un caso = un archivo + sus capturas. El esquema está en `web/src/content.config
 ```yaml
 nombre: "Oral Odontología Familiar"
 url: "https://oral.com.ar"              # sitio real; abre en otra pestaña
-resumen: "El sitio de un consultorio odontológico, con turnos online y panel de gestión."   # una línea
-bullets:                                 # exactamente 3, cortos: qué se armó
-  - "La web del consultorio."
-  - "Reserva de turnos online, con confirmación y recordatorio por mail."
-  - "Lista de espera y un panel para gestionar todo."
+partes:                                  # 2 o 3, cortas y en lenguaje claro; la última (la solución) se destaca
+  - titulo: "Antes"
+    texto: "Los turnos se coordinaban por mensaje de texto y con una agenda en papel."
+  - titulo: "Hoy"
+    texto: "Los pacientes reservan por su cuenta, reciben la confirmación y el recordatorio por mail…"
 capturas:                                # reales; vacío = placeholder visible [[FALTA]]
   - src: "../../assets/oral-turnos.png"
     alt: "Pantalla de reserva de turnos de Oral"   # obligatorio

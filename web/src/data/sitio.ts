@@ -1,4 +1,4 @@
-// Datos fijos del sitio: único lugar para nombre, contacto y base. Fuente: docs/specs/02-contenido.md.
+// Datos fijos del sitio: único lugar para nombre, contacto y disponibilidad. Fuente: docs/specs/02-contenido.md.
 import { urlWhatsApp } from "../lib/whatsapp";
 
 export const sitio = {
@@ -6,10 +6,10 @@ export const sitio = {
   corto: "Juanma",
   lema: "Un solo proveedor, todo el sistema.", // lema del manual: va en el pie
   titular: "Todo el sistema, un solo proveedor.", // titular del hero (decisión de Juanma, 2026-10-27)
-  base: "General Belgrano, Buenos Aires",
+  ubicacion: "Argentina · 100% remoto", // sin ciudad ni plazos (pedido de Juanma, 2026-11-15)
   url: "https://juanmalmada.com",
   experiencia: "más de 7\u00a0años",
-  respuesta: "menos de 24 h hábiles",
+  disponibilidad: "Respondo ni bien veo tu mensaje.", // sin plazo fijo: no se promete un tiempo de respuesta
 };
 
 // Orden de preferencia: WhatsApp, Instagram, mail. LinkedIn aparte, en el pie.

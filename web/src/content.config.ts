@@ -9,8 +9,12 @@ const casos = defineCollection({
     z.object({
       nombre: z.string().min(1),
       url: z.url(), // sitio real del caso
-      resumen: z.string().min(1), // una línea de qué es
-      bullets: z.array(z.string().min(1)).length(3), // tres, cortos: qué se armó
+      // La historia en dos o tres partes cortas y en lenguaje claro: el problema o qué es, qué se armó y qué sigue hoy.
+      // La última parte (la solución) se destaca. Sin jerga ni métricas.
+      partes: z
+        .array(z.object({ titulo: z.string().min(1), texto: z.string().min(1) }))
+        .min(2)
+        .max(3),
       // Capturas reales. `alt` es obligatorio; `marco` decide el marco decorativo. Vacío = placeholder visible.
       capturas: z
         .array(

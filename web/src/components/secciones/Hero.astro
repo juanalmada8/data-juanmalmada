@@ -13,7 +13,7 @@ const experiencia = sitio.experiencia.match(/\d+/)![0]; // «7»; el «Más de»
 
     <div class="pie-hero">
       <div class="accion">
-        <p class="lead">Turnos por mensaje, pedidos en un cuaderno, los números en una planilla que solo entendés vos. Armo el sistema para que todo funcione sin que estés encima, y te enseño a usarlo.</p>
+        <p class="lead">Turnos por WhatsApp que manejás vos, a mano pero simple. Pedidos en un cuaderno. Los números en una planilla que solo entendés vos. Armo el sistema para que todo funcione sin que estés encima, y te enseño a usarlo.</p>
         <a class="boton lima flecha" href="#contacto">Contame cómo trabajás hoy</a>
         <p class="directo">
           <span>O escribime directo:</span>
@@ -35,8 +35,8 @@ const experiencia = sitio.experiencia.match(/\d+/)![0]; // «7»; el «Más de»
           <span class="unidad">años de oficio</span>
         </div>
         <div class="marco-c resp">
-          <p>Te respondo en {sitio.respuesta}.</p>
-          <p class="base">{sitio.base}</p>
+          <p>Trabajo en forma remota desde Argentina.</p>
+          <p class="base">{sitio.disponibilidad}</p>
           <code class="guino" translate="no" aria-hidden="true">hola_mundo()</code>
         </div>
       </div>
@@ -52,7 +52,7 @@ const experiencia = sitio.experiencia.match(/\d+/)![0]; // «7»; el «Más de»
   .pie-hero { display: grid; gap: var(--space-8); }
   .accion { display: grid; gap: var(--space-4); justify-items: start; align-content: start; max-width: var(--ancho-accion); }
   .accion .boton { white-space: nowrap; }
-  .lead { max-width: 34ch; }
+  .lead { max-width: 40ch; }
   .directo { display: flex; flex-wrap: wrap; align-items: center; column-gap: var(--space-4); font-size: var(--fs-small); }
   .directo a { display: inline-flex; align-items: center; min-height: var(--tap-min); min-width: var(--tap-min); font-weight: 700; text-underline-offset: .2em; }
 

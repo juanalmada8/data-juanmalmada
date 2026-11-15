@@ -130,6 +130,12 @@
 - [x] 18.1 Botón «Charla sin costo» en la barra, «te enseño a usarlo» en la bajada y nota de cómo se cobra; verificar a 360, 390 y 1470 px.
 - [ ] 18.2 Nombrar integraciones y mostrar datos legales cuando Juanma los confirme.
 
+## 20. Correcciones del documento de Juanma (2026-11-15)
+
+- [x] 20.1 Contenido: sin 24 h, sin Belgrano, sin «consultorios»; bajada del hero, escena de turnos, título «consumiendo», casos en lenguaje claro, speech de «Cómo trabajo» y contacto; test que lo vigila.
+- [x] 20.2 Composición: tarjetas con el problema arriba y la solución abajo, sin manifiesto ni notas; casos con problema/solución separados y en una fila; todo entra en una pantalla; pie entero al ir a Contacto; «¿Te suena?» dentro del capítulo 01.
+- [ ] 20.3 Juanma revisa en pantalla.
+
 ## Workflow follow-up
 
 - Archivar el cambio (`/opsx:archive`) al mergear.
