@@ -1,10 +1,9 @@
 ---
-// «Cómo trabajo»: una intro que explica el enfoque, cuatro pasos como línea de tiempo y, debajo, «Lo que hago / Lo que no hago» como dos
-// columnas de texto, sin cajas. Charla sin costo y plan mensual confirmados por Juanma (2026-11-14). Sin plazos ni precios.
+// «Cómo trabajo»: cuatro pasos sobre salvia (charla sin costo y plan mensual confirmados por Juanma, 2026-11-14). Sin plazos ni precios.
 const pasos = [
   { titulo: "Charla", texto: "Me contás cómo trabajás hoy. No hace falta que sepas de tecnología. No tiene costo." },
-  { titulo: "Propuesta", texto: "Te digo qué armaría, en qué orden y cuánto sale. Por escrito, para pensarlo tranquilo." },
-  { titulo: "Desarrollo", texto: "Lo construyo por etapas y lo vas viendo funcionar antes del final." },
+  { titulo: "Propuesta", texto: "Te digo qué armaría, en qué orden y cuánto sale. Por escrito, para que lo pienses tranquilo." },
+  { titulo: "Desarrollo", texto: "Lo construyo por etapas y lo vas viendo funcionar antes de que esté todo terminado." },
   { titulo: "Soporte", texto: "Te lo dejo andando y te enseño a usarlo. Si querés, sigo con un plan mensual de soporte y mejoras." },
 ];
 const hago = [
@@ -23,11 +22,6 @@ const noHago = [
 <section id="como-trabajo" class="seccion-ancha tema-salvia" aria-labelledby="como-trabajo-titulo">
   <div class="marco">
     <h2 id="como-trabajo-titulo" data-aparece>De la charla al soporte, <em>sin vueltas</em>.</h2>
-    <p class="intro" data-aparece>
-      Trabajo de a pasos y sin apuro: primero te escucho, después te propongo qué armar y recién ahí lo construimos.
-      Lo que invertís hoy te ahorra tiempo y plata mañana.
-    </p>
-
     <ol class="pasos">
       {pasos.map((p, i) => (
         <li class="paso" data-aparece>
@@ -52,31 +46,30 @@ const noHago = [
 </section>
 
 <style>
-  .intro { margin-top: var(--space-3); max-width: 56ch; font-weight: 500; }
-
-  /* Línea de tiempo: número grande en serif y, debajo, una barra gruesa que los une (la del índice de la barra) */
-  .pasos { list-style: none; padding: 0; display: grid; gap: var(--space-6); margin-top: var(--space-6); }
+  .pasos { list-style: none; padding: 0; display: grid; gap: var(--space-6); margin-top: var(--space-8); }
   .paso { display: grid; grid-template-columns: calc(var(--fs-numeral) * .7) 1fr; column-gap: var(--space-4); align-items: start; }
+  /* Número grande en serif, pino sobre salvia */
   .num { grid-row: span 2; font-family: var(--font-serif); font-size: var(--fs-numeral); line-height: .85; }
   .paso h3 { margin-bottom: var(--space-1); }
-  .paso p { max-width: 30ch; font-size: var(--fs-small); }
+  .paso p { max-width: 28ch; }
 
-  /* Lo que hago / lo que no hago: dos columnas de texto con un signo, sin cajas */
-  .reglas { display: grid; gap: var(--space-6); margin-top: var(--space-8); }
-  .regla { display: grid; gap: var(--space-3); align-content: start; }
+  /* Lo que hago / lo que no hago: dos tarjetas, con un signo en lugar de viñeta */
+  .reglas { display: grid; gap: var(--space-4); margin-top: var(--space-8); }
+  .regla { display: grid; gap: var(--space-4); align-content: start; padding: var(--space-6); border-radius: var(--radius-tarjeta); }
   .regla h3 { font-size: var(--fs-tarjeta); line-height: 1; letter-spacing: -.02em; }
-  .regla ul { list-style: none; padding: 0; display: grid; gap: var(--space-2); }
+  .regla ul { list-style: none; padding: 0; display: grid; gap: var(--space-3); }
   .regla li { position: relative; padding-left: var(--space-8); font-weight: 500; }
-  .regla li::before { position: absolute; left: 0; top: -.1em; font-weight: 800; font-size: 1.4em; line-height: 1.2; color: var(--pino); }
-  .si li::before { content: "+"; content: "+" / ""; }
-  .no li::before { content: "×"; content: "×" / ""; font-size: 1.7em; top: -.25em; } /* la × es más fina que el +: se agranda para pesar igual */
-  @media (min-width: 48rem) { .reglas { grid-template-columns: repeat(2, minmax(0, 1fr)); gap: var(--space-12); } }
+  .regla li::before { position: absolute; left: 0; top: -.1em; font-weight: 800; font-size: 1.4em; line-height: 1.2; }
+  .si { background: var(--pino); color: var(--crema); }
+  .si li::before { content: "+"; content: "+" / ""; color: var(--salvia); } /* salvia, no lima: la lima no va en marcadores */
+  .no { background: var(--papel); color: var(--pino); }
+  .no li::before { content: "×"; content: "×" / ""; color: var(--pino); font-size: 1.7em; top: -.25em; } /* la × es más fina que el +: se agranda para pesar igual */
+  @media (min-width: 48rem) { .reglas { grid-template-columns: repeat(2, minmax(0, 1fr)); } }
 
-  /* Desde 768 px: una sola fila de cuatro, con la barra que los une */
+  /* Desde 768 px: una sola fila de cuatro */
   @media (min-width: 48rem) {
     .pasos { grid-template-columns: repeat(4, 1fr); column-gap: var(--space-8); }
     .paso { display: block; }
-    .num { display: block; margin-bottom: var(--space-3); }
-    .paso::before { content: ""; display: block; height: var(--grosor-nav); background: var(--pino); margin-bottom: var(--space-3); }
+    .num { display: block; margin-bottom: var(--space-4); }
   }
 </style>

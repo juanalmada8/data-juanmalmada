@@ -6,9 +6,8 @@ import Logo from "./Logo.astro";
 import Icono from "./Icono.astro";
 import { sitio } from "../data/sitio";
 
-// El capítulo 01 cubre «¿Te suena?» y «¿Qué te está consumiendo el tiempo?»: el enlace aterriza en la primera y el progreso sigue las dos.
 const capitulos = [
-  { id: "te-suena", hasta: "que-hago", n: "01", nombre: "Qué resuelvo" },
+  { id: "que-hago", n: "01", nombre: "Qué hago" },
   { id: "casos", n: "02", nombre: "Casos" },
   { id: "como-trabajo", n: "03", nombre: "Cómo trabajo" },
   { id: "contacto", n: "04", nombre: "Contacto" },
@@ -46,7 +45,7 @@ const capitulos = [
   </div>
 </header>
 
-<script define:vars={{ etiquetas: Object.fromEntries(capitulos.map((c) => [c.id, `${c.n} ${c.nombre}`])), hastas: Object.fromEntries(capitulos.filter((c) => c.hasta).map((c) => [c.id, c.hasta])) }}>
+<script define:vars={{ etiquetas: Object.fromEntries(capitulos.map((c) => [c.id, `${c.n} ${c.nombre}`])) }}>
   // Corre al terminar de cargar el DOM: la barra va antes que las secciones en el documento.
   addEventListener("DOMContentLoaded", () => {
     const donde = document.querySelector("[data-donde]");
@@ -60,11 +59,7 @@ const capitulos = [
     // Se mide una sola vez (y al cambiar el tamaño): en el scroll solo se calcula, sin leer el layout.
     let medidas = [];
     const medir = () => {
-      medidas = secs.map((s, i) => {
-        const arriba = s.getBoundingClientRect().top + scrollY;
-        const fin = hastas[ids[i]] ? document.getElementById(hastas[ids[i]]) : null; // capítulo que abarca más de una sección
-        return { arriba, alto: fin ? fin.getBoundingClientRect().bottom + scrollY - arriba : s.offsetHeight };
-      });
+      medidas = secs.map((s) => ({ arriba: s.getBoundingClientRect().top + scrollY, alto: s.offsetHeight }));
     };
     const pintar = () => {
       pendiente = false;

@@ -1,6 +1,6 @@
 ---
-// Cierre a ancho completo sobre pino: la invitación a contar cómo trabaja hoy, con tipografía grande y botones (sin tarjetas).
-// Llena la pantalla menos barra y pie, para que el pie se vea entero al ir a Contacto. Sin plazos de respuesta ni ciudad. Spec: specs/contacto.
+// Cierre a ancho completo sobre pino: la invitación a contar cómo trabaja hoy, y los canales.
+// Dos tarjetas grandes (una pregunta y una idea, sin formularios) e Instagram como enlace aparte. Spec: specs/contacto.
 import Firma from "../Firma.astro";
 import PatronM from "../PatronM.astro";
 import { contacto, sitio } from "../../data/sitio";
@@ -9,28 +9,35 @@ import { contacto, sitio } from "../../data/sitio";
   <div class="marco grilla">
     <div class="texto" data-aparece>
       <h2 id="contacto-titulo">Contame cómo <em>trabajás</em> hoy.</h2>
-      <p class="lead">Un mensaje alcanza. Respondo ni bien lo veo y vemos juntos qué conviene armar primero.</p>
+      <p class="lead">Un mensaje alcanza. Te respondo en {sitio.respuesta} y vemos juntos qué conviene armar primero.</p>
 
-      <div class="botones">
-        <a class="boton lima grande flecha" href={contacto.whatsapp} target="_blank" rel="noopener noreferrer">
-          Contame por WhatsApp<span class="sr-only"> (se abre en otra pestaña)</span>
+      <div class="canales">
+        <a class="canal wa" href={contacto.whatsapp} target="_blank" rel="noopener noreferrer">
+          <span class="titulo">Contame por WhatsApp</span>
+          <span class="detalle">Es lo más rápido.</span>
+          <span class="flecha" aria-hidden="true">→</span>
+          <span class="sr-only">(se abre en otra pestaña)</span>
         </a>
-        <a class="boton sec grande" href={`mailto:${contacto.mail}`}>Prefiero mail</a>
+        <a class="canal mail" href={`mailto:${contacto.mail}`}>
+          <span class="titulo">Prefiero mail</span>
+          <span class="detalle">Sin apuro. Contame lo que quieras y te contesto con calma.</span>
+          <span class="flecha" aria-hidden="true">→</span>
+        </a>
       </div>
+      <p class="rota">
+        <span class="sr-only">Armemos el sistema de tu consultorio, tu equipo, tu empresa, tu idea o tu negocio.</span>
+        <span aria-hidden="true">Armemos el sistema de tu <span class="palabras"><em class="p" style="--i:0">consultorio</em><em class="p" style="--i:1">equipo</em><em class="p" style="--i:2">empresa</em><em class="p" style="--i:3">idea</em><em class="p" style="--i:4">negocio</em></span></span>
+      </p>
       <p class="ig">
         También estoy en{" "}
         <a class="link" href={contacto.instagram} target="_blank" rel="noopener noreferrer">Instagram<span class="sr-only"> (se abre en otra pestaña)</span></a>.
-      </p>
-      <p class="rota">
-        <span class="sr-only">Armemos el sistema de tu equipo, tu empresa, tu idea o tu negocio.</span>
-        <span aria-hidden="true">Armemos el sistema de tu <span class="palabras"><em class="p" style="--i:0">equipo</em><em class="p" style="--i:1">empresa</em><em class="p" style="--i:2">idea</em><em class="p" style="--i:3">negocio</em></span></span>
       </p>
     </div>
 
     <div class="yo" data-aparece>
       <p>
-        Este sitio habla de mí, pero me interesa saber de vos. Soy Juanma, ingeniero de datos y desarrollador full stack:{" "}{sitio.experiencia}{" "}armando sistemas en empresas de distintos rubros, y también para negocios y proyectos que necesitan
-        el suyo. Trabajo en forma remota y hablás siempre conmigo.
+        Este sitio habla de mí, pero me interesa saber de vos. Soy Juanma, ingeniero de datos y desarrollador full stack: {sitio.experiencia}{" "}armando sistemas en empresas de distintos rubros, y también para consultorios, negocios y proyectos
+        que necesitan el suyo. Trabajo desde General Belgrano, 100% remoto, y hablás siempre conmigo.
       </p>
       <div class="firma-rev"><Firma color="crema" ancho="var(--ancho-firma)" decorativa /></div>
     </div>
@@ -39,12 +46,30 @@ import { contacto, sitio } from "../../data/sitio";
 </section>
 
 <style>
-  .grilla { display: grid; gap: var(--space-8); align-items: end; }
+  .grilla { display: grid; gap: var(--space-12); align-items: end; }
   .texto { display: grid; gap: var(--space-6); justify-items: start; }
   .lead { max-width: 40ch; }
   h2 em { color: var(--salvia); } /* la lima se reserva para el botón de WhatsApp y una m del patrón */
-  .botones { display: flex; flex-wrap: wrap; gap: var(--space-3); margin-top: var(--space-2); }
-  .boton.grande { min-height: 3.5rem; font-size: var(--fs-lead); }
+  .canales { display: grid; gap: var(--space-4); width: 100%; margin-top: var(--space-4); }
+  .canal {
+    position: relative;
+    display: grid;
+    gap: var(--space-2);
+    align-content: start;
+    min-height: var(--alto-tarjeta-chica);
+    padding: var(--space-6);
+    border-radius: var(--radius-tarjeta);
+    text-decoration: none;
+    color: var(--pino);
+  }
+  .wa { background: var(--lima); }
+  .mail { background: var(--salvia); }
+  .titulo { font-family: var(--font-serif); font-size: var(--fs-tarjeta); line-height: 1; letter-spacing: -.02em; }
+  .detalle { font-weight: 500; max-width: 28ch; }
+  .flecha { position: absolute; right: var(--space-8); bottom: var(--space-6); font-size: var(--fs-h3); font-weight: 800; transition: transform .2s ease; }
+  .canal:hover .flecha { transform: translateX(var(--space-2)); }
+  .canal:focus-visible { outline: 3px solid var(--crema); outline-offset: 4px; }
+  @media (prefers-reduced-motion: no-preference) { .canal { transition: transform .25s ease; } .canal:hover { transform: translateY(calc(var(--space-2) * -1)); } }
   .ig { color: var(--salvia); }
   /* Palabras que rotan (idea de Humaan): una sola pasada de menos de 5 s al llegar a la sección, que termina en «negocio».
      Sin JavaScript o con movimiento reducido se ve directamente la última. Cada palabra lleva su punto, para que no flote. */
@@ -72,17 +97,13 @@ import { contacto, sitio } from "../../data/sitio";
   .ig .link { color: var(--crema); }
   .yo { display: grid; gap: var(--space-4); align-content: start; max-width: var(--ancho-texto); }
   .yo p { color: var(--crema); }
-  .seccion-ancha :global(.banda) { margin-top: var(--space-8); background: transparent; }
-  /* En escritorio, «Contacto» + pie = una pantalla: el pie queda entero al ir a Contacto desde el índice */
-  /* Ventanas bajas: sin la franja del patrón (y, más abajo, sin la línea que cambia) para que Contacto + pie sigan entrando */
-  @media (min-width: 64rem) and (max-height: 800px) { .seccion-ancha :global(.banda) { display: none; } }
-  @media (min-width: 64rem) and (max-height: 700px) { .rota { display: none; } .grilla { gap: var(--space-6); } }
-  @media (min-width: 64rem) { #contacto { min-height: calc(100svh - var(--alto-barra) - var(--alto-pie)); align-content: center; padding-block: var(--space-6); } }
+  .seccion-ancha :global(.banda) { margin-top: var(--space-12); background: transparent; }
 
   /* La firma se revela de izquierda a derecha al aparecer (solo sin movimiento reducido) */
   @media (prefers-reduced-motion: no-preference) {
     :global(html.js) .firma-rev { clip-path: inset(0 100% 0 0); transition: clip-path 1.4s cubic-bezier(.4, 0, .2, 1) .3s; }
     :global(html.js) .visible .firma-rev { clip-path: inset(0 0 0 0); }
   }
-  @media (min-width: 60rem) { .grilla { grid-template-columns: 1.3fr 1fr; gap: var(--space-12); } }
+  @media (min-width: 40rem) { .canales { grid-template-columns: 1fr 1fr; } }
+  @media (min-width: 60rem) { .grilla { grid-template-columns: 1.3fr 1fr; gap: var(--space-16); } }
 </style>

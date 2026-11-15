@@ -4,8 +4,6 @@
 > generalizado a «Todo anda. Pero el sistema sos vos.» porque Juanma aplica a todo lo que se pueda mejorar, no solo a negocios; sin
 > reuniones en persona; sin la línea de la planilla. Lo que sigue es el razonamiento y queda como referencia.
 >
-> **Actualización 2026-11-15:** el brief de rediseño de Juanma cambió varias piezas de este copy (sin «24 h» ni ciudad, «consultorios» fuera, tarjetas por problema/solución, casos reescritos). Manda `02-contenido.md`.
->
 > (Texto original:) Nada de esto está en el código todavía. Cuando elijas, se aplica
 > y se actualiza `02-contenido.md`. Todo lo que sea una promesa nueva está marcado con **(a confirmar)**: no se publica
 > sin tu sí. No hay cifras, clientes ni testimonios inventados.

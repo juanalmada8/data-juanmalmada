@@ -1,7 +1,7 @@
 ## ADDED Requirements
 
 ### Requirement: Una sola página de seis secciones
-El sitio SHALL ser una única página con, en este orden, hero, «¿Te suena?», «¿Qué te está consumiendo el tiempo?», casos reales, cómo trabajo y contacto, cada una con su ancla, y MUST NOT tener páginas internas, modales ni formularios.
+El sitio SHALL ser una única página con, en este orden, hero, «¿Te suena?», «¿Qué te está comiendo el tiempo?», casos reales, cómo trabajo y contacto, cada una con su ancla, y MUST NOT tener páginas internas, modales ni formularios.
 
 #### Scenario: Ruta interna
 - **WHEN** alguien abre `/proyectos/oral` o cualquier ruta que no sea la home
@@ -30,7 +30,7 @@ Ningún texto SHALL afirmar ni sugerir que Juanma hace un solo tipo de proyecto;
 - **THEN** no hay frases como «solo hago…», «me especializo en turnos» ni una lista cerrada de servicios
 
 ### Requirement: Barra fija con índice numerado
-La página SHALL tener una barra fija, de ancho completo y color pino (el mismo fondo del hero, sin corte entre ambos), con el logo, un índice numerado de sus cuatro secciones (01 Qué resuelvo, 02 Casos, 03 Cómo trabajo, 04 Contacto) y el botón «Charla sin costo», siempre visible al scrollear. Cada capítulo del índice SHALL tener un tramo de progreso que se llena a medida que se lee esa sección, y el de la sección actual SHALL estar marcado.
+La página SHALL tener una barra fija, de ancho completo y color pino (el mismo fondo del hero, sin corte entre ambos), con el logo, un índice numerado de sus cuatro secciones (01 Qué hago, 02 Casos, 03 Cómo trabajo, 04 Contacto) y el botón «Charla sin costo», siempre visible al scrollear. Cada capítulo del índice SHALL tener un tramo de progreso que se llena a medida que se lee esa sección, y el de la sección actual SHALL estar marcado.
 
 #### Scenario: Escritorio
 - **WHEN** el ancho es de 1024 px o más
@@ -63,20 +63,20 @@ El logo `<jm>` de la barra SHALL tener espacio libre arriba y abajo y MUST NOT t
 - **WHEN** se ve la barra a 1440 px
 - **THEN** hay al menos 12 px entre el logo y la línea inferior de la barra, y el logo mide al menos 100 px de ancho
 
-### Requirement: Hero pino con la idea «cuaderno → sistema»
-El hero SHALL tener fondo pino continuo con la barra, el titular grande en crema (con «sos vos» en itálica salvia) y, junto a la acción, una ilustración del problema: tres papelitos crema levemente girados con situaciones cotidianas («Turno del jueves: avisar por WhatsApp», «Pedido de Marta: anotar en el cuaderno», «Planilla_final_v3») y el patrón pipeline del manual («planillas → se ordenan → un solo lugar»). Los papelitos son una ilustración y MUST NOT presentarse como datos de clientes. La presentación SHALL ir con la firma de Juanma, sin foto, e indicar los años de oficio y que trabaja en forma remota y responde ni bien ve el mensaje. MUST NOT haber plazos de respuesta ni la ciudad.
+### Requirement: Hero pino con marcos de color de hechos reales
+El hero SHALL tener fondo pino continuo con la barra, el titular grande en crema (con «el sistema» en itálica salvia) y, junto a la acción, tres marcos de color con una esquina cortada que llevan datos reales de `sitio.ts` en lugar de fotos: la presentación con la firma de Juanma, los años de oficio y la respuesta en menos de 24 h hábiles con la base y la pastilla `hola_mundo()`. Los marcos MUST NOT llevar cifras, testimonios ni logos que no estén confirmados.
 
 #### Scenario: Escritorio
 - **WHEN** el ancho es de 1024 px o más
-- **THEN** el titular ocupa dos renglones y el cuaderno queda a la derecha de la acción
+- **THEN** el titular ocupa dos renglones y los marcos quedan a la derecha de la acción
 
 #### Scenario: Celular
 - **WHEN** el ancho es menor a 768 px
-- **THEN** el cuaderno baja debajo de la presentación y no hay scroll horizontal
+- **THEN** los marcos se apilan debajo de los enlaces directos y no hay scroll horizontal
 
 #### Scenario: Movimiento reducido
 - **WHEN** el sistema pide movimiento reducido
-- **THEN** los papelitos están quietos (nunca se animan)
+- **THEN** los marcos no se mueven al pasar el mouse
 
 ### Requirement: El hero llena la primera pantalla
 En escritorio el hero SHALL ocupar exactamente la primera pantalla debajo de la barra (alto de la ventana menos la barra), con todo su contenido adentro, de modo que la franja siguiente no asome cortada. Cada enlace del índice SHALL dejar la sección justo bajo la barra. Toda sección más baja que la pantalla (salvo la última, «Contacto») SHALL llenarla, con su contenido al medio, de modo que al ir a ella la siguiente no asome cortada abajo. La página MUST NOT mover el scroll por su cuenta (sin imanes de scroll): al llegar al final, se queda en el final.
@@ -90,7 +90,7 @@ En escritorio el hero SHALL ocupar exactamente la primera pantalla debajo de la 
 - **THEN** el título de esa sección queda visible justo bajo la barra, sin quedar cortado arriba
 
 ### Requirement: «¿Te suena?» entre el hero y las tarjetas
-Entre el hero y «¿Qué te está consumiendo el tiempo?» SHALL haber una sección salvia «¿Te suena?» con cuatro escenas en segunda persona que quien entra reconoce (no son clientes ni testimonios, son situaciones: turnos que se confirman cuando se puede mientras el cliente se cansa de esperar y busca otra opción, el stock en la cabeza de una persona, el reporte del lunes armado el domingo, las mismas preguntas por WhatsApp) y el cierre «Nada de esto se arregla con más horas tuyas. Se arregla con un sistema.». Reemplaza a la franja de servicios que corría.
+Entre el hero y «¿Qué te está comiendo el tiempo?» SHALL haber una sección salvia «¿Te suena?» con cuatro escenas en segunda persona que quien entra reconoce (no son clientes ni testimonios, son situaciones: turnos confirmados a la noche, el stock en la cabeza de una persona, el reporte del lunes armado el domingo, las mismas preguntas por WhatsApp) y el cierre «Nada de esto se arregla con más horas tuyas. Se arregla con un sistema.». Reemplaza a la franja de servicios que corría.
 
 #### Scenario: Lectura
 - **WHEN** se llega a la sección
@@ -140,7 +140,7 @@ Todo `h1` y `h2` SHALL ocupar dos renglones o menos desde 768 px (a 768, 1024, 1
 
 #### Scenario: Cierre de contacto
 - **WHEN** se ve el título del contacto
-- **THEN** es «Contame cómo trabajás hoy.» (dos renglones o menos) y la bajada dice que responde ni bien ve el mensaje
+- **THEN** es «Contame cómo trabajás hoy.» (dos renglones o menos) y la bajada dice qué pasa después del mensaje
 
 ### Requirement: Sin adornos que no dicen nada
 Las secciones MUST NOT llevar etiquetas sobre el título («01 — Qué hago»), líneas finas ni cajas definidas solo por un borde de 1 px; el orden lo da el índice de la barra y las superficies se definen por su relleno. Ningún texto pensado para leerse SHALL medir menos de 13 px.
@@ -150,19 +150,8 @@ Las secciones MUST NOT llevar etiquetas sobre el título («01 — Qué hago»),
 - **THEN** no marca etiquetas sobre títulos, líneas finas, cajas con borde ni texto menor a 13 px
 
 ### Requirement: La lima como acento escaso
-La lima SHALL aparecer solo en los botones principales (el de la barra, el del hero, la tarjeta de WhatsApp y el «Contame» de «El próximo»), la pastilla `hola_mundo()` y a lo sumo una `m` del patrón, y MUST NOT usarse como fondo de las tarjetas de «Qué necesitás» ni de los casos, ni en títulos. Medido el 2026-10-30 sobre capturas: primera pantalla 1.7 % en escritorio (1466×900) y 5.7 % en celular (390×844, por el botón del hero, que ahora es más largo) (antes de la reducción: 2.9 % y 7.8 %); página completa 0.6 % en escritorio y 1.3 % en celular. Esos valores SHALL ser el tope.
+La lima SHALL aparecer solo en los botones principales (el de la barra, el del hero, la tarjeta de WhatsApp y el «Contame» de «El próximo»), la pastilla `hola_mundo()` y a lo sumo una `m` del patrón, y MUST NOT usarse como fondo de las tarjetas de «Qué necesitás» ni de los casos, ni en títulos. Medido el 2026-10-30 sobre capturas: primera pantalla 1.7 % en escritorio (1440×900) y 4.6 % en celular (390×844) (antes de la reducción: 2.9 % y 7.8 %); página completa 1.4 % y 2.9 %. Esos valores SHALL ser el tope.
 
 #### Scenario: Medición
 - **WHEN** se miden los píxeles lima en capturas de la primera pantalla y de la página completa
 - **THEN** están por debajo de esos topes
-
-### Requirement: Contacto y pie entran juntos en una pantalla
-En escritorio (1024 px o más), «Contacto» SHALL medir el alto de la ventana menos la barra y el pie, con su contenido al medio, de modo que al ir a «Contacto» desde el índice el pie quede entero. En ventanas bajas SHALL ocultar la franja del patrón (hasta 800 px de alto) y la línea que cambia (hasta 700 px) para que entre. Al llegar al final de la página en cualquier tamaño, el pie SHALL verse completo.
-
-#### Scenario: Ir a Contacto
-- **WHEN** se va a «Contacto» desde el índice a 1470×790, 1366×640, 1280×720 o 1024×768
-- **THEN** el borde inferior del pie coincide con el de la ventana
-
-#### Scenario: Final de la página
-- **WHEN** se baja hasta el final en celular o escritorio
-- **THEN** el pie se ve entero, sin cortarse

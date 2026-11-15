@@ -25,7 +25,6 @@ y sacala de esta lista.
 - [ ] **Oral, si querés contarlo con más calor**: que es el consultorio de tu mamá y que antes los turnos llegaban a su celular. Hoy la web lo dice sin nombrarla; contarlo es decisión tuya.
 - [ ] **Integraciones que hacés de verdad** (WhatsApp, Mercado Pago, Google Calendar, CRM…): si me las decís, las nombro en las tarjetas; da confianza local. No las puse sin tu confirmación.
 - [ ] **Datos legales en el pie** (nombre completo, ciudad, CUIT si querés): en Argentina tranquiliza a quien desconfía; la competencia local lo muestra. Decisión tuya.
-- [ ] **Los papelitos del hero** («Turno del jueves: avisar por WhatsApp», «Pedido de Marta: anotar en el cuaderno», «Planilla_final_v3») son una ilustración del problema con texto de ejemplo: si no te gustan o preferís otros, se cambian en `Hero.astro`.
 - [ ] Confirmar la URL de Instagram (se asume `instagram.com/almadaortiz.dev`).
 - [ ] **Otros proyectos para «Cosas que armé»** (estilo Etch: una línea cada uno, de rubros distintos; propios o internos, sin nombres de
   empresas). Con 5 o 6 líneas la web comunica «hago lo que sea» sin un titular. No se inventan. Se cargan en
@@ -38,5 +37,5 @@ y sacala de esta lista.
 ## Resuelto (2026-10-10)
 
 Stack, hosting y mail (ver `03-arquitectura.md`) · el sitio actual lo sirve Cloudflare Pages desde la raíz de `main` · «más de 7 años» (2026-10-27) · dominio principal juanmalmada.com · titular «Todo el sistema, un solo proveedor.» · no se nombran empresas · perfiles con experiencia:
-clínicas y RRHH · todo a presupuesto · canales: WhatsApp, Instagram, mail · respuesta (quitado el 2026-11-15: ya no se promete un plazo) ·
+clínicas y RRHH · todo a presupuesto · canales: WhatsApp, Instagram, mail · respuesta en menos de 24 h hábiles ·
 sin foto · assets de marca completos · Instagram `almadaortiz.dev`.

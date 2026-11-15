@@ -130,13 +130,6 @@
 - [x] 18.1 Botón «Charla sin costo» en la barra, «te enseño a usarlo» en la bajada y nota de cómo se cobra; verificar a 360, 390 y 1470 px.
 - [ ] 18.2 Nombrar integraciones y mostrar datos legales cuando Juanma los confirme.
 
-## 19. Rediseño editorial sobrio (brief de Juanma)
-
-- [x] 19.1 Contenido: sin 24 h, sin Belgrano, sin «consultorios»; bajada del hero, escena de turnos, casos en lenguaje claro, speech de «Cómo trabajo» y contacto; test que lo vigila.
-- [x] 19.2 Composición: hero «cuaderno → sistema», tarjetas bicolor, casos sin caja, línea de tiempo, columnas, contacto sin tarjetas; «¿Te suena?» dentro del capítulo 01.
-- [x] 19.3 Pie entero al ir a Contacto y al llegar al final; cada sección entra en una pantalla de 1470×790.
-- [ ] 19.4 `revisor-de-marca`, Lighthouse y capturas; commit y PR.
-
 ## Workflow follow-up
 
 - Archivar el cambio (`/opsx:archive`) al mergear.

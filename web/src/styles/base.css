@@ -89,7 +89,7 @@ p { text-wrap: pretty; }
 /* Secciones a ancho completo */
 /* Si una sección es más baja que la pantalla, la llena (con el contenido al medio): al ir a ella desde el índice, la siguiente no asoma cortada abajo */
 .seccion-ancha { padding-block: var(--espacio-seccion); min-height: calc(100svh - var(--alto-barra)); display: grid; align-content: center; }
-#contacto.seccion-ancha { min-height: 0; align-content: start; } /* la última: su alto lo fija Contacto.astro junto con el pie */
+#contacto.seccion-ancha { min-height: 0; align-content: start; } /* la última: sigue el pie, que es del mismo pino */
 .cabecera { display: grid; gap: var(--space-4); margin-bottom: clamp(var(--space-8), 5vw, var(--space-16)); }
 
 /* ---------- Botones ---------- */
