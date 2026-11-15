@@ -9,6 +9,7 @@ const texto = (url) => decodeURIComponent(new URL(url).searchParams.get("text"))
 test("hay seis tarjetas por problema, con la de «no sabés qué necesitás» al final y los ids sin repetir", () => {
   assert.deepEqual(temas.map((t) => t.id), ["turnos", "web", "gestion", "datos", "plataforma", "otra"]);
   assert.equal(temas.at(-1).titulo, "No sabés bien qué necesitás");
+  assert.ok(temas.every((t) => ["pino", "musgo"].includes(t.fondo)), "arriba va el tono oscuro; abajo, el claro que le corresponde");
   assert.equal(new Set(temas.map((t) => t.id)).size, temas.length);
 });
 
@@ -44,22 +45,22 @@ test("ningún texto de los temas trae cifras ni frases prohibidas, y va con vose
   }
 });
 
-test("cada par texto/fondo de las tarjetas pasa el contraste AA (4.5:1) con los tonos reales de la paleta", () => {
+test("cada par texto/fondo de las tarjetas (problema arriba, solución abajo) pasa el contraste AA (4.5:1)", () => {
   const lin = (c) => { c /= 255; return c <= 0.03928 ? c / 12.92 : ((c + 0.055) / 1.055) ** 2.4; };
   const L = ([r, g, b]) => 0.2126 * lin(r) + 0.7152 * lin(g) + 0.0722 * lin(b);
   const mezcla = (a, b, pa) => a.map((v, i) => v * pa + b[i] * (1 - pa)); // color-mix(in srgb, a pa%, b)
   const pino = [0x13, 0x3a, 0x2e], musgo = [0x3f, 0x7a, 0x5c], salvia = [0xa8, 0xc5, 0xae], crema = [0xf3, 0xef, 0xe3];
+  const papel = mezcla(salvia, crema, 0.3), musgoHondo = mezcla(musgo, pino, 0.6);
   const pares = {
-    pino: [crema, pino],
-    salvia: [pino, salvia],
-    papel: [pino, mezcla(salvia, crema, 0.3)],
-    musgo: [crema, mezcla(musgo, pino, 0.6)],
+    pino: [[crema, pino], [pino, papel]],
+    musgo: [[crema, musgoHondo], [pino, salvia]],
   };
   for (const t of temas) {
-    const [texto, fondo] = pares[t.fondo];
-    const [a, b] = [L(texto), L(fondo)];
-    const ratio = (Math.max(a, b) + 0.05) / (Math.min(a, b) + 0.05);
-    assert.ok(ratio >= 4.5, `${t.id} (${t.fondo}): contraste ${ratio.toFixed(2)}`);
+    for (const [texto, fondo] of pares[t.fondo]) {
+      const [a, b] = [L(texto), L(fondo)];
+      const ratio = (Math.max(a, b) + 0.05) / (Math.min(a, b) + 0.05);
+      assert.ok(ratio >= 4.5, `${t.id} (${t.fondo}): contraste ${ratio.toFixed(2)}`);
+    }
   }
 });
 

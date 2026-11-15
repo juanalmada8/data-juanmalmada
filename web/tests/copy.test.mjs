@@ -67,7 +67,13 @@ test("título ≤ 60 y descripción ≤ 155 caracteres, sin lista cerrada de ser
 
 test("el hero muestra los hechos de sitio.ts y los enlaces directos en orden: WhatsApp, Instagram, mail", () => {
   const hero = readFileSync(new URL("../src/components/secciones/Hero.astro", import.meta.url), "utf8");
-  for (const dato of ["sitio.experiencia", "sitio.respuesta", "sitio.base"]) assert.ok(hero.includes(dato), `falta ${dato}`);
+  for (const dato of ["sitio.experiencia", "sitio.disponibilidad"]) assert.ok(hero.includes(dato), `falta ${dato}`);
   const orden = ["contacto.whatsapp", "contacto.instagram", "contacto.mail"].map((c) => hero.indexOf(c));
   assert.ok(orden.every((i) => i >= 0) && orden[0] < orden[1] && orden[1] < orden[2], "enlaces fuera de orden");
 });
+
+test("el sitio no promete plazos de respuesta, no destaca la ciudad y no cierra el público a consultorios (brief 2026-11-15)", () => {
+  const prohibido = /menos de 24\s?h|24\s?(hs|horas)|General Belgrano|Belgrano|consultorios|tu consultorio|para consultorios/i;
+  for (const [archivo, texto] of textos) assert.doesNotMatch(texto, prohibido, `${archivo} contiene algo que Juanma pidió sacar`);
+});
+

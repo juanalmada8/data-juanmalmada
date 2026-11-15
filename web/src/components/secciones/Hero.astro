@@ -1,8 +1,9 @@
 ---
-// Hero pino pegado a la barra (como thoughtbot): un titular que nombra lo que le pasa a quien entra («el sistema sos vos»), bajada con
-// escenas concretas, CTA lima y enlaces directos; a la derecha, tres marcos con datos reales en lugar de fotos. El lema del manual va en el pie.
-// Spec: openspec/changes/landing-una-pagina/specs/{landing,selector-hero}.
+// Hero pino pegado a la barra. Titular que nombra lo que le pasa a quien entra y, a la derecha, la idea «cuaderno → sistema»:
+// papelitos con situaciones del problema (ilustración, no datos del negocio) y el patrón pipeline del manual. La firma de Juanma
+// (activo del manual) es lo humano, sin foto. Sin plazos de respuesta ni ciudad (brief 2026-11-15). Spec: specs/{landing,selector-hero}.
 import Firma from "../Firma.astro";
+import Pipeline from "../Pipeline.astro";
 import { sitio, contacto } from "../../data/sitio";
 
 const experiencia = sitio.experiencia.match(/\d+/)![0]; // «7»; el «Más de» va en el marcado
@@ -13,7 +14,7 @@ const experiencia = sitio.experiencia.match(/\d+/)![0]; // «7»; el «Más de»
 
     <div class="pie-hero">
       <div class="accion">
-        <p class="lead">Turnos por mensaje, pedidos en un cuaderno, los números en una planilla que solo entendés vos. Armo el sistema para que todo funcione sin que estés encima, y te enseño a usarlo.</p>
+        <p class="lead">Turnos por WhatsApp que coordinás a mano, pedidos anotados en un cuaderno y números repartidos en una planilla que solo vos entendés. Diseño e implemento un sistema para que el negocio funcione con menos tareas manuales, y te enseño a usarlo.</p>
         <a class="boton lima flecha" href="#contacto">Contame cómo trabajás hoy</a>
         <p class="directo">
           <span>O escribime directo:</span>
@@ -21,72 +22,61 @@ const experiencia = sitio.experiencia.match(/\d+/)![0]; // «7»; el «Más de»
           <a href={contacto.instagram} target="_blank" rel="noopener noreferrer">Instagram<span class="sr-only"> (se abre en otra pestaña)</span></a>
           <a href={`mailto:${contacto.mail}`}>Mail</a>
         </p>
+        <div class="presenta">
+          <Firma color="crema" ancho="var(--ancho-firma)" decorativa />
+          <p>Soy Juanma, con más de {experiencia} años de oficio. {sitio.disponibilidad}</p>
+        </div>
       </div>
 
-      <div class="marcos" role="group" aria-label="Datos de Juanma">
-        <div class="marco-c yo">
-          <p>Soy Juanma. Armo las dos puntas: lo que ven tus clientes y lo que ves vos.</p>
-          <Firma color="pino" ancho="var(--ancho-firma)" decorativa />
-        </div>
-        <div class="marco-c anios">
-          <span class="mas">Más de</span>
-          <span class="num" aria-hidden="true">{experiencia}</span>
-          <span class="sr-only">{experiencia}</span>
-          <span class="unidad">años de oficio</span>
-        </div>
-        <div class="marco-c resp">
-          <p>Te respondo en {sitio.respuesta}.</p>
-          <p class="base">{sitio.base}</p>
-          <code class="guino" translate="no" aria-hidden="true">hola_mundo()</code>
-        </div>
+      <div class="cuaderno" aria-hidden="true">
+        <p class="nota a">Turno del jueves: avisar por WhatsApp</p>
+        <p class="nota b">Pedido de Marta: anotar en el cuaderno</p>
+        <p class="nota c">Planilla_final_v3</p>
+        <Pipeline pasos={["planillas", "se ordenan", "un solo lugar"]} class="orden" />
       </div>
     </div>
   </div>
 </section>
 
 <style>
-  /* El hero llena la primera pantalla (alto de la ventana menos la barra): así la franja de abajo no asoma cortada */
-  .hero { padding: var(--space-6) 0 var(--space-12); min-height: calc(100svh - var(--alto-barra)); display: grid; align-content: center; }
-  .interior { display: grid; gap: var(--space-8); }
-  h1 em { color: var(--salvia); } /* la lima queda para los botones y la pastilla: el itálico del titular va en salvia */
+  /* El hero llena la primera pantalla (alto de la ventana menos la barra): así lo que sigue no asoma cortado */
+  .hero { padding: var(--space-6) 0 var(--space-8); min-height: calc(100svh - var(--alto-barra)); display: grid; align-content: center; }
+  .interior { display: grid; gap: var(--space-6); }
+  h1 em { color: var(--salvia); } /* la lima queda para los botones: el itálico del titular va en salvia */
+  h1 .r { display: block; } /* «Todo anda.» siempre solo en su renglón: la pausa es parte del mensaje */
   .pie-hero { display: grid; gap: var(--space-8); }
   .accion { display: grid; gap: var(--space-4); justify-items: start; align-content: start; max-width: var(--ancho-accion); }
   .accion .boton { white-space: nowrap; }
-  .lead { max-width: 34ch; }
+  .lead { max-width: 44ch; font-size: var(--fs-body); line-height: 1.5; }
   .directo { display: flex; flex-wrap: wrap; align-items: center; column-gap: var(--space-4); font-size: var(--fs-small); }
   .directo a { display: inline-flex; align-items: center; min-height: var(--tap-min); min-width: var(--tap-min); font-weight: 700; text-underline-offset: .2em; }
+  .presenta { display: flex; align-items: center; gap: var(--space-4); max-width: 34rem; }
+  .presenta p { font-size: var(--fs-small); max-width: 36ch; color: var(--salvia); }
 
-  /* Marcos de color con una esquina cortada (la hoja): cada uno lleva un dato real, no una foto */
-  .marcos { display: grid; gap: var(--space-4); align-content: start; }
-  .marco-c {
-    display: grid; gap: var(--space-2); align-content: space-between;
-    padding: var(--space-6);
-    border-radius: var(--radius-tarjeta) var(--radius-tarjeta) var(--radius-tarjeta) var(--space-2);
+  /* El cuaderno: tres papelitos y el orden que llega. Es una ilustración del problema, no datos de nadie. */
+  .cuaderno { display: grid; gap: var(--space-3); align-content: center; justify-items: start; max-width: 26rem; }
+  .nota {
+    padding: var(--space-4) var(--space-6);
+    background: var(--crema);
+    color: var(--pino);
+    border-radius: var(--radius-box);
+    font-weight: 700;
+    font-size: var(--fs-small);
+    line-height: 1.3;
+    max-width: 17rem;
   }
-  .yo { background: var(--salvia); color: var(--pino); }
-  .anios { background: var(--musgo-hondo); color: var(--crema); justify-items: start; border-radius: var(--radius-tarjeta) var(--space-2) var(--radius-tarjeta) var(--radius-tarjeta); }
-  .resp { background: var(--papel); color: var(--pino); }
-  .yo p { font-family: var(--font-serif); font-size: var(--fs-h3); line-height: 1.15; }
-  .mas, .unidad { font-weight: 700; font-size: var(--fs-small); }
-  .num { font-family: var(--font-serif); font-size: var(--fs-numeral); line-height: .85; letter-spacing: -.03em; }
-  .resp p { font-weight: 700; }
-  .resp .base { font-weight: 500; font-size: var(--fs-small); }
-  .guino { justify-self: start; padding: var(--space-1) var(--space-4); border-radius: var(--radius-pill); background: var(--lima); color: var(--pino); font-size: var(--fs-small); font-weight: 500; }
+  .a { transform: rotate(var(--giro-a)); }
+  .b { transform: rotate(var(--giro-b)); margin-left: var(--space-8); }
+  .c { transform: rotate(var(--giro-c)); background: var(--papel); }
+  .cuaderno :global(.orden) { margin-top: var(--space-4); }
 
-  h1 .r { display: block; } /* «Todo anda.» siempre solo en su renglón: la pausa es parte del mensaje */
-  @media (min-width: 48rem) {
-    .marcos { grid-template-columns: 1fr 1fr; }
-    .yo { grid-row: span 2; }
-  }
-  /* Desde 1024 px la acción y los marcos van lado a lado; antes, los marcos bajan para que el CTA no se parta */
-  /* Ventanas bajas: marcos más compactos para que el hero entre en la pantalla */
-  @media (min-width: 48rem) and (max-height: 760px) {
-    .marco-c { padding: var(--space-4); }
-    .num { font-size: 3rem; }
-    .yo p { font-size: var(--fs-lead); }
-    .interior, .pie-hero { gap: var(--space-4); }
-  }
   @media (min-width: 64rem) {
-    .pie-hero { grid-template-columns: minmax(0, 1fr) minmax(0, var(--ancho-marcos)); align-items: start; gap: var(--space-12); }
+    .pie-hero { grid-template-columns: minmax(0, 1fr) minmax(0, 26rem); align-items: center; gap: var(--space-12); }
+  }
+  /* Ventanas bajas: lo mismo, más compacto, para que entre en la pantalla */
+  @media (min-width: 64rem) and (max-height: 760px) {
+    .lead { font-size: var(--fs-small); }
+    .interior, .accion { gap: var(--space-3); }
+    .nota { padding: var(--space-3) var(--space-4); }
   }
 </style>

@@ -1,15 +1,19 @@
 ## ADDED Requirements
 
-### Requirement: Seis tarjetas por problema
-La sección «¿Qué te está comiendo el tiempo?» SHALL presentar seis tarjetas grandes de color, una por problema y con el problema como título, en palabras de quien lo vive: «Te escriben y te llaman todo el día» (turnos, reservas y pedidos online), «Tu web no te trae nada» (webs y apps a medida), «Todo vive en planillas y chats» (sistemas de gestión), «Los números los sabés a fin de mes» (tableros y reportes que se arman solos), «Necesitás que clientes o empresas entren con su usuario» (portales y plataformas, con todo lo que las sostiene) y «No sabés bien qué necesitás» (charla). Cada una SHALL mostrar el nombre de lo que se arma, qué cambia y un enlace «Esto me pasa» que abre WhatsApp con el problema ya escrito. Debajo, una línea SHALL dirigirse a empresas y organismos (integraciones, procesos de datos, plataformas con backend).
+### Requirement: Seis tarjetas bicolor, el problema arriba y la solución abajo
+La sección «¿Qué te está consumiendo el tiempo?» SHALL presentar seis tarjetas de dos partes: arriba, en un tono oscuro, el problema en una línea breve y reconocible («Te escriben y te llaman todo el día», «Tu web no te trae nada», «Todo vive en planillas y chats», «Los números los sabés a fin de mes», «Necesitás que tus clientes entren con su usuario», «No sabés bien qué necesitás»); abajo, en un tono claro distinto, lo que se arma (nombre y una línea) y «Esto me pasa →», que abre WhatsApp con el problema ya escrito. La sección MUST NOT llevar manifiesto, nota de cobro ni línea para empresas: el título es el disparador y las tarjetas siguen sin nada en medio.
 
-#### Scenario: Tarjeta de ejemplo
-- **WHEN** se lee una tarjeta
-- **THEN** el título es un problema reconocible, sin tecnicismos, y toda la tarjeta es un solo destino
+#### Scenario: Problema y solución separados
+- **WHEN** se mira una tarjeta
+- **THEN** el problema y la solución se distinguen por tono y por lugar, sin párrafos largos
+
+#### Scenario: Entran en una pantalla
+- **WHEN** la ventana mide 1470×790 en escritorio
+- **THEN** la sección completa (título y las dos filas de tarjetas) entra sin scroll
 
 #### Scenario: Colores
-- **WHEN** se ven las seis tarjetas
-- **THEN** usan tonos de la paleta del manual (pino, salvia, crema oscurecida, musgo profundo), ninguna es lima y cada par texto/fondo pasa 4.5:1
+- **WHEN** se ven las tarjetas
+- **THEN** usan solo tonos de la paleta (pino y musgo profundo arriba; crema oscurecida y salvia abajo), ninguna es lima y cada par texto/fondo pasa 4.5:1
 
 ### Requirement: La última tarjeta invita aunque no sepa qué necesita
 La tarjeta «No sabés bien qué necesitás» SHALL invitar a contar cómo trabaja hoy y decir que la primera charla no tiene costo.
@@ -25,24 +29,9 @@ Las tarjetas MUST NOT incluir cifras, porcentajes, plazos ni precios, y SHALL cu
 - **WHEN** el texto contiene «soluciones innovadoras» o «llevamos tu negocio al siguiente nivel»
 - **THEN** la revisión de marca lo marca como observación
 
-### Requirement: El mensaje de ahorro en el cuerpo
-La sección «¿Qué te está comiendo el tiempo?» SHALL decir, sin cifras, que lo que el cliente invierte hoy le ahorra tiempo y plata mañana (dentro del manifiesto).
+### Requirement: El mensaje de ahorro vive en «Cómo trabajo»
+La frase «Lo que invertís hoy te ahorra tiempo y plata mañana.» SHALL decirse en la introducción de «Cómo trabajo», sin cifras. La forma de cobrar (por etapas y por escrito, plan mensual opcional) SHALL decirse en los pasos Propuesta y Soporte, no en una nota aparte.
 
 #### Scenario: Texto de la sección
-- **WHEN** se lee la sección
-- **THEN** debajo del título el manifiesto dice «Lo que invertís hoy te ahorra tiempo y plata mañana.» y no aparecen porcentajes ni montos
-
-### Requirement: Manifiesto con palabras resaltadas
-«¿Qué te está comiendo el tiempo?» SHALL abrir con una frase grande en serif («Armo sistemas que se usan de verdad. Lo que invertís hoy te ahorra *tiempo y plata* mañana.») con las palabras clave en itálica de acento.
-
-#### Scenario: Contraste del resaltado
-- **WHEN** se ve la frase sobre crema
-- **THEN** el itálico va en musgo hondo (musgo mezclado con pino), que pasa 4.5:1 en cualquier ancho
-
-### Requirement: Cómo se cobra, a la vista
-Debajo de las tarjetas, una nota SHALL decir cómo se cobra sin dar precios: cada proyecto se presupuesta por etapas y por escrito y, después, si la persona quiere, hay un plan mensual de soporte y mejoras (que la primera charla no tiene costo ya lo dice la última tarjeta). MUST NOT mostrar cifras.
-
-#### Scenario: Lectura de la nota
-- **WHEN** se llega al final de «¿Qué te está comiendo el tiempo?»
-- **THEN** se ve la nota «Cómo se cobra» antes de la línea para empresas y organismos
-
+- **WHEN** se lee «Cómo trabajo»
+- **THEN** la introducción trae la frase de ahorro y no hay porcentajes ni montos
