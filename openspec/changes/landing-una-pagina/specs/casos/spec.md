@@ -8,7 +8,7 @@ La sección SHALL mostrar el caso de Oral Odontología Familiar (oral.com.ar), c
 - **THEN** muestra el nombre, dos o tres partes cortas con la última (la solución o lo que sigue hoy) en un panel propio, el link al sitio y la captura o su marcador
 
 ### Requirement: Cada caso se titula por el resultado
-El esquema de casos SHALL exigir un campo `resultado` (texto no vacío) que es el título (`h3`) de la tarjeta: «Los pacientes reservan solos.» (Oral) y «Un portal de empleo que filtra candidatos con inteligencia artificial.» (Staffy). El nombre del cliente SHALL ir como etiqueta chica (`<p translate="no">`, `--fs-small`, peso 800) en el mismo renglón que el link «Ver …↗». El orden de la tarjeta SHALL ser: captura, nombre y link, resultado, «Hoy» y «Ver más». La tarjeta «El próximo puede ser el tuyo» no cambia.
+El esquema de casos SHALL exigir un campo `resultado` (texto no vacío) que es el título (`h3`) de la tarjeta: «Los pacientes reservan solos.» (Oral) y «Empleos IT, con candidatos filtrados por IA.» (Staffy). El nombre del cliente SHALL ir como etiqueta chica (`<p translate="no">`, `--fs-small`, peso 800) en el mismo renglón que el link «Ver …↗». El orden de la tarjeta SHALL ser: captura, nombre y link, resultado, «Hoy» y «Ver más». La tarjeta «El próximo puede ser el tuyo» no cambia.
 
 #### Scenario: Título de un caso
 - **WHEN** se ve la tarjeta de Oral
@@ -22,7 +22,7 @@ El esquema de casos SHALL exigir un campo `resultado` (texto no vacío) que es e
 - **WHEN** se ven los dos casos
 - **THEN** uno es un consultorio local y el otro una plataforma para empresas
 ### Requirement: Los casos se ven a la vez, en una fila
-Los casos SHALL presentarse como tarjetas sin pestañas, en una sola fila en escritorio (Oral, Staffy y una tarjeta que invita a sumar el próximo, con enlace a WhatsApp) y apiladas en el celular. La sección completa SHALL entrar en una pantalla de 1470×790.
+Los casos SHALL presentarse como tarjetas sin pestañas, en una sola fila en escritorio (Oral, Staffy y una tarjeta que invita a sumar el próximo, con enlace a WhatsApp) y apiladas en el celular. Las capturas y el resultado de cada caso SHALL verse sin hacer clic; la sección puede pasar de una pantalla porque manda la imagen.
 
 #### Scenario: Ver los casos
 - **WHEN** la persona llega a «Cosas que armé»
