@@ -33,7 +33,7 @@
 - [x] 5.1 Componente de pestañas ARIA para los casos y sus datos; verificar navegación con flechas y que el cambio es de un clic.
 - [x] 5.2 Marcos de celu/ventana en CSS y componente de captura con `astro:assets`, `alt` obligatorio, ancho/alto y lazy; verificar que el build falla sin `alt`.
 - [x] 5.3 Placeholders de capturas de Oral y Staffy hasta que lleguen; verificar que se ven y que el chequeo de build los lista.
-- [ ] 5.4 Con las capturas de Juanma (si ya llegaron), cargarlas y anonimizar datos de personas; verificar que ninguna muestra nombres ni teléfonos.
+- [x] 5.4 Con las capturas de Juanma (si ya llegaron), cargarlas y anonimizar datos de personas; verificar que ninguna muestra nombres ni teléfonos. (Hecho en 21.1: capturas propias de las páginas públicas.)
 - [x] 5.5 Actualizar la plantilla de caso en `02-contenido.md`; verificar que lista los campos del esquema.
 
 ## 6. Contacto y barra fija
@@ -135,6 +135,14 @@
 - [x] 20.1 Contenido: sin 24 h, sin Belgrano, sin «consultorios»; bajada del hero, escena de turnos, título «consumiendo», casos en lenguaje claro, speech de «Cómo trabajo» y contacto; test que lo vigila.
 - [x] 20.2 Composición: tarjetas con el problema arriba y la solución abajo, sin manifiesto ni notas; casos con problema/solución separados y en una fila; todo entra en una pantalla; pie entero al ir a Contacto; «¿Te suena?» dentro del capítulo 01.
 - [ ] 20.3 Juanma revisa en pantalla.
+
+## 21. Mostrar el trabajo (2026-11-15)
+
+- [x] 21.1 Capturas reales de Oral y Staffy (escritorio y celu, solo páginas públicas y sin datos de personas) cargadas en los casos.
+- [x] 21.2 «Cosas que armé»: captura de escritorio arriba y grande con la del celu encima; solo «Hoy» visible y el resto en «Ver más».
+- [x] 21.3 Campos opcionales `testimonio` y `video` en el esquema de casos, mostrados solo si existen; pendientes anotados.
+- [x] 21.4 Recortes: sin intro en «Cómo trabajo» y texto «yo» de Contacto abreviado.
+- [x] 21.5 Docs al día; `check`, tests, build, axe a 360, 768 y 1440 px.
 
 ## Workflow follow-up
 

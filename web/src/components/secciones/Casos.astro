@@ -1,7 +1,9 @@
 ---
-// «Cosas que armé»: casos reales como tarjetas lado a lado (más una que invita a sumar el próximo). Cada caso separa el problema o qué es
-// de la solución (la última parte, en un panel propio) y entra en una pantalla. Lenguaje claro, sin jerga (pedido de Juanma, 2026-11-15).
+// «Cosas que armé»: casos reales como tarjetas lado a lado (más una que invita a sumar el próximo). Primero el trabajo: la captura de
+// escritorio arriba y grande, con la del celu encima. El texto visible es la última parte («Hoy», en un panel propio); el resto va en «Ver más».
+// Testimonio y video son opcionales: aparecen solo si el caso los trae. Lenguaje claro, sin jerga (pedido de Juanma, 2026-11-15).
 // Cada caso es un archivo de src/content/casos/: sumar uno no toca este componente. Spec: specs/casos.
+import { getImage } from "astro:assets";
 import Captura from "../Captura.astro";
 import { cargarCasos } from "../../lib/casos";
 import { urlWhatsApp } from "../../lib/whatsapp";
@@ -9,6 +11,11 @@ import { proyectos } from "../../data/proyectos";
 
 const casos = await cargarCasos();
 const fondos = ["salvia", "pino"];
+// Ancho real de la captura grande: tarjeta en una columna (celu), dos (tablet) o tres (escritorio)
+const tamanos = "(min-width: 64rem) 24rem, (min-width: 48rem) 45vw, 90vw";
+// Póster de cada video, solo para los casos que tengan uno
+const posters = new Map<string, string>();
+for (const c of casos) if (c.data.video) posters.set(c.id, (await getImage({ src: c.data.video.poster, width: 960 })).src);
 ---
 {casos.length > 0 && (
 <section id="casos" class="seccion-ancha tema-crema" aria-labelledby="casos-titulo">
@@ -17,29 +24,57 @@ const fondos = ["salvia", "pino"];
     <p class="lead" data-aparece>Casos reales, de un negocio chico a una plataforma para empresas. Lo tuyo puede ser otra cosa.</p>
 
     <ul class="casos">
-      {casos.map((c, i) => (
+      {casos.map((c, i) => {
+        const ventana = c.data.capturas.find((x) => x.marco === "ventana");
+        const celu = c.data.capturas.find((x) => x.marco === "celu");
+        const hoy = c.data.partes[c.data.partes.length - 1];
+        const antes = c.data.partes.slice(0, -1);
+        const { testimonio, video } = c.data;
+        return (
         <li class:list={["caso", `f-${fondos[i % fondos.length]}`]} data-aparece>
+          <div class:list={["captura-caso", { "con-celu": !!celu }]}>
+            {c.data.capturas.length > 0
+              ? <>
+                  {ventana && <Captura caso={c.data.nombre} captura={ventana} sizes={tamanos} />}
+                  {celu && <div class="celu-sup"><Captura caso={c.data.nombre} captura={celu} sizes="8rem" /></div>}
+                </>
+              : <Captura caso={c.data.nombre} marco="ventana" />}
+          </div>
           <div class="encabezado">
             <h3 translate="no">{c.data.nombre}</h3>
             <a class="link" href={c.data.url} target="_blank" rel="noopener noreferrer">
               Ver {new URL(c.data.url).hostname} <span aria-hidden="true">↗</span><span class="sr-only"> (se abre en otra pestaña)</span>
             </a>
           </div>
-          <dl class="partes">
-            {c.data.partes.map((p, i) => (
-              <div class:list={["parte", { hoy: i === c.data.partes.length - 1 }]}>
-                <dt>{p.titulo}</dt>
-                <dd>{p.texto}</dd>
-              </div>
-            ))}
-          </dl>
-          <div class="captura-caso">
-            {c.data.capturas.length > 0
-              ? c.data.capturas.map((cap) => <Captura caso={c.data.nombre} captura={cap} />)
-              : <Captura caso={c.data.nombre} marco="ventana" />}
+          <div class="parte hoy">
+            <p class="titulo">{hoy.titulo}</p>
+            <p>{hoy.texto}</p>
           </div>
+          {antes.length > 0 && (
+            <details class="mas">
+              <summary>Ver más</summary>
+              <dl class="partes">
+                {antes.map((p) => (
+                  <div class="parte">
+                    <dt>{p.titulo}</dt>
+                    <dd>{p.texto}</dd>
+                  </div>
+                ))}
+              </dl>
+            </details>
+          )}
+          {testimonio && (
+            <figure class="testimonio">
+              <blockquote><p>«{testimonio.texto}»</p></blockquote>
+              <figcaption><cite>{testimonio.autor}</cite>, {testimonio.rol}</figcaption>
+            </figure>
+          )}
+          {video && (
+            <video class="video" aria-label={c.data.nombre} controls preload="none" playsinline poster={posters.get(c.id)} src={video.src}></video>
+          )}
         </li>
-      ))}
+        );
+      })}
       <li class="caso proximo f-musgo" data-aparece>
         <h3>El próximo puede ser el tuyo.</h3>
         <a class="boton lima flecha" href={urlWhatsApp("Hola Juanma, quiero armar algo")} target="_blank" rel="noopener noreferrer">
@@ -76,13 +111,27 @@ const fondos = ["salvia", "pino"];
   .f-pino { background: var(--pino); color: var(--crema); }
   .f-musgo { background: var(--musgo-hondo); color: var(--crema); }
   .partes { display: grid; gap: var(--space-2); width: 100%; }
-  .parte dt { font-weight: 800; font-size: var(--fs-small); }
-  .parte dd { font-size: var(--fs-small); line-height: 1.4; }
+  .parte dt, .parte .titulo { font-weight: 800; font-size: var(--fs-small); }
+  .parte dd, .parte p:not(.titulo) { font-size: var(--fs-small); line-height: 1.4; }
+  .hoy { width: 100%; }
   /* La última parte (la solución o lo que sigue hoy) va en un panel propio, un poco más claro u oscuro que la tarjeta */
   .hoy { padding: var(--space-2) var(--space-3); border-radius: var(--radius-box); }
   .f-pino .hoy { background: color-mix(in srgb, var(--crema) 14%, transparent); }
   .f-salvia .hoy { background: color-mix(in srgb, var(--pino) 9%, transparent); }
-  .captura-caso { width: 100%; max-width: 9rem; }
+  /* La captura de escritorio ocupa todo el ancho de la tarjeta; la del celu se superpone abajo a la derecha */
+  .captura-caso { position: relative; width: 100%; }
+  .captura-caso.con-celu { margin-bottom: var(--space-12); }
+  .celu-sup { position: absolute; right: var(--space-3); bottom: calc(var(--space-12) * -1); width: 30%; }
+  .captura-caso :global(.captura) { box-shadow: 0 0 0 1px color-mix(in srgb, var(--pino) 25%, transparent); }
+  .mas { width: 100%; }
+  .mas summary { display: flex; align-items: center; min-height: var(--tap-min); font-weight: 700; font-size: var(--fs-small); cursor: pointer; text-decoration: underline; text-decoration-thickness: 2px; text-underline-offset: var(--space-1); }
+  .mas[open] summary { margin-bottom: var(--space-1); }
+  .f-pino .mas summary:focus-visible, .f-pino .video:focus-visible { outline-color: var(--lima); }
+  .f-salvia .mas summary:focus-visible { outline-color: var(--pino); }
+  .testimonio { margin: 0; display: grid; gap: var(--space-1); font-size: var(--fs-small); }
+  .testimonio blockquote { margin: 0; font-weight: 700; }
+  .testimonio cite { font-style: normal; font-weight: 800; }
+  .video { width: 100%; border-radius: var(--radius-box); background: var(--pino); }
   .proximo { align-content: center; min-height: var(--alto-tarjeta-chica); }
   .link { display: inline-flex; align-items: center; min-height: var(--tap-min); font-weight: 700; text-decoration: underline; text-decoration-thickness: 2px; text-underline-offset: var(--space-1); }
   .caso .link:hover { color: inherit; text-decoration-thickness: 4px; } /* el hover global (musgo) no se lee sobre estos fondos */

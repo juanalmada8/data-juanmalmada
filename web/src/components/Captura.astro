@@ -10,9 +10,10 @@ interface Props {
   captura?: { src: ImageMetadata; alt: string; marco: "celu" | "ventana" };
   marco?: "celu" | "ventana"; // marco del placeholder
   lazy?: boolean;
+  sizes?: string; // ancho real en pantalla, para que el navegador elija el archivo justo
   class?: string;
 }
-const { caso, captura, marco = "ventana", lazy = true, class: clase } = Astro.props;
+const { caso, captura, marco = "ventana", lazy = true, sizes = "(min-width: 60rem) 28rem, 90vw", class: clase } = Astro.props;
 const tipo = captura?.marco ?? marco;
 ---
 <figure class:list={["captura", tipo, { "sin-captura": !captura }, clase]}>
@@ -25,7 +26,7 @@ const tipo = captura?.marco ?? marco;
         src={captura.src}
         alt={captura.alt}
         widths={[320, 640, 960]}
-        sizes="(min-width: 60rem) 28rem, 90vw"
+        sizes={sizes}
         loading={lazy ? "lazy" : "eager"}
       />
     ) : (

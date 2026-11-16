@@ -25,6 +25,9 @@ const casos = defineCollection({
           }),
         )
         .default([]),
+      // Opcionales: se muestran solo si existen (no hay datos todavía; ver docs/pendientes-juanma.md).
+      testimonio: z.object({ texto: z.string().min(1), autor: z.string().min(1), rol: z.string().min(1) }).optional(),
+      video: z.object({ src: z.string().min(1), poster: image() }).optional(), // src = ruta dentro de public/
       orden: z.number().int(),
       publicado: z.boolean().default(false),
     }),

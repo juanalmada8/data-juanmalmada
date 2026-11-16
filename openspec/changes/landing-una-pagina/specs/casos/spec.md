@@ -34,12 +34,27 @@ Los casos MUST NOT incluir métricas, ahorros, testimonios ni funciones que Juan
 - **WHEN** se agrega un bullet a un caso
 - **THEN** sale de lo que Juanma contó, no de una suposición
 
-### Requirement: Capturas reales, con placeholder visible si faltan
-Cada caso SHALL mostrar capturas reales dentro de un marco de celular o de ventana, con texto alternativo, ancho y alto, y SHALL mostrar un marcador `[[FALTA: captura de <caso>]]` si no hay captura.
+### Requirement: Capturas reales, arriba y grandes
+Cada caso SHALL mostrar sus capturas reales (cargadas: Oral y Staffy, de páginas públicas y sin datos de personas) como lo primero de la tarjeta: la de escritorio en un marco de ventana a todo el ancho de la tarjeta y la de celu superpuesta abajo a la derecha, con texto alternativo y carga diferida. El texto visible SHALL ser solo la última parte («Hoy»); las demás partes SHALL ir en un `<details>` con «Ver más». Si un caso futuro no tiene capturas, SHALL mostrar el marcador `[[FALTA: captura de <caso>]]`.
+
+#### Scenario: Caso con capturas
+- **WHEN** se ve un caso
+- **THEN** la captura de escritorio está arriba y grande, y el texto visible es solo «Hoy», con «Ver más» para el resto
 
 #### Scenario: Captura faltante
-- **WHEN** un caso no tiene capturas
+- **WHEN** un caso futuro no tiene capturas
 - **THEN** la página muestra el placeholder visible y el build informa cuáles faltan
+
+### Requirement: Testimonio y video opcionales
+El esquema de casos SHALL admitir `testimonio` (`texto`, `autor`, `rol`) y `video` (`src` dentro de `public/` y `poster`) como campos opcionales. Cada uno SHALL mostrarse solo si el caso lo trae: el testimonio como `<blockquote>` con `<cite>` y el video con `<video controls preload="none" poster>`, sin reproducción automática. MUST NOT inventarse ni mostrarse contenido de relleno.
+
+#### Scenario: Caso sin testimonio ni video
+- **WHEN** un caso no trae esos campos
+- **THEN** no se dibuja nada para ellos
+
+#### Scenario: Caso con testimonio
+- **WHEN** un caso trae `testimonio`
+- **THEN** aparece la cita con su autor y rol
 
 ### Requirement: Alta de casos sin tocar componentes
 Agregar un caso SHALL requerir solo un archivo nuevo de contenido y sus imágenes, y SHALL validarse el esquema en el build.
