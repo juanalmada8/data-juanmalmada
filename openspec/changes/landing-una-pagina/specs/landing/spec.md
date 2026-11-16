@@ -1,7 +1,7 @@
 ## ADDED Requirements
 
-### Requirement: Una sola página de siete secciones
-El sitio SHALL ser una única página con, en este orden (promesa → prueba → oferta → voz → proceso → dudas → acción), hero, casos reales («Cosas que armé», con ancla `#casos`), «Qué resuelvo» (`#que-hago`, que absorbe a la antigua «¿Te suena?»), «Una nota de Juanma» (`#nota`: una nota corta en primera persona, firmada, sin caja ni foto, con su título visible solo para lectores de pantalla), «Cómo trabajo» (`#como-trabajo`), «Preguntas» (`#preguntas`) y contacto (`#contacto`), y MUST NOT tener páginas internas, modales ni formularios. La sección «¿Te suena?» ya no existe: se fusionó en «Qué resuelvo» el 2026-11-15.
+### Requirement: Una sola página de ocho secciones
+El sitio SHALL ser una única página con, en este orden (promesa → prueba → oferta → voz → proceso → dudas → acción), hero, casos reales («Cosas que armé», con ancla `#casos`), «Todo conectado» (`#conectado`: bento de cuatro tarjetas con ilustraciones de interfaz, ver `conectado`), «Qué resuelvo» (`#que-hago`, que absorbe a la antigua «¿Te suena?»), «Una nota de Juanma» (`#nota`: una nota corta en primera persona, firmada, sin caja ni foto, con su título visible solo para lectores de pantalla), «Cómo trabajo» (`#como-trabajo`), «Preguntas» (`#preguntas`) y contacto (`#contacto`), y MUST NOT tener páginas internas, modales ni formularios. La sección «¿Te suena?» ya no existe: se fusionó en «Qué resuelvo» el 2026-11-15.
 
 #### Scenario: Ruta interna
 - **WHEN** alguien abre `/proyectos/oral` o cualquier ruta que no sea la home
@@ -9,7 +9,7 @@ El sitio SHALL ser una única página con, en este orden (promesa → prueba →
 
 #### Scenario: Orden de las secciones
 - **WHEN** se recorre la página de arriba hacia abajo
-- **THEN** las secciones aparecen en el orden indicado y no hay una octava
+- **THEN** las secciones aparecen en el orden indicado y no hay una novena
 
 ### Requirement: El mensaje se entiende en 5 segundos
 El hero SHALL mostrar el titular «Tu negocio, más simple y bajo control.», la bajada y el botón «Charlemos» en la primera pantalla del celular, seguido de un botón secundario «Ver lo que armé» (borde crema sobre pino, sin relleno) que lleva a `#casos`, en el mismo renglón o debajo si no entra; «Un solo proveedor, todo el sistema.» queda como lema del pie.
@@ -30,7 +30,7 @@ Ningún texto SHALL afirmar ni sugerir que Juanma hace un solo tipo de proyecto;
 - **THEN** no hay frases como «solo hago…», «me especializo en turnos» ni una lista cerrada de servicios
 
 ### Requirement: Barra fija con índice numerado
-La página SHALL tener una barra fija, de ancho completo y color pino (el mismo fondo del hero, sin corte entre ambos), con el logo, un índice numerado de sus cuatro capítulos (01 Casos, 02 Qué resuelvo, 03 Cómo trabajo, 04 Contacto; el tramo del 02 sigue también «Una nota de Juanma» y el del 03, «Preguntas», que no tienen capítulo propio) y el botón «Charlemos», siempre visible al scrollear. Cada capítulo del índice SHALL tener un tramo de progreso que se llena a medida que se lee esa sección, y el de la sección actual SHALL estar marcado.
+La página SHALL tener una barra fija, de ancho completo y color pino (el mismo fondo del hero, sin corte entre ambos), con el logo, un índice numerado de sus cuatro capítulos (01 Casos, 02 Qué resuelvo, 03 Cómo trabajo, 04 Contacto; el tramo del 01 sigue también «Todo conectado», el del 02 sigue también «Una nota de Juanma» y el del 03, «Preguntas», que no tienen capítulo propio) y el botón «Charlemos», siempre visible al scrollear. Cada capítulo del índice SHALL tener un tramo de progreso que se llena a medida que se lee esa sección, y el de la sección actual SHALL estar marcado.
 
 #### Scenario: Escritorio
 - **WHEN** el ancho es de 1024 px o más
@@ -170,3 +170,14 @@ Entre «Qué resuelvo» y «Cómo trabajo» SHALL haber una sección `#nota` (`s
 #### Scenario: Progreso en el índice
 - **WHEN** se lee la nota
 - **THEN** el capítulo «02 Qué resuelvo» sigue marcado y su tramo no tiene hueco
+
+### Requirement: Chips de interfaz flotantes sobre el collage del hero
+El collage del hero SHALL llevar dos chips crema, decorativos (`aria-hidden="true"`), con sombra suave hecha con colores de la paleta: «✓ Turno confirmado» arriba a la izquierda, saliendo un poco del borde, y «Nuevo pedido por WhatsApp» con un punto lima delante, abajo a la izquierda (lejos del celu). Entran con un fundido una vez y MUST NOT existir animaciones con movimiento reducido. Debajo de 48 rem SHALL ocultarse. El hero MUST seguir entrando en la primera pantalla de escritorio (1470×790, 1366×640, 1024×768) y no desbordar a 360 px.
+
+#### Scenario: Escritorio
+- **WHEN** el ancho es de 48 rem o más
+- **THEN** se ven los dos chips sobre el collage, el hero entra en la primera pantalla y no tapan el titular ni los botones
+
+#### Scenario: Celular y movimiento reducido
+- **WHEN** el ancho es menor a 48 rem, o la persona pidió movimiento reducido
+- **THEN** en el primer caso los chips no se muestran; en el segundo se ven sin animación

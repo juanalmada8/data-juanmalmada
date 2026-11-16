@@ -1,0 +1,165 @@
+---
+// «Todo conectado»: grilla bento de cuatro tarjetas de color (turnos, bots, gestión, tableros). Cada una muestra el producto con una ilustración de
+// interfaz hecha en HTML y CSS con los tokens de la marca (nada de stock, sin nombres de personas ni cifras de resultados) y, abajo, el título y una línea.
+// Idea tomada de Tiendanube («Todo conectado, en un solo lugar»). Los dibujos son decorativos (aria-hidden): el texto accesible es el título y la línea.
+// Spec: openspec/changes/landing-una-pagina/specs/conectado.
+const dias = ["lun", "mar", "mié", "jue", "vie"];
+const horarios = ["09:00", "10:30", "16:00"];
+const pedidos = [
+  { n: "Pedido #128", estado: "Entregado", tono: "salvia" },
+  { n: "Pedido #129", estado: "En camino", tono: "musgo" },
+  { n: "Pedido #130", estado: "Nuevo", tono: "lima" },
+];
+const barras = [34, 52, 44, 68, 60, 86]; // alturas en %, solo ilustración
+---
+<section id="conectado" class="seccion-ancha tema-crema" aria-labelledby="conectado-titulo">
+  <div class="marco">
+    <h2 id="conectado-titulo" data-aparece><span class="r">Lo que necesitás,</span> <span class="r">todo conectado en <em>un solo lugar</em>.</span></h2>
+
+    <ul class="bento" role="list">
+      <li class="tarjeta f-pino" data-aparece>
+        <div class="visual" aria-hidden="true">
+          <div class="panel">
+            <div class="dias">
+              {dias.map((d, i) => (
+                <span class:list={["dia", { marcado: d === "jue" }]}><span class="d">{d}</span><span class="num">{10 + i}</span></span>
+              ))}
+            </div>
+            <div class="horas">
+              {horarios.map((h) => <span class:list={["hora", { marcada: h === "10:30" }]}>{h}</span>)}
+            </div>
+          </div>
+          <span class="notif n-turno"><span class="tilde">✓</span> Turno confirmado</span>
+        </div>
+        <div class="texto">
+          <h3>Turnos online</h3>
+          <p class="linea">Tus clientes eligen día y horario solos.</p>
+        </div>
+      </li>
+
+      <li class="tarjeta f-salvia" data-aparece>
+        <div class="visual" aria-hidden="true">
+          <div class="chat">
+            <p class="globo cliente">¿Tienen turno para el jueves?</p>
+            <p class="globo bot">¡Sí! Te quedan 10:30 y 16:00. ¿Cuál te reservo?</p>
+          </div>
+        </div>
+        <div class="texto">
+          <h3>Bots con inteligencia artificial</h3>
+          <p class="linea">Contestan las consultas aunque estés ocupado.</p>
+        </div>
+      </li>
+
+      <li class="tarjeta f-papel" data-aparece>
+        <div class="visual" aria-hidden="true">
+          <div class="tabla">
+            {pedidos.map((p) => (
+              <div class="fila"><span class="pedido">{p.n}</span><span class={`estado e-${p.tono}`}>{p.estado}</span></div>
+            ))}
+          </div>
+        </div>
+        <div class="texto">
+          <h3>Sistemas de gestión</h3>
+          <p class="linea">Clientes, pedidos y stock en un solo lugar.</p>
+        </div>
+      </li>
+
+      <li class="tarjeta f-musgo" data-aparece>
+        <div class="visual" aria-hidden="true">
+          <div class="grafico">
+            {barras.map((h, i) => <span class:list={["barra", { ultima: i === barras.length - 1 }]} style={`height:${h}%`}></span>)}
+          </div>
+          <span class="notif n-datos">Actualizado hoy</span>
+        </div>
+        <div class="texto">
+          <h3>Tableros con tus datos</h3>
+          <p class="linea">Ves qué funciona y qué no, al día.</p>
+        </div>
+      </li>
+    </ul>
+
+    <p class="otra" data-aparece><a class="link" href="#contacto">¿Lo tuyo es otra cosa? Contámelo</a></p>
+  </div>
+</section>
+
+<style>
+  h2 .r { display: block; } /* dos renglones fijos, como el hero */
+  .bento { list-style: none; padding: 0; display: grid; gap: var(--space-4); margin-top: var(--space-8); }
+  .tarjeta { position: relative; display: grid; grid-template-rows: 1fr auto; border-radius: var(--radius-tarjeta); overflow: hidden; }
+
+  /* Fondos: tonos de la paleta; los pares texto/fondo son los ya probados (tests/temas.test.mjs) */
+  .f-pino   { background: var(--pino);        color: var(--crema); }
+  .f-salvia { background: var(--salvia);      color: var(--pino); }
+  .f-papel  { background: var(--papel);       color: var(--pino); }
+  .f-musgo  { background: var(--musgo-hondo); color: var(--crema); }
+
+  /* Arriba, el dibujo; abajo a la izquierda, título y línea */
+  .visual { position: relative; min-height: 13rem; padding: var(--space-6) var(--space-6) 0; display: grid; align-content: center; overflow: hidden; }
+  .texto { display: grid; gap: var(--space-1); padding: var(--space-4) var(--space-6) var(--space-6); justify-items: start; }
+  .texto h3 { font-size: var(--fs-tarjeta); line-height: 1.05; letter-spacing: -.02em; }
+  .linea { font-size: var(--fs-small); max-width: 34ch; }
+
+  /* Notificación flotante: un pedacito de interfaz crema encima del dibujo */
+  .notif {
+    position: absolute;
+    display: inline-flex; align-items: center; gap: var(--space-2);
+    padding: var(--space-2) var(--space-4);
+    border-radius: var(--radius-pill);
+    background: var(--crema); color: var(--pino);
+    font-size: var(--fs-small); font-weight: 700; white-space: nowrap;
+    box-shadow: 0 var(--space-2) var(--space-6) color-mix(in srgb, var(--pino) 35%, transparent);
+  }
+  .tilde { color: var(--musgo-hondo); font-weight: 800; }
+
+  /* 1. Turnos: cinco días, uno marcado, tres horarios */
+  .panel { display: grid; gap: var(--space-4); padding: var(--space-4) var(--space-6) var(--space-6) var(--space-4); border-radius: var(--radius-card); background: color-mix(in srgb, var(--crema) 12%, transparent); width: min(100%, 36rem); }
+  .dias { display: grid; grid-template-columns: repeat(5, 1fr); gap: var(--space-2); }
+  .dia { display: grid; justify-items: center; padding: var(--space-3) 0; border-radius: var(--radius-box); background: color-mix(in srgb, var(--crema) 12%, transparent); font-size: var(--fs-label); line-height: 1.25; }
+  .dia .d { text-transform: uppercase; letter-spacing: var(--tracking-mono); font-size: var(--fs-label); }
+  .dia .num { font-weight: 800; font-size: var(--fs-lead); line-height: 1.2; }
+  .dia.marcado { background: var(--lima); color: var(--pino); }
+  .horas { display: flex; flex-wrap: wrap; gap: var(--space-2); }
+  .hora { padding: var(--space-2) var(--space-4); border-radius: var(--radius-pill); border: 2px solid color-mix(in srgb, var(--crema) 40%, transparent); font-family: var(--font-mono); font-size: var(--fs-small); font-weight: 500; }
+  .hora.marcada { background: var(--lima); border-color: var(--lima); color: var(--pino); }
+  .n-turno { right: var(--space-6); bottom: var(--space-2); }
+
+  /* 2. Bot: dos globos alternados */
+  .chat { display: grid; gap: var(--space-4); }
+  .globo { max-width: 85%; padding: var(--space-4) var(--space-6); font-size: var(--fs-body); font-weight: 600; line-height: 1.35; }
+  .globo.cliente { justify-self: start; background: var(--crema); color: var(--pino); border-radius: var(--radius-card) var(--radius-card) var(--radius-card) var(--space-1); }
+  .globo.bot { justify-self: end; background: var(--pino); color: var(--crema); border-radius: var(--radius-card) var(--radius-card) var(--space-1) var(--radius-card); }
+
+  /* 3. Gestión: tabla de tres pedidos con su estado */
+  .tabla { display: grid; background: var(--blanco); border-radius: var(--radius-card); padding: 0 var(--space-6); }
+  .fila { display: flex; align-items: center; justify-content: space-between; gap: var(--space-3); padding: var(--space-4) 0; }
+  .fila + .fila { border-top: 1px solid var(--salvia); }
+  .pedido { font-size: var(--fs-body); font-weight: 700; font-variant-numeric: tabular-nums; }
+  .estado { padding: var(--space-1) var(--space-4); border-radius: var(--radius-pill); font-size: var(--fs-small); font-weight: 700; white-space: nowrap; }
+  .e-salvia { background: var(--salvia); color: var(--pino); }
+  .e-musgo  { background: var(--musgo-hondo); color: var(--crema); }
+  .e-lima   { background: var(--lima); color: var(--pino); box-shadow: 0 0 0 1px var(--pino); }
+
+  /* 4. Tableros: seis barras, la última en lima */
+  .grafico { display: flex; align-items: end; gap: var(--space-3); height: 11rem; padding-bottom: var(--space-1); border-bottom: 2px solid color-mix(in srgb, var(--crema) 30%, transparent); }
+  .barra { flex: 1; border-radius: var(--radius-box) var(--radius-box) 0 0; background: var(--salvia); }
+  .barra.ultima { background: var(--lima); }
+  .n-datos { left: var(--space-6); top: var(--space-6); }
+
+  .otra { margin-top: var(--space-4); }
+  .otra .link { display: inline-flex; align-items: center; min-height: var(--tap-min); }
+
+  /* Las notificaciones entran una vez (con JS y sin movimiento reducido); lo demás no se mueve */
+  @media (prefers-reduced-motion: no-preference) {
+    :global(.js) .tarjeta .notif { opacity: 0; transform: translateY(var(--space-2)); transition: opacity .5s ease .5s, transform .5s ease .5s; }
+    :global(.js) .tarjeta:global(.visible) .notif { opacity: 1; transform: none; }
+  }
+
+  @media (min-width: 40rem) { .bento { grid-template-columns: repeat(2, minmax(0, 1fr)); } .visual { min-height: 14rem; } }
+  /* Escritorio: bento 2×2 con anchos alternados (7fr + 5fr y 5fr + 7fr), alto ≈ 20 rem */
+  @media (min-width: 64rem) {
+    .bento { grid-template-columns: repeat(12, minmax(0, 1fr)); grid-auto-rows: minmax(20rem, auto); }
+    .tarjeta:nth-child(1), .tarjeta:nth-child(4) { grid-column: span 7; }
+    .tarjeta:nth-child(2), .tarjeta:nth-child(3) { grid-column: span 5; }
+    .visual { min-height: 0; }
+  }
+</style>

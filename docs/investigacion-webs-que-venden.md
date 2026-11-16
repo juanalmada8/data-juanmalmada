@@ -57,6 +57,14 @@
 - «Gratis» y precios en la web: decidiste hablar de plata en la propuesta.
 - Fotos de stock (AgendaPro usa muchas): las reglas del repo no las permiten y se nota.
 
+## Tiendanube, de cerca
+Mirada pantalla por pantalla (2026-11-15). Tres patrones que sirven y se adaptan, sin copiar precios, «gratis», cifras, fotos de modelos ni logos:
+1. **«Todo conectado, en un solo lugar»:** una grilla *bento* de tarjetas grandes con un visual que muestra el producto y el título encima. Es la forma más clara de decir que hay muchas cosas distintas bajo un mismo techo.
+2. **Pantallas con «notificaciones» flotantes** (el chat de WhatsApp con un pedido, la tarjeta de «ventas asistidas»): un pedacito de interfaz sobre la imagen que la hace sentir viva.
+3. **Títulos de sección en dos renglones:** el beneficio y, abajo, la aclaración («Vendé donde está tu cliente / Todo conectado, en un solo lugar»).
+Aplicado en: sección «Todo conectado» y chips del hero (`docs/plan-tiendanube.md`).
+
 ## Qué se aplica ahora
 Ver `docs/plan-ajustes-investigacion.md`: segundo botón en el hero, casos titulados por resultado y la nota firmada de Juanma
 (que reemplaza el texto «yo» de Contacto). El resto de la web, que a Juanma le gustó, no se toca.
+Segunda tanda: ver «Tiendanube, de cerca» (sección «Todo conectado» y chips del hero).

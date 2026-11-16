@@ -6,9 +6,9 @@ import Logo from "./Logo.astro";
 import Icono from "./Icono.astro";
 import { sitio } from "../data/sitio";
 
-// Orden de la página: la prueba (casos) va primero. «Nota» y «Preguntas» no son capítulos: su tramo de progreso lo siguen «Qué resuelvo» y «Cómo trabajo».
+// Orden de la página: la prueba (casos) va primero. «Todo conectado», «Nota» y «Preguntas» no son capítulos: su tramo de progreso lo siguen «Casos», «Qué resuelvo» y «Cómo trabajo».
 const capitulos = [
-  { id: "casos", n: "01", nombre: "Casos" },
+  { id: "casos", hasta: "conectado", n: "01", nombre: "Casos" },
   { id: "que-hago", hasta: "nota", n: "02", nombre: "Qué resuelvo" },
   { id: "como-trabajo", hasta: "preguntas", n: "03", nombre: "Cómo trabajo" },
   { id: "contacto", n: "04", nombre: "Contacto" },

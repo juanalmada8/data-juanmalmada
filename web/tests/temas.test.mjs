@@ -71,3 +71,22 @@ test("sobre el pino de la barra y el hero: crema y lima pasan AA (4.5:1) y la sa
   const pino = [0x13, 0x3a, 0x2e], crema = [0xf3, 0xef, 0xe3], lima = [0xd4, 0xe8, 0x5c], salvia = [0xa8, 0xc5, 0xae];
   for (const [nombre, c] of [["crema", crema], ["lima", lima], ["salvia", salvia]]) assert.ok(ratio(c, pino) >= 4.5, `${nombre} sobre pino: ${ratio(c, pino).toFixed(2)}`);
 });
+
+test("«Todo conectado» y los chips del hero: pino sobre lima, crema y blanco; crema sobre musgo hondo (pastillas y notificaciones) pasan AA (4.5:1)", () => {
+  const lin = (c) => { c /= 255; return c <= 0.03928 ? c / 12.92 : ((c + 0.055) / 1.055) ** 2.4; };
+  const L = ([r, g, b]) => 0.2126 * lin(r) + 0.7152 * lin(g) + 0.0722 * lin(b);
+  const ratio = (a, b) => (Math.max(L(a), L(b)) + 0.05) / (Math.min(L(a), L(b)) + 0.05);
+  const mezcla = (a, b, pa) => a.map((v, i) => v * pa + b[i] * (1 - pa));
+  const pino = [0x13, 0x3a, 0x2e], musgo = [0x3f, 0x7a, 0x5c], salvia = [0xa8, 0xc5, 0xae], crema = [0xf3, 0xef, 0xe3], lima = [0xd4, 0xe8, 0x5c], blanco = [255, 255, 255];
+  const musgoHondo = mezcla(musgo, pino, 0.6);
+  const pares = {
+    "pino sobre lima (día, horario y «Nuevo»)": [pino, lima],
+    "pino sobre crema (notificaciones y globo del cliente)": [pino, crema],
+    "pino sobre blanco (tabla de pedidos)": [pino, blanco],
+    "pino sobre salvia («Entregado»)": [pino, salvia],
+    "crema sobre musgo hondo («En camino»)": [crema, musgoHondo],
+    "crema sobre pino (globo del bot)": [crema, pino],
+    "musgo hondo sobre crema (tilde de la notificación)": [musgoHondo, crema],
+  };
+  for (const [nombre, [a, b]] of Object.entries(pares)) assert.ok(ratio(a, b) >= 4.5, `${nombre}: ${ratio(a, b).toFixed(2)}`);
+});

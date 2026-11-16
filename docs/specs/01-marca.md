@@ -90,11 +90,11 @@ Valores en `web/src/styles/tokens.css` (fuente de verdad): espacios `--space-1` 
 a `--fs-h1`; `--tap-min` 44 px.
 
 - **Fondos en la web** (2026-10-30): pino para la barra y el hero; salvia para «Cómo trabajo»; crema para las secciones de tarjetas y «Preguntas»; «Contacto» y el pie sobre pino. **Tarjetas grandes** (`--radius-tarjeta` 28 px) en tonos de la paleta, no colores nuevos: pino, salvia, `--papel` (crema con 30 % de salvia) y `--musgo-hondo` (musgo con 40 % de pino, para poder poner crema encima). Cada par texto/fondo pasa 4.5:1 (test en `web/tests/temas.test.mjs`). **Barra:** pino a ancho completo, pegada al hero (referencia: thoughtbot). **Hero (2026-11-15):** a la derecha, un collage de dos capturas reales en lugar de los marcos de color.
-- **Lima como acento escaso** (2026-10-29): solo los botones principales (barra y hero), la tarjeta de WhatsApp del contacto, el botón «Contame» de la tarjeta «El próximo» (sobre fondo oscuro), el botón flotante de WhatsApp (celular y tablet; con borde pino, porque se ve sobre crema) y una `m` del patrón, más los estados de foco y hover; no en tarjetas, índice, títulos ni marcadores. Medido el 2026-10-30: primera pantalla 1.7 % (escritorio, 1440×900) y 4.6 % (celular, 390×844); página 1.4 % y 2.9 %.
+- **Lima como acento escaso** (2026-10-29): solo los botones principales (barra y hero), la tarjeta de WhatsApp del contacto, el botón «Contame» de la tarjeta «El próximo» (sobre fondo oscuro), el botón flotante de WhatsApp (celular y tablet; con borde pino, porque se ve sobre crema) y una `m` del patrón, más los estados de foco y hover; no en tarjetas, índice, títulos ni marcadores; excepción: las ilustraciones de interfaz (día y horario marcados, última barra, pastilla «Nuevo», punto del chip), con la lima como acento puntual del dibujo. Medido el 2026-10-30: primera pantalla 1.7 % (escritorio, 1440×900) y 4.6 % (celular, 390×844); página 1.4 % y 2.9 %.
 - **Proporción del manual, también en la web:** crema 40 · pino 30 · musgo 15 · salvia 11 · lima 4. Crema es el fondo
   que más se ve; pino en bandas y tarjetas; salvia en una banda y placas; lima solo en acentos y el botón de WhatsApp
   sobre pino.
-- Plano: bloques sólidos y tarjetas de color sin borde ni sombras (la barra es pino).
+- Plano: bloques sólidos y tarjetas de color sin borde ni sombras (la barra es pino), salvo la sombra suave de los chips y notificaciones de las ilustraciones de interfaz.
 - Botón principal: pino sobre crema (lima sobre pino), pill, Manrope 700.
 
 ## Recursos gráficos
@@ -104,6 +104,7 @@ a `--fs-h1`; `--tap-min` 44 px.
 - **Patrón pipeline**: cajitas mono unidas por líneas (`extraer → limpiar → modelar → dashboard/web → tu negocio`).
   Este sí se puede construir en HTML/SVG porque es diagramático, siguiendo el del manual.
 - **Patrón de datos**: grilla de puntos pino/musgo/salvia con algunos en lima.
+- **Ilustraciones de interfaz en HTML/CSS** (bento «Todo conectado» y chips flotantes del hero): calendario, chat, tabla de pedidos, barras y notificaciones dibujados con los tokens de color, tipografía y espaciado. Son decorativas (`aria-hidden`). Sin fotos de stock, sin nombres de personas y sin cifras de resultados; si llevan números, son de relleno evidente (días del mes, numeración de pedidos).
 - **Stickers**: círculos con `</j>`, «todo el sistema», la firma. Pueden ir levemente rotados (−4° a 4°).
 - **Íconos**: de línea, trazo ~2 px, esquinas redondeadas, en pino o crema. Pocos, y solo donde ayudan a escanear.
 

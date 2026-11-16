@@ -45,6 +45,9 @@ const experiencia = sitio.experiencia.charAt(0).toUpperCase() + sitio.experienci
               sizes="8rem"
             />
           </div>
+          <!-- Pedacitos de interfaz que hacen viva la imagen; decorativos -->
+          <span class="chip chip-turno" aria-hidden="true"><span class="tilde">✓</span> Turno confirmado</span>
+          <span class="chip chip-pedido" aria-hidden="true"><span class="punto"></span>Nuevo pedido por WhatsApp</span>
         </div>
         <p class="pie-collage"><span translate="no">Oral Odontología Familiar</span> y <span translate="no">Staffy</span>, <a class="link" href="#casos">dos de los sistemas que armé</a>.</p>
       </div>
@@ -72,6 +75,26 @@ const experiencia = sitio.experiencia.charAt(0).toUpperCase() + sitio.experienci
   /* El celu va abajo a la derecha: no tapa el titular de la captura de Oral y cubre la franja con la dirección del consultorio */
   .celu-sup { position: absolute; right: 9%; bottom: calc(var(--space-12) * -1); width: 22%; }
   .collage :global(.captura) { box-shadow: 0 0 0 1px color-mix(in srgb, var(--crema) 18%, transparent); }
+  /* Chips de interfaz crema sobre el collage: arriba a la izquierda (sale un poco del borde) y abajo a la izquierda, lejos del celu */
+  .chip {
+    position: absolute;
+    display: inline-flex; align-items: center; gap: var(--space-2);
+    padding: var(--space-2) var(--space-4);
+    border-radius: var(--radius-pill);
+    background: var(--crema); color: var(--pino);
+    font-size: var(--fs-small); font-weight: 700; white-space: nowrap;
+    box-shadow: 0 var(--space-2) var(--space-6) color-mix(in srgb, var(--pino) 45%, transparent);
+  }
+  .chip-turno { top: var(--space-6); left: calc(var(--space-4) * -1); }
+  .chip-pedido { bottom: calc(var(--space-6) * -1); left: var(--space-6); }
+  .tilde { color: var(--musgo-hondo); font-weight: 800; }
+  .punto { width: var(--space-2); height: var(--space-2); border-radius: var(--radius-pill); background: var(--lima); box-shadow: 0 0 0 1px var(--pino); }
+  @media (max-width: 47.99rem) { .chip { display: none; } } /* en celular taparían la captura */
+  @media (prefers-reduced-motion: no-preference) {
+    .chip { animation: chip-entra .6s ease both; animation-delay: .5s; }
+    .chip-pedido { animation-delay: .9s; }
+  }
+  @keyframes chip-entra { from { opacity: 0; } to { opacity: 1; } }
   .pie-collage { font-size: var(--fs-small); color: var(--salvia); }
   .pie-collage .link { color: var(--crema); }
 
