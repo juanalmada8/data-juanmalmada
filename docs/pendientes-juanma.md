@@ -20,6 +20,8 @@ y sacala de esta lista.
 - [x] **Capturas de Oral y de Staffy**: cargadas el 2026-11-15 desde las páginas públicas (portada en escritorio y celu; listado de vacantes de Staffy
   en celu). La de Oral en celu es la portada, no el paso de reserva: ese paso muestra los nombres de las profesionales. Revisá que te gusten;
   están en `web/src/assets/casos/` y se referencian en `web/src/content/casos/<caso>.md`.
+- [ ] **¿Facturás (monotributo o responsable inscripto)?** Mostrarlo da confianza en Argentina; si querés, va en el pie o en «Preguntas». No lo puse sin tu confirmación.
+- [ ] **Testimonios**: con nombre, rubro y ciudad del cliente funcionan mejor (ver también el pendiente de las dos frases de clientes, justo abajo).
 - [ ] **Dos frases de clientes** (una de Oral y una de Staffy), con nombre, rol y permiso para publicarlas. Van en `testimonio` de cada caso.
 - [ ] **Un video de pantalla de 30 s** de Oral: alguien saca un turno y aparece en el panel (sirve grabado con el celular). Va en `video`.
 - [ ] **Precio del plan mensual** (no va en la web, pero lo vas a necesitar para la propuesta): qué incluye y cuánto sale.

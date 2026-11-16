@@ -1,10 +1,10 @@
 ---
 // «Cómo trabajo»: cuatro pasos sobre salvia (plan mensual confirmado por Juanma, 2026-11-14; la plata no se menciona hasta la propuesta). Sin plazos ni precios.
 const pasos = [
-  { titulo: "Charla", texto: "Me contás cómo trabajás hoy. No hace falta que sepas de tecnología." },
-  { titulo: "Propuesta", texto: "Te digo qué armaría, en qué orden y cuánto sale. Por escrito, para pensarlo tranquilo." },
-  { titulo: "Desarrollo", texto: "Lo construyo por etapas y lo vas viendo funcionar antes del final." },
-  { titulo: "Soporte", texto: "Te lo dejo andando y te enseño a usarlo. Si querés, sigo con un plan mensual de soporte y mejoras." },
+  { titulo: "Charla", texto: "Me contás qué necesitás y cómo trabajás hoy. No hace falta que sepas de tecnología." },
+  { titulo: "Propuesta", texto: "Te paso por escrito qué armaría, en qué orden y cuánto sale." },
+  { titulo: "Desarrollo", texto: "Lo armo por etapas. Lo vas viendo funcionar antes del final." },
+  { titulo: "Soporte", texto: "Te lo dejo andando y te enseño a usarlo. Si querés, sigo con soporte y mejoras todos los meses." },
 ];
 const hago = [
   "Charlo antes de presupuestar.",
@@ -21,7 +21,7 @@ const noHago = [
 ---
 <section id="como-trabajo" class="seccion-ancha tema-salvia" aria-labelledby="como-trabajo-titulo">
   <div class="marco">
-    <h2 id="como-trabajo-titulo" data-aparece>De la charla al soporte, <em>sin vueltas</em>.</h2>
+    <h2 id="como-trabajo-titulo" data-aparece>Cómo trabajo.</h2>
     <ol class="pasos">
       {pasos.map((p, i) => (
         <li class="paso" data-aparece>

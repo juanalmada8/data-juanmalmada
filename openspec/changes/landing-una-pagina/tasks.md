@@ -144,6 +144,15 @@
 - [x] 21.4 Recortes: sin intro en «Cómo trabajo» y texto «yo» de Contacto abreviado.
 - [x] 21.5 Docs al día; `check`, tests, build, axe a 360, 768 y 1440 px.
 
+## 22. Copy y estructura según cómo venden hoy las webs (2026-11-15)
+
+- [x] 22.1 Casos al segundo lugar; «¿Te suena?» fusionada en «Qué resuelvo» (seis tarjetas nuevas) y menú 01 Casos · 02 Qué resuelvo · 03 Cómo trabajo · 04 Contacto.
+- [x] 22.2 Hero: collage de dos capturas reales y línea de confianza; sin firma ni `hola_mundo()`; entra en 1470×790 y 1366×640.
+- [x] 22.3 «Cómo trabajo» y Contacto con los textos del plan; sin la línea que rota; pie entero al ir a Contacto.
+- [x] 22.4 Sección «Preguntas» (acordeón `<details>`) y botón flotante de WhatsApp en celular y tablet.
+- [x] 22.5 Descripción por defecto, specs, `02-contenido`, registro de decisiones y pendientes; `check`, tests, build, axe y Lighthouse.
+- [ ] 22.6 Juanma revisa en pantalla.
+
 ## Workflow follow-up
 
 - Archivar el cambio (`/opsx:archive`) al mergear.

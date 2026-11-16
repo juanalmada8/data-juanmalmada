@@ -1,11 +1,13 @@
 ---
 // Hero pino pegado a la barra (como thoughtbot): un titular con lo que gana el cliente («más simple y bajo control»), bajada con
-// escenas concretas, CTA lima y enlaces directos; a la derecha, tres marcos con datos reales en lugar de fotos. El lema del manual va en el pie.
-// Spec: openspec/changes/landing-una-pagina/specs/{landing,selector-hero}.
-import Firma from "../Firma.astro";
+// escenas concretas, CTA lima y enlaces directos, y una línea de confianza; a la derecha, un collage con dos capturas reales (la prueba
+// va arriba de todo, no la firma). El lema del manual va en el pie. Spec: openspec/changes/landing-una-pagina/specs/{landing,selector-hero}.
+import Captura from "../Captura.astro";
 import { sitio, contacto } from "../../data/sitio";
+import oralEscritorio from "../../assets/casos/oral-escritorio.png";
+import staffyCelu from "../../assets/casos/staffy-celu.png";
 
-const experiencia = sitio.experiencia.match(/\d+/)![0]; // «7»; el «Más de» va en el marcado
+const experiencia = sitio.experiencia.charAt(0).toUpperCase() + sitio.experiencia.slice(1); // «Más de 7 años» (con espacio de no separación)
 ---
 <section id="hero" class="hero tema-pino" aria-labelledby="hero-titulo">
   <div class="marco interior">
@@ -21,23 +23,27 @@ const experiencia = sitio.experiencia.match(/\d+/)![0]; // «7»; el «Más de»
           <a href={contacto.instagram} target="_blank" rel="noopener noreferrer">Instagram<span class="sr-only"> (se abre en otra pestaña)</span></a>
           <a href={`mailto:${contacto.mail}`}>Mail</a>
         </p>
+        <p class="confianza">{experiencia} armando sistemas · Trabajo en forma remota en todo el país</p>
       </div>
 
-      <div class="marcos" role="group" aria-label="Datos de Juanma">
-        <div class="marco-c yo">
-          <p>Soy Juanma. Armo las dos puntas: lo que ven tus clientes y lo que ves vos.</p>
-          <Firma color="pino" ancho="var(--ancho-firma)" decorativa />
+      <div class="prueba">
+        <div class="collage"> <!-- alt vacío a propósito: el pie de abajo ya nombra los dos casos y las mismas capturas, con su descripción, están en «Cosas que armé» -->
+          <Captura
+            caso="Oral Odontología Familiar"
+            captura={{ src: oralEscritorio, alt: "", marco: "ventana" }}
+            lazy={false}
+            sizes="(min-width: 64rem) 30rem, 90vw"
+          />
+          <div class="celu-sup">
+            <Captura
+              caso="Staffy"
+              captura={{ src: staffyCelu, alt: "", marco: "celu" }}
+              lazy={false}
+              sizes="8rem"
+            />
+          </div>
         </div>
-        <div class="marco-c anios">
-          <span class="mas">Más de</span>
-          <span class="num" aria-hidden="true">{experiencia}</span>
-          <span class="sr-only">{experiencia}</span>
-          <span class="unidad">años de oficio</span>
-        </div>
-        <div class="marco-c resp">
-          <p>Trabajo en forma remota desde Argentina.</p>
-          <code class="guino" translate="no" aria-hidden="true">hola_mundo()</code>
-        </div>
+        <p class="pie-collage"><span translate="no">Oral Odontología Familiar</span> y <span translate="no">Staffy</span>, <a class="link" href="#casos">dos de los sistemas que armé</a>.</p>
       </div>
     </div>
   </div>
@@ -54,38 +60,28 @@ const experiencia = sitio.experiencia.match(/\d+/)![0]; // «7»; el «Más de»
   .lead { max-width: 40ch; }
   .directo { display: flex; flex-wrap: wrap; align-items: center; column-gap: var(--space-4); font-size: var(--fs-small); }
   .directo a { display: inline-flex; align-items: center; min-height: var(--tap-min); min-width: var(--tap-min); font-weight: 700; text-underline-offset: .2em; }
+  .confianza { font-size: var(--fs-small); color: var(--salvia); max-width: 36ch; }
 
-  /* Marcos de color con una esquina cortada (la hoja): cada uno lleva un dato real, no una foto */
-  .marcos { display: grid; gap: var(--space-4); align-content: start; }
-  .marco-c {
-    display: grid; gap: var(--space-2); align-content: space-between;
-    padding: var(--space-6);
-    border-radius: var(--radius-tarjeta) var(--radius-tarjeta) var(--radius-tarjeta) var(--space-2);
-  }
-  .yo { background: var(--salvia); color: var(--pino); }
-  .anios { background: var(--musgo-hondo); color: var(--crema); justify-items: start; border-radius: var(--radius-tarjeta) var(--space-2) var(--radius-tarjeta) var(--radius-tarjeta); }
-  .resp { background: var(--papel); color: var(--pino); }
-  .yo p { font-family: var(--font-serif); font-size: var(--fs-h3); line-height: 1.15; }
-  .mas, .unidad { font-weight: 700; font-size: var(--fs-small); }
-  .num { font-family: var(--font-serif); font-size: var(--fs-numeral); line-height: .85; letter-spacing: -.03em; }
-  .resp p { font-weight: 700; }
-  .resp .base { font-weight: 500; font-size: var(--fs-small); }
-  .guino { justify-self: start; padding: var(--space-1) var(--space-4); border-radius: var(--radius-pill); background: var(--lima); color: var(--pino); font-size: var(--fs-small); font-weight: 500; }
+  /* Collage de dos capturas reales: la de escritorio en marco ventana y la del celu encima, abajo a la izquierda. Sin caja alrededor. */
+  .prueba { display: grid; gap: var(--space-3); align-content: start; max-width: 36rem; }
+  .collage { position: relative; margin-bottom: var(--space-12); }
+  .celu-sup { position: absolute; left: var(--space-2); bottom: calc(var(--space-12) * -1); width: 22%; }
+  .collage :global(.captura) { box-shadow: 0 0 0 1px color-mix(in srgb, var(--crema) 18%, transparent); }
+  .pie-collage { font-size: var(--fs-small); color: var(--salvia); }
+  .pie-collage .link { color: var(--crema); }
 
   h1 .r { display: block; } /* dos renglones fijos: «Tu negocio, más simple» / «y bajo control.» */
-  @media (min-width: 48rem) {
-    .marcos { grid-template-columns: 1fr 1fr; }
-    .yo { grid-row: span 2; }
-  }
-  /* Desde 1024 px la acción y los marcos van lado a lado; antes, los marcos bajan para que el CTA no se parta */
-  /* Ventanas bajas: marcos más compactos para que el hero entre en la pantalla */
+  /* Ventanas bajas: menos aire para que el hero entre en la pantalla */
+  @media (min-width: 48rem) and (max-height: 800px) { .hero { padding-bottom: var(--space-6); } }
   @media (min-width: 48rem) and (max-height: 760px) {
-    .marco-c { padding: var(--space-4); }
-    .num { font-size: 3rem; }
-    .yo p { font-size: var(--fs-lead); }
     .interior, .pie-hero { gap: var(--space-4); }
+    .collage { margin-bottom: var(--space-8); }
+    .celu-sup { bottom: calc(var(--space-8) * -1); }
   }
+  /* Desde 1024 px la acción y la prueba van lado a lado; antes, la prueba baja para que el CTA no se parta */
   @media (min-width: 64rem) {
     .pie-hero { grid-template-columns: minmax(0, 1fr) minmax(0, var(--ancho-marcos)); align-items: start; gap: var(--space-12); }
+    /* La prueba se achica con la altura de la ventana (el ancho útil sale del alto menos lo que ocupan titular, aire y pie): el hero entra siempre */
+    .prueba { max-width: min(100%, calc((100svh - 24rem) * 1.5)); justify-self: end; width: 100%; }
   }
 </style>

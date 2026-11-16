@@ -1,5 +1,5 @@
 ---
-// Cierre a ancho completo sobre pino: la invitación a contar cómo trabaja hoy, y los canales.
+// Cierre a ancho completo sobre pino: la invitación a contar qué necesita, y los canales.
 // Dos tarjetas grandes (una pregunta y una idea, sin formularios) e Instagram como enlace aparte. Spec: specs/contacto.
 import Firma from "../Firma.astro";
 import PatronM from "../PatronM.astro";
@@ -8,8 +8,8 @@ import { contacto, sitio } from "../../data/sitio";
 <section id="contacto" class="seccion-ancha tema-pino" aria-labelledby="contacto-titulo">
   <div class="marco grilla">
     <div class="texto" data-aparece>
-      <h2 id="contacto-titulo">Contame cómo <em>trabajás</em> hoy.</h2>
-      <p class="lead">Un mensaje alcanza. Lo charlamos y vemos juntos qué conviene armar primero.</p>
+      <h2 id="contacto-titulo">Contame qué <em>necesitás</em>.</h2>
+      <p class="lead">Escribime y lo charlamos. Con un mensaje alcanza.</p>
 
       <div class="canales">
         <a class="canal wa" href={contacto.whatsapp} target="_blank" rel="noopener noreferrer">
@@ -20,14 +20,10 @@ import { contacto, sitio } from "../../data/sitio";
         </a>
         <a class="canal mail" href={`mailto:${contacto.mail}`}>
           <span class="titulo">Prefiero mail</span>
-          <span class="detalle">Sin apuro. Contame lo que quieras y te contesto con calma.</span>
+          <span class="detalle">Si preferís escribir con calma.</span>
           <span class="flecha" aria-hidden="true">→</span>
         </a>
       </div>
-      <p class="rota">
-        <span class="sr-only">Armemos el sistema de tu equipo, tu empresa, tu idea o tu negocio.</span>
-        <span aria-hidden="true">Armemos el sistema de tu <span class="palabras"><em class="p" style="--i:0">equipo</em><em class="p" style="--i:1">empresa</em><em class="p" style="--i:2">idea</em><em class="p" style="--i:3">negocio</em></span></span>
-      </p>
       <p class="ig">
         También estoy en{" "}
         <a class="link" href={contacto.instagram} target="_blank" rel="noopener noreferrer">Instagram<span class="sr-only"> (se abre en otra pestaña)</span></a>.
@@ -36,7 +32,7 @@ import { contacto, sitio } from "../../data/sitio";
 
     <div class="yo" data-aparece>
       <p>
-        Soy Juanma, ingeniero de datos y desarrollador full stack:{" "}{sitio.experiencia}{" "}armando sistemas. Trabajo en forma remota y hablás siempre conmigo.
+        Soy Juanma, ingeniero de datos y desarrollador full stack. Hace{" "}{sitio.experiencia}{" "}que armo sistemas para empresas de distintos rubros, y también para negocios y proyectos que necesitan el suyo. Trabajo en forma remota y hablás siempre conmigo.
       </p>
       <div class="firma-rev"><Firma color="crema" ancho="var(--ancho-firma)" decorativa /></div>
     </div>
@@ -70,28 +66,6 @@ import { contacto, sitio } from "../../data/sitio";
   .canal:focus-visible { outline: 3px solid var(--crema); outline-offset: 4px; }
   @media (prefers-reduced-motion: no-preference) { .canal { transition: transform .25s ease; } .canal:hover { transform: translateY(calc(var(--space-2) * -1)); } }
   .ig { color: var(--salvia); }
-  /* Palabras que rotan (idea de Humaan): una sola pasada de menos de 5 s al llegar a la sección, que termina en «negocio».
-     Sin JavaScript o con movimiento reducido se ve directamente la última. Cada palabra lleva su punto, para que no flote. */
-  .rota { margin-top: var(--space-6); font-family: var(--font-serif); font-size: var(--fs-tarjeta); line-height: 1.1; letter-spacing: -.02em; }
-  .palabras { display: inline-grid; vertical-align: bottom; }
-  .p { grid-area: 1 / 1; font-style: italic; color: var(--salvia); }
-  .p::after { content: "."; color: var(--crema); font-style: normal; }
-  .p:not(:last-child) { display: none; }
-  @media (prefers-reduced-motion: no-preference) {
-    :global(html.js) .p:not(:last-child) { display: inline; }
-    :global(html.js) .p { opacity: 0; }
-    :global(html.js) .visible .p { animation: pasa .9s ease both; animation-delay: calc(var(--i) * .9s); }
-    :global(html.js) .visible .p:last-child { animation-name: queda; }
-  }
-  @keyframes pasa {
-    0% { opacity: 0; transform: translateY(40%); }
-    20%, 80% { opacity: 1; transform: none; }
-    100% { opacity: 0; transform: translateY(-40%); }
-  }
-  @keyframes queda {
-    0% { opacity: 0; transform: translateY(40%); }
-    100% { opacity: 1; transform: none; }
-  }
   .ig .link { display: inline-flex; align-items: center; min-height: var(--tap-min); }
   .ig .link { color: var(--crema); }
   .yo { display: grid; gap: var(--space-4); align-content: start; max-width: var(--ancho-texto); }
@@ -104,10 +78,10 @@ import { contacto, sitio } from "../../data/sitio";
     :global(html.js) .visible .firma-rev { clip-path: inset(0 0 0 0); }
   }
   @media (min-width: 40rem) { .canales { grid-template-columns: 1fr 1fr; } }
-  /* En escritorio, «Contacto» + pie = una pantalla: el pie queda entero al ir a Contacto desde el índice (en ventanas bajas, sin el patrón ni la línea que cambia) */
+  /* En escritorio, «Contacto» + pie = una pantalla: el pie queda entero al ir a Contacto desde el índice (en ventanas bajas, sin el patrón) */
   @media (min-width: 64rem) { #contacto { min-height: calc(100svh - var(--alto-barra) - var(--alto-pie)); align-content: center; padding-block: var(--space-6); } }
   @media (min-width: 64rem) and (max-height: 800px) { .seccion-ancha :global(.banda) { display: none; } .canal { min-height: 7.5rem; padding: var(--space-4) var(--space-6); } }
   @media (min-width: 64rem) and (max-height: 800px) { .texto { gap: var(--space-4); } .yo { gap: var(--space-2); } }
-  @media (min-width: 64rem) and (max-height: 700px) { .rota { display: none; } .grilla { gap: var(--space-6); } .canal { min-height: 5.5rem; } .lead { font-size: var(--fs-body); } }
+  @media (min-width: 64rem) and (max-height: 700px) { .grilla { gap: var(--space-6); } .canal { min-height: 5.5rem; } .lead { font-size: var(--fs-body); } }
   @media (min-width: 60rem) { .grilla { grid-template-columns: 1.3fr 1fr; gap: var(--space-12); } }
 </style>

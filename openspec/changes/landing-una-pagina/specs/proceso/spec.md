@@ -1,7 +1,7 @@
 ## ADDED Requirements
 
 ### Requirement: Cuatro pasos en orden
-La sección «Cómo trabajo» SHALL abrir con una introducción que explique el enfoque («Trabajo de a pasos y sin apuro: primero te escucho, después te propongo qué armar y recién ahí lo construimos. Lo que invertís hoy te ahorra tiempo y plata mañana.») y mostrar los pasos Charla, Propuesta, Desarrollo y Soporte, numerados del 1 al 4, cada uno con una o dos líneas. La Charla SHALL decir que no tiene costo y el Soporte SHALL ofrecer un plan mensual de soporte y mejoras (modelo de negocio elegido por Juanma el 2026-11-14), sin precio.
+La sección «Cómo trabajo» SHALL titularse «Cómo trabajo.» (sin itálica y sin introducción) y mostrar los pasos numerados del 1 al 4, cada uno con una o dos líneas: **Charla** («Me contás qué necesitás y cómo trabajás hoy. No hace falta que sepas de tecnología.»), **Propuesta** («Te paso por escrito qué armaría, en qué orden y cuánto sale.»), **Desarrollo** («Lo armo por etapas. Lo vas viendo funcionar antes del final.») y **Soporte** («Te lo dejo andando y te enseño a usarlo. Si querés, sigo con soporte y mejoras todos los meses.»), sin precio.
 
 #### Scenario: Escritorio
 - **WHEN** el ancho es de 768 px o más
@@ -16,7 +16,7 @@ La sección MUST NOT prometer plazos de entrega, precios ni niveles de soporte (
 
 #### Scenario: Paso «Soporte»
 - **WHEN** se lee el paso Soporte
-- **THEN** dice que Juanma acompaña después de la entrega, sin horarios ni tiempos de respuesta de soporte
+- **THEN** dice que Juanma lo deja andando, enseña a usarlo y, si la persona quiere, sigue con soporte y mejoras todos los meses, sin horarios ni tiempos de respuesta de soporte
 
 ### Requirement: Lo que hago y lo que no hago
 Debajo de los cuatro pasos, «Cómo trabajo» SHALL mostrar dos tarjetas: «Lo que hago» (charlar antes de presupuestar, explicar en criollo, avisar cuando algo no se puede o no conviene, dejar todo andando y acompañar después) y «Lo que no hago» (prometer lo que no se puede cumplir, vender lo que no se necesita, hablar en difícil para impresionar, dejar a medias o desaparecer después de entregar). Los textos SHALL ser compromisos de oficio en primera persona, sin plazos, precios ni cifras.

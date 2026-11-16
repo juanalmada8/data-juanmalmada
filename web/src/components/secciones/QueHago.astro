@@ -1,5 +1,5 @@
 ---
-// «¿Qué te está consumiendo el tiempo?»: seis tarjetas de color, una por problema. Cada una separa el problema (arriba, breve y
+// «¿Te suena alguna de estas?»: seis tarjetas de color, una por problema (absorbe a la antigua sección «¿Te suena?»). Cada una separa el problema (arriba, breve y
 // reconocible) de lo que armo para eso (abajo, en un panel propio). Son ejemplos, no un límite. Cada tarjeta abre WhatsApp con el
 // problema ya escrito. Sin manifiesto, notas ni líneas sueltas en medio (pedido de Juanma, 2026-11-15). Spec: specs/{servicios,selector-hero}.
 import { temas } from "../../data/temas";
@@ -7,7 +7,7 @@ import { urlWhatsApp } from "../../lib/whatsapp";
 ---
 <section id="que-hago" class="seccion-ancha tema-crema" aria-labelledby="que-hago-titulo">
   <div class="marco">
-    <h2 id="que-hago-titulo" data-aparece>¿Qué te está <em>consumiendo</em> el tiempo?</h2>
+    <h2 id="que-hago-titulo" data-aparece>¿Te suena <em>alguna</em> de estas?</h2>
 
     <ul class="tarjetas">
       {temas.map((t, i) => (

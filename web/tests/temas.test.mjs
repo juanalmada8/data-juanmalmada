@@ -6,9 +6,9 @@ import { MENSAJE_BASE, NUMERO_WHATSAPP, urlWhatsApp } from "../src/lib/whatsapp.
 
 const texto = (url) => decodeURIComponent(new URL(url).searchParams.get("text"));
 
-test("hay seis tarjetas por problema, con la de «no sabés qué necesitás» al final y los ids sin repetir", () => {
-  assert.deepEqual(temas.map((t) => t.id), ["turnos", "web", "gestion", "datos", "plataforma", "otra"]);
-  assert.equal(temas.at(-1).titulo, "No sabés bien qué necesitás");
+test("hay seis tarjetas por problema, con la de «lo tuyo no está en la lista» al final y los ids sin repetir", () => {
+  assert.deepEqual(temas.map((t) => t.id), ["turnos", "bot", "gestion", "datos", "web", "otra"]);
+  assert.equal(temas.at(-1).titulo, "Lo tuyo no está en la lista");
   assert.equal(new Set(temas.map((t) => t.id)).size, temas.length);
 });
 
@@ -31,8 +31,9 @@ for (const t of temas) {
 test("cada mensaje de WhatsApp cuenta el problema de su tarjeta (no un «quiero un servicio» genérico)", () => {
   const por = (id) => temas.find((t) => t.id === id).mensaje;
   assert.match(por("turnos"), /me escriben y me llaman/);
-  assert.match(por("plataforma"), /plataforma/);
-  assert.match(por("otra"), /no sé bien qué necesito/);
+  assert.match(por("bot"), /bot que conteste/);
+  assert.match(por("web"), /web o una plataforma/);
+  assert.match(por("otra"), /tengo una idea/);
 });
 
 test("ningún texto de los temas trae cifras ni frases prohibidas, y va con voseo", () => {

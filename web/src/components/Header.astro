@@ -6,11 +6,11 @@ import Logo from "./Logo.astro";
 import Icono from "./Icono.astro";
 import { sitio } from "../data/sitio";
 
-// El capítulo 01 cubre «¿Te suena?» y «¿Qué te está consumiendo el tiempo?»: el enlace aterriza en la primera y el progreso sigue las dos.
+// Orden de la página: la prueba (casos) va primero. «Preguntas» no es capítulo: su tramo de progreso lo sigue «Cómo trabajo».
 const capitulos = [
-  { id: "te-suena", hasta: "que-hago", n: "01", nombre: "Qué resuelvo" },
-  { id: "casos", n: "02", nombre: "Casos" },
-  { id: "como-trabajo", n: "03", nombre: "Cómo trabajo" },
+  { id: "casos", n: "01", nombre: "Casos" },
+  { id: "que-hago", n: "02", nombre: "Qué resuelvo" },
+  { id: "como-trabajo", hasta: "preguntas", n: "03", nombre: "Cómo trabajo" },
   { id: "contacto", n: "04", nombre: "Contacto" },
 ];
 ---
