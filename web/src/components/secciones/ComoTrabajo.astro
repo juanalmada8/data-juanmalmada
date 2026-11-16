@@ -22,10 +22,6 @@ const noHago = [
 <section id="como-trabajo" class="seccion-ancha tema-salvia" aria-labelledby="como-trabajo-titulo">
   <div class="marco">
     <h2 id="como-trabajo-titulo" data-aparece>De la charla al soporte, <em>sin vueltas</em>.</h2>
-    <p class="intro" data-aparece>
-      Trabajo de a pasos y sin apuro: primero te escucho, después te propongo qué armar y recién ahí lo construimos.
-      Lo que invertís hoy te ahorra tiempo y plata mañana.
-    </p>
     <ol class="pasos">
       {pasos.map((p, i) => (
         <li class="paso" data-aparece>
@@ -50,7 +46,6 @@ const noHago = [
 </section>
 
 <style>
-  .intro { margin-top: var(--space-3); max-width: 80ch; font-weight: 500; }
   .pasos { list-style: none; padding: 0; display: grid; gap: var(--space-6); margin-top: var(--space-8); }
   .paso { display: grid; grid-template-columns: calc(var(--fs-numeral) * .7) 1fr; column-gap: var(--space-4); align-items: start; }
   /* Número grande en serif, pino sobre salvia */
