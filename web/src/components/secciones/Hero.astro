@@ -62,10 +62,11 @@ const experiencia = sitio.experiencia.charAt(0).toUpperCase() + sitio.experienci
   .directo a { display: inline-flex; align-items: center; min-height: var(--tap-min); min-width: var(--tap-min); font-weight: 700; text-underline-offset: .2em; }
   .confianza { font-size: var(--fs-small); color: var(--salvia); max-width: 36ch; }
 
-  /* Collage de dos capturas reales: la de escritorio en marco ventana y la del celu encima, abajo a la izquierda. Sin caja alrededor. */
+  /* Collage de dos capturas reales: la de escritorio en marco ventana y la del celu encima, abajo a la derecha. Sin caja alrededor. */
   .prueba { display: grid; gap: var(--space-3); align-content: start; max-width: 36rem; }
   .collage { position: relative; margin-bottom: var(--space-12); }
-  .celu-sup { position: absolute; left: var(--space-2); bottom: calc(var(--space-12) * -1); width: 22%; }
+  /* El celu va abajo a la derecha: no tapa el titular de la captura de Oral y cubre la franja con la dirección del consultorio */
+  .celu-sup { position: absolute; right: 9%; bottom: calc(var(--space-12) * -1); width: 22%; }
   .collage :global(.captura) { box-shadow: 0 0 0 1px color-mix(in srgb, var(--crema) 18%, transparent); }
   .pie-collage { font-size: var(--fs-small); color: var(--salvia); }
   .pie-collage .link { color: var(--crema); }

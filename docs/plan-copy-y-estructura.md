@@ -55,7 +55,7 @@ Quitar el capítulo que abarcaba `te-suena` (el campo `hasta` y su lógica puede
 | turnos | pino | Te escriben y te llaman todo el día | Turnos y pedidos online | Tus clientes reservan o piden solos, a cualquier hora, y a vos te llega ordenado. | Hola Juanma, me escriben y me llaman todo el día para turnos o pedidos y quiero ordenarlo. |
 | bot | salvia | Respondés las mismas preguntas una y otra vez | Bots con inteligencia artificial | Contestan las consultas de tus clientes por vos, aunque estés ocupado. | Hola Juanma, quiero un bot que conteste las consultas de mis clientes. |
 | gestion | papel | Todo vive en planillas, cuadernos y chats | Sistemas de gestión | Clientes, pedidos, stock y equipo en un solo lugar, siempre al día. | Hola Juanma, tengo todo en planillas y chats y quiero un sistema. |
-| datos | musgo | Tenés datos y no sabés qué hacer con ellos | Tableros con tus datos | Ves qué funciona, qué no y dónde conviene poner la plata. | Hola Juanma, quiero entender mis datos y sacarles provecho. |
+| datos | musgo | Tenés datos y no sabés qué hacer con ellos | Tableros con tus datos | Ves qué funciona, qué no y dónde conviene poner el foco. | Hola Juanma, quiero entender mis datos y sacarles provecho. |
 | web | pino | Tu web no te trae clientes | Webs, apps y plataformas | Pensadas para que te encuentren y te escriban, desde el celular o la compu. | Hola Juanma, quiero una web o una plataforma que funcione. |
 | otra | salvia | Lo tuyo no está en la lista | Contame la idea | Si se puede armar con tecnología, lo vemos juntos. | Hola Juanma, tengo una idea y quiero ver si se puede armar. |
 

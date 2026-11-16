@@ -42,7 +42,7 @@ export const temas: Tema[] = [
     id: "datos",
     titulo: "Tenés datos y no sabés qué hacer con ellos",
     nombre: "Tableros con tus datos",
-    solucion: "Ves qué funciona, qué no y dónde conviene poner la plata.",
+    solucion: "Ves qué funciona, qué no y dónde conviene poner el foco.",
     fondo: "musgo",
     mensaje: "Hola Juanma, quiero entender mis datos y sacarles provecho.",
   },
