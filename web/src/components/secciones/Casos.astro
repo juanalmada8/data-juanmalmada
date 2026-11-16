@@ -41,11 +41,12 @@ for (const c of casos) if (c.data.video) posters.set(c.id, (await getImage({ src
               : <Captura caso={c.data.nombre} marco="ventana" />}
           </div>
           <div class="encabezado">
-            <h3 translate="no">{c.data.nombre}</h3>
+            <p class="cliente" translate="no">{c.data.nombre}</p>
             <a class="link" href={c.data.url} target="_blank" rel="noopener noreferrer">
               Ver {new URL(c.data.url).hostname} <span aria-hidden="true">↗</span><span class="sr-only"> (se abre en otra pestaña)</span>
             </a>
           </div>
+          <h3>{c.data.resultado}</h3>
           <div class="parte hoy">
             <p class="titulo">{hoy.titulo}</p>
             <p>{hoy.texto}</p>
@@ -104,7 +105,8 @@ for (const c of casos) if (c.data.video) posters.set(c.id, (await getImage({ src
 <style>
   .lead { margin-top: var(--space-3); max-width: 80ch; }
   .casos { list-style: none; padding: 0; display: grid; gap: var(--space-4); margin-top: var(--space-4); }
-  .encabezado { display: grid; gap: 0; justify-items: start; }
+  .encabezado { display: flex; flex-wrap: wrap; align-items: center; column-gap: var(--space-4); }
+  .cliente { font-size: var(--fs-small); font-weight: 800; }
   .caso { display: grid; gap: var(--space-2); align-content: start; justify-items: start; padding: var(--space-3) var(--space-6) var(--space-4); border-radius: var(--radius-tarjeta); }
   .caso h3 { font-size: var(--fs-tarjeta); line-height: 1; letter-spacing: -.02em; }
   .f-salvia { background: var(--salvia); color: var(--pino); }

@@ -1,6 +1,7 @@
 ---
 nombre: "Oral Odontología Familiar"
 url: "https://oral.com.ar"
+resultado: "Los pacientes reservan solos."
 partes:
   - titulo: "Antes"
     texto: "Los turnos se coordinaban por mensaje de texto y con una agenda en papel."

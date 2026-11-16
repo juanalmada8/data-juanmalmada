@@ -9,6 +9,8 @@ const casos = defineCollection({
     z.object({
       nombre: z.string().min(1),
       url: z.url(), // sitio real del caso
+      // Lo que cambió para el cliente, en una frase: es el título de la tarjeta (el nombre va como etiqueta chica).
+      resultado: z.string().min(1),
       // La historia en dos o tres partes cortas y en lenguaje claro: el problema o qué es, qué se armó y qué sigue hoy.
       // La última parte (la solución) se destaca. Sin jerga ni métricas.
       partes: z

@@ -16,7 +16,10 @@ const experiencia = sitio.experiencia.charAt(0).toUpperCase() + sitio.experienci
     <div class="pie-hero">
       <div class="accion">
         <p class="lead">Armo soluciones a medida: sistemas de gestión, bots con inteligencia artificial, webs y tableros con tus datos. Para que ahorres tiempo, trabajes más cómodo y sepas en todo momento qué pasa en tu negocio.</p>
-        <a class="boton lima flecha" href="#contacto">Charlemos</a>
+        <div class="botones">
+          <a class="boton lima flecha" href="#contacto">Charlemos</a>
+          <a class="boton sec" href="#casos">Ver lo que armé</a>
+        </div>
         <p class="directo">
           <span>O escribime directo:</span>
           <a href={contacto.whatsapp} target="_blank" rel="noopener noreferrer">WhatsApp<span class="sr-only"> (se abre en otra pestaña)</span></a>
@@ -56,6 +59,7 @@ const experiencia = sitio.experiencia.charAt(0).toUpperCase() + sitio.experienci
   h1 em { color: var(--salvia); } /* la lima queda para los botones y la pastilla: el itálico del titular va en salvia */
   .pie-hero { display: grid; gap: var(--space-8); }
   .accion { display: grid; gap: var(--space-4); justify-items: start; align-content: start; max-width: var(--ancho-accion); }
+  .botones { display: flex; flex-wrap: wrap; gap: var(--space-3); }
   .accion .boton { white-space: nowrap; }
   .lead { max-width: 40ch; }
   .directo { display: flex; flex-wrap: wrap; align-items: center; column-gap: var(--space-4); font-size: var(--fs-small); }

@@ -1,12 +1,11 @@
 ---
 // Cierre a ancho completo sobre pino: la invitación a contar qué necesita, y los canales.
 // Dos tarjetas grandes (una pregunta y una idea, sin formularios) e Instagram como enlace aparte. Spec: specs/contacto.
-import Firma from "../Firma.astro";
 import PatronM from "../PatronM.astro";
-import { contacto, sitio } from "../../data/sitio";
+import { contacto } from "../../data/sitio";
 ---
 <section id="contacto" class="seccion-ancha tema-pino" aria-labelledby="contacto-titulo">
-  <div class="marco grilla">
+  <div class="marco">
     <div class="texto" data-aparece>
       <h2 id="contacto-titulo">Contame qué <em>necesitás</em>.</h2>
       <p class="lead">Escribime y lo charlamos. Con un mensaje alcanza.</p>
@@ -29,19 +28,11 @@ import { contacto, sitio } from "../../data/sitio";
         <a class="link" href={contacto.instagram} target="_blank" rel="noopener noreferrer">Instagram<span class="sr-only"> (se abre en otra pestaña)</span></a>.
       </p>
     </div>
-
-    <div class="yo" data-aparece>
-      <p>
-        Soy Juanma, ingeniero de datos y desarrollador full stack. Hace{" "}{sitio.experiencia}{" "}que armo sistemas para empresas de distintos rubros, y también para negocios y proyectos que necesitan el suyo. Trabajo en forma remota y hablás siempre conmigo.
-      </p>
-      <div class="firma-rev"><Firma color="crema" ancho="var(--ancho-firma)" decorativa /></div>
-    </div>
   </div>
   <PatronM tono="pino" lima={[[0, 5]]} class="banda" />
 </section>
 
 <style>
-  .grilla { display: grid; gap: var(--space-12); align-items: end; }
   .texto { display: grid; gap: var(--space-6); justify-items: start; }
   .lead { max-width: 40ch; }
   h2 em { color: var(--salvia); } /* la lima se reserva para el botón de WhatsApp y una m del patrón */
@@ -68,20 +59,12 @@ import { contacto, sitio } from "../../data/sitio";
   .ig { color: var(--salvia); }
   .ig .link { display: inline-flex; align-items: center; min-height: var(--tap-min); }
   .ig .link { color: var(--crema); }
-  .yo { display: grid; gap: var(--space-4); align-content: start; max-width: var(--ancho-texto); }
-  .yo p { color: var(--crema); }
   .seccion-ancha :global(.banda) { margin-top: var(--space-12); background: transparent; }
 
-  /* La firma se revela de izquierda a derecha al aparecer (solo sin movimiento reducido) */
-  @media (prefers-reduced-motion: no-preference) {
-    :global(html.js) .firma-rev { clip-path: inset(0 100% 0 0); transition: clip-path 1.4s cubic-bezier(.4, 0, .2, 1) .3s; }
-    :global(html.js) .visible .firma-rev { clip-path: inset(0 0 0 0); }
-  }
   @media (min-width: 40rem) { .canales { grid-template-columns: 1fr 1fr; } }
   /* En escritorio, «Contacto» + pie = una pantalla: el pie queda entero al ir a Contacto desde el índice (en ventanas bajas, sin el patrón) */
   @media (min-width: 64rem) { #contacto { min-height: calc(100svh - var(--alto-barra) - var(--alto-pie)); align-content: center; padding-block: var(--space-6); } }
   @media (min-width: 64rem) and (max-height: 800px) { .seccion-ancha :global(.banda) { display: none; } .canal { min-height: 7.5rem; padding: var(--space-4) var(--space-6); } }
-  @media (min-width: 64rem) and (max-height: 800px) { .texto { gap: var(--space-4); } .yo { gap: var(--space-2); } }
-  @media (min-width: 64rem) and (max-height: 700px) { .grilla { gap: var(--space-6); } .canal { min-height: 5.5rem; } .lead { font-size: var(--fs-body); } }
-  @media (min-width: 60rem) { .grilla { grid-template-columns: 1.3fr 1fr; gap: var(--space-12); } }
+  @media (min-width: 64rem) and (max-height: 800px) { .texto { gap: var(--space-4); } }
+  @media (min-width: 64rem) and (max-height: 700px) { .canal { min-height: 5.5rem; } .lead { font-size: var(--fs-body); } }
 </style>
