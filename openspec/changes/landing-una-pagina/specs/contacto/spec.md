@@ -32,12 +32,12 @@ Los enlaces de WhatsApp, Instagram, mail y LinkedIn SHALL definirse en un único
 - **WHEN** se cambia el mail en el archivo de datos
 - **THEN** se actualiza en toda la página
 
-### Requirement: Presentación breve
-La sección SHALL incluir una presentación que diga «Soy Juanma, ingeniero de datos y desarrollador full stack. Hace más de 7 años que armo sistemas para empresas de distintos rubros, y también para negocios y proyectos que necesitan el suyo. Trabajo en forma remota y hablás siempre conmigo.», junto con su firma (la firma vive solo acá). MUST NOT nombrar la ciudad ni limitarse a un tipo de cliente («consultorios»).
+### Requirement: Sin presentación en el contacto
+La sección de contacto MUST NOT incluir el texto de presentación («Soy Juanma…») ni la firma: pasaron a la sección «Una nota de Juanma» (ver `landing`). Contacto SHALL quedar con título, bajada, las dos tarjetas e Instagram, en una sola columna.
 
-#### Scenario: Años de experiencia
-- **WHEN** la línea menciona los años de experiencia
-- **THEN** dice «más de 7 años», el valor que Juanma confirmó, y no otro
+#### Scenario: Revisión del cierre
+- **WHEN** se mira la sección de contacto
+- **THEN** no hay presentación ni firma, y Contacto más el pie entran en una pantalla de escritorio
 
 ### Requirement: LinkedIn en el pie
 El pie SHALL conservar el link a LinkedIn y el lema, sin ocupar un botón del contacto principal.

@@ -153,6 +153,14 @@
 - [x] 22.5 Descripción por defecto, specs, `02-contenido`, registro de decisiones y pendientes; `check`, tests, build, axe y Lighthouse.
 - [ ] 22.6 Juanma revisa en pantalla.
 
+## 23. Ajustes que salen de la investigación (2026-11-15)
+
+- [x] 23.1 Hero: segundo botón «Ver lo que armé» (`.boton.sec`) a `#casos`; entra en la primera pantalla y no desborda a 360 px.
+- [x] 23.2 Casos titulados por el resultado: campo obligatorio `resultado` en el esquema, textos de Oral y Staffy, nombre del cliente como etiqueta con el link en el mismo renglón.
+- [x] 23.3 Sección «Una nota de Juanma» entre «Qué resuelvo» y «Cómo trabajo»; Contacto sin el texto «yo» ni la firma (una columna, con el pie entero); el capítulo 02 del menú cubre la nota.
+- [x] 23.4 Docs al día (`02-contenido`, registro de decisiones, specs, pendientes); `check`, tests, build, axe a 360, 768 y 1440 px.
+- [ ] 23.5 Juanma revisa en pantalla (y la nota: ver pendientes).
+
 ## Workflow follow-up
 
 - Archivar el cambio (`/opsx:archive`) al mergear.

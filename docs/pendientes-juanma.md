@@ -34,6 +34,8 @@ y sacala de esta lista.
   `web/src/data/proyectos.ts`; mientras esté vacío, la grilla no se muestra.
 - [ ] **Dos tonos nuevos, mezclas de tu paleta** (propuesta): `--papel` (crema + 30 % salvia) para una tarjeta y `--musgo-hondo` (musgo + 40 % pino) para dos tarjetas y el marco «años de oficio» del hero, porque crema sobre musgo puro no llega a 4.5:1. Confirmar o pedir otra cosa.
 - [ ] **«Lo que hago / Lo que no hago»** (idea de Humaan): los textos los redacté yo como compromisos de cualquier profesional serio; revisalos, cambialos o sumá los tuyos (con tu humor). Están en `web/src/components/secciones/ComoTrabajo.astro`. También el manifiesto de «¿Qué necesitás?» y las palabras que rotan en el cierre. Dejé **fuera**, hasta que lo valides, dos compromisos con peso: «Usar tus datos para otra cosa que no sea tu proyecto» (protección de datos, clínicas y RRHH) y «Esconder cómo funciona lo que armo» (transparencia/código); si querés alguno, decime cómo lo querés prometer.
+- [ ] **La nota firmada** la escribí con tus palabras del chat: revisala y cambiá lo que no suene a vos (`web/src/components/secciones/Nota.astro`).
+- [ ] **Integraciones que hacés de verdad** (WhatsApp, Mercado Pago, Google Calendar…) para un bloque «funciona con lo que ya usás».
 - [ ] Más casos reales: clínicas y empresas de RRHH (hay experiencia, falta elegir qué contar).
 - [ ] Si «Fuera del código» (hockey, cocina, rock nacional, viajes) vuelve en otra versión: hoy quedó afuera por el tope de 5 secciones.
 

@@ -7,6 +7,17 @@ La sección SHALL mostrar el caso de Oral Odontología Familiar (oral.com.ar), c
 - **WHEN** se ve un caso
 - **THEN** muestra el nombre, dos o tres partes cortas con la última (la solución o lo que sigue hoy) en un panel propio, el link al sitio y la captura o su marcador
 
+### Requirement: Cada caso se titula por el resultado
+El esquema de casos SHALL exigir un campo `resultado` (texto no vacío) que es el título (`h3`) de la tarjeta: «Los pacientes reservan solos.» (Oral) y «Un portal de empleo que filtra candidatos con inteligencia artificial.» (Staffy). El nombre del cliente SHALL ir como etiqueta chica (`<p translate="no">`, `--fs-small`, peso 800) en el mismo renglón que el link «Ver …↗». El orden de la tarjeta SHALL ser: captura, nombre y link, resultado, «Hoy» y «Ver más». La tarjeta «El próximo puede ser el tuyo» no cambia.
+
+#### Scenario: Título de un caso
+- **WHEN** se ve la tarjeta de Oral
+- **THEN** el título es «Los pacientes reservan solos.» y «Oral Odontología Familiar» es la etiqueta de arriba
+
+#### Scenario: Caso sin resultado
+- **WHEN** a un caso publicado le falta `resultado`
+- **THEN** el build falla indicando el archivo y el campo
+
 #### Scenario: Contraste entre casos
 - **WHEN** se ven los dos casos
 - **THEN** uno es un consultorio local y el otro una plataforma para empresas
@@ -64,7 +75,7 @@ Agregar un caso SHALL requerir solo un archivo nuevo de contenido y sus imágene
 - **THEN** aparece una pestaña nueva sin cambios de código
 
 #### Scenario: Caso incompleto
-- **WHEN** a un caso publicado le falta el nombre, el link o sus partes
+- **WHEN** a un caso publicado le falta el nombre, el link, el resultado o sus partes
 - **THEN** el build falla indicando el archivo y el campo
 
 ### Requirement: Link al sitio del caso

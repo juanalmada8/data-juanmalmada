@@ -1,7 +1,7 @@
 ## ADDED Requirements
 
-### Requirement: Una sola página de seis secciones
-El sitio SHALL ser una única página con, en este orden (promesa → prueba → oferta → proceso → dudas → acción), hero, casos reales («Cosas que armé», con ancla `#casos`), «Qué resuelvo» (`#que-hago`, que absorbe a la antigua «¿Te suena?»), «Cómo trabajo» (`#como-trabajo`), «Preguntas» (`#preguntas`) y contacto (`#contacto`), y MUST NOT tener páginas internas, modales ni formularios. La sección «¿Te suena?» ya no existe: se fusionó en «Qué resuelvo» el 2026-11-15.
+### Requirement: Una sola página de siete secciones
+El sitio SHALL ser una única página con, en este orden (promesa → prueba → oferta → voz → proceso → dudas → acción), hero, casos reales («Cosas que armé», con ancla `#casos`), «Qué resuelvo» (`#que-hago`, que absorbe a la antigua «¿Te suena?»), «Una nota de Juanma» (`#nota`: una nota corta en primera persona, firmada, sin caja ni foto, con su título visible solo para lectores de pantalla), «Cómo trabajo» (`#como-trabajo`), «Preguntas» (`#preguntas`) y contacto (`#contacto`), y MUST NOT tener páginas internas, modales ni formularios. La sección «¿Te suena?» ya no existe: se fusionó en «Qué resuelvo» el 2026-11-15.
 
 #### Scenario: Ruta interna
 - **WHEN** alguien abre `/proyectos/oral` o cualquier ruta que no sea la home
@@ -9,10 +9,10 @@ El sitio SHALL ser una única página con, en este orden (promesa → prueba →
 
 #### Scenario: Orden de las secciones
 - **WHEN** se recorre la página de arriba hacia abajo
-- **THEN** las secciones aparecen en el orden indicado y no hay una séptima
+- **THEN** las secciones aparecen en el orden indicado y no hay una octava
 
 ### Requirement: El mensaje se entiende en 5 segundos
-El hero SHALL mostrar el titular «Tu negocio, más simple y bajo control.», la bajada y el botón «Charlemos» en la primera pantalla del celular; «Un solo proveedor, todo el sistema.» queda como lema del pie.
+El hero SHALL mostrar el titular «Tu negocio, más simple y bajo control.», la bajada y el botón «Charlemos» en la primera pantalla del celular, seguido de un botón secundario «Ver lo que armé» (borde crema sobre pino, sin relleno) que lleva a `#casos`, en el mismo renglón o debajo si no entra; «Un solo proveedor, todo el sistema.» queda como lema del pie.
 
 #### Scenario: Celular de 390×844
 - **WHEN** se abre la página en un viewport de 390×844 sin scrollear
@@ -30,7 +30,7 @@ Ningún texto SHALL afirmar ni sugerir que Juanma hace un solo tipo de proyecto;
 - **THEN** no hay frases como «solo hago…», «me especializo en turnos» ni una lista cerrada de servicios
 
 ### Requirement: Barra fija con índice numerado
-La página SHALL tener una barra fija, de ancho completo y color pino (el mismo fondo del hero, sin corte entre ambos), con el logo, un índice numerado de sus cuatro capítulos (01 Casos, 02 Qué resuelvo, 03 Cómo trabajo, 04 Contacto; el tramo del 03 sigue también «Preguntas», que no tiene capítulo propio) y el botón «Charlemos», siempre visible al scrollear. Cada capítulo del índice SHALL tener un tramo de progreso que se llena a medida que se lee esa sección, y el de la sección actual SHALL estar marcado.
+La página SHALL tener una barra fija, de ancho completo y color pino (el mismo fondo del hero, sin corte entre ambos), con el logo, un índice numerado de sus cuatro capítulos (01 Casos, 02 Qué resuelvo, 03 Cómo trabajo, 04 Contacto; el tramo del 02 sigue también «Una nota de Juanma» y el del 03, «Preguntas», que no tienen capítulo propio) y el botón «Charlemos», siempre visible al scrollear. Cada capítulo del índice SHALL tener un tramo de progreso que se llena a medida que se lee esa sección, y el de la sección actual SHALL estar marcado.
 
 #### Scenario: Escritorio
 - **WHEN** el ancho es de 1024 px o más
@@ -64,7 +64,7 @@ El logo `<jm>` de la barra SHALL tener espacio libre arriba y abajo y MUST NOT t
 - **THEN** hay al menos 12 px entre el logo y la línea inferior de la barra, y el logo mide al menos 100 px de ancho
 
 ### Requirement: Hero pino con collage de capturas reales y línea de confianza
-El hero SHALL tener fondo pino continuo con la barra, el titular grande en crema (con «bajo control» en itálica salvia) y, junto a la acción, un collage de dos capturas reales (`oral-escritorio.png` en marco ventana y `staffy-celu.png` en marco celu superpuesto abajo a la izquierda, con el componente `Captura`) y debajo, sin caja, «Oral Odontología Familiar y Staffy, dos de los sistemas que armé.» con enlace a `#casos` en «dos de los sistemas que armé». Debajo de «O escribime directo: …» SHALL ir, en texto chico y sin caja, «Más de 7 años armando sistemas · Trabajo en forma remota en todo el país» (los años salen de `sitio.experiencia`). La firma y la pastilla `hola_mundo()` MUST NOT aparecer en el hero (la firma queda en Contacto). El hero MUST NOT llevar plazos de respuesta, la ciudad, cifras, testimonios ni logos que no estén confirmados.
+El hero SHALL tener fondo pino continuo con la barra, el titular grande en crema (con «bajo control» en itálica salvia) y, junto a la acción, un collage de dos capturas reales (`oral-escritorio.png` en marco ventana y `staffy-celu.png` en marco celu superpuesto abajo a la izquierda, con el componente `Captura`) y debajo, sin caja, «Oral Odontología Familiar y Staffy, dos de los sistemas que armé.» con enlace a `#casos` en «dos de los sistemas que armé». Debajo de «O escribime directo: …» SHALL ir, en texto chico y sin caja, «Más de 7 años armando sistemas · Trabajo en forma remota en todo el país» (los años salen de `sitio.experiencia`). La firma y la pastilla `hola_mundo()` MUST NOT aparecer en el hero (la firma vive en la nota de Juanma). El hero MUST NOT llevar plazos de respuesta, la ciudad, cifras, testimonios ni logos que no estén confirmados.
 
 #### Scenario: Escritorio
 - **WHEN** el ancho es de 1024 px o más
@@ -159,3 +159,14 @@ En escritorio (1024 px o más), «Contacto» SHALL medir el alto de la ventana m
 #### Scenario: Final de la página
 - **WHEN** se baja hasta el final en celular o escritorio
 - **THEN** el pie se ve entero, sin cortarse
+
+### Requirement: Una nota firmada de Juanma
+Entre «Qué resuelvo» y «Cómo trabajo» SHALL haber una sección `#nota` (`seccion-ancha tema-crema`, con `aria-labelledby` a un título `sr-only` «Una nota de Juanma») con una columna angosta centrada (`--ancho-lectura`), texto en Manrope `--fs-lead`, sin caja ni borde, con el texto aprobado en `docs/specs/02-contenido.md` («Hola, soy Juanma. …», con «más de 7 años» tomado de `sitio.experiencia`) y, al final, la firma (`Firma` en pino, decorativa) y debajo «Juanma» en `--fs-small`. La nota MUST NOT mencionar «gratis», plazos de respuesta ni la ciudad.
+
+#### Scenario: Leer la nota
+- **WHEN** la persona llega a la nota
+- **THEN** lee cinco párrafos cortos en primera persona y ve la firma con «Juanma» debajo
+
+#### Scenario: Progreso en el índice
+- **WHEN** se lee la nota
+- **THEN** el capítulo «02 Qué resuelvo» sigue marcado y su tramo no tiene hueco
