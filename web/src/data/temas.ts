@@ -58,7 +58,7 @@ export const temas: Tema[] = [
     id: "otra",
     titulo: "No sabés bien qué necesitás",
     nombre: "Charlemos igual",
-    solucion: "Me contás cómo trabajás hoy y vemos qué conviene. Sin costo.",
+    solucion: "Me contás cómo trabajás hoy y vemos qué conviene.",
     fondo: "salvia",
     mensaje: "Hola Juanma, no sé bien qué necesito, pero quiero mejorar cómo trabajo.",
   },

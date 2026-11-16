@@ -1,5 +1,5 @@
 ---
-// Hero pino pegado a la barra (como thoughtbot): un titular que nombra lo que le pasa a quien entra («el sistema sos vos»), bajada con
+// Hero pino pegado a la barra (como thoughtbot): un titular con lo que gana el cliente («más simple y bajo control»), bajada con
 // escenas concretas, CTA lima y enlaces directos; a la derecha, tres marcos con datos reales en lugar de fotos. El lema del manual va en el pie.
 // Spec: openspec/changes/landing-una-pagina/specs/{landing,selector-hero}.
 import Firma from "../Firma.astro";
@@ -9,12 +9,12 @@ const experiencia = sitio.experiencia.match(/\d+/)![0]; // «7»; el «Más de»
 ---
 <section id="hero" class="hero tema-pino" aria-labelledby="hero-titulo">
   <div class="marco interior">
-    <h1 id="hero-titulo"><span class="r">Todo anda.</span> <span class="r">Pero el sistema <em>sos vos</em>.</span></h1>
+    <h1 id="hero-titulo"><span class="r">Tu negocio, más simple</span> <span class="r">y <em>bajo control</em>.</span></h1>
 
     <div class="pie-hero">
       <div class="accion">
-        <p class="lead">Turnos por WhatsApp que manejás vos, a mano pero simple. Pedidos en un cuaderno. Los números en una planilla que solo entendés vos. Armo el sistema para que todo funcione sin que estés encima, y te enseño a usarlo.</p>
-        <a class="boton lima flecha" href="#contacto">Contame cómo trabajás hoy</a>
+        <p class="lead">Armo soluciones a medida: sistemas de gestión, bots con inteligencia artificial, webs y tableros con tus datos. Para que ahorres tiempo, trabajes más cómodo y sepas en todo momento qué pasa en tu negocio.</p>
+        <a class="boton lima flecha" href="#contacto">Charlemos</a>
         <p class="directo">
           <span>O escribime directo:</span>
           <a href={contacto.whatsapp} target="_blank" rel="noopener noreferrer">WhatsApp<span class="sr-only"> (se abre en otra pestaña)</span></a>
@@ -36,7 +36,6 @@ const experiencia = sitio.experiencia.match(/\d+/)![0]; // «7»; el «Más de»
         </div>
         <div class="marco-c resp">
           <p>Trabajo en forma remota desde Argentina.</p>
-          <p class="base">{sitio.disponibilidad}</p>
           <code class="guino" translate="no" aria-hidden="true">hola_mundo()</code>
         </div>
       </div>
@@ -73,7 +72,7 @@ const experiencia = sitio.experiencia.match(/\d+/)![0]; // «7»; el «Más de»
   .resp .base { font-weight: 500; font-size: var(--fs-small); }
   .guino { justify-self: start; padding: var(--space-1) var(--space-4); border-radius: var(--radius-pill); background: var(--lima); color: var(--pino); font-size: var(--fs-small); font-weight: 500; }
 
-  h1 .r { display: block; } /* «Todo anda.» siempre solo en su renglón: la pausa es parte del mensaje */
+  h1 .r { display: block; } /* dos renglones fijos: «Tu negocio, más simple» / «y bajo control.» */
   @media (min-width: 48rem) {
     .marcos { grid-template-columns: 1fr 1fr; }
     .yo { grid-row: span 2; }

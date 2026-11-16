@@ -12,7 +12,7 @@ El sitio SHALL ser una única página con, en este orden, hero, «¿Te suena?»,
 - **THEN** las secciones aparecen en el orden indicado y no hay una séptima
 
 ### Requirement: El mensaje se entiende en 5 segundos
-El hero SHALL mostrar el titular «Todo anda. Pero el sistema sos vos.», la bajada y el CTA «Contame cómo trabajás hoy» en la primera pantalla del celular; «Un solo proveedor, todo el sistema.» queda como lema del pie.
+El hero SHALL mostrar el titular «Tu negocio, más simple y bajo control.», la bajada y el botón «Charlemos» en la primera pantalla del celular; «Un solo proveedor, todo el sistema.» queda como lema del pie.
 
 #### Scenario: Celular de 390×844
 - **WHEN** se abre la página en un viewport de 390×844 sin scrollear
@@ -30,7 +30,7 @@ Ningún texto SHALL afirmar ni sugerir que Juanma hace un solo tipo de proyecto;
 - **THEN** no hay frases como «solo hago…», «me especializo en turnos» ni una lista cerrada de servicios
 
 ### Requirement: Barra fija con índice numerado
-La página SHALL tener una barra fija, de ancho completo y color pino (el mismo fondo del hero, sin corte entre ambos), con el logo, un índice numerado de sus cuatro secciones (01 Qué resuelvo, 02 Casos, 03 Cómo trabajo, 04 Contacto; el 01 cubre «¿Te suena?» y las tarjetas) y el botón «Charla sin costo», siempre visible al scrollear. Cada capítulo del índice SHALL tener un tramo de progreso que se llena a medida que se lee esa sección, y el de la sección actual SHALL estar marcado.
+La página SHALL tener una barra fija, de ancho completo y color pino (el mismo fondo del hero, sin corte entre ambos), con el logo, un índice numerado de sus cuatro secciones (01 Qué resuelvo, 02 Casos, 03 Cómo trabajo, 04 Contacto; el 01 cubre «¿Te suena?» y las tarjetas) y el botón «Charlemos», siempre visible al scrollear. Cada capítulo del índice SHALL tener un tramo de progreso que se llena a medida que se lee esa sección, y el de la sección actual SHALL estar marcado.
 
 #### Scenario: Escritorio
 - **WHEN** el ancho es de 1024 px o más
@@ -46,14 +46,14 @@ La página SHALL tener una barra fija, de ancho completo y color pino (el mismo 
 
 #### Scenario: Un solo botón fuerte en la barra
 - **WHEN** se ve la barra sobre el hero
-- **THEN** el botón de la barra dice «Charla sin costo» (la puerta de entrada, siempre a mano) y es lima sobre pino, en una sola línea a 360 px
+- **THEN** el botón de la barra dice «Charlemos» (la puerta de entrada, siempre a mano) y es lima sobre pino, en una sola línea a 360 px
 
 #### Scenario: Progreso por capítulo
 - **WHEN** la persona va por la mitad de «Casos»
 - **THEN** el tramo 01 está lleno, el 02 a la mitad y el 03 y el 04 vacíos
 
 #### Scenario: Ir a una sección
-- **WHEN** la persona toca un capítulo o «Charla sin costo»
+- **WHEN** la persona toca un capítulo o «Charlemos»
 - **THEN** la página baja hasta esa sección sin que la barra tape su título
 
 ### Requirement: Aire alrededor del logo
@@ -64,7 +64,7 @@ El logo `<jm>` de la barra SHALL tener espacio libre arriba y abajo y MUST NOT t
 - **THEN** hay al menos 12 px entre el logo y la línea inferior de la barra, y el logo mide al menos 100 px de ancho
 
 ### Requirement: Hero pino con marcos de color de hechos reales
-El hero SHALL tener fondo pino continuo con la barra, el titular grande en crema (con «sos vos» en itálica salvia) y, junto a la acción, tres marcos de color con una esquina cortada que llevan datos reales de `sitio.ts` en lugar de fotos: la presentación con la firma de Juanma, los años de oficio y «Trabajo en forma remota desde Argentina. Respondo ni bien veo tu mensaje.» con la pastilla `hola_mundo()`. Los marcos MUST NOT llevar plazos de respuesta, la ciudad, cifras, testimonios ni logos que no estén confirmados.
+El hero SHALL tener fondo pino continuo con la barra, el titular grande en crema (con «bajo control» en itálica salvia) y, junto a la acción, tres marcos de color con una esquina cortada que llevan datos reales de `sitio.ts` en lugar de fotos: la presentación con la firma de Juanma, los años de oficio y «Trabajo en forma remota desde Argentina.» con la pastilla `hola_mundo()`. Los marcos MUST NOT llevar plazos de respuesta, la ciudad, cifras, testimonios ni logos que no estén confirmados.
 
 #### Scenario: Escritorio
 - **WHEN** el ancho es de 1024 px o más

@@ -74,7 +74,7 @@ Excepción: **«de punta a punta»** y **«todo el sistema»** son frases de la 
 
 - Nombre: **Juan Martín Almada Ortiz**. Corto: **Juanma**.
 - Ubicación: **Argentina · 100% remoto** (sin ciudad: Juanma no quiere destacar de dónde es).
-- Disponibilidad: «Respondo ni bien veo tu mensaje.» (sin plazo fijo).
+- Disponibilidad: no se dice nada (ni plazos ni «respondo ni bien lo veo»).
 - Experiencia: **más de 7 años** (decisión de Juanma, 2026-10-27). Ingeniero de datos y desarrollador full stack, en equipos multidisciplinarios y empresas de distintos rubros.
 - Formación: **Sistemas en la UNLP**.
 - Fuera del código: **hockey**, **cocina**, **rock nacional** (y alternativo), **viajes**.
@@ -103,28 +103,28 @@ No hay páginas internas, modales ni formularios (cambio `landing-una-pagina`).
 > comportamiento es el cambio OpenSpec `landing-una-pagina`. Esto resume el contenido.
 
 **Mensaje:** la persona que entra no busca «un sistema de gestión»: busca dejar de contestar mensajes a la noche, de pasar pedidos a
-una planilla, de esperar a fin de mes para ver los números. Titular: **«Todo anda. Pero el sistema sos vos.»** No habla solo de
+una planilla, de esperar a fin de mes para ver los números. Titular: **«Tu negocio, más simple y bajo control.»** (2026-11-15; lo que gana el cliente: tiempo, comodidad y control) No habla solo de
 negocios: Juanma aplica a todo lo que se pueda mejorar. El lema del manual, **«Un solo proveedor, todo el sistema.»**, va en el pie.
 
 **Posicionamiento:** una persona de oficio, no una agencia. Armo lo que ven los clientes y lo que ve quien lo maneja: la web, el
 sistema y los números. Hablás directo con quien lo construye.
 
-**Qué NO dice la web (pedido de Juanma, 2026-11-15):** ningún plazo de respuesta («menos de 24 h»), la ciudad (General Belgrano; a lo sumo «Argentina») ni «consultorios» como público. Disponibilidad: «Respondo ni bien veo tu mensaje.» Un test lo vigila (`tests/copy.test.mjs`).
+**Qué NO dice la web (pedido de Juanma, 2026-11-15):** ningún plazo de respuesta («menos de 24 h»), la ciudad (General Belgrano; a lo sumo «Argentina») ni «consultorios» como público. Tampoco «respondo ni bien lo veo» ni «gratis» / «sin costo»: la plata se habla en la propuesta. Un test lo vigila (`tests/copy.test.mjs`).
 
 **Modelo de negocio (opción B, elegida por Juanma):** proyectos a medida por etapas, con presupuesto por etapa; **la primera
 charla no tiene costo**; después del proyecto, **plan mensual de soporte y mejoras** (sin precio en la web, todo a presupuesto).
 
 | Sección | Contenido |
 |---|---|
-| Hero | Barra y hero en pino. «Todo anda. / Pero el sistema *sos vos*.», bajada «Turnos por WhatsApp que manejás vos, a mano pero simple. Pedidos en un cuaderno. Los números en una planilla que solo entendés vos. Armo el sistema para que todo funcione sin que estés encima, y te enseño a usarlo.», CTA «Contame cómo trabajás hoy», enlaces directos y tres marcos: «Soy Juanma. Armo las dos puntas: lo que ven tus clientes y lo que ves vos.» con la firma, «Más de 7 años de oficio» y «Trabajo en forma remota desde Argentina. Respondo ni bien veo tu mensaje.» con `hola_mundo()`. |
+| Hero | Barra y hero en pino. «Tu negocio, más simple / y *bajo control*.», bajada «Armo soluciones a medida: sistemas de gestión, bots con inteligencia artificial, webs y tableros con tus datos. Para que ahorres tiempo, trabajes más cómodo y sepas en todo momento qué pasa en tu negocio.», botón «Charlemos», enlaces directos y tres marcos: presentación con firma, «Más de 7 años de oficio» y «Trabajo en forma remota desde Argentina.» con `hola_mundo()`. |
 | ¿Te suena? | Sobre salvia, cuatro escenas como mensajes alternados («Confirmás turnos cuando podés. Mientras tanto, el cliente se cansa de esperar y busca otra opción.», el stock en la cabeza de una persona, el reporte del lunes armado el domingo, las mismas preguntas por WhatsApp) y «Nada de esto se arregla con más horas tuyas. Se arregla con un sistema.» Forma parte del capítulo 01 del menú («Qué resuelvo»). |
 | ¿Qué te está consumiendo el tiempo? | Solo el título y 6 tarjetas: **arriba el problema** (breve y reconocible) y **abajo, en un panel propio, la solución** (nombre y una línea) con «Esto me pasa →» a WhatsApp con el problema ya escrito. Sin manifiesto, nota de cobro ni línea para empresas (el manifiesto se fue a «Cómo trabajo»). Entra en una pantalla. |
 | Cosas que armé | Tres tarjetas en una fila (Oral, Staffy y «El próximo puede ser el tuyo»). **Primero el trabajo:** las capturas reales van arriba y grandes (escritorio a todo el ancho de la tarjeta, celu encima). El texto visible es solo la última parte («Hoy», en un panel propio) y el resto va en «Ver más». Testimonio y video son opcionales: aparecen solo si el caso los trae (hoy no hay datos). Contenido de cada caso: **Oral** (eje: autogestión de pacientes): *Antes* — turnos por mensaje de texto y agenda en papel; *Hoy* — los pacientes reservan por su cuenta, reciben confirmación y recordatorio por mail y el consultorio lo ve todo en un panel. **Staffy**: *Qué es* — portal de empleo IT que conecta personas con empresas de Latinoamérica y Estados Unidos; *Qué armé* — el portal (lo que ven los candidatos y el panel de cada empresa), un primer filtro de candidatos con IA y avisos automáticos por mail; *Hoy* — mejoras en su plataforma de RRHH. La grilla «Y otras cosas que armé» (`proyectos.ts`) sigue vacía y oculta. |
 | Cómo trabajo | Sin intro. Charla (sin costo) · Propuesta (por escrito, qué, en qué orden y cuánto sale) · Desarrollo (por etapas) · Soporte (te enseño a usarlo; si querés, plan mensual), y «Lo que hago» / «Lo que no hago». |
-| Contacto | «Contame cómo *trabajás* hoy.», «Un mensaje alcanza. Respondo ni bien lo veo y vemos juntos qué conviene armar primero.», tarjetas «Contame por WhatsApp» («Es lo más rápido.») y «Prefiero mail», la línea «Armemos el sistema de tu equipo / empresa / idea / negocio.» (la palabra cambia una sola vez, solo CSS), Instagram aparte y el texto «yo» recortado («Soy Juanma, ingeniero de datos y desarrollador full stack: más de 7 años armando sistemas. Trabajo en forma remota y hablás siempre conmigo.»). Pie: lema del manual, LinkedIn y «Argentina · 100% remoto · año». Contacto + pie entran en una pantalla. |
+| Contacto | «Contame cómo *trabajás* hoy.», «Un mensaje alcanza. Lo charlamos y vemos juntos qué conviene armar primero.», tarjetas «Contame por WhatsApp» («Es lo más rápido.») y «Prefiero mail», la línea «Armemos el sistema de tu equipo / empresa / idea / negocio.» (la palabra cambia una sola vez, solo CSS), Instagram aparte y el texto «yo» recortado («Soy Juanma, ingeniero de datos y desarrollador full stack: más de 7 años armando sistemas. Trabajo en forma remota y hablás siempre conmigo.»). Pie: lema del manual, LinkedIn y «Argentina · 100% remoto · año». Contacto + pie entran en una pantalla. |
 
 **Barra:** pino a ancho completo, logo `<jm>` en crema (ícono `</j>` en el celular), índice numerado 01–04 con tramos de progreso, y
-«Charla sin costo» en lima (la puerta de entrada, siempre a mano; idea de artobaweb). El capítulo 01 se llama «Qué resuelvo» y cubre «¿Te suena?» y las tarjetas.
+«Charlemos» en lima (la puerta de entrada, siempre a mano; sin hablar de plata). El capítulo 01 se llama «Qué resuelvo» y cubre «¿Te suena?» y las tarjetas.
 
 **WhatsApp:** cada tarjeta manda su problema ya escrito (fuente: `web/src/data/temas.ts`). El mensaje base, fuera de las tarjetas, termina
 abierto para que la persona siga con su caso: «Hola Juanma, vi tu web. Hoy hago esto a mano: ».

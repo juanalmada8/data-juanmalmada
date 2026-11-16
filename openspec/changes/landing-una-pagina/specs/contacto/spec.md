@@ -1,7 +1,7 @@
 ## ADDED Requirements
 
 ### Requirement: Cierre con contacto directo
-La sección de contacto SHALL titularse «Contame cómo trabajás hoy.», con la bajada «Un mensaje alcanza. Respondo ni bien lo veo y vemos juntos qué conviene armar primero.» (sin plazos de respuesta), y ofrecer dos tarjetas grandes («Contame por WhatsApp» y «Prefiero mail») e Instagram como enlace aparte, con WhatsApp como principal.
+La sección de contacto SHALL titularse «Contame cómo trabajás hoy.», con la bajada «Un mensaje alcanza. Lo charlamos y vemos juntos qué conviene armar primero.» (sin plazos de respuesta ni «gratis»), y ofrecer dos tarjetas grandes («Contame por WhatsApp» y «Prefiero mail») e Instagram como enlace aparte, con WhatsApp como principal.
 
 #### Scenario: Canales visibles
 - **WHEN** se llega a la sección
@@ -11,7 +11,7 @@ La sección de contacto SHALL titularse «Contame cómo trabajás hoy.», con la
 Desde cualquier punto de la página, abrir WhatsApp o Instagram SHALL requerir como máximo dos clics; desde una tarjeta de «¿Qué te está comiendo el tiempo?» o desde el enlace directo del hero, un clic.
 
 #### Scenario: Desde la barra fija
-- **WHEN** la persona toca «Charla sin costo» en la barra y luego una tarjeta de contacto
+- **WHEN** la persona toca «Charlemos» en la barra y luego una tarjeta de contacto
 - **THEN** llegó a WhatsApp o Instagram en dos clics
 
 #### Scenario: Desde una tarjeta
