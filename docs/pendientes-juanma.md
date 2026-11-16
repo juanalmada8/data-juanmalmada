@@ -17,10 +17,11 @@ y sacala de esta lista.
 
 ## Contenido
 
-- [ ] **Capturas de Oral (oral.com.ar) y de Staffy (jobs.wearestaffy.com)**, en celu y/o en ventana, sin datos de
-  personas. Hasta entonces la web muestra `[[FALTA: captura]]` con el nombre del caso arriba (el build las lista) y **no se publica así**.
-  Se cargan en `web/src/assets/` y se referencian en `web/src/content/casos/<caso>.md` (campo `capturas`, con `alt`).
-  Tarea 5.4 de `openspec/changes/landing-una-pagina`.
+- [x] **Capturas de Oral y de Staffy**: cargadas el 2026-11-15 desde las páginas públicas (portada en escritorio y celu; listado de vacantes de Staffy
+  en celu). La de Oral en celu es la portada, no el paso de reserva: ese paso muestra los nombres de las profesionales. Revisá que te gusten;
+  están en `web/src/assets/casos/` y se referencian en `web/src/content/casos/<caso>.md`.
+- [ ] **Dos frases de clientes** (una de Oral y una de Staffy), con nombre, rol y permiso para publicarlas. Van en `testimonio` de cada caso.
+- [ ] **Un video de pantalla de 30 s** de Oral: alguien saca un turno y aparece en el panel (sirve grabado con el celular). Va en `video`.
 - [ ] **Precio del plan mensual** (no va en la web, pero lo vas a necesitar para la propuesta): qué incluye y cuánto sale.
 - [ ] **Oral, si querés contarlo con más calor**: que es el consultorio de tu mamá y que antes los turnos llegaban a su celular. Hoy la web lo dice sin nombrarla; contarlo es decisión tuya.
 - [ ] **Integraciones que hacés de verdad** (WhatsApp, Mercado Pago, Google Calendar, CRM…): si me las decís, las nombro en las tarjetas; da confianza local. No las puse sin tu confirmación.
