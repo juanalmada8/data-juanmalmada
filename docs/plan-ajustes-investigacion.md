@@ -19,7 +19,7 @@ Archivos: `web/src/content.config.ts`, `web/src/content/casos/{oral,staffy}.md`,
 - Sumar al esquema un campo obligatorio `resultado: z.string().min(1)`.
 - Textos (exactos):
   - Oral: `resultado: "Los pacientes reservan solos."`
-  - Staffy: `resultado: "Empleos IT, con candidatos filtrados por IA."`
+  - Staffy: `resultado: "Candidatos filtrados con IA."`
 - En cada tarjeta, el orden pasa a ser: captura → **nombre del cliente chico** (etiqueta: `--fs-small`, peso 800, como un rótulo, con el link «Ver …↗» en el mismo renglón) → **`resultado` como título** (`h3`, serif, `--fs-tarjeta`) → «Hoy» y «Ver más» como están.
   El `h3` deja de ser el nombre del cliente; el nombre va en un `<p>` con `translate="no"`.
 - La tarjeta «El próximo puede ser el tuyo» no cambia.

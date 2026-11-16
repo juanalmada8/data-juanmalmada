@@ -1,7 +1,7 @@
 ---
 nombre: "Staffy"
 url: "https://jobs.wearestaffy.com"
-resultado: "Empleos IT, con candidatos filtrados por IA."
+resultado: "Candidatos filtrados con IA."
 partes:
   - titulo: "Qué es"
     texto: "Un portal de empleo para profesionales IT que conecta personas con empresas de Latinoamérica y Estados Unidos."

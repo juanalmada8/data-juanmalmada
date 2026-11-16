@@ -8,7 +8,7 @@ La sección SHALL mostrar el caso de Oral Odontología Familiar (oral.com.ar), c
 - **THEN** muestra el nombre, dos o tres partes cortas con la última (la solución o lo que sigue hoy) en un panel propio, el link al sitio y la captura o su marcador
 
 ### Requirement: Cada caso se titula por el resultado
-El esquema de casos SHALL exigir un campo `resultado` (texto no vacío) que es el título (`h3`) de la tarjeta: «Los pacientes reservan solos.» (Oral) y «Empleos IT, con candidatos filtrados por IA.» (Staffy). El nombre del cliente SHALL ir como etiqueta chica (`<p translate="no">`, `--fs-small`, peso 800) en el mismo renglón que el link «Ver …↗». El orden de la tarjeta SHALL ser: captura, nombre y link, resultado, «Hoy» y «Ver más». La tarjeta «El próximo puede ser el tuyo» no cambia.
+El esquema de casos SHALL exigir un campo `resultado` (texto no vacío) que es el título (`h3`) de la tarjeta: «Los pacientes reservan solos.» (Oral) y «Candidatos filtrados con IA.» (Staffy). El nombre del cliente SHALL ir como etiqueta chica (`<p translate="no">`, `--fs-small`, peso 800) en el mismo renglón que el link «Ver …↗». El orden de la tarjeta SHALL ser: captura, nombre y link, resultado, «Hoy» y «Ver más». La tarjeta «El próximo puede ser el tuyo» no cambia.
 
 #### Scenario: Título de un caso
 - **WHEN** se ve la tarjeta de Oral
