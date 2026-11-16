@@ -164,7 +164,7 @@
 ## 24. Lo mejor de Tiendanube (2026-11-15)
 
 - [x] 24.1 Sección «Todo conectado» (`Conectado.astro`, `#conectado`) entre «Cosas que armé» y «Qué resuelvo»: bento de cuatro tarjetas con ilustraciones de interfaz en HTML/CSS y el enlace «¿Lo tuyo es otra cosa? Contámelo».
-- [x] 24.2 Hero: dos chips flotantes («✓ Turno confirmado» y «Nuevo pedido por WhatsApp») sobre el collage, decorativos y ocultos debajo de 48 rem.
+- [x] 24.2 Hero: dos chips flotantes («✓ Turno confirmado» y «Nueva postulación recibida») sobre el collage, decorativos y ocultos debajo de 48 rem.
 - [x] 24.3 Menú: el capítulo 01 Casos cubre también «Todo conectado».
 - [x] 24.4 Docs al día (`01-marca`, `02-contenido`, registro de decisiones, investigación, specs `landing` y `conectado`); test de contraste con los pares nuevos; `check`, tests, build, axe, Lighthouse y `openspec validate`.
 - [ ] 24.5 Juanma revisa en pantalla.

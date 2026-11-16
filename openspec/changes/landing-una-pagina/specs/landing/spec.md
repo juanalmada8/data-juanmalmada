@@ -172,7 +172,7 @@ Entre «Qué resuelvo» y «Cómo trabajo» SHALL haber una sección `#nota` (`s
 - **THEN** el capítulo «02 Qué resuelvo» sigue marcado y su tramo no tiene hueco
 
 ### Requirement: Chips de interfaz flotantes sobre el collage del hero
-El collage del hero SHALL llevar dos chips crema, decorativos (`aria-hidden="true"`), con sombra suave hecha con colores de la paleta: «✓ Turno confirmado» arriba a la izquierda, saliendo un poco del borde, y «Nuevo pedido por WhatsApp» con un punto lima delante, abajo a la izquierda (lejos del celu). Entran con un fundido una vez y MUST NOT existir animaciones con movimiento reducido. Debajo de 48 rem SHALL ocultarse. El hero MUST seguir entrando en la primera pantalla de escritorio (1470×790, 1366×640, 1024×768) y no desbordar a 360 px.
+El collage del hero SHALL llevar dos chips crema, decorativos (`aria-hidden="true"`), con sombra suave hecha con colores de la paleta: «✓ Turno confirmado» arriba a la izquierda, saliendo un poco del borde, y «Nueva postulación recibida» con un punto lima delante, abajo a la izquierda (lejos del celu). Entran con un fundido una vez y MUST NOT existir animaciones con movimiento reducido. Debajo de 48 rem SHALL ocultarse. El hero MUST seguir entrando en la primera pantalla de escritorio (1470×790, 1366×640, 1024×768) y no desbordar a 360 px.
 
 #### Scenario: Escritorio
 - **WHEN** el ancho es de 48 rem o más

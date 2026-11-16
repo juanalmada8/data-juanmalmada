@@ -42,7 +42,7 @@
 Archivo: `web/src/components/secciones/Hero.astro` (no tocar textos ni botones).
 - Sobre el collage de capturas, dos «chips» de interfaz crema con sombra suave (usar `box-shadow` solo con colores de la paleta mezclados por `color-mix`):
   - Arriba a la izquierda, saliendo un poco del borde: **«✓ Turno confirmado»**.
-  - Abajo a la izquierda (lejos del celu, que está a la derecha): **«Nuevo pedido por WhatsApp»**, con un punto lima delante.
+  - Abajo a la izquierda (lejos del celu, que está a la derecha): **«Nueva postulación recibida»**, con un punto lima delante.
 - Decorativos (`aria-hidden="true"`). Entran con fundido una vez (sin movimiento reducido). Ocultos debajo de 48rem si tapan la captura.
 - El hero tiene que seguir entrando en la primera pantalla de escritorio (1470×790, 1366×640, 1024×768) y no desbordar a 360.
 
