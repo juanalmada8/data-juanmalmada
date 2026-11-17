@@ -1,8 +1,8 @@
 ---
 // Cierre a ancho completo sobre pino: la invitación a contar qué necesita, y los canales.
-// Dos tarjetas grandes (una pregunta y una idea, sin formularios) e Instagram como enlace aparte. Spec: specs/contacto.
+// Los cuatro canales juntos, como tarjetas iguales (componente Redes; WhatsApp destacado), sin formularios. Spec: specs/contacto.
 import PatronM from "../PatronM.astro";
-import { contacto } from "../../data/sitio";
+import Redes from "../Redes.astro";
 ---
 <section id="contacto" class="seccion-ancha tema-pino" aria-labelledby="contacto-titulo">
   <div class="marco">
@@ -10,23 +10,7 @@ import { contacto } from "../../data/sitio";
       <h2 id="contacto-titulo">Contame qué <em>necesitás</em>.</h2>
       <p class="lead">Escribime y lo charlamos. Con un mensaje alcanza.</p>
 
-      <div class="canales">
-        <a class="canal wa" href={contacto.whatsapp} target="_blank" rel="noopener noreferrer">
-          <span class="titulo">Contame por WhatsApp</span>
-          <span class="detalle">Es lo más rápido.</span>
-          <span class="flecha" aria-hidden="true">→</span>
-          <span class="sr-only">(se abre en otra pestaña)</span>
-        </a>
-        <a class="canal mail" href={`mailto:${contacto.mail}`}>
-          <span class="titulo">Prefiero mail</span>
-          <span class="detalle">Si preferís escribir con calma.</span>
-          <span class="flecha" aria-hidden="true">→</span>
-        </a>
-      </div>
-      <p class="ig">
-        También estoy en{" "}
-        <a class="link" href={contacto.instagram} target="_blank" rel="noopener noreferrer">Instagram<span class="sr-only"> (se abre en otra pestaña)</span></a>.
-      </p>
+      <Redes variante="tarjetas" />
     </div>
   </div>
   <PatronM tono="pino" lima={[[0, 5]]} class="banda" />
@@ -36,35 +20,11 @@ import { contacto } from "../../data/sitio";
   .texto { display: grid; gap: var(--space-6); justify-items: start; }
   .lead { max-width: 40ch; }
   h2 em { color: var(--salvia); } /* la lima se reserva para el botón de WhatsApp y una m del patrón */
-  .canales { display: grid; gap: var(--space-4); width: 100%; margin-top: var(--space-4); }
-  .canal {
-    position: relative;
-    display: grid;
-    gap: var(--space-2);
-    align-content: start;
-    min-height: var(--alto-tarjeta-chica);
-    padding: var(--space-6);
-    border-radius: var(--radius-tarjeta);
-    text-decoration: none;
-    color: var(--pino);
-  }
-  .wa { background: var(--lima); }
-  .mail { background: var(--salvia); }
-  .titulo { font-family: var(--font-serif); font-size: var(--fs-tarjeta); line-height: 1; letter-spacing: -.02em; }
-  .detalle { font-weight: 500; max-width: 28ch; }
-  .flecha { position: absolute; right: var(--space-8); bottom: var(--space-6); font-size: var(--fs-h3); font-weight: 800; transition: transform .2s ease; }
-  .canal:hover .flecha { transform: translateX(var(--space-2)); }
-  .canal:focus-visible { outline: 3px solid var(--crema); outline-offset: 4px; }
-  @media (prefers-reduced-motion: no-preference) { .canal { transition: transform .25s ease; } .canal:hover { transform: translateY(calc(var(--space-2) * -1)); } }
-  .ig { color: var(--salvia); }
-  .ig .link { display: inline-flex; align-items: center; min-height: var(--tap-min); }
-  .ig .link { color: var(--crema); }
   .seccion-ancha :global(.banda) { margin-top: var(--space-12); background: transparent; }
 
-  @media (min-width: 40rem) { .canales { grid-template-columns: 1fr 1fr; } }
   /* En escritorio, «Contacto» + pie = una pantalla: el pie queda entero al ir a Contacto desde el índice (en ventanas bajas, sin el patrón) */
   @media (min-width: 64rem) { #contacto { min-height: calc(100svh - var(--alto-barra) - var(--alto-pie)); align-content: center; padding-block: var(--space-6); } }
-  @media (min-width: 64rem) and (max-height: 800px) { .seccion-ancha :global(.banda) { display: none; } .canal { min-height: 7.5rem; padding: var(--space-4) var(--space-6); } }
+  @media (min-width: 64rem) and (max-height: 800px) { .seccion-ancha :global(.banda) { display: none; } }
   @media (min-width: 64rem) and (max-height: 800px) { .texto { gap: var(--space-4); } }
-  @media (min-width: 64rem) and (max-height: 700px) { .canal { min-height: 5.5rem; } .lead { font-size: var(--fs-body); } }
+  @media (min-width: 64rem) and (max-height: 700px) { .lead { font-size: var(--fs-body); } }
 </style>
