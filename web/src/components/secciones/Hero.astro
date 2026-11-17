@@ -166,7 +166,8 @@ const semana = [38, 54, 46, 70, 58, 82, 64];
   @media (min-width: 64rem) {
     .accion { max-width: 44rem; }
     .confianza { max-width: none; }
-    .pie-hero { grid-template-columns: minmax(0, 1fr) minmax(0, var(--ancho-marcos)); align-items: center; gap: var(--space-12); }
+    .pie-hero { grid-template-columns: minmax(0, 1fr) minmax(0, var(--ancho-marcos)); align-items: start; gap: var(--space-12); } /* el texto va pegado al titular */
+    .pie-hero > .prueba { align-self: end; } /* el panel se apoya abajo: el hero no crece */
     .prueba { justify-self: end; }
   }
 </style>
