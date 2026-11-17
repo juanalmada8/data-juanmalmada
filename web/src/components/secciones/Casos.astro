@@ -1,6 +1,6 @@
 ---
 // «Cosas que armé»: casos reales como tarjetas lado a lado (más una que invita a sumar el próximo). Primero el trabajo: la captura de
-// escritorio arriba y grande, con la del celu encima. El texto visible es la última parte («Hoy», en un panel propio); el resto va en «Ver más».
+// escritorio arriba y grande, con la del celu encima. El texto visible es la última parte (su título, en un panel propio: «Hoy» o «Qué armé»); el resto va en «Ver más».
 // Testimonio y video son opcionales: aparecen solo si el caso los trae. Lenguaje claro, sin jerga (pedido de Juanma, 2026-11-15).
 // Cada caso es un archivo de src/content/casos/: sumar uno no toca este componente. Spec: specs/casos.
 import { getImage } from "astro:assets";
@@ -42,8 +42,8 @@ for (const c of casos) if (c.data.video) posters.set(c.id, (await getImage({ src
           </div>
           <div class="encabezado">
             <p class="cliente" translate="no">{c.data.nombre}</p>
-            <a class="link" href={c.data.url} target="_blank" rel="noopener noreferrer">
-              Ver {new URL(c.data.url).hostname} <span aria-hidden="true">↗</span><span class="sr-only"> (se abre en otra pestaña)</span>
+            <a class="boton sec chico" href={c.data.url} target="_blank" rel="noopener noreferrer" aria-label={`Visitar el sitio de ${c.data.nombre} (se abre en otra pestaña)`}>
+              Visitar el sitio <span aria-hidden="true">↗</span>
             </a>
           </div>
           <h3>{c.data.resultado}</h3>
@@ -104,10 +104,18 @@ for (const c of casos) if (c.data.video) posters.set(c.id, (await getImage({ src
 
 <style>
   .lead { margin-top: var(--space-3); max-width: 80ch; }
-  .casos { list-style: none; padding: 0; display: grid; gap: var(--space-4); margin-top: var(--space-4); }
-  .encabezado { display: flex; flex-wrap: wrap; align-items: center; column-gap: var(--space-4); }
-  .cliente { font-size: var(--fs-small); font-weight: 800; }
-  .caso { display: grid; gap: var(--space-2); align-content: start; justify-items: start; padding: var(--space-3) var(--space-6) var(--space-4); border-radius: var(--radius-tarjeta); }
+  .casos { list-style: none; padding: 0; display: grid; align-items: stretch; gap: var(--space-4); margin-top: var(--space-4); }
+  /* Cabecera: el cliente en una pastilla a la izquierda y, a la derecha, un botón chico para visitar el sitio */
+  .encabezado { display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: var(--space-2) var(--space-4); width: 100%; }
+  .cliente { padding: var(--space-1) var(--space-4); border-radius: var(--radius-pill); font-size: var(--fs-small); font-weight: 800; background: color-mix(in srgb, currentColor 12%, transparent); }
+  .caso .boton.sec { color: inherit; border-color: currentColor; } /* el botón toma el color de la tarjeta, no el del tema de la sección */
+  .boton.chico { min-height: var(--tap-min); padding: 0 var(--space-4); font-size: var(--fs-small); }
+  .f-pino .boton.sec:hover { background: var(--crema); color: var(--pino); } /* el hover global usa el fondo del tema, que acá es el de la sección */
+  .f-salvia .boton.sec:hover { background: var(--pino); color: var(--salvia); }
+  .f-pino .boton.sec:focus-visible { outline-color: var(--lima); }
+  .f-salvia .boton.sec:focus-visible { outline-color: var(--pino); }
+  /* Tarjetas de la misma altura: «Ver más» queda al pie de cada una */
+  .caso { display: flex; flex-direction: column; align-items: flex-start; gap: var(--space-2); padding: var(--space-3) var(--space-6) var(--space-4); border-radius: var(--radius-tarjeta); }
   .caso h3 { font-size: var(--fs-tarjeta); line-height: 1; letter-spacing: -.02em; }
   .f-salvia { background: var(--salvia); color: var(--pino); }
   .f-pino { background: var(--pino); color: var(--crema); }
@@ -125,7 +133,7 @@ for (const c of casos) if (c.data.video) posters.set(c.id, (await getImage({ src
   .captura-caso.con-celu { margin-bottom: var(--space-12); }
   .celu-sup { position: absolute; right: var(--space-3); bottom: calc(var(--space-12) * -1); width: 30%; }
   .captura-caso :global(.captura) { box-shadow: 0 0 0 1px color-mix(in srgb, var(--pino) 25%, transparent); }
-  .mas { width: 100%; }
+  .mas { width: 100%; margin-top: auto; }
   .mas summary { display: flex; align-items: center; min-height: var(--tap-min); font-weight: 700; font-size: var(--fs-small); cursor: pointer; text-decoration: underline; text-decoration-thickness: 2px; text-underline-offset: var(--space-1); }
   .mas[open] summary { margin-bottom: var(--space-1); }
   .f-pino .mas summary:focus-visible, .f-pino .video:focus-visible { outline-color: var(--lima); }
@@ -134,11 +142,8 @@ for (const c of casos) if (c.data.video) posters.set(c.id, (await getImage({ src
   .testimonio blockquote { margin: 0; font-weight: 700; }
   .testimonio cite { font-style: normal; font-weight: 800; }
   .video { width: 100%; border-radius: var(--radius-box); background: var(--pino); }
-  .proximo { align-content: center; min-height: var(--alto-tarjeta-chica); }
-  .link { display: inline-flex; align-items: center; min-height: var(--tap-min); font-weight: 700; text-decoration: underline; text-decoration-thickness: 2px; text-underline-offset: var(--space-1); }
-  .caso .link:hover { color: inherit; text-decoration-thickness: 4px; } /* el hover global (musgo) no se lee sobre estos fondos */
-  .f-pino .link:focus-visible, .proximo .boton:focus-visible { outline-color: var(--lima); }
-  .f-salvia .link:focus-visible { outline-color: var(--pino); }
+  .proximo { justify-content: center; min-height: var(--alto-tarjeta-chica); }
+  .proximo .boton:focus-visible { outline-color: var(--lima); }
 
   .otras { margin-top: var(--space-8); display: grid; gap: var(--space-6); }
   .otras h3 { font-size: var(--fs-tarjeta); }
