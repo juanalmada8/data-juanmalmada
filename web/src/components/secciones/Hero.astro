@@ -1,13 +1,22 @@
 ---
-// Hero pino pegado a la barra (como thoughtbot): un titular con lo que gana el cliente («más simple y bajo control»), bajada con
-// escenas concretas, CTA lima y enlaces directos, y una línea de confianza; a la derecha, un collage con dos capturas reales (la prueba
-// va arriba de todo, no la firma). El lema del manual va en el pie. Spec: openspec/changes/landing-una-pagina/specs/{landing,selector-hero}.
-import Captura from "../Captura.astro";
-import { sitio, contacto } from "../../data/sitio";
-import oralEscritorio from "../../assets/casos/oral-escritorio.png";
-import staffyCelu from "../../assets/casos/staffy-celu.png";
+// Hero pino pegado a la barra (como thoughtbot): un titular con lo que gana el cliente («más simple y bajo control»), una bajada corta con
+// cuatro etiquetas, CTA lima, tres beneficios, los cuatro canales (componente Redes) y una línea de confianza; a la derecha, la ilustración
+// de un panel de control («Hoy en tu negocio»), hecha en HTML y CSS con los tokens de la marca y decorativa (los números son de ejemplo de interfaz,
+// no resultados). Las capturas reales están en «Cosas que armé». El lema del manual va en el pie.
+// Spec: openspec/changes/landing-una-pagina/specs/{landing,selector-hero}.
+import Redes from "../Redes.astro";
+import { sitio } from "../../data/sitio";
 
 const experiencia = sitio.experiencia.charAt(0).toUpperCase() + sitio.experiencia.slice(1); // «Más de 7 años» (con espacio de no separación)
+const etiquetas = ["Sistemas de gestión", "Bots con inteligencia artificial", "Webs", "Tableros con tus datos"];
+const beneficios = ["Ahorrás tiempo", "Trabajás más cómodo", "Sabés qué pasa en tu negocio"];
+// Ilustración del panel: filas de ejemplo (valor y avance son de interfaz, no de un cliente) y siete barras de la semana (alturas en %)
+const filas = [
+  { icono: "turno", nombre: "Turnos confirmados", valor: 12, avance: 80 },
+  { icono: "pedido", nombre: "Pedidos nuevos", valor: 5, avance: 45 },
+  { icono: "bot", nombre: "Consultas respondidas por el bot", valor: 18, avance: 65 },
+];
+const semana = [38, 54, 46, 70, 58, 82, 64];
 ---
 <section id="hero" class="hero tema-pino" aria-labelledby="hero-titulo">
   <div class="marco interior">
@@ -15,41 +24,53 @@ const experiencia = sitio.experiencia.charAt(0).toUpperCase() + sitio.experienci
 
     <div class="pie-hero">
       <div class="accion">
-        <p class="lead">Armo soluciones a medida: sistemas de gestión, bots con inteligencia artificial, webs y tableros con tus datos. Para que ahorres tiempo, trabajes más cómodo y sepas en todo momento qué pasa en tu negocio.</p>
+        <p class="lead">Armo soluciones a medida para tu negocio:</p>
+        <ul class="etiquetas" role="list">
+          {etiquetas.map((e) => <li>{e}</li>)}
+        </ul>
         <div class="botones">
           <a class="boton lima flecha" href="#contacto">Charlemos</a>
           <a class="boton sec" href="#casos">Ver lo que armé</a>
         </div>
-        <p class="directo">
-          <span>O escribime directo:</span>
-          <a href={contacto.whatsapp} target="_blank" rel="noopener noreferrer">WhatsApp<span class="sr-only"> (se abre en otra pestaña)</span></a>
-          <a href={contacto.instagram} target="_blank" rel="noopener noreferrer">Instagram<span class="sr-only"> (se abre en otra pestaña)</span></a>
-          <a href={`mailto:${contacto.mail}`}>Mail</a>
-        </p>
+        <ul class="beneficios" role="list">
+          {beneficios.map((b) => <li><span class="tilde" aria-hidden="true">✓</span>{b}</li>)}
+        </ul>
+        <div class="directo">
+          <p class="rotulo-directo" id="directo-rotulo">O escribime directo</p>
+          <Redes variante="pastillas" rotulo="directo-rotulo" />
+        </div>
         <p class="confianza">{experiencia} armando sistemas · Trabajo en forma remota en todo el país</p>
       </div>
 
-      <div class="prueba">
-        <div class="collage"> <!-- alt vacío a propósito: el pie de abajo ya nombra los dos casos y las mismas capturas, con su descripción, están en «Cosas que armé» -->
-          <Captura
-            caso="Oral Odontología Familiar"
-            captura={{ src: oralEscritorio, alt: "", marco: "ventana" }}
-            lazy={false}
-            sizes="(min-width: 64rem) 30rem, 90vw"
-          />
-          <div class="celu-sup">
-            <Captura
-              caso="Staffy"
-              captura={{ src: staffyCelu, alt: "", marco: "celu" }}
-              lazy={false}
-              sizes="8rem"
-            />
+      <div class="prueba" aria-hidden="true">
+        <div class="tablero">
+          <div class="cabecera-panel"><p class="t-panel">Hoy en tu negocio</p><p class="fecha">Martes</p></div>
+          <ul class="filas" role="list">
+            {filas.map((f, i) => (
+              <li class="fila-p">
+                <span class="ico-fila">
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" focusable="false">
+                    {f.icono === "turno" && <><rect x="3.5" y="5" width="17" height="15" rx="2.5" /><path d="M3.5 10h17M8 3v4M16 3v4" /></>}
+                    {f.icono === "pedido" && <><path d="M5 8h14l-1 12H6L5 8Z" /><path d="M9 8a3 3 0 0 1 6 0" /></>}
+                    {f.icono === "bot" && <path d="M4 5h16v11H11l-4.5 4v-4H4V5Z" />}
+                  </svg>
+                </span>
+                <span class="nombre-fila">{f.nombre}</span>
+                <span class="valor">{f.valor}</span>
+                <span class="barrita"><span class:list={["relleno", { lima: i === 0 }]} style={`width:${f.avance}%`}></span></span>
+              </li>
+            ))}
+          </ul>
+          <div class="semana">
+            <p class="t-semana">Esta semana</p>
+            <div class="grafico-p">
+              {semana.map((h, i) => <span class:list={["barra-p", { ultima: i === semana.length - 1 }]} style={`height:${h}%`}></span>)}
+            </div>
           </div>
           <!-- Pedacitos de interfaz que hacen viva la imagen; decorativos -->
-          <span class="chip chip-turno" aria-hidden="true"><span class="tilde">✓</span> Turno confirmado</span>
-          <span class="chip chip-pedido" aria-hidden="true"><span class="punto"></span>Nueva postulación recibida</span>
+          <span class="chip chip-turno"><span class="tilde">✓</span> Turno confirmado</span>
+          <span class="chip chip-consulta"><span class="punto"></span>Nueva consulta respondida</span>
         </div>
-        <p class="pie-collage"><span translate="no">Oral Odontología Familiar</span> y <span translate="no">Staffy</span>, <a class="link" href="#casos">dos de los sistemas que armé</a>.</p>
       </div>
     </div>
   </div>
@@ -60,22 +81,52 @@ const experiencia = sitio.experiencia.charAt(0).toUpperCase() + sitio.experienci
   .hero { padding: var(--space-6) 0 var(--space-12); min-height: calc(100svh - var(--alto-barra)); display: grid; align-content: center; }
   .interior { display: grid; gap: var(--space-8); }
   h1 em { color: var(--salvia); } /* la lima queda para los botones y la pastilla: el itálico del titular va en salvia */
+  h1 .r { display: block; } /* dos renglones fijos: «Tu negocio, más simple» / «y bajo control.» */
   .pie-hero { display: grid; gap: var(--space-8); }
   .accion { display: grid; gap: var(--space-4); justify-items: start; align-content: start; max-width: var(--ancho-accion); }
   .botones { display: flex; flex-wrap: wrap; gap: var(--space-3); }
   .accion .boton { white-space: nowrap; }
-  .lead { max-width: 40ch; }
-  .directo { display: flex; flex-wrap: wrap; align-items: center; column-gap: var(--space-4); font-size: var(--fs-small); }
-  .directo a { display: inline-flex; align-items: center; min-height: var(--tap-min); min-width: var(--tap-min); font-weight: 700; text-underline-offset: .2em; }
+  .lead { max-width: none; }
+
+  /* Etiquetas: pastillas chicas, fondo crema al 12 %, sin enlace */
+  .etiquetas { list-style: none; padding: 0; margin: 0; display: flex; flex-wrap: wrap; gap: var(--space-2); }
+  .etiquetas li { padding: var(--space-1) var(--space-3); border-radius: var(--radius-pill); background: color-mix(in srgb, var(--crema) 12%, transparent); color: var(--crema); font-size: var(--fs-small); font-weight: 600; }
+
+  /* Beneficios: tres en fila con tilde lima */
+  .beneficios { list-style: none; padding: 0; margin: 0; display: flex; flex-wrap: wrap; column-gap: var(--space-6); row-gap: var(--space-1); font-size: var(--fs-small); font-weight: 700; }
+  .beneficios li { display: inline-flex; align-items: baseline; gap: var(--space-2); }
+  .beneficios .tilde { color: var(--lima); font-weight: 800; }
+
+  .directo { display: grid; gap: var(--space-1); }
+  .rotulo-directo { font-size: var(--fs-label); color: var(--salvia); }
   .confianza { font-size: var(--fs-small); color: var(--salvia); max-width: 36ch; }
 
-  /* Collage de dos capturas reales: la de escritorio en marco ventana y la del celu encima, abajo a la derecha. Sin caja alrededor. */
-  .prueba { display: grid; gap: var(--space-3); align-content: start; max-width: 36rem; }
-  .collage { position: relative; margin-bottom: var(--space-12); }
-  /* El celu va abajo a la derecha: no tapa el titular de la captura de Oral y cubre la franja con la dirección del consultorio */
-  .celu-sup { position: absolute; right: 9%; bottom: calc(var(--space-12) * -1); width: 22%; }
-  .collage :global(.captura) { box-shadow: 0 0 0 1px color-mix(in srgb, var(--crema) 18%, transparent); }
-  /* Chips de interfaz crema sobre el collage: arriba a la izquierda (sale un poco del borde) y abajo a la izquierda, lejos del celu */
+  /* Ilustración: un panel de control crema. Decorativa; los números son de ejemplo de interfaz */
+  .prueba { max-width: 32rem; width: 100%; padding: var(--space-4) 0 var(--space-6); }
+  .tablero {
+    position: relative; display: grid; gap: var(--space-4);
+    padding: var(--space-6); border-radius: var(--radius-tarjeta);
+    background: var(--crema); color: var(--pino);
+  }
+  .cabecera-panel { display: flex; align-items: baseline; justify-content: space-between; gap: var(--space-4); }
+  .t-panel { font-family: var(--font-serif); font-size: var(--fs-h3); line-height: 1.1; letter-spacing: -.01em; }
+  .fecha { font-family: var(--font-mono); font-size: var(--fs-label); text-transform: uppercase; letter-spacing: var(--tracking-mono); }
+  .filas { list-style: none; padding: 0; margin: 0; display: grid; gap: var(--space-2); }
+  .fila-p { display: grid; grid-template-columns: auto 1fr auto; align-items: center; column-gap: var(--space-3); row-gap: var(--space-2); padding: var(--space-3) var(--space-4); border-radius: var(--radius-box); background: var(--papel); }
+  .ico-fila { display: grid; place-items: center; width: 2rem; height: 2rem; border-radius: var(--radius-box); background: var(--pino); color: var(--crema); }
+  .ico-fila svg { width: 1.125rem; height: 1.125rem; }
+  .nombre-fila { font-size: var(--fs-small); font-weight: 600; line-height: 1.25; }
+  .valor { font-family: var(--font-serif); font-size: var(--fs-h3); line-height: 1; }
+  .barrita { grid-column: 1 / -1; height: var(--space-2); border-radius: var(--radius-pill); background: color-mix(in srgb, var(--pino) 12%, transparent); overflow: hidden; }
+  .relleno { display: block; height: 100%; border-radius: var(--radius-pill); background: var(--salvia); box-shadow: 0 0 0 1px color-mix(in srgb, var(--pino) 35%, transparent) inset; }
+  .relleno.lima { background: var(--lima); }
+  .semana { display: grid; gap: var(--space-2); }
+  .t-semana { font-size: var(--fs-label); font-weight: 800; }
+  .grafico-p { display: flex; align-items: end; gap: var(--space-2); height: 4.5rem; border-bottom: 2px solid color-mix(in srgb, var(--pino) 25%, transparent); }
+  .barra-p { flex: 1; border-radius: var(--radius-box) var(--radius-box) 0 0; background: var(--salvia); box-shadow: 0 0 0 1px color-mix(in srgb, var(--pino) 25%, transparent) inset; }
+  .barra-p.ultima { background: var(--musgo); box-shadow: none; }
+
+  /* Chips de interfaz: arriba a la izquierda y abajo a la derecha, saliendo un poco del borde del panel */
   .chip {
     position: absolute;
     display: inline-flex; align-items: center; gap: var(--space-2);
@@ -83,33 +134,39 @@ const experiencia = sitio.experiencia.charAt(0).toUpperCase() + sitio.experienci
     border-radius: var(--radius-pill);
     background: var(--crema); color: var(--pino);
     font-size: var(--fs-small); font-weight: 700; white-space: nowrap;
-    box-shadow: 0 var(--space-2) var(--space-6) color-mix(in srgb, var(--pino) 45%, transparent);
+    box-shadow: 0 0 0 1px color-mix(in srgb, var(--pino) 20%, transparent), 0 var(--space-2) var(--space-6) color-mix(in srgb, var(--pino) 45%, transparent);
   }
-  .chip-turno { top: var(--space-6); left: calc(var(--space-4) * -1); }
-  .chip-pedido { bottom: calc(var(--space-6) * -1); left: var(--space-6); }
-  .tilde { color: var(--musgo-hondo); font-weight: 800; }
+  .chip-turno { top: calc(var(--space-6) * -1); left: calc(var(--space-4) * -1); }
+  .chip-consulta { bottom: calc(var(--space-6) * -1); right: calc(var(--space-4) * -1); }
+  .chip .tilde { color: var(--musgo-hondo); font-weight: 800; }
   .punto { width: var(--space-2); height: var(--space-2); border-radius: var(--radius-pill); background: var(--lima); box-shadow: 0 0 0 1px var(--pino); }
-  @media (max-width: 47.99rem) { .chip { display: none; } } /* en celular taparían la captura */
   @media (prefers-reduced-motion: no-preference) {
     .chip { animation: chip-entra .6s ease both; animation-delay: .5s; }
-    .chip-pedido { animation-delay: .9s; }
+    .chip-consulta { animation-delay: .9s; }
   }
   @keyframes chip-entra { from { opacity: 0; } to { opacity: 1; } }
-  .pie-collage { font-size: var(--fs-small); color: var(--salvia); }
-  .pie-collage .link { color: var(--crema); }
+  @media (max-width: 47.99rem) { .prueba { max-width: 24rem; } .chip-turno { left: var(--space-2); } .chip-consulta { right: var(--space-2); } }
 
-  h1 .r { display: block; } /* dos renglones fijos: «Tu negocio, más simple» / «y bajo control.» */
   /* Ventanas bajas: menos aire para que el hero entre en la pantalla */
   @media (min-width: 48rem) and (max-height: 800px) { .hero { padding-bottom: var(--space-6); } }
   @media (min-width: 48rem) and (max-height: 760px) {
-    .interior, .pie-hero { gap: var(--space-4); }
-    .collage { margin-bottom: var(--space-8); }
-    .celu-sup { bottom: calc(var(--space-8) * -1); }
+    .hero { padding-top: var(--space-3); }
+    .interior, .pie-hero { gap: var(--space-3); }
+    .accion { gap: var(--space-2); }
+    .prueba { padding: var(--space-6) 0 var(--space-4); }
+    .tablero { gap: var(--space-2); padding: var(--space-4); }
+    .filas { gap: var(--space-1); }
+    .fila-p { padding: var(--space-2) var(--space-3); row-gap: var(--space-1); }
+    .ico-fila { width: 1.75rem; height: 1.75rem; }
+    .t-panel, .valor { font-size: var(--fs-lead); }
+    .grafico-p { height: 3rem; }
+    .chip-consulta { bottom: calc(var(--space-4) * -1); }
   }
-  /* Desde 1024 px la acción y la prueba van lado a lado; antes, la prueba baja para que el CTA no se parta */
+  /* Desde 1024 px la acción y el panel van lado a lado; antes, el panel baja para que el CTA no se parta */
   @media (min-width: 64rem) {
-    .pie-hero { grid-template-columns: minmax(0, 1fr) minmax(0, var(--ancho-marcos)); align-items: start; gap: var(--space-12); }
-    /* La prueba se achica con la altura de la ventana (el ancho útil sale del alto menos lo que ocupan titular, aire y pie): el hero entra siempre */
-    .prueba { max-width: min(100%, calc((100svh - 24rem) * 1.5)); justify-self: end; width: 100%; }
+    .accion { max-width: 44rem; }
+    .confianza { max-width: none; }
+    .pie-hero { grid-template-columns: minmax(0, 1fr) minmax(0, var(--ancho-marcos)); align-items: center; gap: var(--space-12); }
+    .prueba { justify-self: end; }
   }
 </style>

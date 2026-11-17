@@ -65,11 +65,19 @@ test("título ≤ 60 y descripción ≤ 155 caracteres, sin lista cerrada de ser
   assert.doesNotMatch(`${titulo} ${descripcion}`, /la web, los turnos|webs, apps y datos/i);
 });
 
-test("el hero muestra los hechos de sitio.ts y los enlaces directos en orden: WhatsApp, Instagram, mail", () => {
+test("el hero muestra los hechos de sitio.ts y usa los canales de `redes`, en orden: WhatsApp, Instagram, LinkedIn, mail", () => {
   const hero = readFileSync(new URL("../src/components/secciones/Hero.astro", import.meta.url), "utf8");
-  for (const dato of ["sitio.experiencia"]) assert.ok(hero.includes(dato), `falta ${dato}`);
-  const orden = ["contacto.whatsapp", "contacto.instagram", "contacto.mail"].map((c) => hero.indexOf(c));
-  assert.ok(orden.every((i) => i >= 0) && orden[0] < orden[1] && orden[1] < orden[2], "enlaces fuera de orden");
+  for (const dato of ["sitio.experiencia", "<Redes variante=\"pastillas\""]) assert.ok(hero.includes(dato), `falta ${dato}`);
+  const sitio = readFileSync(new URL("../src/data/sitio.ts", import.meta.url), "utf8");
+  const orden = ["whatsapp", "instagram", "linkedin", "mail"].map((id) => sitio.indexOf(`id: "${id}"`));
+  assert.ok(orden.every((i) => i >= 0) && orden.every((n, i) => i === 0 || orden[i - 1] < n), "canales fuera de orden en redes");
+});
+
+test("hero, contacto y pie usan el mismo componente de redes (los cuatro canales, un solo lugar)", () => {
+  for (const [archivo, variante] of [["secciones/Hero.astro", "pastillas"], ["secciones/Contacto.astro", "tarjetas"], ["Footer.astro", "pastillas"]]) {
+    const t = readFileSync(new URL(`../src/components/${archivo}`, import.meta.url), "utf8");
+    assert.ok(t.includes(`<Redes variante="${variante}"`), `${archivo} no usa <Redes variante="${variante}">`);
+  }
 });
 
 test("el sitio no promete plazos de respuesta, no habla de gratis, no destaca la ciudad y no cierra el público a consultorios (pedido de Juanma, 2026-11-15)", () => {
