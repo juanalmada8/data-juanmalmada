@@ -161,8 +161,8 @@ Un caso = un archivo + sus capturas. El esquema está en `web/src/content.config
 ```yaml
 nombre: "Oral Odontología Familiar"
 url: "https://oral.com.ar"              # sitio real; abre en otra pestaña
-partes:                                  # todos los casos: «Qué es» (en «Ver más») y «Qué armé» (la que se destaca)
-  - titulo: "Qué es"
+partes:                                  # todos los casos: «En detalle» (en «Ver más») y «Qué armé» (la que se destaca, un resumen corto)
+  - titulo: "En detalle"
     texto: "Un consultorio odontológico que coordinaba los turnos por mensaje de texto y con una agenda en papel."
   - titulo: "Qué armé"
     texto: "Una web donde los pacientes reservan solos, con confirmación y recordatorio por mail, y un panel para el consultorio."

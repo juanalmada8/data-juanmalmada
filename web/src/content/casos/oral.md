@@ -3,8 +3,8 @@ nombre: "Oral Odontología Familiar"
 url: "https://oral.com.ar"
 resultado: "Los pacientes reservan solos."
 partes:
-  - titulo: "Qué es"
-    texto: "Un consultorio odontológico que coordinaba los turnos por mensaje de texto y con una agenda en papel."
+  - titulo: "En detalle"
+    texto: "Antes, los turnos se coordinaban por mensaje de texto y con una agenda en papel. Ahora los pacientes eligen día y horario desde la web, reciben la confirmación y el recordatorio por mail, se anotan en una lista de espera si no hay lugar, y el consultorio ve y gestiona todo desde un panel."
   - titulo: "Qué armé"
     texto: "Una web donde los pacientes reservan solos, con confirmación y recordatorio por mail, y un panel para el consultorio."
 capturas:
