@@ -20,7 +20,7 @@ El hero SHALL mostrar el titular «Tu negocio, más simple y bajo control.», la
 
 #### Scenario: Celular chico de 360×640
 - **WHEN** se abre la página en un viewport de 360×640 sin scrollear
-- **THEN** se ven el titular y el CTA, y los enlaces directos, la línea de confianza y el collage pueden continuar debajo
+- **THEN** se ven el titular y el CTA, y los enlaces directos, la línea de confianza y el panel pueden continuar debajo
 
 ### Requirement: Nada limita el tipo de proyecto
 Ningún texto SHALL afirmar ni sugerir que Juanma hace un solo tipo de proyecto; los servicios y los casos SHALL presentarse como ejemplos.
@@ -63,19 +63,19 @@ El logo `<jm>` de la barra SHALL tener espacio libre arriba y abajo y MUST NOT t
 - **WHEN** se ve la barra a 1440 px
 - **THEN** hay al menos 12 px entre el logo y la línea inferior de la barra, y el logo mide al menos 100 px de ancho
 
-### Requirement: Hero pino con collage de capturas reales y línea de confianza
-El hero SHALL tener fondo pino continuo con la barra, el titular grande en crema (con «bajo control» en itálica salvia) y, junto a la acción, un collage de dos capturas reales (`oral-escritorio.png` en marco ventana y `staffy-celu.png` en marco celu superpuesto abajo a la izquierda, con el componente `Captura`) y debajo, sin caja, «Oral Odontología Familiar y Staffy, dos de los sistemas que armé.» con enlace a `#casos` en «dos de los sistemas que armé». Debajo de «O escribime directo: …» SHALL ir, en texto chico y sin caja, «Más de 7 años armando sistemas · Trabajo en forma remota en todo el país» (los años salen de `sitio.experiencia`). La firma y la pastilla `hola_mundo()` MUST NOT aparecer en el hero (la firma vive en la nota de Juanma). El hero MUST NOT llevar plazos de respuesta, la ciudad, cifras, testimonios ni logos que no estén confirmados.
+### Requirement: Hero pino con bajada en piezas, panel ilustrado y línea de confianza
+El hero SHALL tener fondo pino continuo con la barra y el titular grande en crema (con «bajo control» en itálica salvia). La columna de la acción SHALL llevar, en este orden: la bajada corta «Armo soluciones a medida para tu negocio:»; una fila de cuatro etiquetas sin enlace (pastillas chicas, fondo crema al 12 %, texto crema: «Sistemas de gestión», «Bots con inteligencia artificial», «Webs», «Tableros con tus datos»); los botones «Charlemos» y «Ver lo que armé»; tres beneficios con un tilde lima («Ahorrás tiempo», «Trabajás más cómodo», «Sabés qué pasa en tu negocio»); la etiqueta «O escribime directo» con `<Redes variante="pastillas" />` (los cuatro canales) y la línea de confianza. A la derecha SHALL ir, en lugar de un collage de capturas, la ilustración de un panel de control, hecha en HTML y CSS con los tokens, decorativa (`aria-hidden="true"`): una tarjeta crema con radio `--radius-tarjeta`, el título «Hoy en tu negocio» y «Martes»; tres filas con ícono, nombre, valor y barrita de progreso («Turnos confirmados — 12», «Pedidos nuevos — 5», «Consultas respondidas por el bot — 18»; salvia, la primera en lima) y un gráfico de siete barras «Esta semana» (salvia, la última musgo). Los números son de ejemplo de interfaz, no resultados, y no hay nombres de personas. Debajo de los canales SHALL ir, en texto chico y sin caja, «Más de 7 años armando sistemas · Trabajo en forma remota en todo el país» (los años salen de `sitio.experiencia`). La firma y la pastilla `hola_mundo()` MUST NOT aparecer en el hero (la firma vive en la nota de Juanma). El hero MUST NOT llevar plazos de respuesta, la ciudad, cifras, testimonios ni logos que no estén confirmados.
 
 #### Scenario: Escritorio
 - **WHEN** el ancho es de 1024 px o más
-- **THEN** el titular ocupa dos renglones y el collage queda a la derecha de la acción, y su tamaño se ajusta a la altura de la ventana para que el hero entre en la primera pantalla (1470×790 y 1366×640)
+- **THEN** el titular ocupa dos renglones y el panel ilustrado queda a la derecha de la acción, y el hero entra en la primera pantalla (1470×790, 1366×640 y 1024×768)
 
 #### Scenario: Celular
 - **WHEN** el ancho es menor a 1024 px
-- **THEN** el collage baja debajo de la línea de confianza y no hay scroll horizontal
+- **THEN** el panel ilustrado baja debajo de la línea de confianza y no hay scroll horizontal
 
 #### Scenario: Enlace a los casos
-- **WHEN** la persona toca «dos de los sistemas que armé»
+- **WHEN** la persona toca «Ver lo que armé»
 - **THEN** la página va a «Cosas que armé» y su título queda bajo la barra
 
 ### Requirement: El hero llena la primera pantalla
@@ -171,12 +171,12 @@ Entre «Qué resuelvo» y «Cómo trabajo» SHALL haber una sección `#nota` (`s
 - **WHEN** se lee la nota
 - **THEN** el capítulo «02 Qué resuelvo» sigue marcado y su tramo no tiene hueco
 
-### Requirement: Chips de interfaz flotantes sobre el collage del hero
-El collage del hero SHALL llevar dos chips crema, decorativos (`aria-hidden="true"`), con sombra suave hecha con colores de la paleta: «✓ Turno confirmado» arriba a la izquierda, saliendo un poco del borde, y «Nueva postulación recibida» con un punto lima delante, abajo a la izquierda (lejos del celu). Entran con un fundido una vez y MUST NOT existir animaciones con movimiento reducido. Debajo de 48 rem SHALL ocultarse. El hero MUST seguir entrando en la primera pantalla de escritorio (1470×790, 1366×640, 1024×768) y no desbordar a 360 px.
+### Requirement: Chips de interfaz flotantes sobre el panel del hero
+El panel del hero SHALL llevar dos chips crema, decorativos (`aria-hidden="true"`), con sombra suave hecha con colores de la paleta: «✓ Turno confirmado» arriba a la izquierda y «Nueva consulta respondida» con un punto lima delante, abajo a la derecha, ambos saliendo un poco del borde. Entran con un fundido una vez y MUST NOT existir animaciones con movimiento reducido. En celular se ven (más chicos y dentro del borde). El hero MUST seguir entrando en la primera pantalla de escritorio (1470×790, 1366×640, 1024×768) y no desbordar a 360 px.
 
 #### Scenario: Escritorio
 - **WHEN** el ancho es de 48 rem o más
-- **THEN** se ven los dos chips sobre el collage, el hero entra en la primera pantalla y no tapan el titular ni los botones
+- **THEN** se ven los dos chips sobre el panel, el hero entra en la primera pantalla y no tapan el titular ni los botones
 
 #### Scenario: Celular y movimiento reducido
 - **WHEN** el ancho es menor a 48 rem, o la persona pidió movimiento reducido

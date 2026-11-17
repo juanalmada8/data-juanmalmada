@@ -1,14 +1,14 @@
 ## ADDED Requirements
 
 ### Requirement: Dos casos reales contados en lenguaje claro
-La sección SHALL mostrar el caso de Oral Odontología Familiar (oral.com.ar), cuyo eje es la autogestión de los pacientes («Antes»: los turnos se coordinaban por mensaje de texto y con una agenda en papel; «Hoy»: los pacientes reservan por su cuenta, reciben la confirmación y el recordatorio por mail, y el consultorio ve todo en un panel), y el de Staffy (jobs.wearestaffy.com) en tres partes («Qué es», «Qué armé», «Hoy»): un portal de empleo para profesionales IT que conecta personas con empresas de Latinoamérica y Estados Unidos; el portal con lo que ven los candidatos y el panel de cada empresa, un primer filtro de candidatos con inteligencia artificial y avisos automáticos por mail; y la mejora de su plataforma de recursos humanos. MUST NOT copiar notas técnicas ni inventar métricas, resultados o funciones.
+La sección SHALL mostrar el caso de Oral Odontología Familiar (oral.com.ar), cuyo eje es la autogestión de los pacientes («Antes»: los turnos se coordinaban por mensaje de texto y con una agenda en papel; «Hoy»: los pacientes reservan por su cuenta, reciben la confirmación y el recordatorio por mail, y el consultorio ve todo en un panel), y el de Staffy (jobs.wearestaffy.com) en dos partes («Qué es», «Qué armé»): un portal de empleo para profesionales IT que conecta personas con empresas de Latinoamérica y Estados Unidos; y «Diseñé y armé el portal completo: la parte pública donde los candidatos ven las vacantes y se postulan, el panel donde cada empresa gestiona sus búsquedas, un primer filtro de candidatos con inteligencia artificial y los avisos automáticos por mail.» (sin parte «Hoy»). MUST NOT copiar notas técnicas ni inventar métricas, resultados o funciones.
 
 #### Scenario: Contenido de un caso
 - **WHEN** se ve un caso
 - **THEN** muestra el nombre, dos o tres partes cortas con la última (la solución o lo que sigue hoy) en un panel propio, el link al sitio y la captura o su marcador
 
 ### Requirement: Cada caso se titula por el resultado
-El esquema de casos SHALL exigir un campo `resultado` (texto no vacío) que es el título (`h3`) de la tarjeta: «Los pacientes reservan solos.» (Oral) y «Candidatos filtrados con IA.» (Staffy). El nombre del cliente SHALL ir como etiqueta chica (`<p translate="no">`, `--fs-small`, peso 800) en el mismo renglón que el link «Ver …↗». El orden de la tarjeta SHALL ser: captura, nombre y link, resultado, «Hoy» y «Ver más». La tarjeta «El próximo puede ser el tuyo» no cambia.
+El esquema de casos SHALL exigir un campo `resultado` (texto no vacío) que es el título (`h3`) de la tarjeta: «Los pacientes reservan solos.» (Oral) y «Candidatos filtrados con IA.» (Staffy). El nombre del cliente SHALL ir en una pastilla (`<p translate="no">`, `--fs-small`, peso 800, fondo del color del texto al 12 %) y, a la derecha en el mismo renglón, un botón chico «Visitar el sitio ↗» (`.boton.sec`, `min-height: var(--tap-min)`) con `aria-label` «Visitar el sitio de {nombre} (se abre en otra pestaña)». El orden de la tarjeta SHALL ser: captura, pastilla y botón, resultado, la última parte y «Ver más». Las tarjetas SHALL tener la misma altura, con «Ver más» al pie. La tarjeta «El próximo puede ser el tuyo» no cambia.
 
 #### Scenario: Título de un caso
 - **WHEN** se ve la tarjeta de Oral
@@ -46,11 +46,11 @@ Los casos MUST NOT incluir métricas, ahorros, testimonios ni funciones que Juan
 - **THEN** sale de lo que Juanma contó, no de una suposición
 
 ### Requirement: Capturas reales, arriba y grandes
-Cada caso SHALL mostrar sus capturas reales (cargadas: Oral y Staffy, de páginas públicas y sin datos de personas) como lo primero de la tarjeta: la de escritorio en un marco de ventana a todo el ancho de la tarjeta y la de celu superpuesta abajo a la derecha, con texto alternativo y carga diferida. El texto visible SHALL ser solo la última parte («Hoy»); las demás partes SHALL ir en un `<details>` con «Ver más». Si un caso futuro no tiene capturas, SHALL mostrar el marcador `[[FALTA: captura de <caso>]]`.
+Cada caso SHALL mostrar sus capturas reales (cargadas: Oral y Staffy, de páginas públicas y sin datos de personas) como lo primero de la tarjeta: la de escritorio en un marco de ventana a todo el ancho de la tarjeta y la de celu superpuesta abajo a la derecha, con texto alternativo y carga diferida. El texto visible SHALL ser solo la última parte (su título: «Hoy» en Oral, «Qué armé» en Staffy); las demás partes SHALL ir en un `<details>` con «Ver más». Si un caso futuro no tiene capturas, SHALL mostrar el marcador `[[FALTA: captura de <caso>]]`.
 
 #### Scenario: Caso con capturas
 - **WHEN** se ve un caso
-- **THEN** la captura de escritorio está arriba y grande, y el texto visible es solo «Hoy», con «Ver más» para el resto
+- **THEN** la captura de escritorio está arriba y grande, y el texto visible es solo la última parte, con «Ver más» para el resto
 
 #### Scenario: Captura faltante
 - **WHEN** un caso futuro no tiene capturas

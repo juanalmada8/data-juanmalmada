@@ -1,11 +1,11 @@
 ## ADDED Requirements
 
 ### Requirement: Cierre con contacto directo
-La sección de contacto SHALL titularse «Contame qué necesitás.» (con «necesitás» en itálica), con la bajada «Escribime y lo charlamos. Con un mensaje alcanza.» (sin plazos de respuesta ni «gratis»), y ofrecer dos tarjetas grandes («Contame por WhatsApp» / «Es lo más rápido.» y «Prefiero mail» / «Si preferís escribir con calma.») e Instagram como enlace aparte, con WhatsApp como principal.
+La sección de contacto SHALL titularse «Contame qué necesitás.» (con «necesitás» en itálica), con la bajada «Escribime y lo charlamos. Con un mensaje alcanza.» (sin plazos de respuesta ni «gratis»), y ofrecer los **cuatro canales juntos** como tarjetas iguales, en este orden: WhatsApp («Es lo más rápido.», en lima y destacado), Instagram («Lo que voy armando.»), LinkedIn («Mi recorrido.») y Mail («Si preferís escribir con calma.»), las tres últimas en salvia; 2×2 en celular y una fila desde 64 rem. Cada tarjeta lleva el ícono de la red (SVG en línea, monocromo, decorativo), el nombre en serif, el detalle y una flecha, y toda ella es el enlace.
 
 #### Scenario: Canales visibles
 - **WHEN** se llega a la sección
-- **THEN** las dos tarjetas y el enlace a Instagram se ven sin scroll adicional en escritorio
+- **THEN** las cuatro tarjetas se ven sin scroll adicional en escritorio
 
 ### Requirement: Dos clics hasta WhatsApp o Instagram
 Desde cualquier punto de la página, abrir WhatsApp o Instagram SHALL requerir como máximo dos clics; desde una tarjeta de «¿Te suena alguna de estas?» o desde el enlace directo del hero, un clic.
@@ -26,25 +26,25 @@ El enlace de WhatsApp de cada tarjeta SHALL abrir el chat con el problema de esa
 - **THEN** el mensaje es «Hola Juanma, vi tu web. Hoy hago esto a mano: » (abierto, para que la persona siga con su caso)
 
 ### Requirement: Datos de contacto en un solo lugar
-Los enlaces de WhatsApp, Instagram, mail y LinkedIn SHALL definirse en un único archivo de datos, y los externos SHALL abrir con `rel="noopener noreferrer"`.
+Los enlaces de WhatsApp, Instagram, LinkedIn y mail SHALL definirse en un único archivo de datos (`redes` en `sitio.ts`, con nombre, url y detalle) y renderizarse con un único componente (`Redes.astro`, variantes «pastillas» y «tarjetas»). Hero, Contacto y pie SHALL mostrar siempre los cuatro canales y en el mismo orden (WhatsApp, Instagram, LinkedIn, mail); los externos SHALL abrir con `target="_blank"` y `rel="noopener noreferrer"` y avisarlo con un texto `sr-only`. Los íconos SHALL ser SVG en línea (trazos de Simple Icons, CC0, y un sobre simple para el mail), monocromos y `aria-hidden`.
 
 #### Scenario: Cambio del mail
 - **WHEN** se cambia el mail en el archivo de datos
-- **THEN** se actualiza en toda la página
+- **THEN** se actualiza en toda la página (hero, contacto y pie)
 
 ### Requirement: Sin presentación en el contacto
-La sección de contacto MUST NOT incluir el texto de presentación («Soy Juanma…») ni la firma: pasaron a la sección «Una nota de Juanma» (ver `landing`). Contacto SHALL quedar con título, bajada, las dos tarjetas e Instagram, en una sola columna.
+La sección de contacto MUST NOT incluir el texto de presentación («Soy Juanma…») ni la firma: pasaron a la sección «Una nota de Juanma» (ver `landing`). Contacto SHALL quedar con título, bajada y las cuatro tarjetas de canales, en una sola columna.
 
 #### Scenario: Revisión del cierre
 - **WHEN** se mira la sección de contacto
 - **THEN** no hay presentación ni firma, y Contacto más el pie entran en una pantalla de escritorio
 
-### Requirement: LinkedIn en el pie
-El pie SHALL conservar el link a LinkedIn y el lema, sin ocupar un botón del contacto principal.
+### Requirement: Los cuatro canales en el pie
+El pie SHALL mostrar el lema y los cuatro canales en pastillas (el mismo componente que el hero), en lugar del link suelto a LinkedIn.
 
 #### Scenario: Pie de página
 - **WHEN** se llega al final
-- **THEN** se ven el lema del manual «Un solo proveedor, todo el sistema.», el link a LinkedIn, «Argentina · 100% remoto» y el año
+- **THEN** se ven el lema del manual «Un solo proveedor, todo el sistema.», las cuatro pastillas (WhatsApp, Instagram, LinkedIn, Mail), «Argentina · 100% remoto» y el año
 
 ### Requirement: Sin línea que rota
 El cierre MUST NOT incluir la línea que cambiaba de palabra («Armemos el sistema de tu …») ni su animación.

@@ -169,6 +169,16 @@
 - [x] 24.4 Docs al día (`01-marca`, `02-contenido`, registro de decisiones, investigación, specs `landing` y `conectado`); test de contraste con los pares nuevos; `check`, tests, build, axe, Lighthouse y `openspec validate`.
 - [ ] 24.5 Juanma revisa en pantalla.
 
+## 25. Vuelta de rosca al diseño (2026-11-17)
+
+- [x] 25.1 `redes` en `sitio.ts` y componente `Redes.astro` (pastillas y tarjetas, íconos Simple Icons CC0 en SVG en línea) usado en hero, Contacto y pie, con los cuatro canales en el mismo orden.
+- [x] 25.2 Hero: bajada en tres piezas (bajada corta, etiquetas, beneficios) y panel de control ilustrado en lugar del collage; entra en la primera pantalla (1470×790, 1366×640, 1024×768) y no desborda a 360 px.
+- [x] 25.3 Casos: Staffy en dos partes, pastilla del cliente y botón «Visitar el sitio», tarjetas de igual altura.
+- [x] 25.4 Conectado: el chat del bot habla de envíos, no de turnos.
+- [x] 25.5 Contacto con los cuatro canales como tarjetas; Contacto + pie entran en una pantalla.
+- [x] 25.6 Docs al día (`01-marca`, `02-contenido`, registro de decisiones, specs); `check`, tests, build, axe y Lighthouse.
+- [ ] 25.7 Juanma revisa en pantalla.
+
 ## Workflow follow-up
 
 - Archivar el cambio (`/opsx:archive`) al mergear.

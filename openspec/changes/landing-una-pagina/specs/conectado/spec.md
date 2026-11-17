@@ -13,7 +13,7 @@ Entre «Cosas que armé» y «Qué resuelvo» SHALL haber una sección `#conecta
 
 #### Scenario: Cada tarjeta muestra su producto
 - **WHEN** se mira cada tarjeta
-- **THEN** «Turnos online» muestra un calendario de cinco días (lun–vie) con uno marcado en lima, tres horarios (09:00, 10:30 marcado, 16:00) y la notificación «✓ Turno confirmado»; «Bots con inteligencia artificial», dos globos de chat; «Sistemas de gestión», una tabla de tres pedidos (#128 Entregado, #129 En camino, #130 Nuevo) con etiqueta de estado; y «Tableros con tus datos», seis barras (la última en lima) y la notificación «Actualizado hoy»
+- **THEN** «Turnos online» muestra un calendario de cinco días (lun–vie) con uno marcado en lima, tres horarios (09:00, 10:30 marcado, 16:00) y la notificación «✓ Turno confirmado»; «Bots con inteligencia artificial», dos globos de chat («¿Hacen envíos al interior?» y «¡Sí, a todo el país! ¿Querés que te pase precios y medios de pago?», sin hablar de turnos); «Sistemas de gestión», una tabla de tres pedidos (#128 Entregado, #129 En camino, #130 Nuevo) con etiqueta de estado; y «Tableros con tus datos», seis barras (la última en lima) y la notificación «Actualizado hoy»
 
 ### Requirement: Las ilustraciones son decorativas y el texto es el accesible
 El dibujo de cada tarjeta SHALL llevar `aria-hidden="true"`; el título y la línea SHALL ser el texto accesible, y la sección MUST funcionar sin JavaScript.
