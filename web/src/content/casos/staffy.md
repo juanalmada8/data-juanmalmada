@@ -6,7 +6,7 @@ partes:
   - titulo: "Qué es"
     texto: "Un portal de empleo para profesionales IT que conecta personas con empresas de Latinoamérica y Estados Unidos."
   - titulo: "Qué armé"
-    texto: "Diseñé y armé el portal completo: la parte pública donde los candidatos ven las vacantes y se postulan, el panel donde cada empresa gestiona sus búsquedas, un primer filtro de candidatos con inteligencia artificial y los avisos automáticos por mail."
+    texto: "El portal completo: lo que ven los candidatos, el panel de cada empresa, un filtro de candidatos con inteligencia artificial y avisos por mail."
 capturas:
   - src: "../../assets/casos/staffy-escritorio.png"
     alt: "Portada del portal de empleo de Staffy con las búsquedas abiertas"

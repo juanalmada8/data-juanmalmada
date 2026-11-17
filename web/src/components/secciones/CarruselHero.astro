@@ -1,0 +1,276 @@
+---
+// «Lo que puedo armar»: carrusel del hero con seis soluciones, cada una con una ilustración de interfaz hecha en HTML y CSS con los tokens de la marca
+// (decorativa, sin cifras de resultados ni nombres de personas), el nombre y una línea. Reemplaza al panel «Hoy en tu negocio».
+// Movimiento automático accesible (WCAG 2.2.2): avanza solo cada 5 s, se pausa con el mouse encima, con foco por teclado adentro, al tocar y con el botón;
+// con prefers-reduced-motion arranca en pausa y sin animación. Sin JavaScript es una pista que se desliza (scroll-snap) y los controles se ocultan.
+// Spec: openspec/changes/landing-una-pagina/specs/{landing,selector-hero}.
+const diapositivas = [
+  { tipo: "turnos", nombre: "Turnos online", linea: "Tus clientes eligen el horario solos." },
+  { tipo: "bot", nombre: "Bots con inteligencia artificial", linea: "Contestan las consultas por vos." },
+  { tipo: "gestion", nombre: "Sistemas de gestión", linea: "Clientes, pedidos y stock en un solo lugar." },
+  { tipo: "tablero", nombre: "Tableros con tus datos", linea: "Ves qué funciona y qué no." },
+  { tipo: "web", nombre: "Webs y tiendas online", linea: "Pensadas para que te escriban y te compren." },
+  { tipo: "portal", nombre: "Portales y plataformas", linea: "Cada usuario entra con su cuenta." },
+];
+const total = diapositivas.length;
+const horarios = ["09:00", "10:30", "16:00"];
+const productos = [
+  { nombre: "Remera", estado: "Hay stock", tono: "salvia" },
+  { nombre: "Buzo", estado: "Quedan pocos", tono: "lima" },
+  { nombre: "Campera", estado: "Sin stock", tono: "musgo" },
+];
+const pestanas = ["Inicio", "Mis datos", "Mensajes"];
+---
+<section class="carrusel" aria-roledescription="carrusel" aria-label="Lo que puedo armar" data-carrusel>
+  <div class="pista" tabindex="0" role="group" aria-label="Soluciones que puedo armar">
+    {diapositivas.map((d, i) => (
+      <div class="diapositiva" role="group" aria-roledescription="diapositiva" aria-label={`${i + 1} de ${total}`}>
+        <div class={`visual v-${d.tipo}`} aria-hidden="true">
+          {d.tipo === "turnos" && (
+            <div class="ui agenda">
+              <p class="t-ui">Agenda de hoy</p>
+              {horarios.map((h) => (
+                <div class="fila-ui">
+                  <span class="hora">{h}</span>
+                  <span class="hueco"></span>
+                  {h === "10:30" && <span class="pastilla lima">Confirmado</span>}
+                </div>
+              ))}
+            </div>
+          )}
+          {d.tipo === "bot" && (
+            <div class="ui chat">
+              <p class="globo cliente">¿Te queda en talle 40?</p>
+              <p class="globo bot">¡Sí! ¿Te lo reservo?</p>
+            </div>
+          )}
+          {d.tipo === "gestion" && (
+            <div class="ui tabla">
+              {productos.map((p) => (
+                <div class="fila-ui"><span class="prod">{p.nombre}</span><span class={`pastilla ${p.tono}`}>{p.estado}</span></div>
+              ))}
+            </div>
+          )}
+          {d.tipo === "tablero" && (
+            <div class="ui grafico-ui">
+              <p class="t-ui">Ventas del mes</p>
+              <svg viewBox="0 0 200 84" focusable="false">
+                <g class="grilla"><path d="M0 14H200M0 35H200M0 56H200M0 77H200M40 4V84M100 4V84M160 4V84" /></g>
+                <polyline class="linea-g" points="6,70 38,58 70,63 102,42 134,46 166,24 190,13" />
+                <circle class="punto-g" cx="190" cy="13" r="5.5" />
+              </svg>
+            </div>
+          )}
+          {d.tipo === "web" && (
+            <div class="ui mini-web">
+              <div class="barra-web"><span></span><span></span><span></span></div>
+              <div class="cuerpo-web">
+                <span class="bloque-titulo"></span>
+                <div class="productos-web">
+                  <span class="producto"></span>
+                  <span class="producto"></span>
+                </div>
+                <span class="boton-web">Comprar</span>
+              </div>
+            </div>
+          )}
+          {d.tipo === "portal" && (
+            <div class="ui cuenta">
+              <div class="cab-cuenta"><span class="avatar"></span><p class="t-ui">Mi cuenta</p></div>
+              <div class="pestanas">
+                {pestanas.map((p, j) => <span class:list={["pestana", { activa: j === 0 }]}>{p}</span>)}
+              </div>
+            </div>
+          )}
+        </div>
+        <div class="texto">
+          <p class="nombre">{d.nombre}</p>
+          <p class="linea">{d.linea}</p>
+        </div>
+      </div>
+    ))}
+  </div>
+
+  <div class="controles">
+    <div class="puntos">
+      {diapositivas.map((_, i) => (
+        <button type="button" class="punto-c" data-i={i} aria-label={`Ir a la diapositiva ${i + 1}`} aria-current={i === 0 ? "true" : undefined}>
+          <span class="marca" aria-hidden="true"></span>
+        </button>
+      ))}
+    </div>
+    <button type="button" class="pausa" aria-pressed="false"><span class="txt-pausa">Pausar</span></button>
+  </div>
+</section>
+
+<style>
+  .carrusel { --alto-visual: 11rem; --alto-producto: 2.25rem; display: grid; gap: var(--space-2); width: 100%; } /* medidas propias de las ilustraciones */
+
+  /* Pista: sin JS se desliza con el dedo, el trackpad o las flechas (scroll-snap); con JS la mueve el script */
+  .pista { position: relative; display: flex; gap: var(--space-4); overflow-x: auto; overscroll-behavior-x: contain; scroll-snap-type: x mandatory; border-radius: var(--radius-tarjeta); }
+  :global(html.js) .pista { scrollbar-width: none; }
+  :global(html.js) .pista::-webkit-scrollbar { display: none; }
+  :global(html:not(.js)) .pista { padding-bottom: var(--space-2); scrollbar-color: var(--salvia) transparent; scrollbar-width: thin; }
+  :global(html:not(.js)) .controles { display: none; }
+
+  .diapositiva { flex: 0 0 100%; min-width: 0; scroll-snap-align: start; display: grid; grid-template-rows: auto 1fr; gap: var(--space-3); padding: var(--space-3); border-radius: var(--radius-tarjeta); background: var(--crema); color: var(--pino); }
+
+  /* Ilustración: una placa papel con un pedacito de interfaz adentro. Alto fijo para que todas las diapositivas midan igual */
+  .visual { display: grid; align-items: center; height: var(--alto-visual); padding: var(--space-4); border-radius: var(--radius-card); background: var(--papel); overflow: hidden; }
+  .ui { display: grid; gap: var(--space-2); width: 100%; min-width: 0; }
+  .t-ui { font-size: var(--fs-label); font-weight: 800; line-height: 1.2; }
+  .fila-ui { display: flex; align-items: center; gap: var(--space-3); padding: var(--space-1) var(--space-3); border-radius: var(--radius-box); background: var(--blanco); box-shadow: 0 0 0 1px var(--salvia); }
+  .pastilla { margin-left: auto; padding: 0 var(--space-3); border-radius: var(--radius-pill); font-size: var(--fs-label); font-weight: 700; line-height: 1.6; white-space: nowrap; }
+  .pastilla.lima { background: var(--lima); color: var(--pino); box-shadow: 0 0 0 1px var(--pino); }
+  .pastilla.salvia { background: var(--salvia); color: var(--pino); }
+  .pastilla.musgo { background: var(--musgo-hondo); color: var(--crema); }
+
+  /* 1. Turnos */
+  .hora { font-family: var(--font-mono); font-size: var(--fs-small); font-weight: 500; }
+  .hueco { flex: 1; height: var(--space-2); border-radius: var(--radius-pill); background: color-mix(in srgb, var(--pino) 12%, transparent); }
+
+  /* 2. Bot */
+  .chat { gap: var(--space-3); }
+  .globo { max-width: 85%; padding: var(--space-2) var(--space-4); font-size: var(--fs-small); font-weight: 600; line-height: 1.35; }
+  .globo.cliente { justify-self: start; background: var(--crema); color: var(--pino); box-shadow: 0 0 0 1px var(--salvia); border-radius: var(--radius-card) var(--radius-card) var(--radius-card) var(--space-1); }
+  .globo.bot { justify-self: end; background: var(--pino); color: var(--crema); border-radius: var(--radius-card) var(--radius-card) var(--space-1) var(--radius-card); }
+
+  /* 3. Gestión */
+  .prod { font-size: var(--fs-small); font-weight: 700; }
+
+  /* 4. Tablero: una línea ascendente con un punto lima al final, sin números en los ejes */
+  .grafico-ui svg { display: block; width: 100%; height: auto; max-height: 7rem; border-radius: var(--radius-box); background: var(--blanco); box-shadow: 0 0 0 1px var(--salvia); }
+  .grilla path { fill: none; stroke: color-mix(in srgb, var(--pino) 12%, transparent); stroke-width: 1; }
+  .linea-g { fill: none; stroke: var(--musgo); stroke-width: 3; stroke-linecap: round; stroke-linejoin: round; }
+  .punto-g { fill: var(--lima); stroke: var(--pino); stroke-width: 1.5; }
+
+  /* 5. Mini página */
+  .mini-web { gap: 0; border-radius: var(--radius-box); background: var(--blanco); box-shadow: 0 0 0 1px var(--salvia); overflow: hidden; }
+  .barra-web { display: flex; gap: var(--space-1); padding: var(--space-2) var(--space-3); background: var(--salvia); }
+  .barra-web span { width: var(--space-2); height: var(--space-2); border-radius: var(--radius-pill); background: var(--pino); }
+  .cuerpo-web { display: grid; gap: var(--space-2); padding: var(--space-2) var(--space-3) var(--space-3); justify-items: start; }
+  .bloque-titulo { width: 60%; height: var(--space-3); border-radius: var(--radius-pill); background: var(--pino); }
+  .productos-web { display: grid; grid-template-columns: 1fr 1fr; gap: var(--space-2); width: 100%; }
+  .producto { height: var(--alto-producto); border-radius: var(--radius-box); background: var(--salvia); }
+  .boton-web { padding: 0 var(--space-4); border-radius: var(--radius-pill); background: var(--lima); color: var(--pino); box-shadow: 0 0 0 1px var(--pino); font-size: var(--fs-label); font-weight: 800; line-height: 1.7; }
+
+  /* 6. Cuenta de usuario */
+  .cuenta { gap: var(--space-3); padding: var(--space-3); border-radius: var(--radius-box); background: var(--blanco); box-shadow: 0 0 0 1px var(--salvia); }
+  .cab-cuenta { display: flex; align-items: center; gap: var(--space-3); }
+  .avatar { width: 2.5rem; height: 2.5rem; border-radius: var(--radius-pill); background: var(--salvia); box-shadow: 0 0 0 1px var(--pino) inset; flex: none; }
+  .cab-cuenta .t-ui { font-family: var(--font-serif); font-size: var(--fs-lead); font-weight: 400; }
+  .pestanas { display: flex; flex-wrap: wrap; gap: var(--space-2); }
+  .pestana { padding: 0 var(--space-3); border-radius: var(--radius-pill); font-size: var(--fs-label); font-weight: 700; line-height: 1.9; box-shadow: 0 0 0 1px var(--salvia) inset; }
+  .pestana.activa { background: var(--pino); color: var(--crema); box-shadow: none; }
+
+  /* Título y línea de cada diapositiva */
+  .texto { display: grid; align-content: start; gap: var(--space-1); padding: 0 var(--space-3) var(--space-3); }
+  .nombre { font-family: var(--font-serif); font-size: var(--fs-tarjeta); line-height: 1.05; letter-spacing: -.02em; }
+  .linea { font-size: var(--fs-small); }
+
+  /* Controles: seis puntos (área táctil de 44 px) y el botón de pausa */
+  .controles { display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; column-gap: var(--space-3); }
+  .puntos { display: flex; }
+  .punto-c { display: grid; place-items: center; width: var(--tap-min); height: var(--tap-min); padding: 0; border: 0; background: none; color: inherit; cursor: pointer; }
+  .marca { width: var(--space-3); height: var(--space-3); border-radius: var(--radius-pill); border: 2px solid var(--salvia); box-sizing: border-box; }
+  .punto-c:hover .marca { background: var(--salvia); }
+  .punto-c[aria-current="true"] .marca { background: var(--lima); border-color: var(--lima); }
+  .pausa { min-height: var(--tap-min); padding: 0 var(--space-4); border-radius: var(--radius-pill); border: 2px solid var(--crema); background: transparent; color: var(--crema); font: inherit; font-size: var(--fs-small); font-weight: 700; cursor: pointer; margin-left: auto; }
+  .pausa:hover { background: var(--crema); color: var(--pino); }
+
+  @media (max-width: 47.99rem) { .carrusel { --alto-visual: 10.5rem; } }
+  /* Ventanas bajas: el carrusel achica para que el hero entre en la pantalla */
+  @media (min-width: 48rem) and (max-height: 800px) {
+    .carrusel { --alto-visual: 10rem; }
+    .visual { padding: var(--space-3); }
+    .nombre { font-size: var(--fs-h3); }
+    .texto { padding-bottom: var(--space-2); }
+  }
+  @media (min-width: 48rem) and (max-height: 760px) {
+    .carrusel { --alto-visual: 9rem; --alto-producto: 1.5rem; }
+    .visual { padding: var(--space-2) var(--space-3); }
+    .ui { gap: var(--space-1); }
+    .nombre { font-size: var(--fs-lead); }
+    .globo { padding-block: var(--space-1); }
+    .chat { gap: var(--space-2); }
+  }
+</style>
+
+<script>
+  const raiz = document.querySelector<HTMLElement>("[data-carrusel]");
+  if (raiz) {
+    const pista = raiz.querySelector<HTMLElement>(".pista")!;
+    const diapositivas = [...pista.querySelectorAll<HTMLElement>(".diapositiva")];
+    const puntos = [...raiz.querySelectorAll<HTMLButtonElement>(".punto-c")];
+    const pausa = raiz.querySelector<HTMLButtonElement>(".pausa")!;
+    const txtPausa = pausa.querySelector<HTMLElement>(".txt-pausa")!;
+    const sinMovimiento = matchMedia("(prefers-reduced-motion: reduce)");
+
+    let actual = 0;
+    let pausado = sinMovimiento.matches; // con movimiento reducido arranca en pausa
+    let encima = false; // mouse encima
+    let foco = false; // foco por teclado adentro
+    let tocando = false; // dedo sobre el carrusel (se libera unos segundos después)
+    let intervalo: number | undefined;
+    let cuadro = 0;
+    let liberaToque: number | undefined;
+
+    const marcar = (i: number) => {
+      actual = i;
+      puntos.forEach((p, j) => (j === i ? p.setAttribute("aria-current", "true") : p.removeAttribute("aria-current")));
+    };
+
+    // El índice sale de dónde está la pista (sirve también cuando la persona desliza con el dedo o las flechas)
+    const sincronizar = () => {
+      let mejor = 0;
+      diapositivas.forEach((d, i) => {
+        if (Math.abs(d.offsetLeft - pista.scrollLeft) < Math.abs(diapositivas[mejor].offsetLeft - pista.scrollLeft)) mejor = i;
+      });
+      if (mejor !== actual) marcar(mejor);
+    };
+
+    const irA = (i: number) => {
+      // La vuelta de la última a la primera es un salto, no un barrido por las cinco diapositivas
+      const vuelta = i === 0 && actual === diapositivas.length - 1;
+      pista.scrollTo({ left: diapositivas[i].offsetLeft, behavior: sinMovimiento.matches || vuelta ? "auto" : "smooth" });
+    };
+
+    const programar = () => {
+      window.clearInterval(intervalo);
+      intervalo = undefined;
+      if (!pausado && !encima && !foco && !tocando) intervalo = window.setInterval(() => irA((actual + 1) % diapositivas.length), 5000);
+    };
+
+    const pintarPausa = () => {
+      pausa.setAttribute("aria-pressed", String(pausado));
+      txtPausa.textContent = pausado ? "Reanudar" : "Pausar";
+    };
+
+    pista.addEventListener("scroll", () => {
+      cancelAnimationFrame(cuadro);
+      cuadro = requestAnimationFrame(sincronizar);
+    }, { passive: true });
+
+    puntos.forEach((p, i) => p.addEventListener("click", () => { irA(i); programar(); }));
+
+    pausa.addEventListener("click", () => { pausado = !pausado; pintarPausa(); programar(); });
+
+    // Pausa por mouse (no por toque: en el celular el «hover» queda pegado)
+    raiz.addEventListener("pointerenter", (e) => { if (e.pointerType === "mouse") { encima = true; programar(); } });
+    raiz.addEventListener("pointerleave", (e) => { if (e.pointerType === "mouse") { encima = false; programar(); } });
+    // Pausa por foco de teclado en la pista o los puntos (el botón de pausa no cuenta: si no, «Reanudar» con Enter no reanudaría nada)
+    const mirarFoco = () => { foco = !!raiz.querySelector(".pista:focus-visible, .punto-c:focus-visible"); programar(); };
+    raiz.addEventListener("focusin", mirarFoco);
+    raiz.addEventListener("focusout", () => setTimeout(mirarFoco, 0));
+    // Pausa mientras se toca y unos segundos después
+    raiz.addEventListener("touchstart", () => { tocando = true; window.clearTimeout(liberaToque); programar(); }, { passive: true });
+    const sueltaToque = () => { window.clearTimeout(liberaToque); liberaToque = window.setTimeout(() => { tocando = false; programar(); }, 4000); };
+    raiz.addEventListener("touchend", sueltaToque, { passive: true });
+    raiz.addEventListener("touchcancel", sueltaToque, { passive: true });
+
+    sinMovimiento.addEventListener("change", () => { if (sinMovimiento.matches) { pausado = true; pintarPausa(); programar(); } });
+
+    pintarPausa();
+    programar();
+  }
+</script>

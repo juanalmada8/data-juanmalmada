@@ -179,6 +179,14 @@
 - [x] 25.6 Docs al día (`01-marca`, `02-contenido`, registro de decisiones, specs); `check`, tests, build, axe y Lighthouse.
 - [ ] 25.7 Juanma revisa en pantalla.
 
+## 26. Carrusel en el hero y casos con el mismo formato (2026-11-17)
+
+- [x] 26.1 Hero: bajada de vuelta a un párrafo con el texto de antes y sin etiquetas; quedan los tildes y las redes.
+- [x] 26.2 `CarruselHero.astro` «Lo que puedo armar» en lugar del panel «Hoy en tu negocio» y sus chips: seis diapositivas ilustradas en HTML/CSS, puntos y «Pausar» / «Reanudar»; avance cada 5 s, pausa con mouse, foco, toque y botón; quieto con movimiento reducido; desliza sin JS. `--ancho-marcos` con mínimo de 26 rem.
+- [x] 26.3 Casos: Oral y Staffy con «Qué es» y «Qué armé» (textos del plan).
+- [x] 26.4 Docs al día (`01-marca`, `02-contenido`, registro de decisiones, specs `landing`, `selector-hero` y `casos`); `check`, tests, build, axe, Lighthouse y `openspec validate`.
+- [ ] 26.5 Juanma revisa en pantalla.
+
 ## Workflow follow-up
 
 - Archivar el cambio (`/opsx:archive`) al mergear.

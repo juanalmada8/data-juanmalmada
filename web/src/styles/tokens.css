@@ -63,7 +63,7 @@
   --fs-h1:    clamp(2.25rem, min(1.2rem + 5.2vw, 11vh), 5.25rem); /* grande, hasta 84 px, y que no pase del 11 % del alto de la ventana: el hero entra en la primera pantalla */
   --alto-pie: 8.5rem; /* el pie en escritorio; «Contacto» llena la pantalla menos barra y pie */
   --alto-tarjeta: 13rem; --alto-tarjeta-chica: 11rem; /* alto mínimo de las tarjetas grandes y de las chicas */
-  --ancho-marcos: clamp(30rem, 36vw, 50rem); /* la columna del panel ilustrado del hero */
+  --ancho-marcos: clamp(26rem, 36vw, 50rem); /* la columna del carrusel del hero */
   --ancho-accion: 30rem; /* columna de la bajada, el CTA y los enlaces del hero */
   --fs-tarjeta: clamp(1.5rem, 1rem + 1.4vw, 2.25rem);    /* títulos de las tarjetas grandes */
   --fs-numeral: clamp(3rem, 2rem + 3vw, 4.5rem);      /* números grandes en serif (≥ 48 px) */
