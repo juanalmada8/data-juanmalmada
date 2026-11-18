@@ -6,22 +6,41 @@ y sacala de esta lista.
 
 ## Decisiones abiertas
 
-1. **Origen del sitio actual.** El DNS está en Cloudflare, pero ¿el `index.html` de hoy lo sirve el hosting de DonWeb,
-   GitHub Pages u otro? Hace falta saberlo para el corte (2.10).
-2. **Dirección de correo.** Propuesta: `hola@juanmalmada.com`. ¿Va esa u otra?
-3. **Tiempos por etapa** de «Cómo trabajo» (ej. «una web simple: 2–3 semanas»). A definir.
-4. **Apps.** ¿Qué apps o herramientas en Python van primero? Cada una necesita su spec en `docs/specs/apps/`.
+1. **Dirección de correo.** Propuesta: `hola@juanmalmada.com`. Lo vemos más adelante (tarea 1.7).
+2. **Cuentas para el deploy.** Cloudflare Pages ya está conectado al repo: para el corte (2.10) alcanza con cambiar la config
+   en el dashboard. Para la API (Cloud Run) hace falta una cuenta de Google Cloud con facturación activada (tier gratis, pero pide tarjeta).
 
-## Contenido (más adelante)
+## Para más adelante (no bloquean)
 
-- [ ] Usuario de Instagram (todavía no existe; hasta entonces, el contacto es WhatsApp y mail).
-- [ ] Casos reales: para cada uno, qué era antes, qué armaste, capturas, y si el cliente acepta aparecer con nombre.
-  - [ ] Turnos online — consultorio odontológico.
-  - [ ] Salud (clínicas) y empresas de RRHH: hay experiencia real, falta elegir qué contar.
-- [ ] Frase propia para «detrás de escena» si querés cambiar la del manual.
+- **Tiempos de entrega** («una web simple: 2–3 semanas»). Mientras no estén, «Cómo trabajo» no muestra tiempos.
+- **Demos vivas** (un turnero o un tablero de ejemplo que se pueda probar en la web). Ideas sueltas, sin apuro.
+
+## Contenido
+
+- [x] **Capturas de Oral y de Staffy**: cargadas el 2026-11-15 desde las páginas públicas (portada en escritorio y celu; listado de vacantes de Staffy
+  en celu). La de Oral en celu es la portada, no el paso de reserva: ese paso muestra los nombres de las profesionales. Revisá que te gusten;
+  están en `web/src/assets/casos/` y se referencian en `web/src/content/casos/<caso>.md`.
+- [ ] **¿Facturás (monotributo o responsable inscripto)?** Mostrarlo da confianza en Argentina; si querés, va en el pie o en «Preguntas». No lo puse sin tu confirmación.
+- [ ] **Testimonios**: con nombre, rubro y ciudad del cliente funcionan mejor (ver también el pendiente de las dos frases de clientes, justo abajo).
+- [ ] **Dos frases de clientes** (una de Oral y una de Staffy), con nombre, rol y permiso para publicarlas. Van en `testimonio` de cada caso.
+- [ ] **Un video de pantalla de 30 s** de Oral: alguien saca un turno y aparece en el panel (sirve grabado con el celular). Va en `video`.
+- [ ] **Precio del plan mensual** (no va en la web, pero lo vas a necesitar para la propuesta): qué incluye y cuánto sale.
+- [ ] **Oral, si querés contarlo con más calor**: que es el consultorio de tu mamá y que antes los turnos llegaban a su celular. Hoy la web lo dice sin nombrarla; contarlo es decisión tuya.
+- [ ] **Integraciones que hacés de verdad** (WhatsApp, Mercado Pago, Google Calendar, CRM…): si me las decís, las nombro en las tarjetas; da confianza local. No las puse sin tu confirmación.
+- [ ] **Datos legales en el pie** (nombre completo, ciudad, CUIT si querés): en Argentina tranquiliza a quien desconfía; la competencia local lo muestra. Decisión tuya.
+- [ ] Confirmar la URL de Instagram (se asume `instagram.com/almadaortiz.dev`).
+- [ ] **Otros proyectos para «Cosas que armé»** (estilo Etch: una línea cada uno, de rubros distintos; propios o internos, sin nombres de
+  empresas). Con 5 o 6 líneas la web comunica «hago lo que sea» sin un titular. No se inventan. Se cargan en
+  `web/src/data/proyectos.ts`; mientras esté vacío, la grilla no se muestra.
+- [ ] **Dos tonos nuevos, mezclas de tu paleta** (propuesta): `--papel` (crema + 30 % salvia) para una tarjeta y `--musgo-hondo` (musgo + 40 % pino) para dos tarjetas y el marco «años de oficio» del hero, porque crema sobre musgo puro no llega a 4.5:1. Confirmar o pedir otra cosa.
+- [ ] **«Lo que hago / Lo que no hago»** (idea de Humaan): los textos los redacté yo como compromisos de cualquier profesional serio; revisalos, cambialos o sumá los tuyos (con tu humor). Están en `web/src/components/secciones/ComoTrabajo.astro`. También el manifiesto de «¿Qué necesitás?» y las palabras que rotan en el cierre. Dejé **fuera**, hasta que lo valides, dos compromisos con peso: «Usar tus datos para otra cosa que no sea tu proyecto» (protección de datos, clínicas y RRHH) y «Esconder cómo funciona lo que armo» (transparencia/código); si querés alguno, decime cómo lo querés prometer.
+- [ ] **La nota firmada** la escribí con tus palabras del chat: revisala y cambiá lo que no suene a vos (`web/src/components/secciones/Nota.astro`).
+- [ ] **Integraciones que hacés de verdad** (WhatsApp, Mercado Pago, Google Calendar…) para un bloque «funciona con lo que ya usás».
+- [ ] Más casos reales: clínicas y empresas de RRHH (hay experiencia, falta elegir qué contar).
+- [ ] Si «Fuera del código» (hockey, cocina, rock nacional, viajes) vuelve en otra versión: hoy quedó afuera por el tope de 5 secciones.
 
 ## Resuelto (2026-10-10)
 
-Stack, hosting y mail (ver `03-arquitectura.md`) · 8 años · no se nombran empresas · perfiles con experiencia:
-clínicas y RRHH · todo a presupuesto · canales: WhatsApp, Instagram, mail · respuesta en menos de 24 h hábiles ·
-sin foto · assets de marca completos.
+Stack, hosting y mail (ver `03-arquitectura.md`) · el sitio actual lo sirve Cloudflare Pages desde la raíz de `main` · «más de 7 años» (2026-10-27) · dominio principal juanmalmada.com · titular «Todo el sistema, un solo proveedor.» · no se nombran empresas · perfiles con experiencia:
+clínicas y RRHH · todo a presupuesto · canales: WhatsApp, Instagram, mail · respuesta (quitado el 2026-11-15: ya no se promete un plazo) ·
+sin foto · assets de marca completos · Instagram `almadaortiz.dev`.

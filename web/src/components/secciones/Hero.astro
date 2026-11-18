@@ -1,0 +1,81 @@
+---
+// Hero pino pegado a la barra (como thoughtbot): un titular con lo que gana el cliente («más simple y bajo control»), una bajada en un solo párrafo,
+// CTA lima, tres beneficios, los cuatro canales (componente Redes) y una línea de confianza; a la derecha, el carrusel «Lo que puedo armar»
+// (CarruselHero.astro: seis soluciones ilustradas que rotan solas y se pueden pausar). Las capturas reales están en «Cosas que armé».
+// El lema del manual va en el pie.
+// Spec: openspec/changes/landing-una-pagina/specs/{landing,selector-hero}.
+import Redes from "../Redes.astro";
+import CarruselHero from "./CarruselHero.astro";
+import { sitio } from "../../data/sitio";
+
+const experiencia = sitio.experiencia.charAt(0).toUpperCase() + sitio.experiencia.slice(1); // «Más de 7 años» (con espacio de no separación)
+const beneficios = ["Ahorrás tiempo", "Trabajás más cómodo", "Sabés qué pasa en tu negocio"];
+---
+<section id="hero" class="hero tema-pino" aria-labelledby="hero-titulo">
+  <div class="marco interior">
+    <h1 id="hero-titulo"><span class="r">Tu negocio, más simple</span> <span class="r">y <em>bajo control</em>.</span></h1>
+
+    <div class="pie-hero">
+      <div class="accion">
+        <p class="lead">Armo soluciones a medida: sistemas de gestión, bots con inteligencia artificial, webs y tableros con tus datos. Para que ahorres tiempo, trabajes más cómodo y sepas en todo momento qué pasa en tu negocio.</p>
+        <div class="botones">
+          <a class="boton lima flecha" href="#contacto">Charlemos</a>
+          <a class="boton sec" href="#casos">Ver lo que armé</a>
+        </div>
+        <ul class="beneficios" role="list">
+          {beneficios.map((b) => <li><span class="tilde" aria-hidden="true">✓</span>{b}</li>)}
+        </ul>
+        <div class="directo">
+          <p class="rotulo-directo" id="directo-rotulo">O escribime directo</p>
+          <Redes variante="pastillas" rotulo="directo-rotulo" />
+        </div>
+        <p class="confianza">{experiencia} armando sistemas · Trabajo en forma remota en todo el país</p>
+      </div>
+
+      <div class="prueba">
+        <CarruselHero />
+      </div>
+    </div>
+  </div>
+</section>
+
+<style>
+  /* El hero llena la primera pantalla (alto de la ventana menos la barra): así la franja de abajo no asoma cortada */
+  .hero { padding: var(--space-6) 0 var(--space-12); min-height: calc(100svh - var(--alto-barra)); display: grid; align-content: center; }
+  .interior { display: grid; gap: var(--space-8); }
+  h1 em { color: var(--salvia); } /* la lima queda para los botones y la pastilla: el itálico del titular va en salvia */
+  h1 .r { display: block; } /* dos renglones fijos: «Tu negocio, más simple» / «y bajo control.» */
+  .pie-hero { display: grid; gap: var(--space-8); }
+  .accion { display: grid; gap: var(--space-4); justify-items: start; align-content: start; max-width: var(--ancho-accion); }
+  .botones { display: flex; flex-wrap: wrap; gap: var(--space-3); }
+  .accion .boton { white-space: nowrap; }
+  .lead { max-width: none; }
+
+  /* Beneficios: tres en fila con tilde lima */
+  .beneficios { list-style: none; padding: 0; margin: 0; display: flex; flex-wrap: wrap; column-gap: var(--space-6); row-gap: var(--space-1); font-size: var(--fs-small); font-weight: 700; }
+  .beneficios li { display: inline-flex; align-items: baseline; gap: var(--space-2); }
+  .beneficios .tilde { color: var(--lima); font-weight: 800; }
+
+  .directo { display: grid; gap: var(--space-1); }
+  .rotulo-directo { font-size: var(--fs-label); color: var(--salvia); }
+  .confianza { font-size: var(--fs-small); color: var(--salvia); max-width: 36ch; }
+
+  /* Carrusel: ocupa la columna derecha (a ancho completo en celular, con tope en tablet) */
+  .prueba { max-width: 38rem; width: 100%; }
+
+  /* Ventanas bajas: menos aire para que el hero entre en la pantalla */
+  @media (min-width: 48rem) and (max-height: 800px) { .hero { padding-bottom: var(--space-6); } }
+  @media (min-width: 48rem) and (max-height: 760px) {
+    .hero { padding-top: var(--space-3); }
+    .interior, .pie-hero { gap: var(--space-3); }
+    .accion { gap: var(--space-2); }
+  }
+  /* Desde 1024 px la acción y el carrusel van lado a lado; antes, el carrusel baja para que el CTA no se parta */
+  @media (min-width: 64rem) {
+    .accion { max-width: 44rem; }
+    .confianza { max-width: none; }
+    .pie-hero { grid-template-columns: minmax(0, 1fr) minmax(0, var(--ancho-marcos)); align-items: start; gap: var(--space-12); } /* el texto va pegado al titular */
+    .pie-hero > .prueba { align-self: end; } /* el carrusel se apoya abajo: el hero no crece */
+    .prueba { justify-self: end; }
+  }
+</style>

@@ -1,2 +1,10 @@
 .DS_Store
 .env
+.taste-skill/
+
+# Skills de terceros instaladas con `npx skills add` (no se versionan: código ajeno, repo público)
+.agents/skills/design-taste-frontend/
+.agents/skills/web-design-guidelines/
+.claude/skills/design-taste-frontend
+.claude/skills/web-design-guidelines
+skills-lock.json

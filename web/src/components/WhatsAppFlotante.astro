@@ -1,0 +1,46 @@
+---
+// Botón flotante de WhatsApp, solo en celular y tablet (< 64rem; en escritorio la barra ya tiene «Charlemos»). Aparece al pasar el hero
+// y se va cuando Contacto o el pie están a la vista (ahí ya hay un botón de WhatsApp). Sin JavaScript queda siempre visible.
+// Spec: openspec/changes/landing-una-pagina/specs/contacto («Botón flotante de WhatsApp»).
+import { contacto } from "../data/sitio";
+---
+<a class="wa-flotante" href={contacto.whatsapp} target="_blank" rel="noopener noreferrer" data-wa-flotante>
+  WhatsApp <span aria-hidden="true">→</span><span class="sr-only"> (se abre en otra pestaña)</span>
+</a>
+
+<script>
+  const boton = document.querySelector<HTMLElement>("[data-wa-flotante]");
+  const hero = document.getElementById("hero");
+  const cierre = [document.getElementById("contacto"), document.querySelector<HTMLElement>("footer")].filter((e): e is HTMLElement => !!e);
+  if (boton && hero && cierre.length && "IntersectionObserver" in window) {
+    const vistos = new Set<Element>();
+    const actualizar = () => boton.classList.toggle("visible", !vistos.size);
+    const io = new IntersectionObserver((entradas) => {
+      for (const e of entradas) e.isIntersecting ? vistos.add(e.target) : vistos.delete(e.target);
+      actualizar();
+    });
+    [hero, ...cierre].forEach((el) => io.observe(el));
+  } else boton?.classList.add("visible"); // sin hero (404) o sin observador: queda a la vista
+</script>
+
+<style>
+  .wa-flotante {
+    position: fixed;
+    right: var(--margen-pagina);
+    bottom: calc(var(--space-4) + env(safe-area-inset-bottom, 0px));
+    z-index: 40;
+    display: inline-flex; align-items: center; gap: var(--space-2);
+    min-height: var(--tap-min); padding: 0 var(--space-6);
+    border-radius: var(--radius-pill);
+    background: var(--lima); color: var(--pino);
+    border: 2px solid var(--pino); /* la lima sola no se distingue de la crema */
+    font-weight: 800; font-size: var(--fs-body); text-decoration: none;
+  }
+  .wa-flotante:focus-visible { outline-color: var(--pino); outline-offset: 3px; box-shadow: 0 0 0 3px var(--crema); }
+  /* Con JavaScript arranca oculto y el script lo muestra; ocultarlo con visibility lo saca también del orden de tabulación */
+  :global(html.js) .wa-flotante:not(.visible) { opacity: 0; visibility: hidden; transform: translateY(var(--space-3)); }
+  @media (prefers-reduced-motion: no-preference) {
+    :global(html.js) .wa-flotante { transition: opacity .25s ease, transform .25s ease, visibility .25s; }
+  }
+  @media (min-width: 64rem) { .wa-flotante { display: none; } }
+</style>

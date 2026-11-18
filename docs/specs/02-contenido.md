@@ -73,88 +73,70 @@ Excepción: **«de punta a punta»** y **«todo el sistema»** son frases de la 
 ## Datos fijos (usar tal cual)
 
 - Nombre: **Juan Martín Almada Ortiz**. Corto: **Juanma**.
-- Base: **General Belgrano, Buenos Aires** · **100% remoto**.
-- Experiencia: **8 años** trabajando con datos.
+- Ubicación: **Argentina · 100% remoto** (sin ciudad: Juanma no quiere destacar de dónde es).
+- Disponibilidad: no se dice nada (ni plazos ni «respondo ni bien lo veo»).
+- Experiencia: **más de 7 años** (decisión de Juanma, 2026-10-27). Ingeniero de datos y desarrollador full stack, en equipos multidisciplinarios y empresas de distintos rubros.
 - Formación: **Sistemas en la UNLP**.
 - Fuera del código: **hockey**, **cocina**, **rock nacional** (y alternativo), **viajes**.
-- Contacto (de `index.html` actual, mantener), en este orden: **WhatsApp** con mensaje precargado (principal),
-  **MD de Instagram** (cuando exista la cuenta), **mail**. LinkedIn como link aparte.
+- Contacto, siempre los cuatro y en este orden (lo define `redes` en `web/src/data/sitio.ts`, y lo usan hero, Contacto y pie): **WhatsApp** con mensaje precargado (principal), **Instagram**
+  (`instagram.com/almadaortiz.dev`), **LinkedIn**, **mail** (decisión de Juanma, 2026-11-17: «siempre lo mismo, todo junto»).
+- Dominio principal: **juanmalmada.com**.
 - Respuesta en **menos de 24&nbsp;h hábiles**.
 - Precios: **todo a presupuesto.** No se muestran precios ni paquetes.
 - **No se nombran las empresas** donde trabajó (Mercado Libre, Cencosud, Ualá, Naranja X): fue como consultor y empleado.
   Ni nombres ni logos.
 
-## Mapa del sitio (inicial)
+## Mapa del sitio
 
 ```
-/                    Home (una página larga, con anclas)
-/proyectos/<slug>    Un caso por proyecto real
-/gracias             Confirmación del formulario (funciona sin JS)
+/        Una sola página, con anclas: #que-hago, #casos, #como-trabajo, #contacto
 /404
-/apps/<nombre>       Más adelante
 ```
 
-## Home, sección por sección
+No hay páginas internas, modales ni formularios (cambio `landing-una-pagina`).
 
-Ritmo de fondo alternado (oscuro · claro · color).
+## Home: una sola página, a ancho completo con tarjetas
 
-### 1. Hero — fondo pino
-- Etiqueta mono: `hola_mundo()`
-- Título: «Un solo proveedor, *todo el sistema*.» (itálica en lima)
-- Bajada (dirección): la web, los turnos, los datos y la nube, armados por una persona, para que trabajes menos a mano
-  y sepas dónde está la plata. Ej.: «Webs, apps y datos que trabajan por vos. Lo que hoy hacés a mano, que lo haga el sistema.»
-- CTA principal (lima): «Escribime» → WhatsApp. Secundario: «Ver proyectos» → `#proyectos`.
-- Chips mono: `web y apps` `turnos y gestión` `datos` `nube`.
-- Logo `<jm▌>` grande con el cursor titilando.
+> **Historial 2026-10-10 → 2026-11-14.** Landing de 8 secciones → editor de código → página editorial → una página de 5
+> secciones con selector → panel fijo a un costado → tarjetas grandes de color (referencias de Juanma, Etch y thoughtbot) →
+> **mensaje desde lo que le pasa a quien entra** (`docs/propuesta-mensaje.md`, aprobada el 2026-11-14). La fuente de verdad del
+> comportamiento es el cambio OpenSpec `landing-una-pagina`. Esto resume el contenido.
 
-### 2. Qué hago — fondo crema
-- Etiqueta: `01 — QUÉ HAGO`. Título: «¿Qué hago?»
-- Los 4 servicios. Cada uno con: **el problema** (en palabras del cliente), **qué armo** y **qué te ahorra**.
-  - *Webs y apps a medida* — tu negocio se ve y se usa bien desde el celular, sin depender de nadie para cambiar un precio.
-  - *Turnos y sistemas de gestión* — menos llamadas y menos ausencias; la agenda, los pedidos o los trámites en un solo lugar.
-  - *Dashboards y análisis de datos* — los números que importan, actualizados solos. Absorbe del sitio viejo: reportes
-    automáticos, integración de fuentes y alertas cuando algo se desvía.
-  - *Nube, infraestructura y arquitectura* — que todo ande, esté respaldado y no se caiga cuando más lo necesitás.
-- Cierre del bloque: **«¿Lo tuyo no está en la lista? Contame igual.»** (no se cierra a nada).
-- Composición con jerarquía, no 4 tarjetas clonadas (ver `04-calidad.md`).
+**Mensaje:** la persona que entra no busca «un sistema de gestión»: busca dejar de contestar mensajes a la noche, de pasar pedidos a
+una planilla, de esperar a fin de mes para ver los números. Titular: **«Tu negocio, más simple y bajo control.»** (2026-11-15; lo que gana el cliente: tiempo, comodidad y control) No habla solo de
+negocios: Juanma aplica a todo lo que se pueda mejorar. El lema del manual, **«Un solo proveedor, todo el sistema.»**, va en el pie.
 
-### 3. Para quién — fondo salvia
-- Los perfiles de la tabla de arriba (consultorios y clínicas, comercios y estudios, empresas, gobierno), cada uno con
-  su ejemplo de una línea. Muestra que va de chico a grande sin cambiar de proveedor.
-- Nada de logos de clientes ni nombres que no estén confirmados.
+**Posicionamiento:** una persona de oficio, no una agencia. Armo lo que ven los clientes y lo que ve quien lo maneja: la web, el
+sistema y los números. Hablás directo con quien lo construye.
 
-### 4. Cómo se arma el sistema — fondo pino
-- **Patrón pipeline**: `tus datos y tareas → se ordenan → se conectan → web / dashboard / alertas → tu negocio`.
-- Mensaje: todo conectado, por eso conviene un solo proveedor; menos intermediarios, menos plata en coordinar. Una o dos frases.
+**Qué NO dice la web (pedido de Juanma, 2026-11-15):** ningún plazo de respuesta («menos de 24 h»), la ciudad (General Belgrano; a lo sumo «Argentina») ni «consultorios» como público. Tampoco «respondo ni bien lo veo» ni «gratis» / «sin costo»: la plata se habla en la propuesta. Un test lo vigila (`tests/copy.test.mjs`).
 
-### 5. Proyectos — fondo crema
-- Etiqueta: `02 — PROYECTOS`
-- Tarjetas a casos reales (`web/src/content/proyectos`): captura real, título serif, **una línea de qué cambió**.
-- Primer caso esperado: turnos online para un consultorio odontológico («Los pacientes sacan turno solos, 24/7»).
-- Con un solo caso, uno grande. No se inventa un segundo.
+**Modelo de negocio (opción B, elegida por Juanma):** proyectos a medida por etapas, con presupuesto por etapa; **la primera
+charla no tiene costo**; después del proyecto, **plan mensual de soporte y mejoras** (sin precio en la web, todo a presupuesto).
 
-### 6. Cómo trabajo — fondo lima (placa) o pino
-- Los 4 pasos del método viejo, en criollo y con la inversión explícita:
-  «Me contás cómo trabajás y qué te cuesta tiempo» → «Te propongo qué armar, cuánto sale y qué te ahorra» →
-  «Lo construyo y lo vas viendo» → «Te lo dejo andando, documentado y te explico».
-- Tiempos reales solo cuando Juanma los confirme.
+| Sección | Contenido |
+|---|---|
+| Hero | Barra y hero en pino. «Tu negocio, más simple / y *bajo control*.» y, debajo, **la bajada en un solo párrafo** (vuelta al texto de antes, 2026-11-17; sin etiquetas): «Armo soluciones a medida: sistemas de gestión, bots con inteligencia artificial, webs y tableros con tus datos. Para que ahorres tiempo, trabajes más cómodo y sepas en todo momento qué pasa en tu negocio.» Después, los botones «Charlemos» (lima) y «Ver lo que armé» (secundario, lleva a #casos), tres **beneficios** con un tilde lima («Ahorrás tiempo» · «Trabajás más cómodo» · «Sabés qué pasa en tu negocio»), la etiqueta «O escribime directo» con los **cuatro canales** en pastillas (componente `Redes`, mismo orden que en Contacto y el pie) y la línea de confianza sin caja: «Más de 7 años armando sistemas · Trabajo en forma remota en todo el país». A la derecha, **el carrusel «Lo que puedo armar»** (`CarruselHero.astro`, columna `--ancho-marcos`; en celular, debajo del texto a ancho completo): seis diapositivas, cada una una tarjeta crema con una ilustración de interfaz HTML/CSS decorativa (`aria-hidden`, sin números ni nombres de personas), el nombre en serif y una línea. 1) **Turnos online** — «Tus clientes eligen el horario solos.» (lista «Agenda de hoy» con `09:00`, `10:30`, `16:00` y «Confirmado» en lima en la segunda); 2) **Bots con inteligencia artificial** — «Contestan las consultas por vos.» (chat «¿Te queda en talle 40?» / «¡Sí! ¿Te lo reservo?»); 3) **Sistemas de gestión** — «Clientes, pedidos y stock en un solo lugar.» (tabla Remera / Buzo / Campera con «Hay stock», «Quedan pocos», «Sin stock»); 4) **Tableros con tus datos** — «Ves qué funciona y qué no.» («Ventas del mes», línea ascendente con punto lima, sin números en los ejes); 5) **Webs y tiendas online** — «Pensadas para que te escriban y te compren.» (mini página con dos productos y botón «Comprar»); 6) **Portales y plataformas** — «Cada usuario entra con su cuenta.» (avatar sin cara, «Mi cuenta» y pestañas «Inicio» / «Mis datos» / «Mensajes»). Debajo, seis puntos («Ir a la diapositiva N», 44 px táctiles) y el botón «Pausar» / «Reanudar» (`aria-pressed`). **Movimiento (WCAG 2.2.2):** avanza solo cada 5 s en bucle; se pausa con el mouse encima, con foco de teclado adentro, al tocar y con el botón; con `prefers-reduced-motion` arranca en pausa y sin animación. Sin JavaScript es una pista que se desliza (scroll-snap) y los controles se ocultan. Reemplaza al panel «Hoy en tu negocio» y sus chips (pedido de Juanma, 2026-11-17: el panel ponía una sola solución como principal). El collage de capturas de Oral y Staffy y su pie salieron del hero (las capturas están en «Cosas que armé»). La firma y `hola_mundo()` salieron del hero (la firma vive en la nota de Juanma). |
+| Cosas que armé | Tres tarjetas en una fila (Oral, Staffy y «El próximo puede ser el tuyo»). **Cada caso se titula por el resultado** (campo `resultado`): «Los pacientes reservan solos.» (Oral) y «Candidatos filtrados con IA.» (Staffy); el nombre del cliente va en una **pastilla** (`--fs-small`, peso 800, fondo del color del texto al 12 %) y, a la derecha, un botón chico «Visitar el sitio ↗» (`.boton.sec`, con `aria-label` «Visitar el sitio de {nombre} (se abre en otra pestaña)»). Orden de la tarjeta: captura, pastilla y botón, resultado (`h3`), última parte y «Ver más» (siempre al pie; las tarjetas tienen la misma altura). **Primero el trabajo:** las capturas reales van arriba y grandes (escritorio a todo el ancho de la tarjeta, celu encima). **Los dos casos tienen el mismo formato (2026-11-17):** dos partes con los mismos rótulos, «Qué es» (oculta en «Ver más») y «Qué armé» (el panel visible), de largo parecido (tres renglones en escritorio). Testimonio y video son opcionales: aparecen solo si el caso los trae (hoy no hay datos). Contenido: **Oral** (eje: autogestión de pacientes): *Qué es* — «Un consultorio odontológico que coordinaba los turnos por mensaje de texto y con una agenda en papel.»; *Qué armé* — «Una web donde los pacientes reservan solos, con confirmación y recordatorio por mail, y un panel para el consultorio.» **Staffy**: *Qué es* — «Un portal de empleo para profesionales IT que conecta personas con empresas de Latinoamérica y Estados Unidos.»; *Qué armé* — «El portal completo: lo que ven los candidatos, el panel de cada empresa, un filtro de candidatos con inteligencia artificial y avisos por mail.» La grilla «Y otras cosas que armé» (`proyectos.ts`) sigue vacía y oculta. |
+| Todo conectado | Entre «Cosas que armé» y «Qué resuelvo» (`#conectado`). Título en dos renglones: «Lo que necesitás, / todo conectado en *un solo lugar*.» Grilla bento 2×2 (7fr + 5fr, 5fr + 7fr) de cuatro tarjetas de color, cada una con una **ilustración de interfaz en HTML/CSS** arriba (decorativa) y el título y una línea abajo: *Turnos online* (pino; «Tus clientes eligen día y horario solos.»; mini calendario lun–vie con un día en lima, tres horarios y la notificación «✓ Turno confirmado»), *Bots con inteligencia artificial* (salvia; «Contestan las consultas aunque estés ocupado.»; chat con «¿Hacen envíos al interior?» y «¡Sí, a todo el país! ¿Querés que te pase precios y medios de pago?» (sin hablar de turnos, para que no repita la tarjeta de arriba)), *Sistemas de gestión* (papel; «Clientes, pedidos y stock en un solo lugar.»; tabla de tres pedidos —Entregado, En camino, Nuevo—) y *Tableros con tus datos* (musgo hondo; «Ves qué funciona y qué no, al día.»; seis barras, la última en lima, y la notificación «Actualizado hoy»). Debajo, a la izquierda, el enlace «¿Lo tuyo es otra cosa? Contámelo» a `#contacto`. Sin cifras ni nombres de personas. Idea tomada de Tiendanube. |
+| Qué resuelvo | Título «¿Te suena *alguna* de estas?» (sin bajada; absorbe a la antigua sección «¿Te suena?», fusionada el 2026-11-15) y 6 tarjetas: **arriba el problema** y **abajo, en un panel propio, la solución** (nombre y una línea) con «Esto me pasa →» a WhatsApp con el problema ya escrito. Las seis, en orden: *Te escriben y te llaman todo el día* (Turnos y pedidos online), *Respondés las mismas preguntas una y otra vez* (Bots con inteligencia artificial), *Todo vive en planillas, cuadernos y chats* (Sistemas de gestión), *Tenés datos y no sabés qué hacer con ellos* (Tableros con tus datos), *Tu web no te trae clientes* (Webs, apps y plataformas) y *Lo tuyo no está en la lista* (Contame la idea). Fuente: `web/src/data/temas.ts`. Entra en una pantalla. |
+| Una nota de Juanma | Entre «Qué resuelvo» y «Cómo trabajo» (`#nota`, título solo para lector de pantalla). Columna angosta, sin caja, con la firma y «Juanma» al final. Texto: «Hola, soy Juanma. / Soy ingeniero de datos y desarrollador. Hace más de 7 años que trabajo en sistemas con una idea simple: crear soluciones útiles, que le ahorren tiempo y dinero a cualquier tipo de negocio. / Me escriben cosas como «quiero un sistema para los turnos», «quiero un bot que conteste los mensajes» o «tengo un montón de datos y no sé qué hacer con ellos». Casi siempre la respuesta es la misma: se puede hacer. / Trabajo de punta a punta: entiendo cómo funciona tu negocio hoy, te propongo qué armar y cómo mejorarlo, y lo dejo andando. Al principio es una inversión; con el tiempo se nota en el día a día: más orden, menos trabajo a mano, más control y más ahorro. / Si hay algo en tu negocio que querés mejorar, escribime y lo vemos.» (cada `//` es un párrafo). Escrita con las palabras de Juanma del chat: pendiente que la revise. |
+| Cómo trabajo | Título «Cómo trabajo.», sin intro. Charla («Me contás qué necesitás y cómo trabajás hoy. No hace falta que sepas de tecnología.») · Propuesta («Te paso por escrito qué armaría, en qué orden y cuánto sale.») · Desarrollo («Lo armo por etapas. Lo vas viendo funcionar antes del final.») · Soporte («Te lo dejo andando y te enseño a usarlo. Si querés, sigo con soporte y mejoras todos los meses.»), y «Lo que hago» / «Lo que no hago». |
+| Preguntas | «Preguntas que me hacen siempre.» Acordeón de `<details>` (todo cerrado, sin JavaScript, sin animación), en una columna de lectura, sin cajas: *¿Cuánto sale?* · *¿Tengo que saber de tecnología?* · *Ya uso planillas o un sistema. ¿Hay que tirar todo?* · *¿Qué pasa cuando está terminado?* · *¿Trabajás con gente de cualquier parte del país?* Responde las dudas antes de que las hagan; sin cifras ni precios. |
+| Contacto | «Contame qué *necesitás*.», «Escribime y lo charlamos. Con un mensaje alcanza.» y los **cuatro canales juntos** como tarjetas iguales (componente `Redes`, variante `tarjetas`; 2×2 en celu, una fila desde 64 rem): WhatsApp en lima («Es lo más rápido.»), Instagram («Lo que voy armando.»), LinkedIn («Mi recorrido.») y Mail («Si preferís escribir con calma.»), las tres últimas en salvia. Sin el texto «yo» ni la firma: pasaron a la nota de Juanma (2026-11-15). Se sacó la línea que rotaba. Pie: lema del manual, los mismos cuatro canales en pastillas y «Argentina · 100% remoto · año». Contacto + pie entran en una pantalla. |
 
-### 7. Hola, soy Juanma — fondo crema
-- **Sin foto** (decisión de Juanma). La presencia personal la dan la firma, el `</j>` y algún sticker.
-- Texto base: «Hace 8 años que trabajo con datos y armo webs y apps a medida. Estudié Sistemas en la UNLP.
-  Trabajo remoto desde General Belgrano para quien lo necesite, esté donde esté.»
-- Rasgos (Detallista, Hiperactivo, Extrovertido) y «Fuera del código» (hockey, cocina, rock, viajes).
+**Barra:** pino a ancho completo, logo `<jm>` en crema (ícono `</j>` en el celular), índice numerado 01–04 con tramos de progreso, y
+«Charlemos» en lima (la puerta de entrada, siempre a mano; sin hablar de plata). Los capítulos son 01 Casos (su tramo cubre también «Todo conectado») · 02 Qué resuelvo (su tramo cubre también la nota) · 03 Cómo trabajo (su tramo sigue también «Preguntas») · 04 Contacto.
 
-### 8. Contacto — fondo pino
-- Título: «¿Tenés una idea? *Armemos el sistema*.»
-- **Formulario corto** (nombre, cómo te contacto, qué necesitás, mensaje) contra `POST /contacto`.
-  En «qué necesitás», opciones de los 4 servicios + «Otra cosa». Estados en voz de marca, nada de «Submit».
-- Al lado, atajos directos en orden: WhatsApp, Instagram (cuando exista el usuario), mail, LinkedIn.
-- «Te respondo en menos de 24&nbsp;h hábiles.» Cada proyecto se presupuesta: no hay precios publicados.
-- Firma de cierre.
+**Orden de la página (2026-11-15):** promesa → prueba → oferta → proceso → dudas → acción: Hero · Cosas que armé · Todo conectado · Qué resuelvo · Una nota de Juanma · Cómo trabajo · Preguntas · Contacto. La prueba va temprano y la acción es una sola, repetida: escribir por WhatsApp.
 
-### Footer
-`</j>` o `<jm>` chico · «Un solo proveedor, todo el sistema.» · General Belgrano · 100% remoto · © año.
+**Botón flotante de WhatsApp (solo celular y tablet, menos de 64 rem):** pastilla lima abajo a la derecha que aparece al pasar el hero y se esconde cuando Contacto o el pie están a la vista. Sin JavaScript queda siempre visible.
+
+**WhatsApp:** cada tarjeta manda su problema ya escrito (fuente: `web/src/data/temas.ts`). El mensaje base, fuera de las tarjetas, termina
+abierto para que la persona siga con su caso: «Hola Juanma, vi tu web. Hoy hago esto a mano: ».
+
+**Sin adornos:** no hay etiquetas sobre los títulos, líneas finas ni cajas definidas por un borde; las superficies se definen
+por su relleno. Titulares de dos renglones o menos desde 768 px. Nada que se lea baja de 13 px. La lima queda para los botones principales, la tarjeta de WhatsApp, el botón de «El próximo», el botón flotante de WhatsApp, una `m` del patrón, los tildes de los beneficios del hero y los detalles de las ilustraciones (pastilla «Confirmado», punto del gráfico, punto activo del carrusel), más los estados de foco y hover.
 
 ## Migración del contenido actual
 
@@ -169,29 +151,35 @@ Se lleva **casi todo** lo del `index.html` actual. Cambia la voz, no la sustanci
 | Experiencia: Mercado Libre · Cencosud · Ualá · Naranja X | **No va.** Decisión de Juanma: no se nombran. |
 | Sobre mí + «convertir datos dispersos en un sistema de gestión confiable» | 7. Hola, soy Juanma, reescrito |
 | Contacto: mail, WhatsApp, LinkedIn | 8. Contacto + formulario |
-| «Respuesta en menos de 24h hábiles» | 8. Contacto (confirmado) |
-| Footer «Buenos Aires, Argentina» | «General Belgrano · 100% remoto» |
+| «Respuesta en menos de 24h hábiles» | (quitado el 2026-11-15: no se promete un plazo) |
+| Footer «Buenos Aires, Argentina» | «Argentina · 100% remoto» |
 
-## Plantilla de caso (`/proyectos/<slug>`)
+## Plantilla de caso (`web/src/content/casos/<id>.md`)
+
+Un caso = un archivo + sus capturas. El esquema está en `web/src/content.config.ts` y **falla el build** si falta un campo.
 
 ```yaml
-titulo: "Turnos online para un consultorio"
-cliente: "Consultorio odontológico"   # o nombre real si hay permiso
-rubro: "Salud"
-tamanio: "chico"                      # chico | mediano | grande | sector público
-anio: 2026
-servicios: ["web", "turnos", "datos"]
-resultado: "Los pacientes sacan turno solos, 24/7."   # una línea, verificable
-ahorro: ""                            # solo si el cliente lo confirma (ej. "ya no atienden el teléfono para turnos")
-portada: "./portada.webp"
-publicado: false
+nombre: "Oral Odontología Familiar"
+url: "https://oral.com.ar"              # sitio real; abre en otra pestaña
+partes:                                  # todos los casos: «En detalle» (en «Ver más») y «Qué armé» (la que se destaca, un resumen corto)
+  - titulo: "En detalle"
+    texto: "Un consultorio odontológico que coordinaba los turnos por mensaje de texto y con una agenda en papel."
+  - titulo: "Qué armé"
+    texto: "Una web donde los pacientes reservan solos, con confirmación y recordatorio por mail, y un panel para el consultorio."
+capturas:                                # reales; vacío = placeholder visible [[FALTA]]
+  - src: "../../assets/oral-turnos.png"
+    alt: "Pantalla de reserva de turnos de Oral"   # obligatorio
+    marco: celu                          # celu | ventana (marco decorativo)
+orden: 1
+publicado: true                          # false = no aparece
 ```
 
-Cuerpo, en este orden: **Antes** (cómo trabajaban y qué les costaba) · **Qué armamos** · **Cómo quedó** (capturas reales) ·
-**Qué ahorran hoy** (tiempo, plata, errores; solo lo confirmado) · **Lo técnico** (opcional, para equipos técnicos).
+Reglas: solo lo que Juanma contó; sin métricas, ahorros ni testimonios que no estén confirmados; capturas sin datos
+de personas (anonimizar antes de subir). `npm run build` lista en consola las capturas que faltan (`[FALTA] captura de …`).
+Agregar un caso nuevo = crear su archivo; aparece como una tarjeta más, sin tocar componentes.
 
 ## SEO y metadatos
 
-- Title home: «Juan Martín Almada Ortiz · Webs, apps y datos» (≤ 60 caracteres).
-- Description: una frase en la voz de la marca que mencione el ahorro, ≤ 155 caracteres.
+- Title home: «Juan Martín Almada Ortiz · Sistemas a medida» (≤ 60 caracteres).
+- Description: «Sistemas a medida, bots con inteligencia artificial, webs y tableros con tus datos. Para que tu negocio sea más simple y esté bajo control.» (≤ 155 caracteres).
 - OG image propia por página (1200×630), con la marca.

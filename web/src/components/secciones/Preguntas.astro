@@ -1,0 +1,45 @@
+---
+// «Preguntas que me hacen siempre»: las dudas que frenan a quien está por escribir (cuánto sale, si hace falta saber de tecnología,
+// qué pasa con lo que ya usa, qué pasa después, si trabaja con cualquier parte del país), respondidas antes de que las haga.
+// Acordeón con <details>/<summary>: todo cerrado al inicio, funciona sin JavaScript y sin animación. Spec: specs/preguntas.
+const preguntas = [
+  { p: "¿Cuánto sale?", r: "Depende de lo que haga falta. Después de la primera charla te paso una propuesta por escrito, por etapas, para que decidas tranquilo." },
+  { p: "¿Tengo que saber de tecnología?", r: "No. Vos me contás cómo trabajás y yo me ocupo de la parte técnica. Después te enseño a usar lo que armamos." },
+  { p: "Ya uso planillas o un sistema. ¿Hay que tirar todo?", r: "No. Partimos de lo que ya tenés: si sirve, lo conectamos; si no, pasamos los datos al sistema nuevo." },
+  { p: "¿Qué pasa cuando está terminado?", r: "Queda andando y te enseño a usarlo. Si querés, seguimos con soporte y mejoras todos los meses." },
+  { p: "¿Trabajás con gente de cualquier parte del país?", r: "Sí. Trabajo en forma remota, así que no importa dónde estés." },
+];
+---
+<section id="preguntas" class="seccion-ancha tema-crema" aria-labelledby="preguntas-titulo">
+  <div class="marco">
+    <div class="lectura">
+      <h2 id="preguntas-titulo" data-aparece>Preguntas que me hacen <em>siempre</em>.</h2>
+      <div class="lista" data-aparece>
+        {preguntas.map((q) => (
+          <details>
+            <summary>{q.p}</summary>
+            <p>{q.r}</p>
+          </details>
+        ))}
+      </div>
+    </div>
+  </div>
+</section>
+
+<style>
+  .lectura { max-width: var(--ancho-lectura); }
+  /* Sin cajas ni líneas: las preguntas se separan con aire y una tipografía de título */
+  .lista { display: grid; gap: var(--space-2); margin-top: var(--space-8); }
+  summary {
+    display: flex; align-items: center; justify-content: space-between; gap: var(--space-4);
+    min-height: var(--tap-min); padding-block: var(--space-2);
+    font-family: var(--font-serif); font-size: var(--fs-h3); line-height: 1.15; letter-spacing: -.01em;
+    cursor: pointer; list-style: none;
+  }
+  summary::-webkit-details-marker { display: none; }
+  /* Marcador propio en pino: + cerrado, − abierto (decorativo: el estado lo anuncia el propio <details>) */
+  summary::after { content: "+" / ""; flex: none; font-family: var(--font-sans); font-weight: 800; font-size: 1.6em; line-height: 1; color: var(--pino); }
+  details[open] summary::after { content: "−" / ""; }
+  summary:focus-visible { outline-offset: 2px; border-radius: var(--radius-box); }
+  details p { max-width: 34rem; padding-bottom: var(--space-4); }
+</style>

@@ -1,0 +1,59 @@
+---
+// <jm> desde web/public/brand/. La variante «cursor» va inline para poder animar <g id="cursor">.
+import { leerSvg } from "../lib/marca";
+import { sitio } from "../data/sitio";
+import Falta from "./Falta.astro";
+
+type Variante = "crema" | "pino" | "1tinta-crema" | "1tinta-pino" | "cursor";
+interface Props {
+  variante?: Variante;
+  /** Ancho CSS. Mínimo de marca: 100px (por debajo, usar <Icono />). */
+  ancho?: string;
+  class?: string;
+  decorativo?: boolean;
+}
+const { variante = "crema", ancho = "160px", class: clase, decorativo = false } = Astro.props;
+const archivo = variante === "cursor" ? "logo-jm-cursor.svg" : `logo-jm-${variante}.svg`;
+const svg = leerSvg(archivo);
+const etiqueta = decorativo ? undefined : sitio.nombre;
+---
+{!svg.existe ? (
+  <Falta que={archivo} />
+) : variante === "cursor" ? (
+  <svg
+    class:list={["logo", "logo-cursor", clase]}
+    viewBox={svg.viewBox}
+    width={svg.ancho}
+    height={svg.alto}
+    style={`--ancho:${ancho}`}
+    role={decorativo ? undefined : "img"}
+    aria-label={etiqueta}
+    aria-hidden={decorativo ? "true" : undefined}
+    set:html={svg.interior}
+  />
+) : (
+  <img
+    class:list={["logo", clase]}
+    src={`/brand/${archivo}`}
+    width={Math.round(svg.ancho)}
+    height={Math.round(svg.alto)}
+    alt={etiqueta ?? ""}
+    style={`--ancho:${ancho}`}
+  />
+)}
+
+<style>
+  .logo {
+    width: max(100px, var(--ancho));
+    height: auto;
+  }
+  @media (prefers-reduced-motion: no-preference) {
+    .logo-cursor :global(#cursor) {
+      animation: titila 1.1s steps(1, end) infinite;
+    }
+  }
+  @keyframes titila {
+    0%, 55% { opacity: 1; }
+    56%, 100% { opacity: 0; }
+  }
+</style>

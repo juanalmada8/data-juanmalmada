@@ -76,8 +76,9 @@ uv sync
 uv run fastapi dev app/main.py   # servidor local con recarga
 uv run pytest
 uv run ruff check . && uv run ruff format --check .
+uv run mypy app tests
 ```
 
-## Estructura (inicial)
+## Estructura
 
 Monorepo: `web/` (Astro), `api/` (Python/FastAPI), `docs/`. Detalle en `docs/specs/03-arquitectura.md`.

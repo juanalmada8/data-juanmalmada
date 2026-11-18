@@ -1,0 +1,22 @@
+---
+import Base from "../layouts/Base.astro";
+import Logo from "../components/Logo.astro";
+---
+<Base titulo="Esta página no existe · Juanma" descripcion="No encontré esa dirección. Volvé al inicio o contame tu idea.">
+  <section class="seccion tema-crema" aria-labelledby="titulo-404">
+    <div class="contenedor cuerpo">
+      <Logo variante="cursor" ancho="12rem" decorativo />
+      <h1 id="titulo-404">Esta página <em>no existe</em>.</h1>
+      <p class="lead">Pero lo que tengas en mente, seguro se puede armar.</p>
+      <div class="acciones">
+        <a class="boton lima" href="/#contacto">Contame tu idea</a>
+        <a class="boton sec" href="/">Volver al inicio</a>
+      </div>
+    </div>
+  </section>
+</Base>
+
+<style>
+  .cuerpo { display: grid; gap: var(--space-4); justify-items: start; min-height: 60vh; align-content: center; }
+  .acciones { display: flex; flex-wrap: wrap; gap: var(--space-3); margin-top: var(--space-2); }
+</style>

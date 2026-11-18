@@ -11,5 +11,5 @@
 - Si tenés un navegador o Playwright disponible, usalo para sacar las capturas de verificación; si no,
   decilo y listá qué tendría que mirar Juanma a mano.
 - Respuestas cortas en el chat. El detalle va en el commit o en los docs, no en un ensayo.
-- Juanma es ingeniero de datos con 8 años de oficio y maneja front y back: no le expliques lo básico,
+- Juanma es ingeniero de datos con más de 7 años de oficio y maneja front y back: no le expliques lo básico,
   sí explicale los trade-offs.

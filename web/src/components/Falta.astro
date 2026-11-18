@@ -1,0 +1,20 @@
+---
+// Marcador visible para datos o assets que faltan. Ver docs/pendientes-juanma.md.
+interface Props { que: string }
+const { que } = Astro.props;
+---
+<code class="falta" translate="no">[[FALTA: {que}]]</code>
+
+<style>
+  /* Marcador temporal de «falta esto»: bien visible (recuadro punteado), pero sin gastar lima */
+  .falta {
+    display: inline-block;
+    padding: var(--space-1) var(--space-2);
+    background: var(--blanco);
+    color: var(--pino);
+    border: 2px dashed var(--pino);
+    font-family: var(--font-mono);
+    font-size: var(--fs-label);
+    font-weight: 500;
+  }
+</style>

@@ -1,0 +1,25 @@
+---
+// Pie: el lema del manual, los cuatro canales (componente Redes) y el año. Mide --alto-pie en escritorio: «Contacto» + pie llenan la pantalla y el pie se ve entero.
+import Redes from "./Redes.astro";
+import { sitio } from "../data/sitio";
+const anio = new Date().getFullYear();
+---
+<footer class="pie tema-pino">
+  <div class="marco fila">
+    <p class="lema">{sitio.lema}</p>
+    <Redes variante="pastillas" />
+    <p class="datos">{sitio.ubicacion} · © {anio}</p>
+  </div>
+</footer>
+
+<style>
+  .pie { padding-block: var(--space-8); }
+  .fila { display: grid; gap: var(--space-4); justify-items: start; }
+  .lema { font-family: var(--font-serif); font-size: var(--fs-h3); line-height: 1.15; }
+  .datos { font-size: var(--fs-label); color: var(--salvia); }
+  @media (min-width: 48rem) {
+    .pie { min-height: var(--alto-pie); display: grid; align-content: center; }
+    .fila { grid-template-columns: 1fr auto; align-items: center; row-gap: var(--space-1); }
+    .datos { grid-column: 1 / -1; }
+  }
+</style>

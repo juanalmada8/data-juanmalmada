@@ -1,0 +1,21 @@
+---
+// Patrón de datos del manual: grilla de puntos musgo/salvia con algunos en lima. Decorativo.
+interface Props { columnas?: number; filas?: number; class?: string }
+const { columnas = 10, filas = 5, class: clase } = Astro.props;
+// Distribución fija (no aleatoria) para que el build sea estable.
+const tono = (f: number, c: number) => {
+  const n = (f * 7 + c * 13 + f * c) % 17;
+  return n === 0 ? "lima" : n % 4 === 0 ? "salvia" : "musgo";
+};
+---
+<svg class:list={["datos", clase]} viewBox={`0 0 ${columnas * 40} ${filas * 40}`} aria-hidden="true">
+  {Array.from({ length: filas }, (_, f) =>
+    Array.from({ length: columnas }, (_, c) => <circle cx={c * 40 + 20} cy={f * 40 + 20} r="5" class={tono(f, c)} />),
+  )}
+</svg>
+
+<style>
+  .datos .musgo { fill: var(--musgo); }
+  .datos .salvia { fill: var(--salvia); }
+  .datos .lima { fill: var(--lima); }
+</style>

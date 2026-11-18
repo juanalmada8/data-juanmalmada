@@ -1,0 +1,22 @@
+---
+import { leerSvg } from "../lib/marca";
+import Falta from "./Falta.astro";
+
+interface Props { color?: "crema" | "pino" | "lima"; ancho?: string; class?: string; decorativa?: boolean }
+const { color = "pino", ancho = "180px", class: clase, decorativa = false } = Astro.props;
+const archivo = `firma-${color}.svg`;
+const svg = leerSvg(archivo);
+---
+{svg.existe ? (
+  <img
+    class:list={["firma", clase]}
+    src={`/brand/${archivo}`}
+    width={Math.round(svg.ancho)}
+    height={Math.round(svg.alto)}
+    alt={decorativa ? "" : "Firma de Juanma"}
+    loading="lazy"
+    style={`width:${ancho}`}
+  />
+) : (
+  <Falta que={archivo} />
+)}

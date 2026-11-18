@@ -1,0 +1,30 @@
+---
+// Cierre a ancho completo sobre pino: la invitación a contar qué necesita, y los canales.
+// Los cuatro canales juntos, como tarjetas iguales (componente Redes; WhatsApp destacado), sin formularios. Spec: specs/contacto.
+import PatronM from "../PatronM.astro";
+import Redes from "../Redes.astro";
+---
+<section id="contacto" class="seccion-ancha tema-pino" aria-labelledby="contacto-titulo">
+  <div class="marco">
+    <div class="texto" data-aparece>
+      <h2 id="contacto-titulo">Contame qué <em>necesitás</em>.</h2>
+      <p class="lead">Escribime y lo charlamos. Con un mensaje alcanza.</p>
+
+      <Redes variante="tarjetas" />
+    </div>
+  </div>
+  <PatronM tono="pino" lima={[[0, 5]]} class="banda" />
+</section>
+
+<style>
+  .texto { display: grid; gap: var(--space-6); justify-items: start; }
+  .lead { max-width: 40ch; }
+  h2 em { color: var(--salvia); } /* la lima se reserva para el botón de WhatsApp y una m del patrón */
+  .seccion-ancha :global(.banda) { margin-top: var(--space-12); background: transparent; }
+
+  /* En escritorio, «Contacto» + pie = una pantalla: el pie queda entero al ir a Contacto desde el índice (en ventanas bajas, sin el patrón) */
+  @media (min-width: 64rem) { #contacto { min-height: calc(100svh - var(--alto-barra) - var(--alto-pie)); align-content: center; padding-block: var(--space-6); } }
+  @media (min-width: 64rem) and (max-height: 800px) { .seccion-ancha :global(.banda) { display: none; } }
+  @media (min-width: 64rem) and (max-height: 800px) { .texto { gap: var(--space-4); } }
+  @media (min-width: 64rem) and (max-height: 700px) { .lead { font-size: var(--fs-body); } }
+</style>

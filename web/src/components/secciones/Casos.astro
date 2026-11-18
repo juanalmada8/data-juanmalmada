@@ -1,0 +1,157 @@
+---
+// «Cosas que armé»: casos reales como tarjetas lado a lado (más una que invita a sumar el próximo). Primero el trabajo: la captura de
+// escritorio arriba y grande, con la del celu encima. El texto visible es la última parte (su título, en un panel propio: «Hoy» o «Qué armé»); el resto va en «Ver más».
+// Testimonio y video son opcionales: aparecen solo si el caso los trae. Lenguaje claro, sin jerga (pedido de Juanma, 2026-11-15).
+// Cada caso es un archivo de src/content/casos/: sumar uno no toca este componente. Spec: specs/casos.
+import { getImage } from "astro:assets";
+import Captura from "../Captura.astro";
+import { cargarCasos } from "../../lib/casos";
+import { urlWhatsApp } from "../../lib/whatsapp";
+import { proyectos } from "../../data/proyectos";
+
+const casos = await cargarCasos();
+const fondos = ["salvia", "pino"];
+// Ancho real de la captura grande: tarjeta en una columna (celu), dos (tablet) o tres (escritorio)
+const tamanos = "(min-width: 64rem) 24rem, (min-width: 48rem) 45vw, 90vw";
+// Póster de cada video, solo para los casos que tengan uno
+const posters = new Map<string, string>();
+for (const c of casos) if (c.data.video) posters.set(c.id, (await getImage({ src: c.data.video.poster, width: 960 })).src);
+---
+{casos.length > 0 && (
+<section id="casos" class="seccion-ancha tema-crema" aria-labelledby="casos-titulo">
+  <div class="marco">
+    <h2 id="casos-titulo" data-aparece>Cosas que <em>armé</em>.</h2>
+    <p class="lead" data-aparece>Casos reales, de un negocio chico a una plataforma para empresas. Lo tuyo puede ser otra cosa.</p>
+
+    <ul class="casos">
+      {casos.map((c, i) => {
+        const ventana = c.data.capturas.find((x) => x.marco === "ventana");
+        const celu = c.data.capturas.find((x) => x.marco === "celu");
+        const hoy = c.data.partes[c.data.partes.length - 1];
+        const antes = c.data.partes.slice(0, -1);
+        const { testimonio, video } = c.data;
+        return (
+        <li class:list={["caso", `f-${fondos[i % fondos.length]}`]} data-aparece>
+          <div class:list={["captura-caso", { "con-celu": !!celu }]}>
+            {c.data.capturas.length > 0
+              ? <>
+                  {ventana && <Captura caso={c.data.nombre} captura={ventana} sizes={tamanos} />}
+                  {celu && <div class="celu-sup"><Captura caso={c.data.nombre} captura={celu} sizes="8rem" /></div>}
+                </>
+              : <Captura caso={c.data.nombre} marco="ventana" />}
+          </div>
+          <div class="encabezado">
+            <p class="cliente" translate="no">{c.data.nombre}</p>
+            <a class="boton sec chico" href={c.data.url} target="_blank" rel="noopener noreferrer" aria-label={`Visitar el sitio de ${c.data.nombre} (se abre en otra pestaña)`}>
+              Visitar el sitio <span aria-hidden="true">↗</span>
+            </a>
+          </div>
+          <h3>{c.data.resultado}</h3>
+          <div class="parte hoy">
+            <p class="titulo">{hoy.titulo}</p>
+            <p>{hoy.texto}</p>
+          </div>
+          {antes.length > 0 && (
+            <details class="mas">
+              <summary>Ver más</summary>
+              <dl class="partes">
+                {antes.map((p) => (
+                  <div class="parte">
+                    <dt>{p.titulo}</dt>
+                    <dd>{p.texto}</dd>
+                  </div>
+                ))}
+              </dl>
+            </details>
+          )}
+          {testimonio && (
+            <figure class="testimonio">
+              <blockquote><p>«{testimonio.texto}»</p></blockquote>
+              <figcaption><cite>{testimonio.autor}</cite>, {testimonio.rol}</figcaption>
+            </figure>
+          )}
+          {video && (
+            <video class="video" aria-label={c.data.nombre} controls preload="none" playsinline poster={posters.get(c.id)} src={video.src}></video>
+          )}
+        </li>
+        );
+      })}
+      <li class="caso proximo f-musgo" data-aparece>
+        <h3>El próximo puede ser el tuyo.</h3>
+        <a class="boton lima flecha" href={urlWhatsApp("Hola Juanma, quiero armar algo")} target="_blank" rel="noopener noreferrer">
+          Contame<span class="sr-only"> (se abre WhatsApp en otra pestaña)</span>
+        </a>
+      </li>
+    </ul>
+
+    {proyectos.length > 0 && (
+      <div class="otras" data-aparece>
+        <h3>Y otras cosas que armé</h3>
+        <ul class="lineas">
+          {proyectos.map((p) => (
+            <li class="linea">
+              {p.destacado && p.linea.includes(p.destacado)
+                ? <>{p.linea.split(p.destacado)[0]}<strong>{p.destacado}</strong>{p.linea.split(p.destacado).slice(1).join(p.destacado)}</>
+                : p.linea}
+            </li>
+          ))}
+        </ul>
+      </div>
+    )}
+  </div>
+</section>
+)}
+
+<style>
+  .lead { margin-top: var(--space-3); max-width: 80ch; }
+  .casos { list-style: none; padding: 0; display: grid; align-items: stretch; gap: var(--space-4); margin-top: var(--space-4); }
+  /* Cabecera: el cliente en una pastilla a la izquierda y, a la derecha, un botón chico para visitar el sitio */
+  .encabezado { display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: var(--space-2) var(--space-4); width: 100%; }
+  .cliente { padding: var(--space-1) var(--space-4); border-radius: var(--radius-pill); font-size: var(--fs-small); font-weight: 800; background: color-mix(in srgb, currentColor 12%, transparent); }
+  .caso .boton.sec { color: inherit; border-color: currentColor; } /* el botón toma el color de la tarjeta, no el del tema de la sección */
+  .boton.chico { min-height: var(--tap-min); padding: 0 var(--space-4); font-size: var(--fs-small); }
+  .f-pino .boton.sec:hover { background: var(--crema); color: var(--pino); } /* el hover global usa el fondo del tema, que acá es el de la sección */
+  .f-salvia .boton.sec:hover { background: var(--pino); color: var(--salvia); }
+  .f-pino .boton.sec:focus-visible { outline-color: var(--lima); }
+  .f-salvia .boton.sec:focus-visible { outline-color: var(--pino); }
+  /* Tarjetas de la misma altura: «Ver más» queda al pie de cada una */
+  .caso { display: flex; flex-direction: column; align-items: flex-start; gap: var(--space-2); padding: var(--space-3) var(--space-6) var(--space-4); border-radius: var(--radius-tarjeta); }
+  .caso h3 { font-size: var(--fs-tarjeta); line-height: 1; letter-spacing: -.02em; }
+  .f-salvia { background: var(--salvia); color: var(--pino); }
+  .f-pino { background: var(--pino); color: var(--crema); }
+  .f-musgo { background: var(--musgo-hondo); color: var(--crema); }
+  .partes { display: grid; gap: var(--space-2); width: 100%; }
+  .parte dt, .parte .titulo { font-weight: 800; font-size: var(--fs-small); }
+  .parte dd, .parte p:not(.titulo) { font-size: var(--fs-small); line-height: 1.4; }
+  .hoy { width: 100%; }
+  /* La última parte (la solución o lo que sigue hoy) va en un panel propio, un poco más claro u oscuro que la tarjeta */
+  .hoy { padding: var(--space-2) var(--space-3); border-radius: var(--radius-box); }
+  .f-pino .hoy { background: color-mix(in srgb, var(--crema) 14%, transparent); }
+  .f-salvia .hoy { background: color-mix(in srgb, var(--pino) 9%, transparent); }
+  /* La captura de escritorio ocupa todo el ancho de la tarjeta; la del celu se superpone abajo a la derecha */
+  .captura-caso { position: relative; width: 100%; }
+  .captura-caso.con-celu { margin-bottom: var(--space-12); }
+  .celu-sup { position: absolute; right: var(--space-3); bottom: calc(var(--space-12) * -1); width: 30%; }
+  .captura-caso :global(.captura) { box-shadow: 0 0 0 1px color-mix(in srgb, var(--pino) 25%, transparent); }
+  .mas { width: 100%; margin-top: auto; }
+  .mas summary { display: flex; align-items: center; min-height: var(--tap-min); font-weight: 700; font-size: var(--fs-small); cursor: pointer; text-decoration: underline; text-decoration-thickness: 2px; text-underline-offset: var(--space-1); }
+  .mas[open] summary { margin-bottom: var(--space-1); }
+  .f-pino .mas summary:focus-visible, .f-pino .video:focus-visible { outline-color: var(--lima); }
+  .f-salvia .mas summary:focus-visible { outline-color: var(--pino); }
+  .testimonio { margin: 0; display: grid; gap: var(--space-1); font-size: var(--fs-small); }
+  .testimonio blockquote { margin: 0; font-weight: 700; }
+  .testimonio cite { font-style: normal; font-weight: 800; }
+  .video { width: 100%; border-radius: var(--radius-box); background: var(--pino); }
+  .proximo { justify-content: center; min-height: var(--alto-tarjeta-chica); }
+  .proximo .boton:focus-visible { outline-color: var(--lima); }
+
+  .otras { margin-top: var(--space-8); display: grid; gap: var(--space-6); }
+  .otras h3 { font-size: var(--fs-tarjeta); }
+  .lineas { list-style: none; padding: 0; display: grid; gap: var(--space-3); }
+  .linea { padding: var(--space-6); border-radius: var(--radius-tarjeta); background: var(--papel); color: var(--pino); }
+  @media (min-width: 40rem) { .lineas { grid-template-columns: repeat(2, minmax(0, 1fr)); } }
+  @media (min-width: 64rem) { .lineas { grid-template-columns: repeat(3, minmax(0, 1fr)); } }
+  /* Tres tarjetas en una fila (Oral, Staffy y «El próximo») para que la sección entre en una pantalla */
+  @media (min-width: 48rem) { .casos { grid-template-columns: repeat(2, minmax(0, 1fr)); } .proximo:last-child:nth-child(odd) { grid-column: 1 / -1; } }
+  @media (min-width: 64rem) { .casos { grid-template-columns: repeat(3, minmax(0, 1fr)); } .proximo:last-child:nth-child(odd) { grid-column: auto; } }
+</style>
